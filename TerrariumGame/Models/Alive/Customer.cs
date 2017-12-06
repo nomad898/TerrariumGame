@@ -18,6 +18,8 @@ namespace TerrariumGame.Models.Alive
             }
         }
 
+        public char Icon { get { return 'C'; } }
+
         public void Move(Point p)
         {
             throw new NotImplementedException();

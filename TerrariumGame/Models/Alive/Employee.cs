@@ -26,6 +26,8 @@ namespace TerrariumGame.Models.Alive
             }
         }
 
+        public virtual char Icon { get { return 'E'; } }
+
         public void Move(Point p)
         {
             Position = p;

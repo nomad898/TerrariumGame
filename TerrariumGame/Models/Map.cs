@@ -18,8 +18,8 @@ namespace TerrariumGame.Models
 
         public Map(int height, int weight)
         {
-            this.Width = ++weight;
-            this.Height = ++height;
+            this.Width = weight;
+            this.Height = height;
             map = new char[Height, Width];
             FillMap();
         }
@@ -38,9 +38,9 @@ namespace TerrariumGame.Models
 
         private void FillMap()
         {
-            for (int x = 0; x < Height - 1; x++)
+            for (int x = 0; x < Height; x++)
             {
-                for (int y = 0; y < Width - 1; y++)
+                for (int y = 0; y < Width; y++)
                 {
                     map[x, y] = '.';
                 }

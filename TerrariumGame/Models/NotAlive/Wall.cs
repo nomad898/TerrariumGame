@@ -9,13 +9,7 @@ namespace TerrariumGame.Models.NotAlive
 {
     class Wall : IMovable
     {
-        public char Graphic
-        {
-            get
-            {
-                return '8';
-            }
-        }
+        public char Icon { get { return 'n'; } }
 
         public Point Position { get; set; } 
         public bool IsAlive

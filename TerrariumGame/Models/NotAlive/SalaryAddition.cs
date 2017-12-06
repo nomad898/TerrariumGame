@@ -19,6 +19,8 @@ namespace TerrariumGame.Models.NotAlive
             }
         }
 
+        public char Icon { get { return 's'; } }
+
         public void Move(Point p)
         {
             Position = p;

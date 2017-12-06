@@ -10,31 +10,43 @@ namespace TerrariumGame.Models
 {
     struct Point
     {
-        public int XPosition { get; set; }
-        public int YPosition { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public Point(int x, int y)
         {
-            XPosition = x;
-            YPosition = y;
+            X = x;
+            Y = y;
         }
 
-        public static bool operator !=(Point p1, Point p2)
+        public override bool Equals(Object obj)
         {
-            if (p1.XPosition != p2.XPosition || p1.YPosition != p2.YPosition)
-            {
-                return true;
-            }
-            else return false;
+            if (obj == null || GetType() != obj.GetType()) return false;
+            Point p = (Point)obj;
+            return (X == p.X) && (Y == p.Y);
+        }
+
+        public override int GetHashCode()
+        {
+            return X ^ Y;
         }
 
         public static bool operator ==(Point p1, Point p2)
         {
-            if (p1.XPosition == p2.XPosition && p1.YPosition == p2.YPosition)
+            if (p1.X == p2.X && p1.Y == p2.Y)
             {
                 return true;
             }
             else return false;
         }
+
+        public static bool operator !=(Point p1, Point p2)
+        {
+            if (p1.X != p2.X || p1.Y != p2.Y)
+            {
+                return true;
+            }
+            else return false;
+        }     
     }
 }

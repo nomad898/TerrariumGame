@@ -13,28 +13,10 @@ namespace TerrariumGame
     {
         static void Main(string[] args)
         {
-            //Run();   
+            Game game = new Game();
+            game.Run();   
             
             Console.ReadKey(true);
-        }
-
-        //private static bool gameIsRunning = true;
-        //private Random rand = new Random();
-        
-        //static void Run()
-        //{
-        //    while (gameIsRunning)
-        //    {
-        //        Console.Clear();
-        //        InitGame();
-        //        Thread.Sleep(1000);
-        //    }
-        //}
-
-        //static void InitGame()
-        //{
-        //    Map world = new Map(10, 30);
-        //    world.ShowMap();
-        //}
+        }        
     }
 }

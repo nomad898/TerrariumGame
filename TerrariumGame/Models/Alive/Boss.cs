@@ -10,13 +10,7 @@ namespace TerrariumGame.Models.Alive
 {
     class Boss : Employee, IManage, IManagable
     {
-        public virtual char Graphic
-        {
-            get
-            {
-                return 'B';
-            }
-        }
+        public override char Icon { get { return 'B'; } }
 
         public void DoWork()
         {

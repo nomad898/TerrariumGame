@@ -9,13 +9,7 @@ namespace TerrariumGame.Models.Alive
 {
     class Worker : Employee, IManagable
     {
-        public char Graphic
-        {
-            get
-            {
-                return 'W';
-            }
-        }
+        public override char Icon { get { return 'W'; } }
 
         public void DoWork()
         {
