@@ -10,6 +10,14 @@ namespace TerrariumGame.Models.Alive
 {
     class Boss : Employee, IManage, IManagable
     {
+        public virtual char Graphic
+        {
+            get
+            {
+                return 'B';
+            }
+        }
+
         public void DoWork()
         {
             this.Salary -= 100;

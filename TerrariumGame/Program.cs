@@ -5,29 +5,36 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TerrariumGame.Models;
+using TerrariumGame.Models.Alive;
 
 namespace TerrariumGame
 {
     class Program
     {
-        private static bool gameIsRunning = true;
-
         static void Main(string[] args)
         {
-            while (gameIsRunning)
-            {
-                Console.Clear();
-                InitGame();
-                Thread.Sleep(1000);
-            }
+            //Run();   
+            
             Console.ReadKey(true);
-
         }
 
-        static void InitGame()
-        {
-            Map world = new Map(10, 30);
-            world.ShowMap();
-        }
+        //private static bool gameIsRunning = true;
+        //private Random rand = new Random();
+        
+        //static void Run()
+        //{
+        //    while (gameIsRunning)
+        //    {
+        //        Console.Clear();
+        //        InitGame();
+        //        Thread.Sleep(1000);
+        //    }
+        //}
+
+        //static void InitGame()
+        //{
+        //    Map world = new Map(10, 30);
+        //    world.ShowMap();
+        //}
     }
 }

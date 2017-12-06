@@ -46,7 +46,6 @@
     <Compile Include="Creators\BigBossCreator.cs" />
     <Compile Include="Creators\BossCreator.cs" />
     <Compile Include="Creators\Creator.cs" />
-    <Compile Include="Creators\CustomerCreator.cs" />
     <Compile Include="Creators\WorkerCreator.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
     <Compile Include="Interfaces\IManage.cs" />

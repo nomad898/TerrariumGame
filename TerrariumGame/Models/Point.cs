@@ -13,6 +13,12 @@ namespace TerrariumGame.Models
         public int XPosition { get; set; }
         public int YPosition { get; set; }
 
+        public Point(int x, int y)
+        {
+            XPosition = x;
+            YPosition = y;
+        }
+
         public static bool operator !=(Point p1, Point p2)
         {
             if (p1.XPosition != p2.XPosition || p1.YPosition != p2.YPosition)

@@ -29,11 +29,6 @@ namespace TerrariumGame.Models.NotAlive
         public void Move(Point p)
         {
             Console.WriteLine("Я стена");
-        }
-
-        public override string ToString()
-        {
-            return Graphic.ToString();
-        }
+        }        
     }
 }

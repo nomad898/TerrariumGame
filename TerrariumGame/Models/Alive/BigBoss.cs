@@ -10,6 +10,14 @@ namespace TerrariumGame.Models.Alive
 {
     class BigBoss : Boss
     {
+        public override char Graphic
+        {
+            get
+            {
+                return 'K';
+            }
+        }
+
         public SalaryAddition CreateSalaryAddition()
         {
             return new SalaryAddition();

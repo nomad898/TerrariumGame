@@ -9,6 +9,14 @@ namespace TerrariumGame.Models.Alive
 {
     class Worker : Employee, IManagable
     {
+        public char Graphic
+        {
+            get
+            {
+                return 'W';
+            }
+        }
+
         public void DoWork()
         {
             this.Salary -= 100;

@@ -15,5 +15,10 @@ namespace TerrariumGame.Models.NotAlive
         {
             list = new List<T>();
         }
+
+        public void Add(T t)
+        {
+            list.Add(t);
+        }      
     }
 }
