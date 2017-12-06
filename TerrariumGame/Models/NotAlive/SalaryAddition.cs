@@ -7,11 +7,9 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.NotAlive
 {
-    class SalaryAddition : IMovable
+    class SalaryAddition : GameObject
     {
-        public Point Position { get; set; }
-
-        public bool IsAlive
+        public override bool IsAlive
         {
             get
             {
@@ -19,11 +17,6 @@ namespace TerrariumGame.Models.NotAlive
             }
         }
 
-        public char Icon { get { return 's'; } }
-
-        public void Move(Point p)
-        {
-            Position = p;
-        }
+        public override char Icon { get { return 's'; } }
     }
 }

@@ -8,9 +8,9 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
-    class Customer : IMovable, IManage
+    class Customer : GameObject, IManage
     {
-        public bool IsAlive
+        public override bool IsAlive
         {
             get
             {
@@ -18,13 +18,8 @@ namespace TerrariumGame.Models.Alive
             }
         }
 
-        public char Icon { get { return 'C'; } }
-
-        public void Move(Point p)
-        {
-            throw new NotImplementedException();
-        }
-    
+        public override char Icon { get { return 'C'; } }
+            
         public void Manage(IManagable imngbl)
         {
             imngbl.DoWork();

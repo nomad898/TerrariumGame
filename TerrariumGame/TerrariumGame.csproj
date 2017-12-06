@@ -43,10 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Creators\BigBossCreator.cs" />
-    <Compile Include="Creators\BossCreator.cs" />
-    <Compile Include="Creators\Creator.cs" />
-    <Compile Include="Creators\WorkerCreator.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
     <Compile Include="Interfaces\IManage.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
@@ -55,6 +51,7 @@
     <Compile Include="Models\Alive\Customer.cs" />
     <Compile Include="Models\Alive\Employee.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\NotAlive\House.cs" />
     <Compile Include="Models\NotAlive\SalaryAddition.cs" />
     <Compile Include="Models\NotAlive\Wall.cs" />

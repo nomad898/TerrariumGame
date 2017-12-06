@@ -7,12 +7,11 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.NotAlive
 {
-    class Wall : IMovable
+    class Wall : GameObject
     {
-        public char Icon { get { return 'n'; } }
-
-        public Point Position { get; set; } 
-        public bool IsAlive
+        public override char Icon { get { return 'n'; } }
+ 
+        public override bool IsAlive
         {
             get
             {
@@ -20,7 +19,7 @@ namespace TerrariumGame.Models.NotAlive
             }
         }
 
-        public void Move(Point p)
+        public override void Move(Point p)
         {
             Console.WriteLine("Я стена");
         }        

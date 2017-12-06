@@ -10,7 +10,7 @@ namespace TerrariumGame.Interfaces
     interface IMovable
     {
         char Icon { get; }
-
+        Point Position { get; set; }
         bool IsAlive { get; }
 
         void Move(Point p);

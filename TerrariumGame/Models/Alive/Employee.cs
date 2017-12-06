@@ -7,31 +7,21 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.Alive
 {
-    abstract class Employee : IMovable
+    abstract class Employee : GameObject
     {
-
         public decimal Salary { get; set; }
 
         public string Name { get; set; }
 
-        public bool Mood { get; set; }
+        public bool Mood { get; set; }        
 
-        public Point Position { get; set; }
-
-        public bool IsAlive
+        public override bool IsAlive
         {
             get
             {
                 return true;
             }
-        }
-
-        public virtual char Icon { get { return 'E'; } }
-
-        public void Move(Point p)
-        {
-            Position = p;
-        }
+        }         
 
         public void Say(string whatToSay)
         {

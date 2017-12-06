@@ -14,23 +14,24 @@ namespace TerrariumGame.Models
         public int Height { get; private set; }
         public int Width { get; private set; }
 
-        private char[,] map;
+        private char[,] matrix;
 
         public Map(int height, int weight)
         {
             this.Width = weight;
             this.Height = height;
-            map = new char[Height, Width];
+            matrix = new char[Height, Width];
             FillMap();
         }
 
         public void ShowMap()
         {
+            Console.SetCursorPosition(0, 0);
             for (int x = 0; x < Height; x++)
             {
                 for (int y = 0; y < Width; y++)
                 {
-                    Console.Write(map[x, y]);
+                    Console.Write(matrix[x, y]);
                 }
                 Console.WriteLine();
             }
@@ -42,7 +43,7 @@ namespace TerrariumGame.Models
             {
                 for (int y = 0; y < Width; y++)
                 {
-                    map[x, y] = '.';
+                    matrix[x, y] = '.';
                 }
                 Console.WriteLine();
             }

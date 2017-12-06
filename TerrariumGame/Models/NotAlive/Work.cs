@@ -7,23 +7,16 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.NotAlive
 {
-    class Work : IMovable
-    {
-        public Point Position { get; set; }
-
-        public bool IsAlive
+    class Work : GameObject
+    {      
+        public override bool IsAlive
         {
             get
             {
                 return false;
             }
         }
-
-        public char Icon { get { return 'w'; } }
-
-        public void Move(Point p)
-        {
-            Position = p;
-        }
+       
+        public override char Icon { get { return 'w'; } }         
     }
 }

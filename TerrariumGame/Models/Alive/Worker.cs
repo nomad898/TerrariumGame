@@ -11,6 +11,13 @@ namespace TerrariumGame.Models.Alive
     {
         public override char Icon { get { return 'W'; } }
 
+        public int DoneWork { get; private set; }
+
+        public Worker()
+        {
+            DoneWork = 0;
+        }
+
         public void DoWork()
         {
             this.Salary -= 100;
