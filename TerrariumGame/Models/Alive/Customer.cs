@@ -19,7 +19,11 @@ namespace TerrariumGame.Models.Alive
         }
 
         public override char Icon { get { return 'C'; } }
-            
+
+        public Customer() : base() { }
+
+        public Customer(int x, int y) : base(x, y) { }
+
         public void Manage(IManagable imngbl)
         {
             imngbl.DoWork();

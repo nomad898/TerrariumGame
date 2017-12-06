@@ -12,6 +12,15 @@ namespace TerrariumGame.Models.Alive
     {
         public override char Icon { get { return 'K'; } }
 
+        public BigBoss() : base()
+        {
+
+        }
+
+        public BigBoss(int x, int y) : base(x, y)
+        {
+        }
+
         public SalaryAddition CreateSalaryAddition()
         {
             return new SalaryAddition();
@@ -21,9 +30,9 @@ namespace TerrariumGame.Models.Alive
         {
             if (ee is IManagable)
             {
-                this.Say("Работать!!!");             
+                this.Say("Работать!!!");
             }
-            else 
+            else
             {
                 this.Say("Здравствуйте!");
             }

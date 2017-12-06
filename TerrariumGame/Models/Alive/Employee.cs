@@ -13,7 +13,7 @@ namespace TerrariumGame.Models.Alive
 
         public string Name { get; set; }
 
-        public bool Mood { get; set; }        
+        public bool Mood { get; set; }
 
         public override bool IsAlive
         {
@@ -21,7 +21,11 @@ namespace TerrariumGame.Models.Alive
             {
                 return true;
             }
-        }         
+        }
+
+        public Employee() : base() { }
+
+        public Employee(int x, int y) : base(x, y) { }
 
         public void Say(string whatToSay)
         {

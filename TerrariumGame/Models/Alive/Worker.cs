@@ -13,7 +13,12 @@ namespace TerrariumGame.Models.Alive
 
         public int DoneWork { get; private set; }
 
-        public Worker()
+        public Worker() : base()
+        {
+            DoneWork = 0;
+        }
+
+        public Worker(int x, int y) : base(x, y)
         {
             DoneWork = 0;
         }

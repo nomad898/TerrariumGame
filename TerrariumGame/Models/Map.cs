@@ -11,16 +11,28 @@ namespace TerrariumGame.Models
 {
     class Map
     {
+        private char[,] matrix;
+        private ICollection<GameObject> gameObjects;
+
         public int Height { get; private set; }
         public int Width { get; private set; }
-
-        private char[,] matrix;
+        public ICollection<GameObject> GameObjects { get { return gameObjects; } }
 
         public Map(int height, int weight)
         {
             this.Width = weight;
             this.Height = height;
             matrix = new char[Height, Width];
+            gameObjects = new List<GameObject>();
+            FillMap();
+        }
+
+        public Map(int height, int weight, ICollection<GameObject> objects)
+        {
+            this.Width = weight;
+            this.Height = height;
+            matrix = new char[Height, Width];
+            gameObjects = objects;
             FillMap();
         }
 
@@ -39,13 +51,10 @@ namespace TerrariumGame.Models
 
         private void FillMap()
         {
-            for (int x = 0; x < Height; x++)
+            foreach (var obj in GameObjects)
             {
-                for (int y = 0; y < Width; y++)
-                {
-                    matrix[x, y] = '.';
-                }
-                Console.WriteLine();
+                Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
+                matrix[obj.Position.X, obj.Position.Y] = obj.Icon;               
             }
         }
     }

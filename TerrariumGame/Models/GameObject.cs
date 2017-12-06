@@ -15,6 +15,16 @@ namespace TerrariumGame.Models
 
         public virtual Point Position { get; set; }
 
+        public GameObject()
+        {
+
+        }
+
+        public GameObject(int x, int y)
+        {
+            Position = new Point(x, y);
+        }
+
         public virtual void Move(Point p)
         {
             Position = p;
