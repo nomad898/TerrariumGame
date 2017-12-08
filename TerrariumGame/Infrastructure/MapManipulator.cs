@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TerrariumGame.Infrastructure.Factory;
 using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
     class MapManipulator
     {
+        private int minObjectAmount = 4;
+        private int maxObjectAmount = 12;
+        Random random = new Random();
+
         public void ShowMap(Map map)
         {
             Console.SetCursorPosition(0, 0);
@@ -22,7 +27,23 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        private void MapInit(Map map)
+        public void SetObjects(Map map)
+        {
+            MapInit(map);
+            foreach (var obj in map.GameObjects)
+            {
+                Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
+                map[obj.Position.X, obj.Position.Y] = obj.Icon;
+            }
+        }
+
+        public void Init(Map map)
+        {
+            MapInit(map);
+            ObjectsInit(map);
+        }
+
+        public void MapInit(Map map)
         {
             Console.SetCursorPosition(0, 0);
             for (int x = 0; x < map.Height; x++)
@@ -35,13 +56,13 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        public void FillMap(Map map)
+        private void ObjectsInit(Map map)
         {
-            MapInit(map);
-            foreach (var obj in map.GameObjects)
+            int counterValue = random.Next(minObjectAmount, maxObjectAmount);
+            for (int i = 0; i < counterValue; i++)
             {
-                Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
-                map[obj.Position.X, obj.Position.Y] = obj.Icon;
+                map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 5),
+                    random.Next(0, map.Height), random.Next(0, map.Width)));
             }
         }
     }

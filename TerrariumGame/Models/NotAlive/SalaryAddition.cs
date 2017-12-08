@@ -18,5 +18,8 @@ namespace TerrariumGame.Models.NotAlive
         }
 
         public override char Icon { get { return '$'; } }
+
+        public SalaryAddition() : base() { }
+        public SalaryAddition(int x, int y) : base(x, y) { }
     }
 }

@@ -11,20 +11,39 @@ namespace TerrariumGame.Infrastructure.Factory
 {
     static class GameObjectFactory
     {
-        public static GameObject Create(string name)
+        public static GameObject Create(int id)
         {
-            switch (name)
+            switch (id)
             {
-                case "Worker":
+                case 1:
                     return new Worker();
-                case "Boss":
+                case 2:
                     return new Boss();
-                case "BigBoss":
+                case 3:
                     return new BigBoss();
-                case "Work":
+                case 4:
                     return new Work();
-                case "Salary":
+                case 5:
                     return new SalaryAddition();
+                default:
+                    return null;
+            }
+        }
+
+        public static GameObject Create(int id, int x, int y)
+        {
+            switch (id)
+            {
+                case 1:
+                    return new Worker(x, y);
+                case 2:
+                    return new Boss(x, y);
+                case 3:
+                    return new BigBoss(x, y);
+                case 4:
+                    return new Work(x, y);
+                case 5:
+                    return new SalaryAddition(x, y);
                 default:
                     return null;
             }
