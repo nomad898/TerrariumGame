@@ -8,7 +8,7 @@ using TerrariumGame.Interfaces;
 namespace TerrariumGame.Models.NotAlive
 {
     class Work : GameObject
-    {      
+    {
         public override bool IsAlive
         {
             get
@@ -16,7 +16,11 @@ namespace TerrariumGame.Models.NotAlive
                 return false;
             }
         }
-       
-        public override char Icon { get { return 'w'; } }         
+
+        public override char Icon { get { return '*'; } }
+
+        public Work(): base() { }
+
+        public Work(int x, int y) : base(x, y) { }
     }
 }

@@ -17,6 +17,6 @@ namespace TerrariumGame.Models.NotAlive
             }
         }
 
-        public override char Icon { get { return 's'; } }
+        public override char Icon { get { return '$'; } }
     }
 }

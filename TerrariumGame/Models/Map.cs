@@ -12,11 +12,38 @@ namespace TerrariumGame.Models
     class Map
     {
         private char[,] matrix;
+        public char[,] Matrix
+        {
+            get
+            {
+                return matrix;
+            }
+            set
+            {
+                matrix = value;
+            }
+        }
         private ICollection<GameObject> gameObjects;
 
         public int Height { get; private set; }
         public int Width { get; private set; }
-        public ICollection<GameObject> GameObjects { get { return gameObjects; } }
+        public ICollection<GameObject> GameObjects
+        {
+            get { return gameObjects; }
+            set { gameObjects = value; }
+        }
+
+        public char this[int x, int y]
+        {
+            get
+            {
+                return matrix[x, y];
+            }
+            set
+            {
+                matrix[x, y] = value;
+            }
+        }
 
         public Map(int height, int weight)
         {
@@ -24,7 +51,6 @@ namespace TerrariumGame.Models
             this.Height = height;
             matrix = new char[Height, Width];
             gameObjects = new List<GameObject>();
-            FillMap();
         }
 
         public Map(int height, int weight, ICollection<GameObject> objects)
@@ -33,29 +59,7 @@ namespace TerrariumGame.Models
             this.Height = height;
             matrix = new char[Height, Width];
             gameObjects = objects;
-            FillMap();
         }
 
-        public void ShowMap()
-        {
-            Console.SetCursorPosition(0, 0);
-            for (int x = 0; x < Height; x++)
-            {
-                for (int y = 0; y < Width; y++)
-                {
-                    Console.Write(matrix[x, y]);
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private void FillMap()
-        {
-            foreach (var obj in GameObjects)
-            {
-                Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
-                matrix[obj.Position.X, obj.Position.Y] = obj.Icon;               
-            }
-        }
     }
 }
