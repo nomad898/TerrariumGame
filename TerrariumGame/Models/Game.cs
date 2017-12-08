@@ -16,10 +16,12 @@ namespace TerrariumGame.Models
     class Game
     {
         private bool gameIsRunning = true;
-        MapManipulator mapManipulator = new MapManipulator();
         private int mapHeightValue = 30;
         private int mapWidthValue = 30;
-
+        MapManipulator mapManipulator = new MapManipulator();
+        ICollection<GameObject> aliveObjects = new List<GameObject>();
+        ICollection<GameObject> notAliveObjects = new List<GameObject>();
+   
         public void Run()
         {
             Map map = new Map(mapHeightValue, mapWidthValue);
@@ -41,8 +43,54 @@ namespace TerrariumGame.Models
                 {
                     obj.Move(new Point(random.Next(map.Height),
                         random.Next(map.Width)));
+                    aliveObjects.Add(obj);
                 }
-            }       
+                else
+                {
+                    notAliveObjects.Add(obj);
+                }
+            }
+
+            foreach (var obj in map.GameObjects)
+            {
+                Console.SetCursorPosition(50, 1);
+                foreach (var e in aliveObjects)
+                {
+                    if (ReferenceEquals(obj, e))
+                    {
+                        continue;
+                    }
+                    if (obj is IManagable 
+                        && e is IManage 
+                        && obj.Position == e.Position)
+                    {
+
+                    }
+                }
+            }
+
+            List<GameObject> toDelete = new List<GameObject>();
+
+            foreach (var obj in map.GameObjects)
+            {
+                Console.SetCursorPosition(50, 10);
+                foreach (var e in notAliveObjects)
+                {
+                    if (obj is IManagable
+                        && e is Work
+                        && obj.Position == e.Position)
+                    {
+                        toDelete.Add(e);
+                    }
+                }
+            }
+            foreach (var e in toDelete)
+            {
+                map.GameObjects.Remove(e);
+                Console.Write("e was Removed");
+                Thread.Sleep(3000);
+            }
+
             mapManipulator.SetObjects(map);
             mapManipulator.ShowMap(map);
         }
