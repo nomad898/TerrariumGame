@@ -19,16 +19,38 @@ namespace TerrariumGame.Models
             Y = y;
         }
 
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType()) return false;
-            Point p = (Point)obj;
-            return (X == p.X) && (Y == p.Y);
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Equals((Point)obj);
+        }
+
+        public bool Equals(Point obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (this.GetHashCode() != obj.GetHashCode())
+            {
+                return false;
+            }
+            return ((this.X.Equals(obj.X)) && (this.Y.Equals(obj.Y)));
         }
 
         public override int GetHashCode()
         {
-            return X ^ Y;
+            int hash = 13;
+            hash = (hash * 7) + X.GetHashCode();
+            hash = (hash * 7) + Y.GetHashCode();
+            return hash;
         }
 
         public static bool operator ==(Point p1, Point p2)
@@ -47,6 +69,6 @@ namespace TerrariumGame.Models
                 return true;
             }
             else return false;
-        }     
+        }
     }
 }

@@ -15,12 +15,18 @@ namespace TerrariumGame.Infrastructure.Factory
         {
             switch (name)
             {
-                case "Worker": return new Worker();
-                case "Boss": return new Boss();
-                case "BigBoss": return new BigBoss();
-                case "Work": return new Work();
-                case "Salary": return new SalaryAddition();
-                default: return null;
+                case "Worker":
+                    return new Worker();
+                case "Boss":
+                    return new Boss();
+                case "BigBoss":
+                    return new BigBoss();
+                case "Work":
+                    return new Work();
+                case "Salary":
+                    return new SalaryAddition();
+                default:
+                    return null;
             }
         }
     }

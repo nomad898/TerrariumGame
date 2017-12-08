@@ -12,21 +12,16 @@ namespace TerrariumGame.Models
     class Map
     {
         private char[,] matrix;
-        public char[,] Matrix
-        {
-            get
-            {
-                return matrix;
-            }
-            set
-            {
-                matrix = value;
-            }
-        }
+      
         private ICollection<GameObject> gameObjects;
 
         public int Height { get; private set; }
         public int Width { get; private set; }
+        public char[,] Matrix
+        {
+            get { return matrix; }
+            set { matrix = value; }
+        }
         public ICollection<GameObject> GameObjects
         {
             get { return gameObjects; }
