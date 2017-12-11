@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Dice.cs" />
     <Compile Include="Infrastructure\Factory\GameObjectFactory.cs" />
     <Compile Include="Infrastructure\GameManipulator.cs" />
     <Compile Include="Infrastructure\MapManipulator.cs" />
+    <Compile Include="Interfaces\IAlivable.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
     <Compile Include="Interfaces\IManage.cs" />
     <Compile Include="Interfaces\IMovable.cs" />

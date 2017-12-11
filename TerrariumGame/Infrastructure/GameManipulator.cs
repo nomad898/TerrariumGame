@@ -9,9 +9,10 @@ using TerrariumGame.Models;
 namespace TerrariumGame.Infrastructure
 {
     class GameManipulator
-    {
-       
-        
+    {       
+        public void Watch(ICollection<GameObject> objects)
+        {
 
+        }        
     }
 }

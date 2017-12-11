@@ -7,7 +7,7 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models
 {
-    abstract class GameObject : IMovable
+    abstract class GameObject : IMovable, IAlivable
     {
         public abstract char Icon { get; }
 

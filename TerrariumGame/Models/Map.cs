@@ -12,7 +12,7 @@ namespace TerrariumGame.Models
     class Map
     {
         private char[,] matrix;
-      
+
         private ICollection<GameObject> gameObjects;
 
         public int Height { get; private set; }

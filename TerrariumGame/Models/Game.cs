@@ -16,23 +16,27 @@ namespace TerrariumGame.Models
     class Game
     {
         private bool gameIsRunning = true;
-        private int mapHeightValue = 30;
-        private int mapWidthValue = 30;
+        private int mapHeightValue = 15;
+        private int mapWidthValue = 15;
         MapManipulator mapManipulator = new MapManipulator();
+        Dice dice;
         ICollection<GameObject> aliveObjects = new List<GameObject>();
         ICollection<GameObject> notAliveObjects = new List<GameObject>();
-   
+
         public void Run()
         {
-            Map map = new Map(mapHeightValue, mapWidthValue);
+            Map map = new Map(mapHeightValue, mapWidthValue);          
             mapManipulator.Init(map);
             mapManipulator.ShowMap(map);
+            dice = new Dice(map);
             while (gameIsRunning)
             {
                 Play(map);
+                mapManipulator.SetObjects(map);
+                mapManipulator.ShowMap(map);
                 Thread.Sleep(1000);
             }
-        }       
+        }
 
         private void Play(Map map)
         {
@@ -41,8 +45,15 @@ namespace TerrariumGame.Models
             {
                 if (obj.IsAlive)
                 {
-                    obj.Move(new Point(random.Next(map.Height),
-                        random.Next(map.Width)));
+                    //obj.Move(new Point(random.Next(map.Height),
+                    //    random.Next(map.Width)));
+
+                    try
+                    {
+                        dice.ChangeObjectPosition(obj);
+                    }
+                    catch { }
+
                     aliveObjects.Add(obj);
                 }
                 else
@@ -51,48 +62,26 @@ namespace TerrariumGame.Models
                 }
             }
 
-            foreach (var obj in map.GameObjects)
+            foreach (var aliveObj in aliveObjects)
             {
-                Console.SetCursorPosition(50, 1);
-                foreach (var e in aliveObjects)
+                foreach (var aliveO in aliveObjects)
                 {
-                    if (ReferenceEquals(obj, e))
+                    if (ReferenceEquals(aliveObj, aliveO))
                     {
                         continue;
                     }
-                    if (obj is IManagable 
-                        && e is IManage 
-                        && obj.Position == e.Position)
+                    else
                     {
-
+                        if (aliveObj is IManage
+                            && aliveO is IManagable
+                            && aliveObj.Position == aliveO.Position)
+                        {
+                            if ((aliveObj is BigBoss && aliveO is Boss) || aliveO is Worker)
+                                (aliveObj as IManage).Manage((aliveO as IManagable));                         
+                        }
                     }
                 }
             }
-
-            List<GameObject> toDelete = new List<GameObject>();
-
-            foreach (var obj in map.GameObjects)
-            {
-                Console.SetCursorPosition(50, 10);
-                foreach (var e in notAliveObjects)
-                {
-                    if (obj is IManagable
-                        && e is Work
-                        && obj.Position == e.Position)
-                    {
-                        toDelete.Add(e);
-                    }
-                }
-            }
-            foreach (var e in toDelete)
-            {
-                map.GameObjects.Remove(e);
-                Console.Write("e was Removed");
-                Thread.Sleep(3000);
-            }
-
-            mapManipulator.SetObjects(map);
-            mapManipulator.ShowMap(map);
         }
     }
 }
