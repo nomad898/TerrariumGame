@@ -25,7 +25,7 @@ namespace TerrariumGame.Models
 
         public void Run()
         {
-            Map map = new Map(mapHeightValue, mapWidthValue);          
+            Map map = new Map(mapHeightValue, mapWidthValue);
             mapManipulator.Init(map);
             mapManipulator.ShowMap(map);
             dice = new Dice(map);
@@ -45,15 +45,7 @@ namespace TerrariumGame.Models
             {
                 if (obj.IsAlive)
                 {
-                    //obj.Move(new Point(random.Next(map.Height),
-                    //    random.Next(map.Width)));
-
-                    try
-                    {
-                        dice.ChangeObjectPosition(obj);
-                    }
-                    catch { }
-
+                    dice.ChangeObjectPosition(obj);
                     aliveObjects.Add(obj);
                 }
                 else
@@ -77,7 +69,8 @@ namespace TerrariumGame.Models
                             && aliveObj.Position == aliveO.Position)
                         {
                             if ((aliveObj is BigBoss && aliveO is Boss) || aliveO is Worker)
-                                (aliveObj as IManage).Manage((aliveO as IManagable));                         
+                                (aliveObj as Employee).Talk((aliveO as Employee));
+                         
                         }
                     }
                 }

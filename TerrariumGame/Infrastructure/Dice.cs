@@ -29,16 +29,16 @@ namespace TerrariumGame.Infrastructure
                 {
                     newX = mvbl.Position.X + 1;
                     newY = mvbl.Position.Y + 1;
-                    if ((newX >= 0 && newX <= map.Height)
-                        && (newY >= 0 && newY <= map.Width))
+                    if ((newX > 0 && newX < map.Height)
+                        && (newY > 0 && newY < map.Width))
                         mvbl.Move(new Point(newX, newY));
                 }
                 else
                 {
                     newX = mvbl.Position.X + 1;
                     newY = mvbl.Position.Y - 1;
-                    if ((newX >= 0 && newX <= map.Height)
-                         && (newY >= 0 && newY <= map.Width))
+                    if ((newX > 0 && newX < map.Height)
+                  && (newY > 0 && newY < map.Width))
                         mvbl.Move(new Point(newX, newY));
                 }
             }
@@ -51,16 +51,16 @@ namespace TerrariumGame.Infrastructure
             {
                 newX = mvbl.Position.X - 1;
                 newY = mvbl.Position.Y - 1;
-                if ((newX >= 0 && newX <= map.Height)
-                         && (newY >= 0 && newY <= map.Width))
+                if ((newX > 0 && newX < map.Height)
+                   && (newY > 0 && newY < map.Width))
                     mvbl.Move(new Point(newX, newY));
             }
             else
             {
                 newX = mvbl.Position.X - 1;
                 newY = mvbl.Position.Y + 1;
-                if ((newX >= 0 && newX <= map.Height)
-                         && (newY >= 0 && newY <= map.Width))
+                if ((newX > 0 && newX < map.Height)
+                    && (newY > 0 && newY < map.Width))
                     mvbl.Move(new Point(newX, newY));
             }
         }
