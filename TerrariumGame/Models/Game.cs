@@ -68,9 +68,11 @@ namespace TerrariumGame.Models
                             && aliveO is IManagable
                             && aliveObj.Position == aliveO.Position)
                         {
-                            if ((aliveObj is BigBoss && aliveO is Boss) || aliveO is Worker)
-                                (aliveObj as Employee).Talk((aliveO as Employee));
-                         
+                            if ((aliveObj is BigBoss && aliveO is Boss) || ( aliveO is Worker))
+                            {
+                                Console.SetCursorPosition(50, 0);
+                                (aliveObj as BigBoss).Talk((aliveO as Employee));                          
+                            }
                         }
                     }
                 }
