@@ -88,12 +88,46 @@ namespace TerrariumGame.Models
                 }
             }
         }
-        
+        private void WorkerGreetingLogic(GameObject worker, GameObject aliveObject)
+        {
+            if (worker is Worker && (aliveObject.Position == aliveObject.Position))
+            {
+                if (aliveObject is Worker)
+                {
+                    (worker as Worker).Talk((aliveObject as Worker));
+                }
+                else if (aliveObject is IManage)
+                {
+                    if (aliveObject is Boss)
+                    {
+                        (worker as Worker).Talk(aliveObject as Boss);
+                    }
+                    else if (aliveObject is BigBoss)
+                    {
+                        (worker as Worker).Talk(aliveObject as Boss);
+                    }
+                }
+            }
+        }
+        private void GreetAlivePeople()
+        {
+            foreach (var aliveObject in aliveObjects)
+            {
+                foreach (var aliveO in aliveObjects)
+                {
+                    if (!ReferenceEquals(aliveObject, aliveO))
+                    { 
+                        WorkerGreetingLogic(aliveObject, aliveO);
+                    }
+                }
+            }
+        }
 
         private void Play(Map map)
         {
             MoveObjects();
-            CollectWork();            
+            CollectWork();
+            //  GreetAlivePeople();
         }
     }
 }
