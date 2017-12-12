@@ -21,6 +21,10 @@ namespace TerrariumGame.Models.Alive
         {
         }
 
+        public BigBoss(string name, int x, int y) : base(name ,x, y)
+        {
+        }
+
         public SalaryAddition CreateSalaryAddition()
         {
             return new SalaryAddition();

@@ -27,6 +27,11 @@ namespace TerrariumGame.Models.Alive
 
         public Employee(int x, int y) : base(x, y) { }
 
+        public Employee(string name, int x, int y) : base(x, y)
+        {
+            Name = name;
+        }
+
         public void Say(string whatToSay)
         {
             if (this is Worker)

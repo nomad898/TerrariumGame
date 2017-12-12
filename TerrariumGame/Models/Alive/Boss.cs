@@ -24,6 +24,11 @@ namespace TerrariumGame.Models.Alive
             DoneWork = 0;
         }
 
+        public Boss(string name, int x, int y) : base(name, x, y)
+        {
+            DoneWork = 0;
+        }
+
         public void DoWork()
         {
             this.Salary -= 100;

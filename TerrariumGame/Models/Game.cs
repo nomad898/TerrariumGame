@@ -12,36 +12,45 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models
 {
-    // TO DO Переписать
     class Game
     {
+        public Map Map { get; private set; }
         private bool gameIsRunning = true;
-        private int mapHeightValue = 15;
-        private int mapWidthValue = 15;
-        MapManipulator mapManipulator = new MapManipulator();
-        Dice dice;
-        ICollection<GameObject> aliveObjects = new List<GameObject>();
-        ICollection<GameObject> notAliveObjects = new List<GameObject>();
+        private const int mapHeightValue = 10;
+        private const int mapWidthValue = 10;
+        private const int maxHours = 24;
+        private int dayCounter = 0;
+        private MapManipulator mapManipulator = new MapManipulator();
+        private Random random = new Random();
+        private Dice dice;
 
         public void Run()
         {
-            Map map = new Map(mapHeightValue, mapWidthValue);
-            mapManipulator.Init(map);
-            mapManipulator.ShowMap(map);
-            dice = new Dice(map);
+            Map = new Map(mapHeightValue, mapWidthValue);
+            mapManipulator.Init(Map);
+            mapManipulator.ShowMap(Map);
+            dice = new Dice(Map);
             while (gameIsRunning)
             {
-                Play(map);
-                mapManipulator.SetObjects(map);
-                mapManipulator.ShowMap(map);
-                Thread.Sleep(1000);
+                for (int hour = 0; hour < maxHours; hour++)
+                {
+                    Play(Map);
+                    mapManipulator.SetObjects(Map);
+                    mapManipulator.ShowMap(Map);
+                    Thread.Sleep(1000);
+                }
+                dayCounter++;
+                Console.WriteLine(String.Format("Day Counter:  {0}", dayCounter));
             }
         }
 
-        private void Play(Map map)
+        ICollection<GameObject> aliveObjects = new List<GameObject>();
+        ICollection<GameObject> notAliveObjects = new List<GameObject>();
+        ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
+
+        private void MoveObjects()
         {
-            Random random = new Random();
-            foreach (var obj in map.GameObjects)
+            foreach (var obj in Map.GameObjects)
             {
                 if (obj.IsAlive)
                 {
@@ -53,30 +62,38 @@ namespace TerrariumGame.Models
                     notAliveObjects.Add(obj);
                 }
             }
-
-            foreach (var aliveObj in aliveObjects)
+        }
+        private void CollectWork()
+        {
+            foreach (var alive in aliveObjects)
             {
-                foreach (var aliveO in aliveObjects)
+                if (alive is Worker)
                 {
-                    if (ReferenceEquals(aliveObj, aliveO))
+                    foreach (var notAlive in notAliveObjects)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        if (aliveObj is IManage
-                            && aliveO is IManagable
-                            && aliveObj.Position == aliveO.Position)
+                        if (alive.Position == notAlive.Position)
                         {
-                            if ((aliveObj is BigBoss && aliveO is Boss) || ( aliveO is Worker))
-                            {
-                                Console.SetCursorPosition(50, 0);
-                                (aliveObj as BigBoss).Talk((aliveO as Employee));                          
-                            }
+                            deletedNotAliveObjects.Add(notAlive);
                         }
+                        break;
                     }
                 }
             }
+            if (deletedNotAliveObjects.Count > 0)
+            {
+                foreach (var el in deletedNotAliveObjects)
+                {
+                    notAliveObjects.Remove(el);
+                    Map.GameObjects.Remove(el);
+                }
+            }
+        }
+        
+
+        private void Play(Map map)
+        {
+            MoveObjects();
+            CollectWork();            
         }
     }
 }

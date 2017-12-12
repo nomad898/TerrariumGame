@@ -56,13 +56,18 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        private static int objectId = 1;
+
         private void ObjectsInit(Map map)
         {
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)
             {
                 map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 5),
-                    random.Next(0, map.Height), random.Next(0, map.Width)));
+                    objectId.ToString(),
+                    random.Next(0, map.Height),
+                    random.Next(0, map.Width)));
+                objectId++;
             }
         }
     }
