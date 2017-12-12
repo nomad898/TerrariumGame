@@ -48,8 +48,16 @@ namespace TerrariumGame.Models
         ICollection<GameObject> notAliveObjects = new List<GameObject>();
         ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
 
+        private void CollectionsClear()
+        {
+            aliveObjects.Clear();
+            notAliveObjects.Clear();
+            deletedNotAliveObjects.Clear();
+        }
+
         private void MoveObjects()
         {
+            CollectionsClear();
             foreach (var obj in Map.GameObjects)
             {
                 if (obj.IsAlive)
@@ -88,9 +96,10 @@ namespace TerrariumGame.Models
                 }
             }
         }
+
         private void WorkerGreetingLogic(GameObject worker, GameObject aliveObject)
         {
-            if (worker is Worker && (aliveObject.Position == aliveObject.Position))
+            if (worker is Worker && (worker.Position == aliveObject.Position))
             {
                 if (aliveObject is Worker)
                 {
@@ -109,6 +118,7 @@ namespace TerrariumGame.Models
                 }
             }
         }
+
         private void GreetAlivePeople()
         {
             foreach (var aliveObject in aliveObjects)
@@ -116,7 +126,7 @@ namespace TerrariumGame.Models
                 foreach (var aliveO in aliveObjects)
                 {
                     if (!ReferenceEquals(aliveObject, aliveO))
-                    { 
+                    {
                         WorkerGreetingLogic(aliveObject, aliveO);
                     }
                 }
@@ -127,7 +137,7 @@ namespace TerrariumGame.Models
         {
             MoveObjects();
             CollectWork();
-            //  GreetAlivePeople();
+            GreetAlivePeople();
         }
     }
 }
