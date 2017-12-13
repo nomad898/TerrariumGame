@@ -42,13 +42,20 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (ee is Worker)
+            if (ee != null)
             {
-                this.Say("Привет!");
-            }
-            else
-            {
-                this.Say("Здравствуйте!");
+                if (ee is Worker)
+                {
+                    this.Say(string.Format("Привет! {0}", ee.Name));
+                }
+                else if (ee is IManage)
+                {
+                    this.Say(string.Format("Здравствуйте! {0}", ee.Name));
+                }
+                else
+                {
+                    this.Say(string.Format("Здравствуйте! {0}", ee.Name));
+                }
             }
         }
     }

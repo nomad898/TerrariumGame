@@ -49,6 +49,13 @@ namespace TerrariumGame.Models
             }
         }
 
+        private void Play(Map map)
+        {
+            MoveObjects();
+            CollectWork();
+            GreetAlivePeople();
+        }
+
         #region InGameObjects
         ICollection<GameObject> aliveObjects = new List<GameObject>();
         ICollection<GameObject> notAliveObjects = new List<GameObject>();
@@ -126,10 +133,12 @@ namespace TerrariumGame.Models
         #endregion
 
         #region GreetingLogic
-        private void WorkerGreetingLogic(GameObject worker, GameObject aliveObject)
+        private void WorkerGreetingLogic(Employee worker, Employee aliveObject)
         {
-            if (worker is Worker && (worker.Position == aliveObject.Position))
+            if (worker is Worker
+                && (worker.Position == aliveObject.Position))                
             {
+                Console.Clear();
                 if (aliveObject is Worker)
                 {
                     (worker as Worker).Talk((aliveObject as Worker));
@@ -138,13 +147,16 @@ namespace TerrariumGame.Models
                 {
                     (worker as Worker).Talk(aliveObject as Boss);
                 }
+                Thread.Sleep(1000);
+                Console.Clear();
             }
         }
-        private void BossGreetingLogic(GameObject boss, GameObject aliveObject)
+        private void BossGreetingLogic(Employee boss, Employee aliveObject)
         {
             if (boss is Boss
                 && (boss.Position == aliveObject.Position))
             {
+                Console.Clear();
                 if (aliveObject is Worker)
                 {
                     (boss as Boss).Talk((aliveObject as Worker));
@@ -157,9 +169,18 @@ namespace TerrariumGame.Models
                     }
                     else if (aliveObject is Boss)
                     {
-                        (boss as Boss).Talk(aliveObject as Boss);
+                        if (boss is BigBoss)
+                        {
+                            (boss as BigBoss).Talk(aliveObject as Boss);
+                        }
+                        else
+                        {
+                            (boss as Boss).Talk(aliveObject as Boss);
+                        }
                     }
                 }
+                Thread.Sleep(1000);
+                Console.Clear();
             }
         }
 
@@ -170,32 +191,28 @@ namespace TerrariumGame.Models
                 foreach (var aliveO in aliveObjects)
                 {
                     if (!ReferenceEquals(aliveObject, aliveO)
-                        && (aliveObject.Position == aliveO.Position))
+                        && (aliveObject.Position == aliveO.Position)
+                        && aliveObject is Employee
+                        && aliveO is Employee)
                     {
                         if (aliveObject is Worker)
                         {
-                            WorkerGreetingLogic(aliveObject, aliveO);
+                            WorkerGreetingLogic(aliveObject as Worker, aliveO as Employee);
                         }
                         else if (aliveObject is Boss)
                         {
-                            BossGreetingLogic(aliveObject, aliveO);
+                            BossGreetingLogic(aliveObject as Boss, aliveO as Employee);
                         }
                     }
                 }
             }
         }
-        //private void Greet<T>(T obj1, T obj2) where T : Employee
-        //{
 
-        //}
-        #endregion
-        private void Play(Map map)
+        private void Greet<T, V>(T obj1, V obj2) where T : IMovable
         {
-            MoveObjects();
-            CollectWork();
-            GreetAlivePeople();
+
         }
-
-
+        #endregion
+    
     }
 }

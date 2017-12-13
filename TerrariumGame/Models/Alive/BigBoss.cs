@@ -41,11 +41,11 @@ namespace TerrariumGame.Models.Alive
         {
             if (ee is BigBoss)
             {
-                this.Say("Здравствуйте!");
+                this.Say(string.Format("Здравствуйте! {0}", ee.Name));
             }
             else  if (ee is IManagable)
             {
-                this.Say("Работать!!!");
+                this.Say(string.Format("Работать! {0}", ee.Name));
             }           
         }
     }

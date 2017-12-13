@@ -47,11 +47,11 @@ namespace TerrariumGame.Models.Alive
         {
             if (ee is Worker)
             {
-                this.Say("Работать!!!");
-            }
+                this.Say(string.Format("Работать! {0}", ee.Name));
+            }            
             else
             {
-                this.Say("Здравствуйте!");
+                this.Say(string.Format("Здравствуйте! {0}", ee.Name));
             }
         }
     }
