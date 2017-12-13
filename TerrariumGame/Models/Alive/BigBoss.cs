@@ -21,8 +21,15 @@ namespace TerrariumGame.Models.Alive
         {
         }
 
-        public BigBoss(string name, int x, int y) : base(name ,x, y)
+        public BigBoss(string name, int x, int y)
+            : base(name ,x, y)
         {
+        }
+
+        public override void Manage(IManagable imngbl)
+        {
+            imngbl.DoWork();
+            (imngbl as Employee).Salary -= 100;
         }
 
         public SalaryAddition CreateSalaryAddition()
@@ -32,14 +39,14 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (ee is IManagable)
-            {
-                this.Say("Работать!!!");
-            }
-            else if (ee is BigBoss)
+            if (ee is BigBoss)
             {
                 this.Say("Здравствуйте!");
             }
+            else  if (ee is IManagable)
+            {
+                this.Say("Работать!!!");
+            }           
         }
     }
 }

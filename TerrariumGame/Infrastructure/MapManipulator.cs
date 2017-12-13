@@ -32,8 +32,12 @@ namespace TerrariumGame.Infrastructure
             MapInit(map);
             foreach (var obj in map.GameObjects)
             {
-                Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
-                map[obj.Position.X, obj.Position.Y] = obj.Icon;
+                if (obj.Position.X >= 0
+                    && obj.Position.Y >= 0)
+                {
+                    Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
+                    map[obj.Position.X, obj.Position.Y] = obj.Icon;
+                }
             }
         }
 
@@ -60,65 +64,67 @@ namespace TerrariumGame.Infrastructure
 
         private void ObjectsInit(Map map)
         {
-            //int counterValue = random.Next(minObjectAmount, maxObjectAmount);
-            //for (int i = 0; i < counterValue; i++)
-            //{
-            //    map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 5),
+            int counterValue = random.Next(minObjectAmount, maxObjectAmount);
+            for (int i = 0; i < counterValue; i++)
+            {
+                map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 6),
+                    objectId.ToString(),
+                    random.Next(0, map.Height),
+                    random.Next(0, map.Width)));
+                objectId++;
+            }
+
+
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //     objectId.ToString(),
+            //     random.Next(0, map.Height),
+            //     random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            // map.GameObjects.Add(GameObjectFactory.Create(4,
+            //objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+
+
+            //            map.GameObjects.Add(GameObjectFactory.Create(1,
+            //                objectId.ToString(),
+            //           random.Next(0, map.Height),
+            //           random.Next(0, map.Width)));
+            //            map.GameObjects.Add(GameObjectFactory.Create(5,
             //        objectId.ToString(),
-            //        random.Next(0, map.Height),
-            //        random.Next(0, map.Width)));
-            //    objectId++;
-            //}
-
-
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //     objectId.ToString(),
-           //     random.Next(0, map.Height),
-           //     random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-           // map.GameObjects.Add(GameObjectFactory.Create(4,
-           //objectId.ToString(),
-           //random.Next(0, map.Height),
-           //random.Next(0, map.Width)));
-            map.GameObjects.Add(GameObjectFactory.Create(1,
-                objectId.ToString(),
-           random.Next(0, map.Height),
-           random.Next(0, map.Width)));
-            map.GameObjects.Add(GameObjectFactory.Create(5,
-        objectId.ToString(),
-   random.Next(0, map.Height),
-   random.Next(0, map.Width)));
-            map.GameObjects.Add(GameObjectFactory.Create(5,
-    objectId.ToString(),
-random.Next(0, map.Height),
-random.Next(0, map.Width)));
-            map.GameObjects.Add(GameObjectFactory.Create(5,
-    objectId.ToString(),
-random.Next(0, map.Height),
-random.Next(0, map.Width)));
+            //   random.Next(0, map.Height),
+            //   random.Next(0, map.Width)));
+            //            map.GameObjects.Add(GameObjectFactory.Create(5,
+            //    objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
+            //            map.GameObjects.Add(GameObjectFactory.Create(5,
+            //    objectId.ToString(),
+            //random.Next(0, map.Height),
+            //random.Next(0, map.Width)));
         }
     }
 }

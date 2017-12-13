@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.Interfaces;
+using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
@@ -11,7 +12,7 @@ namespace TerrariumGame.Models.Alive
     {
         public override char Icon { get { return 'W'; } }
 
-        public int DoneWork { get; private set; }
+        public int DoneWork { get; set; }
 
         public Worker() : base()
         {
@@ -30,7 +31,13 @@ namespace TerrariumGame.Models.Alive
 
         public void DoWork()
         {
-            this.Salary -= 100;
+            DoneWork++;
+        }
+
+        public void DoWork(Work work)
+        {
+            work.Position = new Point();
+            DoneWork++;
         }
 
         public override void Talk(Employee ee)

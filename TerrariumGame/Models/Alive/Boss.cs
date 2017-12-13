@@ -31,12 +31,16 @@ namespace TerrariumGame.Models.Alive
 
         public void DoWork()
         {
-            this.Salary -= 100;
+            DoneWork++;
         }
 
         public virtual void Manage(IManagable imngbl)
         {
-            imngbl.DoWork();
+            if (imngbl is Worker)
+            {
+                imngbl.DoWork();
+                (imngbl as Employee).Salary -= 100;
+            }
         }     
 
         public override void Talk(Employee ee)

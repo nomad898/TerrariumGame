@@ -93,14 +93,18 @@ namespace TerrariumGame.Models
         #region Working
         private void CollectWork()
         {
-            foreach (var alive in aliveObjects)
+            foreach (var worker in aliveObjects)
             {
-                if (alive is Worker)
+                if (worker is Worker)
                 {
                     foreach (var notAlive in notAliveObjects)
                     {
-                        if (alive.Position == notAlive.Position)
+                        if (worker.Position == notAlive.Position)
                         {
+                            if (notAlive is Work)
+                            {
+                                (worker as Worker).DoWork(notAlive as Work);
+                            }
                             deletedNotAliveObjects.Add(notAlive);
                             break;
                         }
@@ -111,7 +115,7 @@ namespace TerrariumGame.Models
         }
         private void CreateNewWork()
         {
-            foreach(var customer in aliveObjects)
+            foreach (var customer in aliveObjects)
             {
                 if (customer is Customer)
                 {
@@ -154,7 +158,7 @@ namespace TerrariumGame.Models
                     else if (aliveObject is Boss)
                     {
                         (boss as Boss).Talk(aliveObject as Boss);
-                    }                  
+                    }
                 }
             }
         }
@@ -192,6 +196,6 @@ namespace TerrariumGame.Models
             GreetAlivePeople();
         }
 
-     
+
     }
 }
