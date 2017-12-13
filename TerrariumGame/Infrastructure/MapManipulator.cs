@@ -60,15 +60,51 @@ namespace TerrariumGame.Infrastructure
 
         private void ObjectsInit(Map map)
         {
-            int counterValue = random.Next(minObjectAmount, maxObjectAmount);
-            for (int i = 0; i < counterValue; i++)
-            {
-                map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 5),
-                    objectId.ToString(),
-                    random.Next(0, map.Height),
-                    random.Next(0, map.Width)));
-                objectId++;
-            }
+            //int counterValue = random.Next(minObjectAmount, maxObjectAmount);
+            //for (int i = 0; i < counterValue; i++)
+            //{
+            //    map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 5),
+            //        objectId.ToString(),
+            //        random.Next(0, map.Height),
+            //        random.Next(0, map.Width)));
+            //    objectId++;
+            //}
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+                objectId.ToString(),
+                random.Next(0, map.Height),
+                random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(4,
+           objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
+            map.GameObjects.Add(GameObjectFactory.Create(1,
+                objectId.ToString(),
+           random.Next(0, map.Height),
+           random.Next(0, map.Width)));
         }
     }
 }

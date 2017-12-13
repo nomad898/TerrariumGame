@@ -36,10 +36,10 @@ namespace TerrariumGame.Models.Alive
         {
             if (this is Worker)
                 Console.WriteLine(String.Format("{0}, {1}, {2}", this.Name, "Рабочий", whatToSay));
-            else if (this is Boss)
-                Console.WriteLine(String.Format("{0}, {1}, {2}", this.Name, "Босс", whatToSay));
-            else
+            else if (this is BigBoss)
                 Console.WriteLine(String.Format("{0}, {1}, {2}", this.Name, "Биг Босс", whatToSay));
+            else if (this is Boss)
+                Console.WriteLine(String.Format("{0}, {1}, {2}", this.Name, "Босс", whatToSay));            
         }
 
         public abstract void Talk(Employee ee);

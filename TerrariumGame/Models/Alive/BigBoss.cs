@@ -36,7 +36,7 @@ namespace TerrariumGame.Models.Alive
             {
                 this.Say("Работать!!!");
             }
-            else
+            else if (ee is BigBoss)
             {
                 this.Say("Здравствуйте!");
             }

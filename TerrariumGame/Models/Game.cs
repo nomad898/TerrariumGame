@@ -40,7 +40,10 @@ namespace TerrariumGame.Models
                     Thread.Sleep(1000);
                 }
                 dayCounter++;
-                Console.WriteLine(String.Format("Day Counter:  {0}", dayCounter));
+                Console.Clear();
+                Console.SetCursorPosition(Map.Width + 10, 0);
+                Console.WriteLine(string.Format("Day Counter:  {0}", dayCounter));
+
             }
         }
 
@@ -54,7 +57,6 @@ namespace TerrariumGame.Models
             notAliveObjects.Clear();
             deletedNotAliveObjects.Clear();
         }
-
         private void MoveObjects()
         {
             CollectionsClear();
@@ -65,9 +67,19 @@ namespace TerrariumGame.Models
                     dice.ChangeObjectPosition(obj);
                     aliveObjects.Add(obj);
                 }
-                else
+                else if (!obj.IsAlive)
                 {
                     notAliveObjects.Add(obj);
+                }
+            }
+        }
+        private void ClearDeletedObject()
+        {
+            if (deletedNotAliveObjects.Count > 0)
+            {
+                foreach (var el in deletedNotAliveObjects)
+                {
+                    Map.GameObjects.Remove(el);
                 }
             }
         }
@@ -82,21 +94,13 @@ namespace TerrariumGame.Models
                         if (alive.Position == notAlive.Position)
                         {
                             deletedNotAliveObjects.Add(notAlive);
+                            break;
                         }
-                        break;
                     }
                 }
             }
-            if (deletedNotAliveObjects.Count > 0)
-            {
-                foreach (var el in deletedNotAliveObjects)
-                {
-                    notAliveObjects.Remove(el);
-                    Map.GameObjects.Remove(el);
-                }
-            }
+            ClearDeletedObject();
         }
-
         private void WorkerGreetingLogic(GameObject worker, GameObject aliveObject)
         {
             if (worker is Worker && (worker.Position == aliveObject.Position))
@@ -107,13 +111,29 @@ namespace TerrariumGame.Models
                 }
                 else if (aliveObject is IManage)
                 {
+                    (worker as Worker).Talk(aliveObject as Boss);
+                }
+            }
+        }
+        private void BossGreetingLogic(GameObject boss, GameObject aliveObject)
+        {
+            if (boss is Boss
+                && boss is IManagable 
+                && (boss.Position == aliveObject.Position))
+            {
+                if (aliveObject is Worker)
+                {
+                    (boss as Boss).Talk((aliveObject as Worker));
+                }
+                else if (aliveObject is IManage)
+                {
                     if (aliveObject is Boss)
                     {
-                        (worker as Worker).Talk(aliveObject as Boss);
+                        (boss as Boss).Talk(aliveObject as Boss);
                     }
                     else if (aliveObject is BigBoss)
                     {
-                        (worker as Worker).Talk(aliveObject as Boss);
+                        (boss as Boss).Talk(aliveObject as BigBoss);
                     }
                 }
             }
@@ -125,19 +145,32 @@ namespace TerrariumGame.Models
             {
                 foreach (var aliveO in aliveObjects)
                 {
-                    if (!ReferenceEquals(aliveObject, aliveO))
+                    if (!ReferenceEquals(aliveObject, aliveO)
+                        && (aliveObject.Position == aliveO.Position))
                     {
-                        WorkerGreetingLogic(aliveObject, aliveO);
+                        if (aliveObject is Worker)
+                        {
+                            WorkerGreetingLogic(aliveObject, aliveO);
+                        }
+                        else if (aliveObject is Boss)
+                        {
+                            BossGreetingLogic(aliveObject, aliveO);
+                        }
                     }
                 }
             }
         }
-
+     
         private void Play(Map map)
         {
             MoveObjects();
             CollectWork();
             GreetAlivePeople();
         }
+
+        //private void Greet<T>(T obj1, T obj2) where T : Employee
+        //{
+
+        //}
     }
 }
