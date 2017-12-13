@@ -135,8 +135,7 @@ namespace TerrariumGame.Models
         #region GreetingLogic
         private void WorkerGreetingLogic(Employee worker, Employee aliveObject)
         {
-            if (worker is Worker
-                && (worker.Position == aliveObject.Position))                
+            if (worker is Worker)                
             {
                 Console.Clear();
                 if (aliveObject is Worker)
@@ -153,8 +152,7 @@ namespace TerrariumGame.Models
         }
         private void BossGreetingLogic(Employee boss, Employee aliveObject)
         {
-            if (boss is Boss
-                && (boss.Position == aliveObject.Position))
+            if (boss is Boss)
             {
                 Console.Clear();
                 if (aliveObject is Worker)
@@ -208,9 +206,22 @@ namespace TerrariumGame.Models
             }
         }
 
-        private void Greet<T, V>(T obj1, V obj2) where T : IMovable
+        private void Greet<T, V>(T obj1, V obj2) where T : Employee
         {
-
+            if (obj1 is Worker)
+            {
+                Console.Clear();
+                if (obj2 is Worker)
+                {
+                    (obj1 as Worker).Talk((obj2 as Worker));
+                }
+                else if (obj2 is IManage)
+                {
+                    (obj1 as Worker).Talk(obj2 as Boss);
+                }
+                Thread.Sleep(1000);
+                Console.Clear();
+            }
         }
         #endregion
     
