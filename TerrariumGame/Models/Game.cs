@@ -223,7 +223,6 @@ namespace TerrariumGame.Models
                 Console.Clear();
             }
         }
-        #endregion
-    
+        #endregion    
     }
 }

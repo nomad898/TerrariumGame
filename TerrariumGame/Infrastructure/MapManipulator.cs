@@ -47,7 +47,7 @@ namespace TerrariumGame.Infrastructure
             ObjectsInit(map);
         }
 
-        public void MapInit(Map map)
+        private void MapInit(Map map)
         {
             Console.SetCursorPosition(0, 0);
             for (int x = 0; x < map.Height; x++)
