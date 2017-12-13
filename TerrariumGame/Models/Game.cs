@@ -14,6 +14,7 @@ namespace TerrariumGame.Models
 {
     class Game
     {
+        #region Fields
         public Map Map { get; private set; }
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
@@ -23,6 +24,7 @@ namespace TerrariumGame.Models
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
         private Dice dice;
+        #endregion
 
         public void Run()
         {
@@ -43,14 +45,17 @@ namespace TerrariumGame.Models
                 Console.Clear();
                 Console.SetCursorPosition(Map.Width + 10, 0);
                 Console.WriteLine(string.Format("Day Counter:  {0}", dayCounter));
-
+                CreateNewWork();
             }
         }
 
+        #region InGameObjects
         ICollection<GameObject> aliveObjects = new List<GameObject>();
         ICollection<GameObject> notAliveObjects = new List<GameObject>();
         ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
+        #endregion 
 
+        #region MovementLogic
         private void CollectionsClear()
         {
             aliveObjects.Clear();
@@ -83,6 +88,9 @@ namespace TerrariumGame.Models
                 }
             }
         }
+        #endregion
+
+        #region Working
         private void CollectWork()
         {
             foreach (var alive in aliveObjects)
@@ -101,6 +109,19 @@ namespace TerrariumGame.Models
             }
             ClearDeletedObject();
         }
+        private void CreateNewWork()
+        {
+            foreach(var customer in aliveObjects)
+            {
+                if (customer is Customer)
+                {
+                    Map.GameObjects.Add((customer as Customer).CreateWork());
+                }
+            }
+        }
+        #endregion
+
+        #region GreetingLogic
         private void WorkerGreetingLogic(GameObject worker, GameObject aliveObject)
         {
             if (worker is Worker && (worker.Position == aliveObject.Position))
@@ -118,7 +139,6 @@ namespace TerrariumGame.Models
         private void BossGreetingLogic(GameObject boss, GameObject aliveObject)
         {
             if (boss is Boss
-                && boss is IManagable 
                 && (boss.Position == aliveObject.Position))
             {
                 if (aliveObject is Worker)
@@ -127,14 +147,14 @@ namespace TerrariumGame.Models
                 }
                 else if (aliveObject is IManage)
                 {
-                    if (aliveObject is Boss)
-                    {
-                        (boss as Boss).Talk(aliveObject as Boss);
-                    }
-                    else if (aliveObject is BigBoss)
+                    if (aliveObject is BigBoss)
                     {
                         (boss as Boss).Talk(aliveObject as BigBoss);
                     }
+                    else if (aliveObject is Boss)
+                    {
+                        (boss as Boss).Talk(aliveObject as Boss);
+                    }                  
                 }
             }
         }
@@ -160,7 +180,11 @@ namespace TerrariumGame.Models
                 }
             }
         }
-     
+        //private void Greet<T>(T obj1, T obj2) where T : Employee
+        //{
+
+        //}
+        #endregion
         private void Play(Map map)
         {
             MoveObjects();
@@ -168,9 +192,6 @@ namespace TerrariumGame.Models
             GreetAlivePeople();
         }
 
-        //private void Greet<T>(T obj1, T obj2) where T : Employee
-        //{
-
-        //}
+     
     }
 }

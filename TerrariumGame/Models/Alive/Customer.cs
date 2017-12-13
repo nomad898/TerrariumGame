@@ -31,7 +31,7 @@ namespace TerrariumGame.Models.Alive
 
         public Work CreateWork()
         {
-            return new Work();
+            return new Work(this.Position.X, this.Position.Y);
         }
     }
 }

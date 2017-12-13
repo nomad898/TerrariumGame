@@ -24,7 +24,7 @@ namespace TerrariumGame.Infrastructure.Factory
                 case 4:
                     return new Work();
                 case 5:
-                    return new SalaryAddition();
+                    return new Customer();
                 default:
                     return null;
             }
@@ -43,7 +43,7 @@ namespace TerrariumGame.Infrastructure.Factory
                 case 4:
                     return new Work(x, y);
                 case 5:
-                    return new SalaryAddition(x, y);
+                    return new Customer(x, y);
                 default:
                     return null;
             }
@@ -62,7 +62,7 @@ namespace TerrariumGame.Infrastructure.Factory
                 case 4:
                     return new Work(x, y);
                 case 5:
-                    return new SalaryAddition(x, y);
+                    return new Customer(x, y);
                 default:
                     return null;
             }
