@@ -36,7 +36,14 @@ namespace TerrariumGame.Models.Alive
 
         public void DoWork(Work work)
         {
+            // TO DO Исправить
             work.Position = new Point();
+            DoneWork++;
+        }
+
+        public void DoWork(Work work, Point position)
+        {
+            work.Position = position;
             DoneWork++;
         }
 

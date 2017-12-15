@@ -10,10 +10,12 @@ namespace TerrariumGame.Models
 {
     struct Point
     {
+        #region Fields
         public int X { get; set; }
         public int Y { get; set; }
+        #endregion
 
-        public Point(int x, int y)
+        public Point(int x, int y) : this()
         {
             X = x;
             Y = y;
@@ -21,7 +23,7 @@ namespace TerrariumGame.Models
 
         public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
+            if (GetType() != obj.GetType())
             {
                 return false;
             }
@@ -29,20 +31,12 @@ namespace TerrariumGame.Models
         }
 
         public bool Equals(Point obj)
-        {
-            if (obj == null)
+        {           
+            if (GetHashCode() != obj.GetHashCode())
             {
                 return false;
             }
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-            if (this.GetHashCode() != obj.GetHashCode())
-            {
-                return false;
-            }
-            return ((this.X.Equals(obj.X)) && (this.Y.Equals(obj.Y)));
+            return ((X.Equals(obj.X)) && (Y.Equals(obj.Y)));
         }
 
         public override int GetHashCode()

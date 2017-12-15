@@ -10,10 +10,13 @@ namespace TerrariumGame.Infrastructure
 {
     class MapManipulator
     {
+        #region Fields
         private int minObjectAmount = 4;
         private int maxObjectAmount = 12;
         Random random = new Random();
+        #endregion
 
+        // Метод, показывающий карту
         public void ShowMap(Map map)
         {
             Console.SetCursorPosition(0, 0);
@@ -27,6 +30,7 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        // Расставить объекты на карте
         public void SetObjects(Map map)
         {
             MapInit(map);
@@ -41,12 +45,14 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        // Инициализация карты 
         public void Init(Map map)
         {
             MapInit(map);
             ObjectsInit(map);
         }
 
+        // Начальная инициализация карты. Заполнение точками.
         private void MapInit(Map map)
         {
             Console.SetCursorPosition(0, 0);
@@ -62,6 +68,7 @@ namespace TerrariumGame.Infrastructure
 
         private static int objectId = 1;
 
+        // Создание объектов, используя фабрику.
         private void ObjectsInit(Map map)
         {
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);

@@ -10,16 +10,19 @@ namespace TerrariumGame.Infrastructure
 {
     class Dice
     {
+        #region Fields
         Random random = new Random();
         private Map map;
         private int chance = 100;
         private int limit = 50;
+        #endregion
 
         public Dice(Map map)
         {
             this.map = map;
         }
       
+        // Случайно изменить позицию объекта на карте.
         public void ChangeObjectPosition(IMovable mvbl)
         {
             if (random.Next(chance) > limit)
@@ -31,7 +34,8 @@ namespace TerrariumGame.Infrastructure
                 ChangeObjectPositionX(mvbl);
             }
         }
-
+        
+        #region private methods
         private void ChangeObjectPositionX(IMovable mvbl)
         {
             int newX, newY;
@@ -73,7 +77,7 @@ namespace TerrariumGame.Infrastructure
                     mvbl.Move(new Point(newX, newY));
             }
         }
-
+        #endregion
 
         //private void ChangeObjectPositionY(IMovable mvbl)
         //{

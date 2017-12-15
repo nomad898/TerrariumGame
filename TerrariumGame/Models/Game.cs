@@ -135,7 +135,7 @@ namespace TerrariumGame.Models
         #region GreetingLogic
         private void WorkerGreetingLogic(Employee worker, Employee aliveObject)
         {
-            if (worker is Worker)                
+            if (worker is Worker)
             {
                 Console.Clear();
                 if (aliveObject is Worker)
