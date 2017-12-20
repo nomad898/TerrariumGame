@@ -11,6 +11,11 @@ namespace TerrariumGame.Infrastructure.Factory
 {
     static class GameObjectFactory
     {
+        /// <summary>
+        ///     Create new GameObject
+        /// </summary>
+        /// <param name="id">object's id</param>
+        /// <returns>new GameObject instance</returns>
         public static GameObject Create(int id)
         {
             switch (id)
@@ -30,6 +35,13 @@ namespace TerrariumGame.Infrastructure.Factory
             }
         }
 
+        /// <summary>
+        ///     Create new GameObject
+        /// </summary>
+        /// <param name="id">object's id</param>
+        /// <param name="x">object's X position</param>
+        /// <param name="y">object's Y position</param>
+        /// <returns>new GameObject instance</returns>
         public static GameObject Create(int id, int x, int y)
         {
             switch (id)
@@ -49,6 +61,14 @@ namespace TerrariumGame.Infrastructure.Factory
             }
         }
 
+        /// <summary>
+        ///     Create new GameObject
+        /// </summary>
+        /// <param name="id">object's id</param>
+        /// <param name="name">object's Name</param>
+        /// <param name="x">object's X position</param>
+        /// <param name="y">object's Y position</param>
+        /// <returns>new GameObject instance</returns>
         public static GameObject Create(int id, string name, int x, int y)
         {
             switch (id)

@@ -16,7 +16,10 @@ namespace TerrariumGame.Infrastructure
         Random random = new Random();
         #endregion
 
-        // Метод, показывающий карту
+        /// <summary>
+        ///     Shows current map
+        /// </summary>
+        /// <param name="map">Map instance</param>
         public void ShowMap(Map map)
         {
             Console.SetCursorPosition(0, 0);
@@ -30,7 +33,10 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        // Расставить объекты на карте
+        /// <summary>
+        ///     Place the objects on the map
+        /// </summary>
+        /// <param name="map">Map instance</param>
         public void SetObjects(Map map)
         {
             MapInit(map);
@@ -45,14 +51,20 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        // Инициализация карты 
+        /// <summary>
+        ///     Map initialization
+        /// </summary>
+        /// <param name="map">Map instance</param>
         public void Init(Map map)
         {
             MapInit(map);
             ObjectsInit(map);
         }
-
-        // Начальная инициализация карты. Заполнение точками.
+        
+        /// <summary>
+        ///    Initial initialization. Creates empty field.
+        /// </summary>
+        /// <param name="map">Map instance</param>
         private void MapInit(Map map)
         {
             Console.SetCursorPosition(0, 0);
@@ -67,8 +79,11 @@ namespace TerrariumGame.Infrastructure
         }
 
         private static int objectId = 1;
-
-        // Создание объектов, используя фабрику.
+        
+        /// <summary>
+        ///     Creates new objects.
+        /// </summary>
+        /// <param name="map">Map instance</param>
         private void ObjectsInit(Map map)
         {
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
