@@ -21,8 +21,11 @@ namespace TerrariumGame.Infrastructure
         {
             this.map = map;
         }
-      
-        // Случайно изменить позицию объекта на карте.
+
+        /// <summary>
+        ///     Randomly change the position of the object
+        /// </summary>
+        /// <param name="mvbl">IMovable object</param>
         public void ChangeObjectPosition(IMovable mvbl)
         {
             if (random.Next(chance) > limit)
@@ -34,8 +37,12 @@ namespace TerrariumGame.Infrastructure
                 ChangeObjectPositionX(mvbl);
             }
         }
-        
+
         #region private methods
+        /// <summary>
+        ///     Change object's X postion
+        /// </summary>
+        /// <param name="mvbl">IMovable object</param>
         private void ChangeObjectPositionX(IMovable mvbl)
         {
             int newX, newY;
@@ -57,6 +64,10 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Change object's Y postion
+        /// </summary>
+        /// <param name="mvbl">IMovable object</param>
         private void ChangeObjectPositionY(IMovable mvbl)
         {
             int newX, newY;
@@ -79,49 +90,5 @@ namespace TerrariumGame.Infrastructure
         }
         #endregion
 
-        //private void ChangeObjectPositionY(IMovable mvbl)
-        //{
-        //    int newX, newY;
-        //    if (random.Next(chance) >= limit)
-        //    {
-        //        if (random.Next(chance) >= limit)
-        //        {
-        //            newX = mvbl.Position.X + 1;
-        //            newY = mvbl.Position.Y + 1;
-        //            if ((newX > 0 && newX < map.Height)
-        //                && (newY > 0 && newY < map.Width))
-        //                mvbl.Move(new Point(newX, newY));
-        //        }
-        //        else
-        //        {
-        //            newX = mvbl.Position.X + 1;
-        //            newY = mvbl.Position.Y - 1;
-        //            if ((newX > 0 && newX < map.Height)
-        //          && (newY > 0 && newY < map.Width))
-        //                mvbl.Move(new Point(newX, newY));
-        //        }
-        //    }
-        //}
-
-        //private void ChangeObjectPositionX(IMovable mvbl)
-        //{
-        //    int newX, newY;
-        //    if (random.Next(chance) >= limit)
-        //    {
-        //        newX = mvbl.Position.X - 1;
-        //        newY = mvbl.Position.Y - 1;
-        //        if ((newX > 0 && newX < map.Height)
-        //           && (newY > 0 && newY < map.Width))
-        //            mvbl.Move(new Point(newX, newY));
-        //    }
-        //    else
-        //    {
-        //        newX = mvbl.Position.X - 1;
-        //        newY = mvbl.Position.Y + 1;
-        //        if ((newX > 0 && newX < map.Height)
-        //            && (newY > 0 && newY < map.Width))
-        //            mvbl.Move(new Point(newX, newY));
-        //    }
-        //}
     }
 }

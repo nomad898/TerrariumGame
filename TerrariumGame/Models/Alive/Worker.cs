@@ -12,7 +12,6 @@ namespace TerrariumGame.Models.Alive
     {
         public override char Icon { get { return 'W'; } }
              
-
         public Worker() : base()
         {
             DoneWork = 0;
@@ -39,7 +38,8 @@ namespace TerrariumGame.Models.Alive
         public void DoWork(Work work)
         {
             // TO DO Исправить
-            work.Position = new Point();
+            //work.Position = new Point();
+            work = null;
             DoneWork++;
         }
 

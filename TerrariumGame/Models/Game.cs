@@ -52,13 +52,24 @@ namespace TerrariumGame.Models
         private void Play(Map map)
         {
             MoveObjects();
-            CollectWork();
+            GoWork();
             GreetAlivePeople();
         }
 
         #region InGameObjects
+        /// <summary>
+        /// Contains objects that have IsAlive - True
+        /// </summary>
         ICollection<GameObject> aliveObjects = new List<GameObject>();
+
+        /// <summary>
+        /// Contains objects that have IsAlive - False
+        /// </summary>
         ICollection<GameObject> notAliveObjects = new List<GameObject>();
+
+        /// <summary>
+        /// Contains objects that need to delete
+        /// </summary>
         ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
         #endregion 
 
@@ -69,6 +80,12 @@ namespace TerrariumGame.Models
             notAliveObjects.Clear();
             deletedNotAliveObjects.Clear();
         }
+        
+        /// <summary>
+        /// If object's IsAlive is True, change object position
+        /// and add it to aliveObjects list.
+        /// Or IsAlive is False, add it to notAliveObjects list.
+        /// </summary>
         private void MoveObjects()
         {
             CollectionsClear();
@@ -85,6 +102,49 @@ namespace TerrariumGame.Models
                 }
             }
         }
+
+        #endregion
+
+        #region WorkingLogic
+
+        /// <summary>
+        ///     If Object is Worker, call CollectWork() method 
+        /// </summary>
+        private void GoWork()
+        {
+            foreach (var worker in aliveObjects)
+            {
+                if (worker is Worker)
+                {
+                    CollectWork(worker as Worker);
+                }
+            }
+            ClearDeletedObject();
+        }
+
+        /// <summary>
+        ///     If Worker position equals work object, collect work.
+        /// </summary>
+        /// <param name="worker">Worker class instance</param>
+        private void CollectWork(Worker worker)
+        {
+            foreach (var notAlive in notAliveObjects)
+            {
+                if (worker.Position == notAlive.Position)
+                {
+                    if (notAlive is Work)
+                    {
+                        (worker as Worker).DoWork(notAlive as Work);
+                    }
+                    deletedNotAliveObjects.Add(notAlive);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete useless objects
+        /// </summary>
         private void ClearDeletedObject()
         {
             if (deletedNotAliveObjects.Count > 0)
@@ -95,31 +155,10 @@ namespace TerrariumGame.Models
                 }
             }
         }
-        #endregion
 
-        #region WorkingLogic
-        private void CollectWork()
-        {
-            foreach (var worker in aliveObjects)
-            {
-                if (worker is Worker)
-                {
-                    foreach (var notAlive in notAliveObjects)
-                    {
-                        if (worker.Position == notAlive.Position)
-                        {
-                            if (notAlive is Work)
-                            {
-                                (worker as Worker).DoWork(notAlive as Work);
-                            }
-                            deletedNotAliveObjects.Add(notAlive);
-                            break;
-                        }
-                    }
-                }
-            }
-            ClearDeletedObject();
-        }
+        /// <summary>
+        /// Customers create new Work object to the Map
+        /// </summary>
         private void CreateNewWork()
         {
             foreach (var customer in aliveObjects)
@@ -133,6 +172,11 @@ namespace TerrariumGame.Models
         #endregion
 
         #region GreetingLogic
+        /// <summary>
+        ///     Talk with other employee.
+        /// </summary>
+        /// <param name="worker">Work class instance</param>
+        /// <param name="aliveObject">Employee class instanse</param>
         private void WorkerGreetingLogic(Employee worker, Employee aliveObject)
         {
             if (worker is Worker)
@@ -150,6 +194,12 @@ namespace TerrariumGame.Models
                 Console.Clear();
             }
         }
+
+        /// <summary>
+        ///     Talk with other employee.
+        /// </summary>
+        /// <param name="boss">Boss class instance</param>
+        /// <param name="aliveObject">Employee class instanse</param>
         private void BossGreetingLogic(Employee boss, Employee aliveObject)
         {
             if (boss is Boss)
@@ -161,27 +211,40 @@ namespace TerrariumGame.Models
                 }
                 else if (aliveObject is IManage)
                 {
-                    if (aliveObject is BigBoss)
-                    {
-                        (boss as Boss).Talk(aliveObject as BigBoss);
-                    }
-                    else if (aliveObject is Boss)
-                    {
-                        if (boss is BigBoss)
-                        {
-                            (boss as BigBoss).Talk(aliveObject as Boss);
-                        }
-                        else
-                        {
-                            (boss as Boss).Talk(aliveObject as Boss);
-                        }
-                    }
+                    BossGreetChoice(boss, aliveObject);
                 }
                 Thread.Sleep(1000);
                 Console.Clear();
             }
         }
 
+        /// <summary>
+        ///     Helper method to BossGreetingLogic()
+        /// </summary>
+        /// <param name="boss">Boss class instance</param>
+        /// <param name="aliveObject">Employee class instanse</param>
+        private void BossGreetChoice(Employee boss, Employee aliveObject)
+        {
+            if (aliveObject is BigBoss)
+            {
+                (boss as Boss).Talk(aliveObject as BigBoss);
+            }
+            else if (aliveObject is Boss)
+            {
+                if (boss is BigBoss)
+                {
+                    (boss as BigBoss).Talk(aliveObject as Boss);
+                }
+                else
+                {
+                    (boss as Boss).Talk(aliveObject as Boss);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     If two alive employees have same position, call methods 
+        /// </summary>
         private void GreetAlivePeople()
         {
             foreach (var aliveObject in aliveObjects)
@@ -204,25 +267,7 @@ namespace TerrariumGame.Models
                     }
                 }
             }
-        }
-
-        private void Greet<T, V>(T obj1, V obj2) where T : Employee
-        {
-            if (obj1 is Worker)
-            {
-                Console.Clear();
-                if (obj2 is Worker)
-                {
-                    (obj1 as Worker).Talk((obj2 as Worker));
-                }
-                else if (obj2 is IManage)
-                {
-                    (obj1 as Worker).Talk(obj2 as Boss);
-                }
-                Thread.Sleep(1000);
-                Console.Clear();
-            }
-        }
+        }       
         #endregion    
     }
 }
