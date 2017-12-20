@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Infrastructure\Dice.cs" />
     <Compile Include="Infrastructure\Factory\GameObjectFactory.cs" />
-    <Compile Include="Infrastructure\Journal.cs" />
     <Compile Include="Infrastructure\MapManipulator.cs" />
     <Compile Include="Interfaces\IAlivable.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
@@ -57,9 +56,7 @@
     <Compile Include="Models\Alive\Employee.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameObject.cs" />
-    <Compile Include="Models\NotAlive\House.cs" />
     <Compile Include="Models\NotAlive\SalaryAddition.cs" />
-    <Compile Include="Models\NotAlive\Wall.cs" />
     <Compile Include="Models\NotAlive\Work.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Alive\Worker.cs" />
