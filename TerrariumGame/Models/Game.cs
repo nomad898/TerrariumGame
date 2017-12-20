@@ -141,7 +141,7 @@ namespace TerrariumGame.Models
                 {
                     if (notAlive is Work)
                     {
-                        (worker as Worker).DoWork(notAlive as Work);
+                        (worker as Worker).DoWork(notAlive as Work, dice);
                     }
                     deletedNotAliveObjects.Add(notAlive);
                     break;

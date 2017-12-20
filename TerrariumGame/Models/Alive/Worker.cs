@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TerrariumGame.Infrastructure;
 using TerrariumGame.Interfaces;
 using TerrariumGame.Models.NotAlive;
 
@@ -46,6 +47,12 @@ namespace TerrariumGame.Models.Alive
         public void DoWork(Work work, Point position)
         {
             work.Position = position;
+            DoneWork++;
+        }
+
+        public void DoWork(Work work, Dice dice)
+        {
+            dice.ChangeObjectPosition(work);
             DoneWork++;
         }
         #endregion
