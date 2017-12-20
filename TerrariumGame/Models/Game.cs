@@ -19,8 +19,9 @@ namespace TerrariumGame.Models
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
         private const int mapWidthValue = 10;
-        private const int maxHours = 24;
-        private int dayCounter = 0;
+        private const int minutesInHour = 60;
+        private const int maxHour = 6;
+        private int hourCounter = 0;
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
         private Dice dice;
@@ -34,17 +35,23 @@ namespace TerrariumGame.Models
             dice = new Dice(Map);
             while (gameIsRunning)
             {
-                for (int hour = 0; hour < maxHours; hour++)
+                for (int minute = 0; minute < minutesInHour; minute++)
                 {
                     Play(Map);
                     mapManipulator.SetObjects(Map);
                     mapManipulator.ShowMap(Map);
                     Thread.Sleep(1000);
                 }
-                dayCounter++;
+                hourCounter++;
                 Console.Clear();
                 Console.SetCursorPosition(Map.Width + 10, 0);
-                Console.WriteLine(string.Format("Day Counter:  {0}", dayCounter));
+                Console.WriteLine(string.Format("Hour Counter:  {0}", hourCounter));
+
+                if (hourCounter == maxHour)
+                {
+                    gameIsRunning = false;
+                }
+
                 CreateNewWork();
             }
         }
