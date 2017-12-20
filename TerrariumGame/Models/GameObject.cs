@@ -9,11 +9,20 @@ namespace TerrariumGame.Models
 {
     abstract class GameObject : IMovable, IAlivable
     {
+        #region IMovable
         public abstract char Icon { get; }
 
-        public abstract bool IsAlive { get; }
-
         public virtual Point Position { get; set; }
+
+        public virtual void Move(Point p)
+        {
+            Position = p;
+        }
+        #endregion
+
+        #region IAlivable
+        public abstract bool IsAlive { get; }
+        #endregion
 
         public GameObject()
         {
@@ -23,12 +32,6 @@ namespace TerrariumGame.Models
         public GameObject(int x, int y)
         {
             Position = new Point(x, y);
-        }
-
-        public virtual void Move(Point p)
-        {
-            Position = p;
-        }
-
+        }  
     }
 }

@@ -14,7 +14,8 @@ namespace TerrariumGame.Models.Alive
         public string Name { get; set; }
 
         public bool Mood { get; set; }
-
+        
+        #region IAlivable
         public override bool IsAlive
         {
             get
@@ -22,6 +23,7 @@ namespace TerrariumGame.Models.Alive
                 return true;
             }
         }
+        #endregion
 
         public Employee() : base() { }
 
@@ -32,16 +34,10 @@ namespace TerrariumGame.Models.Alive
             Name = name;
         }
 
-        public void Say(string whatToSay)
-        {
-            if (this is Worker)
-                Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Рабочий", whatToSay));
-            else if (this is BigBoss)
-                Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Биг Босс", whatToSay));
-            else if (this is Boss)
-                Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Босс", whatToSay));            
-        }
+        #region Methods
+        public abstract void Say(string whatToSay);       
 
         public abstract void Talk(Employee ee);
+        #endregion
     }
 }

@@ -11,8 +11,7 @@ namespace TerrariumGame.Models.Alive
     class Worker : Employee, IManagable
     {
         public override char Icon { get { return 'W'; } }
-
-        public int DoneWork { get; set; }
+             
 
         public Worker() : base()
         {
@@ -28,6 +27,9 @@ namespace TerrariumGame.Models.Alive
         {
             DoneWork = 0;
         }
+
+        #region IManagable
+        public int DoneWork { get; set; }
 
         public void DoWork()
         {
@@ -46,7 +48,8 @@ namespace TerrariumGame.Models.Alive
             work.Position = position;
             DoneWork++;
         }
-
+        #endregion
+        #region Employee abstract methods override
         public override void Talk(Employee ee)
         {
             if (ee != null)
@@ -65,5 +68,11 @@ namespace TerrariumGame.Models.Alive
                 }
             }
         }
+
+        public override void Say(string whatToSay)
+        {
+            Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Рабочий", whatToSay));
+        }
+        #endregion
     }
 }

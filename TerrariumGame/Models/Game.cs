@@ -97,7 +97,7 @@ namespace TerrariumGame.Models
         }
         #endregion
 
-        #region Working
+        #region WorkingLogic
         private void CollectWork()
         {
             foreach (var worker in aliveObjects)

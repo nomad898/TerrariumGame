@@ -22,7 +22,7 @@ namespace TerrariumGame.Models.Alive
         }
 
         public BigBoss(string name, int x, int y)
-            : base(name ,x, y)
+            : base(name, x, y)
         {
         }
 
@@ -37,16 +37,23 @@ namespace TerrariumGame.Models.Alive
             return new SalaryAddition();
         }
 
+        #region Employee abstract methods override
+        public override void Say(string whatToSay)
+        {
+            Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Биг Босс", whatToSay));
+        }
+
         public override void Talk(Employee ee)
         {
             if (ee is BigBoss)
             {
                 this.Say(string.Format("Здравствуйте! {0}", ee.Name));
             }
-            else  if (ee is IManagable)
+            else if (ee is IManagable)
             {
                 this.Say(string.Format("Работать! {0}", ee.Name));
-            }           
+            }
         }
+        #endregion
     }
 }

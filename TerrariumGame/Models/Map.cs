@@ -11,6 +11,7 @@ namespace TerrariumGame.Models
 {
     class Map
     {
+        #region Fields
         private char[,] matrix;
 
         private ICollection<GameObject> gameObjects;
@@ -39,6 +40,7 @@ namespace TerrariumGame.Models
                 matrix[x, y] = value;
             }
         }
+        #endregion
 
         public Map(int height, int weight)
         {
@@ -55,6 +57,5 @@ namespace TerrariumGame.Models
             matrix = new char[Height, Width];
             gameObjects = objects;
         }
-
     }
 }
