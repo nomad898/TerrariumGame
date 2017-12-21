@@ -23,7 +23,7 @@ namespace TerrariumGame.Models
 
         public override bool Equals(object obj)
         {
-            if (GetType() != obj.GetType())
+            if (!(obj is Point))
             {
                 return false;
             }
@@ -31,12 +31,12 @@ namespace TerrariumGame.Models
         }
 
         public bool Equals(Point obj)
-        {           
-            if (GetHashCode() != obj.GetHashCode())
+        {
+            if (X != obj.X)
             {
                 return false;
             }
-            return ((X.Equals(obj.X)) && (Y.Equals(obj.Y)));
+            return Y == obj.Y;
         }
 
         public override int GetHashCode()
@@ -49,20 +49,12 @@ namespace TerrariumGame.Models
 
         public static bool operator ==(Point p1, Point p2)
         {
-            if (p1.X == p2.X && p1.Y == p2.Y)
-            {
-                return true;
-            }
-            else return false;
+            return p1.Equals(p2);
         }
 
         public static bool operator !=(Point p1, Point p2)
         {
-            if (p1.X != p2.X || p1.Y != p2.Y)
-            {
-                return true;
-            }
-            else return false;
+            return !p1.Equals(p2);
         }
     }
 }
