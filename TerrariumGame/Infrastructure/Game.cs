@@ -72,12 +72,7 @@ namespace TerrariumGame.Models
         /// <summary>
         /// Contains objects that have IsAlive - False
         /// </summary>
-        ICollection<GameObject> notAliveObjects = new List<GameObject>();
-
-        /// <summary>
-        /// Contains objects that need to delete
-        /// </summary>
-        // ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
+        ICollection<GameObject> notAliveObjects = new List<GameObject>();        
         #endregion 
 
         #region MovementLogic
@@ -85,7 +80,6 @@ namespace TerrariumGame.Models
         {
             aliveObjects.Clear();
             notAliveObjects.Clear();
-            // deletedNotAliveObjects.Clear();
         }
         
         /// <summary>
@@ -125,8 +119,7 @@ namespace TerrariumGame.Models
                 {
                     CollectWork(worker as Worker);
                 }
-            }
-            // ClearDeletedObject();
+            }          
         }
 
         /// <summary>
@@ -143,25 +136,11 @@ namespace TerrariumGame.Models
                     {
                         (worker as Worker).DoWork(notAlive as Work, dice);
                     }
-                    // deletedNotAliveObjects.Add(notAlive);
+                   
                     break;
                 }
             }
         }
-
-        /// <summary>
-        /// Delete useless objects
-        /// </summary>
-        //private void ClearDeletedObject()
-        //{
-        //    if (deletedNotAliveObjects.Count > 0)
-        //    {
-        //        foreach (var el in deletedNotAliveObjects)
-        //        {
-        //            Map.GameObjects.Remove(el);
-        //        }
-        //    }
-        //}
 
         /// <summary>
         /// Customers create new Work object to the Map
