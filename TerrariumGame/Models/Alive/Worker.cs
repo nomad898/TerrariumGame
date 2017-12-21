@@ -30,29 +30,18 @@ namespace TerrariumGame.Models.Alive
 
         #region IManagable
         public int DoneWork { get; set; }
-
-        public void DoWork()
-        {
-            DoneWork++;
-        }
-
-        public void DoWork(Work work)
-        {
-            // TO DO Исправить
-            //work.Position = new Point();
-            work = null;
-            DoneWork++;
-        }
-
-        public void DoWork(Work work, Point position)
-        {
-            work.Position = position;
-            DoneWork++;
-        }
+               
 
         public void DoWork(Work work, Dice dice)
         {
             dice.ChangeObjectPosition(work);
+            // work.State = State.Deleted;
+            DoneWork++;
+
+        }
+
+        public void DoWork()
+        {
             DoneWork++;
         }
         #endregion
@@ -79,7 +68,7 @@ namespace TerrariumGame.Models.Alive
         public override void Say(string whatToSay)
         {
             Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Рабочий", whatToSay));
-        }
+        }      
         #endregion
     }
 }

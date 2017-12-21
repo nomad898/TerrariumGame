@@ -54,13 +54,14 @@
     <Compile Include="Models\Alive\Boss.cs" />
     <Compile Include="Models\Alive\Customer.cs" />
     <Compile Include="Models\Alive\Employee.cs" />
-    <Compile Include="Models\Game.cs" />
+    <Compile Include="Infrastructure\Game.cs" />
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\NotAlive\SalaryAddition.cs" />
     <Compile Include="Models\NotAlive\Work.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Alive\Worker.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

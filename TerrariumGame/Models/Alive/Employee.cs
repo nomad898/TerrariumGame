@@ -25,7 +25,10 @@ namespace TerrariumGame.Models.Alive
         }
         #endregion
 
-        public Employee() : base() { }
+        public Employee() : base()
+        {
+            
+        }
 
         public Employee(int x, int y) : base(x, y) { }
 

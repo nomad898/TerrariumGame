@@ -43,7 +43,8 @@ namespace TerrariumGame.Infrastructure
             foreach (var obj in map.GameObjects)
             {
                 if (obj.Position.X >= 0
-                    && obj.Position.Y >= 0)
+                    && obj.Position.Y >= 0
+                    && obj.State == State.InGame)
                 {
                     Console.SetCursorPosition(obj.Position.X, obj.Position.Y);
                     map[obj.Position.X, obj.Position.Y] = obj.Icon;

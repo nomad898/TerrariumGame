@@ -77,7 +77,7 @@ namespace TerrariumGame.Models
         /// <summary>
         /// Contains objects that need to delete
         /// </summary>
-        ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
+        // ICollection<GameObject> deletedNotAliveObjects = new List<GameObject>();
         #endregion 
 
         #region MovementLogic
@@ -85,7 +85,7 @@ namespace TerrariumGame.Models
         {
             aliveObjects.Clear();
             notAliveObjects.Clear();
-            deletedNotAliveObjects.Clear();
+            // deletedNotAliveObjects.Clear();
         }
         
         /// <summary>
@@ -126,7 +126,7 @@ namespace TerrariumGame.Models
                     CollectWork(worker as Worker);
                 }
             }
-            ClearDeletedObject();
+            // ClearDeletedObject();
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace TerrariumGame.Models
                     {
                         (worker as Worker).DoWork(notAlive as Work, dice);
                     }
-                    deletedNotAliveObjects.Add(notAlive);
+                    // deletedNotAliveObjects.Add(notAlive);
                     break;
                 }
             }
@@ -152,16 +152,16 @@ namespace TerrariumGame.Models
         /// <summary>
         /// Delete useless objects
         /// </summary>
-        private void ClearDeletedObject()
-        {
-            if (deletedNotAliveObjects.Count > 0)
-            {
-                foreach (var el in deletedNotAliveObjects)
-                {
-                    Map.GameObjects.Remove(el);
-                }
-            }
-        }
+        //private void ClearDeletedObject()
+        //{
+        //    if (deletedNotAliveObjects.Count > 0)
+        //    {
+        //        foreach (var el in deletedNotAliveObjects)
+        //        {
+        //            Map.GameObjects.Remove(el);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Customers create new Work object to the Map

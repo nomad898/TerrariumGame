@@ -24,12 +24,14 @@ namespace TerrariumGame.Models
         public abstract bool IsAlive { get; }
         #endregion
 
+        public State State { get; set; }
+
         public GameObject()
         {
-
+            State = State.InGame;
         }
 
-        public GameObject(int x, int y)
+        public GameObject(int x, int y) : base()
         {
             Position = new Point(x, y);
         }  
