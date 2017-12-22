@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
 using TerrariumGame.Interfaces;
+using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
 using TerrariumGame.Models.NotAlive;
 
-namespace TerrariumGame.Models
+namespace TerrariumGame.Infrastructure
 {
     class Game
     {
@@ -254,7 +255,6 @@ namespace TerrariumGame.Models
                 }
             }
         }
-        #endregion
-        
+        #endregion        
     }
 }
