@@ -12,7 +12,7 @@ namespace TerrariumGame.Models
         #region IMovable
         public abstract char Icon { get; }
 
-        public virtual Point Position { get; set; }
+        public Point Position { get; set; }
 
         public virtual void Move(Point p)
         {

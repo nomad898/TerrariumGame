@@ -20,8 +20,8 @@ namespace TerrariumGame.Infrastructure
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
         private const int mapWidthValue = 10;
-        private const int minutesInHour = 60;
-        private const int maxHour = 6;
+        private const int minutesInHour = 10;
+        private const int maxHour = 8;
         private int hourCounter = 0;
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
@@ -59,49 +59,56 @@ namespace TerrariumGame.Infrastructure
 
         private void Play(Map map)
         {
+            CollectionClear();
             MoveObjects();
-            GoWork();
             GreetAlivePeople();
+            GoWork();
         }
 
-        #region InGameObjects
-        /// <summary>
-        /// Contains objects that have IsAlive - True
-        /// </summary>
-        ICollection<GameObject> aliveObjects = new List<GameObject>();
+        //#region InGameObjects
+        ///// <summary>
+        ///// Contains objects that have IsAlive - True
+        ///// </summary>
+        //ICollection<GameObject> aliveObjects = new List<GameObject>();
 
-        /// <summary>
-        /// Contains objects that have IsAlive - False
-        /// </summary>
-        ICollection<GameObject> notAliveObjects = new List<GameObject>();        
-        #endregion 
+        ///// <summary>
+        ///// Contains objects that have IsAlive - False
+        ///// </summary>
+        //ICollection<GameObject> notAliveObjects = new List<GameObject>();        
+        //#endregion 
 
         #region MovementLogic
-        private void CollectionsClear()
+        private void CollectionClear()
         {
-            aliveObjects.Clear();
-            notAliveObjects.Clear();
+            //aliveObjects.Clear();
+            //notAliveObjects.Clear();
+            for (int obj = 0; obj < Map.GameObjects.Count; obj++)
+            {
+                if (Map.GameObjects[obj].State == State.Deleted)
+                {
+                    Map.GameObjects.Remove(Map.GameObjects[obj]);
+                }
+            }
         }
-        
+
         /// <summary>
         /// If object's IsAlive is True, change object position
         /// and add it to aliveObjects list.
         /// Or IsAlive is False, add it to notAliveObjects list.
         /// </summary>
         private void MoveObjects()
-        {
-            CollectionsClear();
+        {         
             foreach (var obj in Map.GameObjects)
             {
                 if (obj.IsAlive)
                 {
                     dice.ChangeObjectPosition(obj);
-                    aliveObjects.Add(obj);
+                    // aliveObjects.Add(obj);
                 }
-                else if (!obj.IsAlive)
-                {
-                    notAliveObjects.Add(obj);
-                }
+                //else if (!obj.IsAlive)
+                //{
+                //    notAliveObjects.Add(obj);
+                //}
             }
         }
 
@@ -114,13 +121,13 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void GoWork()
         {
-            foreach (var worker in aliveObjects)
+            foreach (var worker in Map.GameObjects)
             {
-                if (worker is Worker)
+                if (worker.IsAlive && worker is Worker)
                 {
                     CollectWork(worker as Worker);
                 }
-            }          
+            }
         }
 
         /// <summary>
@@ -129,16 +136,17 @@ namespace TerrariumGame.Infrastructure
         /// <param name="worker">Worker class instance</param>
         private void CollectWork(Worker worker)
         {
-            foreach (var notAlive in notAliveObjects)
+            foreach (var notAlive in Map.GameObjects)
             {
-                if (worker.Position == notAlive.Position)
+                if (notAlive.IsAlive == false 
+                    && worker.Position == notAlive.Position)
                 {
-                    if (notAlive is Work)
-                    {
-                        (worker as Worker).DoWork(notAlive as Work, dice);
-                    }
-                   
-                    break;
+                        if (notAlive is Work)
+                        {
+                            (worker as Worker).DoWork(notAlive as Work);
+                        }
+
+                        break;                    
                 }
             }
         }
@@ -148,11 +156,13 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CreateNewWork()
         {
-            foreach (var customer in aliveObjects)
+            int mapObjectsCount = Map.GameObjects.Count;
+            for (int obj = 0; obj < mapObjectsCount; obj++)
             {
-                if (customer is Customer)
+                if (Map.GameObjects[obj] is Customer)
                 {
-                    Map.GameObjects.Add((customer as Customer).CreateWork());
+                    var newWork = (Map.GameObjects[obj] as Customer).CreateWork();
+                    Map.GameObjects.Add(newWork);
                 }
             }
         }
@@ -234,9 +244,9 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void GreetAlivePeople()
         {
-            foreach (var aliveObject in aliveObjects)
+            foreach (var aliveObject in Map.GameObjects)
             {
-                foreach (var aliveO in aliveObjects)
+                foreach (var aliveO in Map.GameObjects)
                 {
                     if (!ReferenceEquals(aliveObject, aliveO)
                         && (aliveObject.Position == aliveO.Position)

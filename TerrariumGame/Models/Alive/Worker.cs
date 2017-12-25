@@ -32,12 +32,10 @@ namespace TerrariumGame.Models.Alive
         public int DoneWork { get; set; }
                
 
-        public void DoWork(Work work, Dice dice)
+        public void DoWork(Work work)
         {
-            dice.ChangeObjectPosition(work);
-            // work.State = State.Deleted;
+            work.State = State.Deleted;
             DoneWork++;
-
         }
 
         public void DoWork()

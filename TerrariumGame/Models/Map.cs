@@ -14,7 +14,7 @@ namespace TerrariumGame.Models
         #region Fields
         private char[,] matrix;
 
-        private ICollection<GameObject> gameObjects;
+        private IList<GameObject> gameObjects;
 
         public int Height { get; private set; }
         public int Width { get; private set; }
@@ -23,7 +23,7 @@ namespace TerrariumGame.Models
             get { return matrix; }
             set { matrix = value; }
         }
-        public ICollection<GameObject> GameObjects
+        public IList<GameObject> GameObjects
         {
             get { return gameObjects; }
             set { gameObjects = value; }
@@ -50,7 +50,7 @@ namespace TerrariumGame.Models
             gameObjects = new List<GameObject>();
         }
 
-        public Map(int height, int weight, ICollection<GameObject> objects)
+        public Map(int height, int weight, IList<GameObject> objects)
         {
             this.Width = weight;
             this.Height = height;

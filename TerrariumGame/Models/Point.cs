@@ -23,11 +23,12 @@ namespace TerrariumGame.Models
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Point))
+            var temp = obj as Point?;
+            if (temp == null)
             {
                 return false;
             }
-            return Equals((Point)obj);
+            return Equals(temp);           
         }
 
         public bool Equals(Point obj)
