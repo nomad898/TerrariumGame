@@ -20,7 +20,7 @@ namespace TerrariumGame.Infrastructure
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
         private const int mapWidthValue = 10;
-        private const int minutesInHour = 10;
+        private const int minutesInHour = 30;
         private const int maxHour = 8;
         private int hourCounter = 0;
         private MapManipulator mapManipulator = new MapManipulator();
