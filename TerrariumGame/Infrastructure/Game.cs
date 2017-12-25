@@ -58,8 +58,7 @@ namespace TerrariumGame.Infrastructure
         }
 
         private void Play(Map map)
-        {
-            CollectionClear();
+        {           
             MoveObjects();
             GreetAlivePeople();
             GoWork();
@@ -78,37 +77,19 @@ namespace TerrariumGame.Infrastructure
         //#endregion 
 
         #region MovementLogic
-        private void CollectionClear()
-        {
-            //aliveObjects.Clear();
-            //notAliveObjects.Clear();
-            for (int obj = 0; obj < Map.GameObjects.Count; obj++)
-            {
-                if (Map.GameObjects[obj].State == State.Deleted)
-                {
-                    Map.GameObjects.Remove(Map.GameObjects[obj]);
-                }
-            }
-        }
-
         /// <summary>
         /// If object's IsAlive is True, change object position
         /// and add it to aliveObjects list.
         /// Or IsAlive is False, add it to notAliveObjects list.
         /// </summary>
         private void MoveObjects()
-        {         
+        {
             foreach (var obj in Map.GameObjects)
             {
                 if (obj.IsAlive)
                 {
                     dice.ChangeObjectPosition(obj);
-                    // aliveObjects.Add(obj);
                 }
-                //else if (!obj.IsAlive)
-                //{
-                //    notAliveObjects.Add(obj);
-                //}
             }
         }
 
@@ -128,6 +109,7 @@ namespace TerrariumGame.Infrastructure
                     CollectWork(worker as Worker);
                 }
             }
+            CollectionClear();
         }
 
         /// <summary>
@@ -138,15 +120,31 @@ namespace TerrariumGame.Infrastructure
         {
             foreach (var notAlive in Map.GameObjects)
             {
-                if (notAlive.IsAlive == false 
+                if (notAlive.IsAlive == false
                     && worker.Position == notAlive.Position)
                 {
-                        if (notAlive is Work)
-                        {
-                            (worker as Worker).DoWork(notAlive as Work);
-                        }
+                    if (notAlive is Work)
+                    {
+                        (worker as Worker).DoWork(notAlive as Work);
+                    }
 
-                        break;                    
+                    break;
+                }
+            }           
+        }
+
+        private void CollectionClear()
+        {
+            /*
+            Пытался через LINQ сделать удаление для уменьшения количества строк,
+            но в определённые моменты удаления не происходило.
+            */
+            //(Map.GameObjects as List<GameObject>).RemoveAll(gameObject => gameObject.State == State.Deleted);
+            for (int obj = 0; obj < Map.GameObjects.Count; obj++)
+            {
+                if (Map.GameObjects[obj].State == State.Deleted)
+                {
+                    Map.GameObjects.Remove(Map.GameObjects[obj]);
                 }
             }
         }
