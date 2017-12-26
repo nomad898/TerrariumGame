@@ -25,7 +25,7 @@ namespace TerrariumGame.Infrastructure
         ///  Hour duration
         /// </summary>
         private const int minutesInHour = 30;
-        private const int delayTime = 2000;
+        private const int delayTime = 1000;
 
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
@@ -48,7 +48,7 @@ namespace TerrariumGame.Infrastructure
                     StartLogic();
                     mapManipulator.SetObjects(Map);
                     mapManipulator.ShowMap(Map);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(delayTime);
                 }
                 mapManipulator.HourCounter++;
 
@@ -63,10 +63,8 @@ namespace TerrariumGame.Infrastructure
 
         private void StartLogic()
         {
-            int mapObjectsCount = Map.GameObjects.Count;
-            for (int gameObjectIndex = 0; gameObjectIndex < mapObjectsCount; gameObjectIndex++)
+            foreach(var gameObject in Map.GameObjects)
             {
-                var gameObject = Map.GameObjects[gameObjectIndex];
                 if (gameObject.IsAlive)
                 {
                     MoveObjects(gameObject);
@@ -93,7 +91,7 @@ namespace TerrariumGame.Infrastructure
                     && employee != empl)
                 {
                     Console.Clear();
-                    GreetAlivePeople(employee, empl);
+                    Greet(employee, empl);
                 }
                 else
                 {
@@ -118,13 +116,19 @@ namespace TerrariumGame.Infrastructure
             dice.ChangeObjectPosition(gameObject);
         }
 
-        #endregion  
+        #endregion
 
         #region GreetingLogic
         /// <summary>
         ///     If two alive employees have same position, call methods 
         /// </summary>        
-        private void GreetAlivePeople(Employee firstAliveObject, Employee secondAliveObject)
+        private void Greet(Employee firstAliveObject, Employee secondAliveObject)
+        {
+            GreetLogic(firstAliveObject, secondAliveObject);
+            GreetLogic(secondAliveObject, firstAliveObject);
+        }
+
+        private void GreetLogic(Employee firstAliveObject, Employee secondAliveObject)
         {
             if (firstAliveObject is Worker)
             {
@@ -139,7 +143,7 @@ namespace TerrariumGame.Infrastructure
                 (firstAliveObject as Boss).Talk((secondAliveObject));
             }
             Thread.Sleep(delayTime);
-        }      
+        }             
         #endregion
 
         #region WorkingLogic
