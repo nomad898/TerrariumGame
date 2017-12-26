@@ -31,7 +31,10 @@ namespace TerrariumGame.Infrastructure
         private Dice dice;
         #endregion
 
-        public void Run()
+        /// <summary>
+        /// Start game
+        /// </summary>
+        public void Start()
         {
             Map = new Map(mapHeightValue, mapWidthValue);
             mapManipulator.Init(Map);
@@ -65,17 +68,20 @@ namespace TerrariumGame.Infrastructure
             GoWork();
         }
 
-        //#region InGameObjects
-        ///// <summary>
-        ///// Contains objects that have IsAlive - True
-        ///// </summary>
-        //ICollection<GameObject> aliveObjects = new List<GameObject>();
-
-        ///// <summary>
-        ///// Contains objects that have IsAlive - False
-        ///// </summary>
-        //ICollection<GameObject> notAliveObjects = new List<GameObject>();        
-        //#endregion 
+        private void StartLogic()
+        {
+            foreach (var gameObject in Map.GameObjects)
+            {
+                if (gameObject.IsAlive)
+                {
+                    MoveObjects(gameObject);
+                    if (gameObject is Employee)
+                    {
+                        GreetAlivePeople(gameObject);
+                    }
+                }
+            }
+        }
 
         #region MovementLogic
         /// <summary>
@@ -94,6 +100,11 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        private void MoveObjects(GameObject gameObject)
+        {
+            dice.ChangeObjectPosition(gameObject);
+        }
+
         #endregion
 
         #region WorkingLogic
@@ -101,7 +112,7 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         ///     If Object is Worker, call CollectWork() method 
         /// </summary>
-        private void GoWork()
+        private void StartWork()
         {
             foreach (var worker in Map.GameObjects)
             {
@@ -111,6 +122,11 @@ namespace TerrariumGame.Infrastructure
                 }
             }
             CollectionClear();
+        }
+
+        private void StartWork(Worker worker)
+        {
+
         }
 
         /// <summary>
@@ -218,6 +234,26 @@ namespace TerrariumGame.Infrastructure
                         {
                             BossGreetingLogic(aliveObject as Boss, aliveO as Employee);
                         }
+                    }
+                }
+            }
+        }
+
+        private void GreetAlivePeople(GameObject aliveObject)
+        {
+            foreach (var aliveO in Map.GameObjects)
+            {
+                if (aliveObject != aliveO
+                    && (aliveObject.Position == aliveO.Position)
+                    && aliveO is Employee)
+                {
+                    if (aliveObject is Worker)
+                    {
+                        WorkerGreetingLogic(aliveObject as Worker, aliveO as Employee);
+                    }
+                    else if (aliveObject is Boss)
+                    {
+                        BossGreetingLogic(aliveObject as Boss, aliveO as Employee);
                     }
                 }
             }

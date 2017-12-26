@@ -15,7 +15,7 @@ namespace TerrariumGame
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.Run();            
+            game.Start();            
             Console.ReadKey(true);
         }        
     }
