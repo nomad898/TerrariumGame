@@ -25,6 +25,7 @@ namespace TerrariumGame.Infrastructure
         ///  Hour duration
         /// </summary>
         private const int minutesInHour = 30;
+        private const int delayTime = 2000;
 
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
@@ -50,7 +51,6 @@ namespace TerrariumGame.Infrastructure
                     Thread.Sleep(1000);
                 }
                 mapManipulator.HourCounter++;
-                Console.Clear();
 
                 if (mapManipulator.HourCounter == mapManipulator.MaxHour)
                 {
@@ -76,17 +76,35 @@ namespace TerrariumGame.Infrastructure
                     if (gameO != null)
                     {
                         AliveObjectActions(gameO);
-
-                        var worker = gameObject as Worker;
-                        if (worker != null)
-                        {
-                      //      StartWork(worker);
-                        }
                     }
-
                 }
             }
             CollectionClear();
+        }
+
+        private void AliveObjectActions(Employee employee)
+        {
+            foreach (var gameObject in Map.GameObjects)
+            {
+                var empl = gameObject as Employee;
+
+                if (empl != null
+                    && employee.Position == empl.Position
+                    && employee != empl)
+                {
+                    Console.Clear();
+                    GreetAlivePeople(employee, empl);
+                }
+                else
+                {
+                    var worker = employee as Worker;
+                    var work = gameObject as Work;
+                    if (worker != null && work != null)
+                    {
+                        CollectWork(worker, work);
+                    }
+                }
+            }
         }
 
         #region MovementLogic
@@ -100,6 +118,28 @@ namespace TerrariumGame.Infrastructure
             dice.ChangeObjectPosition(gameObject);
         }
 
+        #endregion  
+
+        #region GreetingLogic
+        /// <summary>
+        ///     If two alive employees have same position, call methods 
+        /// </summary>        
+        private void GreetAlivePeople(Employee firstAliveObject, Employee secondAliveObject)
+        {
+            if (firstAliveObject is Worker)
+            {
+                (firstAliveObject as Worker).Talk((secondAliveObject));
+            }
+            else if (firstAliveObject is BigBoss)
+            {
+                (firstAliveObject as BigBoss).Talk((secondAliveObject));
+            }
+            else if (firstAliveObject is Boss)
+            {
+                (firstAliveObject as Boss).Talk((secondAliveObject));
+            }
+            Thread.Sleep(delayTime);
+        }      
         #endregion
 
         #region WorkingLogic
@@ -138,83 +178,5 @@ namespace TerrariumGame.Infrastructure
             }
         }
         #endregion
-
-        #region GreetingLogic
-        /// <summary>
-        ///     Talk with other employee.
-        /// </summary>
-        /// <param name="worker">Work class instance</param>
-        /// <param name="aliveObject">Employee class instanse</param>
-        private void WorkerGreetingLogic(Employee worker, Employee aliveObject)
-        {
-            if (worker is Worker)
-            {
-                Console.Clear();
-                (worker as Worker).Talk((aliveObject));
-                Thread.Sleep(1000);
-                Console.Clear();
-            }
-        }
-
-        /// <summary>
-        ///     Talk with other employee.
-        /// </summary>
-        /// <param name="boss">Boss class instance</param>
-        /// <param name="aliveObject">Employee class instanse</param>
-        private void BossGreetingLogic(Employee boss, Employee aliveObject)
-        {
-            Console.Clear();
-            if (boss is BigBoss)
-            {
-                (boss as BigBoss).Talk((aliveObject));
-            }
-            else if (boss is Boss)
-            {
-                (boss as Boss).Talk((aliveObject));
-            }
-            Thread.Sleep(1000);
-            Console.Clear();
-        }
-
-        /// <summary>
-        ///     If two alive employees have same position, call methods 
-        /// </summary>        
-        private void GreetAlivePeople(Employee firstAliveObject, Employee secondAliveObject)
-        {
-            if (firstAliveObject != secondAliveObject
-                && (firstAliveObject.Position == secondAliveObject.Position)
-                && secondAliveObject is Employee)
-            {
-                if (firstAliveObject is Worker)
-                {
-                    WorkerGreetingLogic(firstAliveObject as Worker, secondAliveObject as Employee);
-                }
-                else if (firstAliveObject is Boss)
-                {
-                    BossGreetingLogic(firstAliveObject as Boss, secondAliveObject as Employee);
-                }
-            }
-        }
-        #endregion        
-
-        private void AliveObjectActions(Employee employee)
-        {
-            foreach (var gameObject in Map.GameObjects)
-            {
-                var empl = gameObject as Employee;
-
-                if (empl != null)
-                {
-                    GreetAlivePeople(employee, empl);
-                }
-
-                var worker = employee as Worker;
-                var work = gameObject as Work;
-                if (worker != null && work != null)
-                {
-                    CollectWork(worker, work);
-                }
-            }
-        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TerrariumGame.Interfaces;
 using TerrariumGame.Models.NotAlive;
@@ -53,13 +54,16 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (ee is Worker)
+            if (this.Position == ee.Position && ee != null)
             {
-                this.Say(string.Format("Работать, {0}!", ee.Name));
-            }
-            else if (ee is IManage)
-            {
-                this.Say(string.Format("Здравствуйте, {0}!", ee.Name));
+                if (ee is Worker)
+                {
+                    this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
+                }
+                else if (ee is IManage)
+                {
+                    this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
+                }
             }
         }
         #endregion

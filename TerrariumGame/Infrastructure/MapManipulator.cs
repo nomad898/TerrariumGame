@@ -42,6 +42,7 @@ namespace TerrariumGame.Infrastructure
         public void ShowMap(Map map)
         {
             Console.SetCursorPosition(0, 0);
+            Console.Clear();
             for (int x = 0; x < map.Height; x++)
             {
                 for (int y = 0; y < map.Width; y++)
