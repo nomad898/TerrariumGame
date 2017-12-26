@@ -33,7 +33,7 @@ namespace TerrariumGame.Models.Alive
         #endregion
         #region IManagable
         public int DoneWork { get; set; }
-               
+
 
         public void DoWork(Work work)
         {
@@ -54,18 +54,15 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (this.Position == ee.Position && ee != null)
+            if (ee is Worker)
             {
-                if (ee is Worker)
-                {
-                    this.Say(string.Format("Привет, {0} - {1}!", ee.Name, ee.ToString()));                   
-                }
-                else if (ee is IManage)
-                {
-                    this.Say(string.Format("Здравствуйте, {0}! - {1}!", ee.Name, ee.ToString()));
-                }
+                this.Say(string.Format("Привет, {0} - {1}!", ee.Name, ee.ToString()));
             }
-        }          
+            else if (ee is IManage)
+            {
+                this.Say(string.Format("Здравствуйте, {0}! - {1}!", ee.Name, ee.ToString()));
+            }
+        }
         #endregion
     }
 }

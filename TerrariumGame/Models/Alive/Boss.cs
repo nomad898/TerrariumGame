@@ -13,7 +13,7 @@ namespace TerrariumGame.Models.Alive
     {
         #region Fields
         public override char Icon { get { return 'B'; } }
-       
+
         public int DoneWork { get; private set; }
         #endregion
         #region Ctor
@@ -56,16 +56,13 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (this.Position == ee.Position && ee != null)
+            if (ee is Worker)
             {
-                if (ee is Worker)
-                {
-                    this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
-                }
-                else if (ee is IManage)
-                {
-                    this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
-                }
+                this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
+            }
+            else if (ee is IManage)
+            {
+                this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
             }
         }
         #endregion

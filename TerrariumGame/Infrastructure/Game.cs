@@ -72,7 +72,7 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void StartLogic()
         {
-            foreach(var gameObject in Map.GameObjects)
+            foreach (var gameObject in Map.GameObjects)
             {
                 if (gameObject.IsAlive)
                 {
@@ -98,22 +98,24 @@ namespace TerrariumGame.Infrastructure
         {
             foreach (var gameObject in Map.GameObjects)
             {
-                var empl = gameObject as Employee;
+                if (employee != gameObject
+                    && employee.Position == gameObject.Position)
+                {
+                    var empl = gameObject as Employee;
 
-                if (empl != null
-                    && employee.Position == empl.Position
-                    && employee != empl)
-                {
-                    Console.Clear();
-                    Greet(employee, empl);
-                }
-                else
-                {
-                    var worker = employee as Worker;
-                    var work = gameObject as Work;
-                    if (worker != null && work != null)
+                    if (empl != null)
                     {
-                        CollectWork(worker, work);
+                        Console.Clear();
+                        Greet(employee, empl);
+                    }
+                    else
+                    {
+                        var worker = employee as Worker;
+                        var work = gameObject as Work;
+                        if (worker != null && work != null)
+                        {
+                            CollectWork(worker, work);
+                        }
                     }
                 }
             }
@@ -160,7 +162,7 @@ namespace TerrariumGame.Infrastructure
                 (firstAliveObject as Boss).Talk((secondAliveObject));
             }
             Thread.Sleep(delayTime);
-        }             
+        }
         #endregion
 
         #region WorkingLogic
@@ -170,10 +172,7 @@ namespace TerrariumGame.Infrastructure
         /// <param name="worker">Worker class instance</param>
         private void CollectWork(Worker worker, Work work)
         {
-            if (worker.Position == work.Position)
-            {
-                worker.DoWork(work);
-            }
+            worker.DoWork(work);
         }
 
         /// <summary>

@@ -51,16 +51,13 @@ namespace TerrariumGame.Models.Alive
 
         public override void Talk(Employee ee)
         {
-            if (this.Position == ee.Position && ee != null)
+            if (ee is BigBoss)
             {
-                if (ee is BigBoss)
-                {
-                    this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));                 
-                }
-                else if (ee is IManagable)
-                {
-                    this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
-                }
+                this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
+            }
+            else if (ee is IManagable)
+            {
+                this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
             }
         }
         #endregion
