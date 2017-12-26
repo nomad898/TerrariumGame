@@ -71,19 +71,22 @@ namespace TerrariumGame.Infrastructure
                 {
                     MoveObjects(gameObject);
 
-                    if (gameObject is Employee)
+                    var gameO = gameObject as Employee;
+
+                    if (gameO != null)
                     {
-                        GreetAlivePeople(gameObject);
+                        AliveObjectActions(gameO);
 
                         var worker = gameObject as Worker;
                         if (worker != null)
                         {
-                            StartWork(worker);
+                      //      StartWork(worker);
                         }
                     }
 
                 }
             }
+            CollectionClear();
         }
 
         #region MovementLogic
@@ -101,35 +104,9 @@ namespace TerrariumGame.Infrastructure
 
         #region WorkingLogic
         /// <summary>
-        ///     If Object is Worker, call CollectWork() method 
-        /// </summary>
-        private void StartWork(Worker worker)
-        {
-            CollectWork(worker as Worker);
-            CollectionClear();
-        }
-
-        /// <summary>
         ///     If Worker position equals work object, collect work.
         /// </summary>
         /// <param name="worker">Worker class instance</param>
-        private void CollectWork(Worker worker)
-        {
-            foreach (var notAlive in Map.GameObjects)
-            {
-                if (!notAlive.IsAlive
-                    && worker.Position == notAlive.Position)
-                {
-                    if (notAlive is Work)
-                    {
-                        (worker as Worker).DoWork(notAlive as Work);
-                    }
-
-                   
-                }
-            }
-        }
-
         private void CollectWork(Worker worker, Work work)
         {
             if (worker.Position == work.Position)
@@ -236,7 +213,6 @@ namespace TerrariumGame.Infrastructure
                 if (worker != null && work != null)
                 {
                     CollectWork(worker, work);
-                    break;
                 }
             }
         }
