@@ -120,7 +120,7 @@ namespace TerrariumGame.Infrastructure
         {
             foreach (var notAlive in Map.GameObjects)
             {
-                if (!notAlive.IsAlive == false
+                if (!notAlive.IsAlive
                     && worker.Position == notAlive.Position)
                 {
                     if (notAlive is Work)
