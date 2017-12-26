@@ -44,7 +44,7 @@ namespace TerrariumGame.Infrastructure
             {
                 for (int minute = 0; minute < minutesInHour; minute++)
                 {
-                    Play(Map);
+                    StartLogic();
                     mapManipulator.SetObjects(Map);
                     mapManipulator.ShowMap(Map);
                     Thread.Sleep(1000);
@@ -61,24 +61,27 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        private void Play(Map map)
-        {
-            MoveObjects();
-            GreetAlivePeople();
-            GoWork();
-        }
-
         private void StartLogic()
         {
-            foreach (var gameObject in Map.GameObjects)
+            int mapObjectsCount = Map.GameObjects.Count;
+            for (int gameObjectIndex = 0; gameObjectIndex < mapObjectsCount; gameObjectIndex++)
             {
+                var gameObject = Map.GameObjects[gameObjectIndex];
                 if (gameObject.IsAlive)
                 {
                     MoveObjects(gameObject);
+
                     if (gameObject is Employee)
                     {
                         GreetAlivePeople(gameObject);
+
+                        var worker = gameObject as Worker;
+                        if (worker != null)
+                        {
+                            StartWork(worker);
+                        }
                     }
+
                 }
             }
         }
@@ -89,17 +92,6 @@ namespace TerrariumGame.Infrastructure
         /// and add it to aliveObjects list.
         /// Or IsAlive is False, add it to notAliveObjects list.
         /// </summary>
-        private void MoveObjects()
-        {
-            foreach (var gameObject in Map.GameObjects)
-            {
-                if (gameObject.IsAlive)
-                {
-                    dice.ChangeObjectPosition(gameObject);
-                }
-            }
-        }
-
         private void MoveObjects(GameObject gameObject)
         {
             dice.ChangeObjectPosition(gameObject);
@@ -108,25 +100,13 @@ namespace TerrariumGame.Infrastructure
         #endregion
 
         #region WorkingLogic
-
         /// <summary>
         ///     If Object is Worker, call CollectWork() method 
         /// </summary>
-        private void StartWork()
-        {
-            foreach (var worker in Map.GameObjects)
-            {
-                if (worker.IsAlive && worker is Worker)
-                {
-                    CollectWork(worker as Worker);
-                }
-            }
-            CollectionClear();
-        }
-
         private void StartWork(Worker worker)
         {
-
+            CollectWork(worker as Worker);
+            CollectionClear();
         }
 
         /// <summary>
@@ -145,8 +125,16 @@ namespace TerrariumGame.Infrastructure
                         (worker as Worker).DoWork(notAlive as Work);
                     }
 
-                    break;
+                   
                 }
+            }
+        }
+
+        private void CollectWork(Worker worker, Work work)
+        {
+            if (worker.Position == work.Position)
+            {
+                worker.DoWork(work);
             }
         }
 
@@ -154,7 +142,6 @@ namespace TerrariumGame.Infrastructure
         {
             (Map.GameObjects as List<GameObject>)
                 .RemoveAll(gameObject => gameObject.State == State.Deleted);
-
         }
 
         /// <summary>
@@ -214,50 +201,44 @@ namespace TerrariumGame.Infrastructure
 
         /// <summary>
         ///     If two alive employees have same position, call methods 
-        /// </summary>
-        private void GreetAlivePeople()
+        /// </summary>        
+        private void GreetAlivePeople(Employee firstAliveObject, Employee secondAliveObject)
         {
-            foreach (var aliveObject in Map.GameObjects)
+            if (firstAliveObject != secondAliveObject
+                && (firstAliveObject.Position == secondAliveObject.Position)
+                && secondAliveObject is Employee)
             {
-                foreach (var aliveO in Map.GameObjects)
+                if (firstAliveObject is Worker)
                 {
-                    if (aliveObject != aliveO
-                        && (aliveObject.Position == aliveO.Position)
-                        && aliveObject is Employee
-                        && aliveO is Employee)
-                    {
-                        if (aliveObject is Worker)
-                        {
-                            WorkerGreetingLogic(aliveObject as Worker, aliveO as Employee);
-                        }
-                        else if (aliveObject is Boss)
-                        {
-                            BossGreetingLogic(aliveObject as Boss, aliveO as Employee);
-                        }
-                    }
+                    WorkerGreetingLogic(firstAliveObject as Worker, secondAliveObject as Employee);
                 }
-            }
-        }
-
-        private void GreetAlivePeople(GameObject aliveObject)
-        {
-            foreach (var aliveO in Map.GameObjects)
-            {
-                if (aliveObject != aliveO
-                    && (aliveObject.Position == aliveO.Position)
-                    && aliveO is Employee)
+                else if (firstAliveObject is Boss)
                 {
-                    if (aliveObject is Worker)
-                    {
-                        WorkerGreetingLogic(aliveObject as Worker, aliveO as Employee);
-                    }
-                    else if (aliveObject is Boss)
-                    {
-                        BossGreetingLogic(aliveObject as Boss, aliveO as Employee);
-                    }
+                    BossGreetingLogic(firstAliveObject as Boss, secondAliveObject as Employee);
                 }
             }
         }
         #endregion        
+
+        private void AliveObjectActions(Employee employee)
+        {
+            foreach (var gameObject in Map.GameObjects)
+            {
+                var empl = gameObject as Employee;
+
+                if (empl != null)
+                {
+                    GreetAlivePeople(employee, empl);
+                }
+
+                var worker = employee as Worker;
+                var work = gameObject as Work;
+                if (worker != null && work != null)
+                {
+                    CollectWork(worker, work);
+                    break;
+                }
+            }
+        }
     }
 }
