@@ -31,7 +31,7 @@ namespace TerrariumGame.Models
             State = State.InGame;
         }
 
-        public GameObject(int x, int y) : base()
+        public GameObject(int x, int y) : this()
         {
             Position = new Point(x, y);
         }  

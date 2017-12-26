@@ -25,7 +25,7 @@ namespace TerrariumGame.Infrastructure
         ///  Hour duration
         /// </summary>
         private const int minutesInHour = 30;
-       
+
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
         private Dice dice;
@@ -47,7 +47,7 @@ namespace TerrariumGame.Infrastructure
                     Thread.Sleep(1000);
                 }
                 mapManipulator.HourCounter++;
-                Console.Clear();              
+                Console.Clear();
 
                 if (mapManipulator.HourCounter == mapManipulator.MaxHour)
                 {
@@ -59,7 +59,7 @@ namespace TerrariumGame.Infrastructure
         }
 
         private void Play(Map map)
-        {           
+        {
             MoveObjects();
             GreetAlivePeople();
             GoWork();
@@ -85,11 +85,11 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void MoveObjects()
         {
-            foreach (var obj in Map.GameObjects)
+            foreach (var gameObject in Map.GameObjects)
             {
-                if (obj.IsAlive)
+                if (gameObject.IsAlive)
                 {
-                    dice.ChangeObjectPosition(obj);
+                    dice.ChangeObjectPosition(gameObject);
                 }
             }
         }
@@ -131,14 +131,14 @@ namespace TerrariumGame.Infrastructure
 
                     break;
                 }
-            }           
+            }
         }
 
         private void CollectionClear()
         {
             (Map.GameObjects as List<GameObject>)
                 .RemoveAll(gameObject => gameObject.State == State.Deleted);
-           
+
         }
 
         /// <summary>
@@ -170,14 +170,7 @@ namespace TerrariumGame.Infrastructure
             if (worker is Worker)
             {
                 Console.Clear();
-                if (aliveObject is Worker)
-                {
-                    (worker as Worker).Talk((aliveObject as Worker));
-                }
-                else if (aliveObject is IManage)
-                {
-                    (worker as Worker).Talk(aliveObject as Boss);
-                }
+                (worker as Worker).Talk((aliveObject));
                 Thread.Sleep(1000);
                 Console.Clear();
             }
@@ -190,44 +183,17 @@ namespace TerrariumGame.Infrastructure
         /// <param name="aliveObject">Employee class instanse</param>
         private void BossGreetingLogic(Employee boss, Employee aliveObject)
         {
-            if (boss is Boss)
+            Console.Clear();
+            if (boss is BigBoss)
             {
-                Console.Clear();
-                if (aliveObject is Worker)
-                {
-                    (boss as Boss).Talk((aliveObject as Worker));
-                }
-                else if (aliveObject is IManage)
-                {
-                    BossGreetChoice(boss, aliveObject);
-                }
-                Thread.Sleep(1000);
-                Console.Clear();
+                (boss as BigBoss).Talk((aliveObject));
             }
-        }
-
-        /// <summary>
-        ///     Helper method to BossGreetingLogic()
-        /// </summary>
-        /// <param name="boss">Boss class instance</param>
-        /// <param name="aliveObject">Employee class instanse</param>
-        private void BossGreetChoice(Employee boss, Employee aliveObject)
-        {
-            if (aliveObject is BigBoss)
+            else if (boss is Boss)
             {
-                (boss as Boss).Talk(aliveObject as BigBoss);
+                (boss as Boss).Talk((aliveObject));
             }
-            else if (aliveObject is Boss)
-            {
-                if (boss is BigBoss)
-                {
-                    (boss as BigBoss).Talk(aliveObject as Boss);
-                }
-                else
-                {
-                    (boss as Boss).Talk(aliveObject as Boss);
-                }
-            }
+            Thread.Sleep(1000);
+            Console.Clear();
         }
 
         /// <summary>
@@ -239,7 +205,7 @@ namespace TerrariumGame.Infrastructure
             {
                 foreach (var aliveO in Map.GameObjects)
                 {
-                    if (!ReferenceEquals(aliveObject, aliveO)
+                    if (aliveObject != aliveO
                         && (aliveObject.Position == aliveO.Position)
                         && aliveObject is Employee
                         && aliveO is Employee)

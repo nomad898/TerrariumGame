@@ -44,6 +44,11 @@ namespace TerrariumGame.Models.Alive
         }
         #endregion
         #region Employee abstract methods override
+        protected override void Say(string whatToSay)
+        {
+            Say("Worker", whatToSay);
+        }
+
         public override void Talk(Employee ee)
         {
             if (ee != null)
@@ -57,12 +62,7 @@ namespace TerrariumGame.Models.Alive
                     this.Say(string.Format("Здравствуйте, {0}!", ee.Name));
                 }
             }
-        }
-
-        public override void Say(string whatToSay)
-        {
-            Say("Worker", whatToSay);
-        }      
+        }          
         #endregion
     }
 }

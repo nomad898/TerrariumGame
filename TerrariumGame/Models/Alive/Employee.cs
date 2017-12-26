@@ -38,9 +38,9 @@ namespace TerrariumGame.Models.Alive
         }
 
         #region Methods
-        public abstract void Say(string whatToSay);       
+        protected abstract void Say(string whatToSay);
 
-        public virtual void Say(string rank, string whatToSay)
+        protected virtual void Say(string rank, string whatToSay)
         {
             Console.WriteLine(string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay));
         }

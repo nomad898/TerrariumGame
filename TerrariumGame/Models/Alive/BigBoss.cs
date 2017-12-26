@@ -12,7 +12,7 @@ namespace TerrariumGame.Models.Alive
     {
         public override char Icon { get { return 'K'; } }
 
-        public BigBoss() : base()
+        public BigBoss()
         {
 
         }
@@ -29,7 +29,11 @@ namespace TerrariumGame.Models.Alive
         public override void Manage(IManagable imngbl)
         {
             imngbl.DoWork();
-            (imngbl as Employee).Salary -= 100;
+            var mngbl = imngbl as Employee;
+            if (mngbl != null)
+            {
+                mngbl.Salary -= 100;
+            }
         }
 
         public SalaryAddition CreateSalaryAddition()
@@ -38,7 +42,7 @@ namespace TerrariumGame.Models.Alive
         }
 
         #region Employee abstract methods override
-        public override void Say(string whatToSay)
+        protected override void Say(string whatToSay)
         {
             Say("BigBoss", whatToSay);
         }
