@@ -41,7 +41,7 @@ namespace TerrariumGame.Models
             }
         }
         #endregion
-
+        #region Ctor
         public Map(int height, int weight)
         {
             this.Width = weight;
@@ -57,5 +57,6 @@ namespace TerrariumGame.Models
             matrix = new char[Height, Width];
             gameObjects = objects;
         }
+        #endregion
     }
 }

@@ -16,13 +16,16 @@ namespace TerrariumGame.Infrastructure
     class Game
     {
         #region Fields
+        #region Public
         public Map Map { get; private set; }
+        #endregion
+        #region Private
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
         private const int mapWidthValue = 10;
 
         /// <summary>
-        ///  Hour duration
+        ///     Hour duration
         /// </summary>
         private const int minutesInHour = 30;
         private const int delayTime = 1000;
@@ -30,6 +33,7 @@ namespace TerrariumGame.Infrastructure
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
         private Dice dice;
+        #endregion
         #endregion
 
         /// <summary>
@@ -61,6 +65,11 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        #region GameLogic
+        /// <summary>
+        ///     Start main game logic for each element in game.
+        ///     Move it, if it is alive or do actions.
+        /// </summary>
         private void StartLogic()
         {
             foreach(var gameObject in Map.GameObjects)
@@ -80,6 +89,11 @@ namespace TerrariumGame.Infrastructure
             CollectionClear();
         }
 
+        /// <summary>
+        ///     Actions for alive object in game. 
+        ///     Greet with other employees or do work.
+        /// </summary>
+        /// <param name="employee">Employee instance</param>
         private void AliveObjectActions(Employee employee)
         {
             foreach (var gameObject in Map.GameObjects)
@@ -107,9 +121,7 @@ namespace TerrariumGame.Infrastructure
 
         #region MovementLogic
         /// <summary>
-        /// If object's IsAlive is True, change object position
-        /// and add it to aliveObjects list.
-        /// Or IsAlive is False, add it to notAliveObjects list.
+        /// If object's IsAlive is True, change object position.
         /// </summary>
         private void MoveObjects(GameObject gameObject)
         {
@@ -120,7 +132,7 @@ namespace TerrariumGame.Infrastructure
 
         #region GreetingLogic
         /// <summary>
-        ///     If two alive employees have same position, call methods 
+        ///     If two alive employees have same position, call method 
         /// </summary>        
         private void Greet(Employee firstAliveObject, Employee secondAliveObject)
         {
@@ -128,6 +140,11 @@ namespace TerrariumGame.Infrastructure
             GreetLogic(secondAliveObject, firstAliveObject);
         }
 
+        /// <summary>
+        ///     Greet main logic
+        /// </summary>
+        /// <param name="firstAliveObject">Employee instance</param>
+        /// <param name="secondAliveObject">Employee instance</param>
         private void GreetLogic(Employee firstAliveObject, Employee secondAliveObject)
         {
             if (firstAliveObject is Worker)
@@ -148,7 +165,7 @@ namespace TerrariumGame.Infrastructure
 
         #region WorkingLogic
         /// <summary>
-        ///     If Worker position equals work object, collect work.
+        ///     If Worker position equals work object position, collect work.
         /// </summary>
         /// <param name="worker">Worker class instance</param>
         private void CollectWork(Worker worker, Work work)
@@ -159,6 +176,9 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Remove collected work instances
+        /// </summary>
         private void CollectionClear()
         {
             (Map.GameObjects as List<GameObject>)
@@ -181,6 +201,7 @@ namespace TerrariumGame.Infrastructure
                 }
             }
         }
+        #endregion
         #endregion
     }
 }

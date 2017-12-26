@@ -9,6 +9,7 @@ namespace TerrariumGame.Models
 {
     abstract class GameObject : IMovable, IAlivable
     {
+        #region Fields
         #region IMovable
         public abstract char Icon { get; }
 
@@ -25,7 +26,8 @@ namespace TerrariumGame.Models
         #endregion
 
         public State State { get; set; }
-
+        #endregion
+        #region Ctor
         public GameObject()
         {
             State = State.InGame;
@@ -34,6 +36,7 @@ namespace TerrariumGame.Models
         public GameObject(int x, int y) : this()
         {
             Position = new Point(x, y);
-        }  
+        }
+        #endregion
     }
 }

@@ -10,8 +10,10 @@ namespace TerrariumGame.Models.Alive
 {
     class BigBoss : Boss
     {
+        #region Fields
         public override char Icon { get { return 'K'; } }
-
+        #endregion
+        #region Ctor
         public BigBoss()
         {
 
@@ -25,7 +27,7 @@ namespace TerrariumGame.Models.Alive
             : base(name, x, y)
         {
         }
-
+        #endregion
         public override void Manage(IManagable imngbl)
         {
             imngbl.DoWork();

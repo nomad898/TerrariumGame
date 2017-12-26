@@ -11,10 +11,12 @@ namespace TerrariumGame.Models.Alive
 {
     class Boss : Employee, IManage, IManagable
     {
+        #region Fields
         public override char Icon { get { return 'B'; } }
-
+       
         public int DoneWork { get; private set; }
-
+        #endregion
+        #region Ctor
         public Boss() : base()
         {
             DoneWork = 0;
@@ -29,7 +31,7 @@ namespace TerrariumGame.Models.Alive
         {
             DoneWork = 0;
         }
-
+        #endregion
         #region IManagable
         public void DoWork()
         {

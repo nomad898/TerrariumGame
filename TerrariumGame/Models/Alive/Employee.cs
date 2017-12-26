@@ -9,6 +9,7 @@ namespace TerrariumGame.Models.Alive
 {
     abstract class Employee : GameObject
     {
+        #region Fields
         public decimal Salary { get; set; }
 
         public string Name { get; set; }
@@ -24,7 +25,8 @@ namespace TerrariumGame.Models.Alive
             }
         }
         #endregion
-
+        #endregion
+        #region Ctor
         public Employee() : base()
         {
             
@@ -36,7 +38,7 @@ namespace TerrariumGame.Models.Alive
         {
             Name = name;
         }
-
+        #endregion
         #region Methods
         protected abstract void Say(string whatToSay);
 
