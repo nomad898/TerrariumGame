@@ -20,9 +20,12 @@ namespace TerrariumGame.Infrastructure
         private bool gameIsRunning = true;
         private const int mapHeightValue = 10;
         private const int mapWidthValue = 10;
+
+        /// <summary>
+        ///  Hour duration
+        /// </summary>
         private const int minutesInHour = 30;
-        private const int maxHour = 8;
-        private int hourCounter = 0;
+       
         private MapManipulator mapManipulator = new MapManipulator();
         private Random random = new Random();
         private Dice dice;
@@ -43,12 +46,10 @@ namespace TerrariumGame.Infrastructure
                     mapManipulator.ShowMap(Map);
                     Thread.Sleep(1000);
                 }
-                hourCounter++;
-                Console.Clear();
-                Console.SetCursorPosition(Map.Width + 10, 0);
-                Console.WriteLine(string.Format("Hour Counter:  {0}", hourCounter));
+                mapManipulator.HourCounter++;
+                Console.Clear();              
 
-                if (hourCounter == maxHour)
+                if (mapManipulator.HourCounter == mapManipulator.MaxHour)
                 {
                     gameIsRunning = false;
                 }
@@ -135,18 +136,9 @@ namespace TerrariumGame.Infrastructure
 
         private void CollectionClear()
         {
-            /*
-            Пытался через LINQ сделать удаление для уменьшения количества строк,
-            но в определённые моменты удаления не происходило.
-            */
-            //(Map.GameObjects as List<GameObject>).RemoveAll(gameObject => gameObject.State == State.Deleted);
-            for (int obj = 0; obj < Map.GameObjects.Count; obj++)
-            {
-                if (Map.GameObjects[obj].State == State.Deleted)
-                {
-                    Map.GameObjects.Remove(Map.GameObjects[obj]);
-                }
-            }
+            (Map.GameObjects as List<GameObject>)
+                .RemoveAll(gameObject => gameObject.State == State.Deleted);
+           
         }
 
         /// <summary>
@@ -159,7 +151,8 @@ namespace TerrariumGame.Infrastructure
             {
                 if (Map.GameObjects[obj] is Customer)
                 {
-                    var newWork = (Map.GameObjects[obj] as Customer).CreateWork();
+                    var newWork = (Map.GameObjects[obj] as Customer)
+                        .CreateWork();
                     Map.GameObjects.Add(newWork);
                 }
             }

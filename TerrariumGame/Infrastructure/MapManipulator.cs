@@ -11,9 +11,28 @@ namespace TerrariumGame.Infrastructure
     class MapManipulator
     {
         #region Fields
+        #region Public
+        public int HourCounter
+        {
+            get
+            {
+                return hourCounter;
+            }
+            set
+            {
+                hourCounter = value;
+            }
+        }
+       
+        public int MaxHour { get { return maxHour; } }
+        #endregion
+        #region Private
         private int minObjectAmount = 4;
         private int maxObjectAmount = 12;
+        private const int maxHour = 8;
+        private int hourCounter = 0;
         Random random = new Random();
+        #endregion
         #endregion
 
         /// <summary>
@@ -31,6 +50,10 @@ namespace TerrariumGame.Infrastructure
                 }
                 Console.WriteLine();
             }
+
+            Console.SetCursorPosition(map.Width + 10, 0);
+            Console.WriteLine(string.Format("Hour Counter:  {0}",
+                this.HourCounter));
         }
 
         /// <summary>
