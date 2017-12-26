@@ -50,22 +50,18 @@ namespace TerrariumGame.Models.Alive
             {
                 if (ee is Worker)
                 {
-                    this.Say(string.Format("Привет! {0}", ee.Name));
+                    this.Say(string.Format("Привет, {0}!", ee.Name));
                 }
                 else if (ee is IManage)
                 {
-                    this.Say(string.Format("Здравствуйте! {0}", ee.Name));
-                }
-                else
-                {
-                    this.Say(string.Format("Здравствуйте! {0}", ee.Name));
+                    this.Say(string.Format("Здравствуйте, {0}!", ee.Name));
                 }
             }
         }
 
         public override void Say(string whatToSay)
         {
-            Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Рабочий", whatToSay));
+            Say("Worker", whatToSay);
         }      
         #endregion
     }

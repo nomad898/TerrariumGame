@@ -46,21 +46,21 @@ namespace TerrariumGame.Models.Alive
         }
         #endregion
         #region Employee abstract methods override
+        public override void Say(string whatToSay)
+        {
+            Say("Boss", whatToSay);
+        }
+
         public override void Talk(Employee ee)
         {
             if (ee is Worker)
             {
-                this.Say(string.Format("Работать! {0}", ee.Name));
+                this.Say(string.Format("Работать, {0}!", ee.Name));
             }
             else
             {
-                this.Say(string.Format("Здравствуйте! {0}", ee.Name));
+                this.Say(string.Format("Здравствуйте, {0}!", ee.Name));
             }
-        }
-
-        public override void Say(string whatToSay)
-        {
-            Console.WriteLine(string.Format("{0}, {1}, {2}", this.Name, "Босс", whatToSay));
         }
         #endregion
     }

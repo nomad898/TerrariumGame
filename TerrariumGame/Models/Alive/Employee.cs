@@ -40,6 +40,11 @@ namespace TerrariumGame.Models.Alive
         #region Methods
         public abstract void Say(string whatToSay);       
 
+        public virtual void Say(string rank, string whatToSay)
+        {
+            Console.WriteLine(string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay));
+        }
+
         public abstract void Talk(Employee ee);
         #endregion
     }
