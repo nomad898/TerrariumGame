@@ -52,9 +52,7 @@ namespace TerrariumGame.Infrastructure
                 Console.WriteLine();
             }
 
-            Console.SetCursorPosition(map.Width + 10, 0);
-            Console.WriteLine(string.Format("Hour Counter:  {0}",
-                this.HourCounter));
+            ShowHourCounter(map);
         }
 
         /// <summary>
@@ -86,6 +84,13 @@ namespace TerrariumGame.Infrastructure
             ObjectsInit(map);
         }
         
+        private void ShowHourCounter(Map map)
+        {
+            Console.SetCursorPosition(map.Width + 10, 0);
+            Console.WriteLine(string.Format("Hour Counter:  {0}",
+                this.HourCounter));
+        }
+
         /// <summary>
         ///    Initial initialization. Creates empty field.
         /// </summary>

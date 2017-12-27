@@ -105,7 +105,6 @@ namespace TerrariumGame.Infrastructure
 
                     if (empl != null)
                     {
-                        Console.Clear();
                         Greet(employee, empl);
                     }
                     else
@@ -149,19 +148,24 @@ namespace TerrariumGame.Infrastructure
         /// <param name="secondAliveObject">Employee instance</param>
         private void GreetLogic(Employee firstAliveObject, Employee secondAliveObject)
         {
+            Console.SetCursorPosition(Map.Width + 10, 2);
+            string talkResult = string.Empty;
             if (firstAliveObject is Worker)
             {
-                (firstAliveObject as Worker).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as Worker).Talk((secondAliveObject));
             }
             else if (firstAliveObject is BigBoss)
             {
-                (firstAliveObject as BigBoss).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as BigBoss).Talk((secondAliveObject));
             }
             else if (firstAliveObject is Boss)
             {
-                (firstAliveObject as Boss).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as Boss).Talk((secondAliveObject));
             }
+            Console.WriteLine(talkResult);
             Thread.Sleep(delayTime);
+            Console.SetCursorPosition(Map.Width + 10, 2);
+            Console.WriteLine();
         }
         #endregion
 

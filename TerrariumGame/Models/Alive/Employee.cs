@@ -40,14 +40,14 @@ namespace TerrariumGame.Models.Alive
         }
         #endregion
         #region Methods
-        protected abstract void Say(string whatToSay);
+        protected abstract string Say(string whatToSay);
 
-        protected virtual void Say(string rank, string whatToSay)
+        protected virtual string Say(string rank, string whatToSay)
         {
-            Console.WriteLine(string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay));
+            return string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay);
         }
 
-        public abstract void Talk(Employee ee);
+        public abstract string Talk(Employee ee);
         #endregion
     }
 }
