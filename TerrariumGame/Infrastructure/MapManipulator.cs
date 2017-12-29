@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.Infrastructure.Factory;
+using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
-    class MapManipulator
+    class MapManipulator : IMapManipulator
     {
         #region Fields
         #region Public
@@ -25,21 +26,42 @@ namespace TerrariumGame.Infrastructure
         }
        
         public int MaxHour { get { return maxHour; } }
+
+        public IMap Map
+        {
+            get
+            {
+                return map;
+            }
+            set
+            {
+                map = value;
+            }
+        }
+        
         #endregion
         #region Private
         private int minObjectAmount = 4;
         private int maxObjectAmount = 12;
         private const int maxHour = 8;
         private int hourCounter = 0;
-        Random random = new Random();
+        private Random random;
+        private IMap map;
         #endregion
         #endregion
+
+        public MapManipulator(IMap map)
+        {
+            random = new Random();
+            this.map = map;
+            Init();
+        }
 
         /// <summary>
         ///     Shows current map
         /// </summary>
         /// <param name="map">Map instance</param>
-        public void ShowMap(Map map)
+        public void ShowMap()
         {
             Console.SetCursorPosition(0, 0);
             Console.Clear();
@@ -52,16 +74,16 @@ namespace TerrariumGame.Infrastructure
                 Console.WriteLine();
             }
 
-            ShowHourCounter(map);
+            ShowHourCounter();
         }
 
         /// <summary>
         ///     Place the objects on the map
         /// </summary>
         /// <param name="map">Map instance</param>
-        public void SetObjects(Map map)
+        public void SetObjects()
         {
-            MapInit(map);
+            MapInit();
             foreach (var obj in map.GameObjects)
             {
                 if (obj.Position.X >= 0
@@ -78,13 +100,13 @@ namespace TerrariumGame.Infrastructure
         ///     Map initialization
         /// </summary>
         /// <param name="map">Map instance</param>
-        public void Init(Map map)
+        private void Init()
         {
-            MapInit(map);
-            ObjectsInit(map);
+            MapInit();
+            ObjectsInit();
         }
         
-        private void ShowHourCounter(Map map)
+        private void ShowHourCounter()
         {
             Console.SetCursorPosition(map.Width + 10, 0);
             Console.WriteLine(string.Format("Hour Counter:  {0}",
@@ -95,7 +117,7 @@ namespace TerrariumGame.Infrastructure
         ///    Initial initialization. Creates empty field.
         /// </summary>
         /// <param name="map">Map instance</param>
-        private void MapInit(Map map)
+        private void MapInit()
         {
             Console.SetCursorPosition(0, 0);
             for (int x = 0; x < map.Height; x++)
@@ -114,7 +136,7 @@ namespace TerrariumGame.Infrastructure
         ///     Creates new objects.
         /// </summary>
         /// <param name="map">Map instance</param>
-        private void ObjectsInit(Map map)
+        private void ObjectsInit()
         {
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)

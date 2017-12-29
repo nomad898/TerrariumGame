@@ -8,18 +8,53 @@ using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
-    class Dice
+    class Dice : IDice
     {
         #region Fields
-        Random random = new Random();
-        private Map map;
+        Random random;
+        private IMap map;
         private int chance = 100;
         private int limit = 50;
+
+        public IMap Map
+        {
+            get
+            {
+                return map;
+            }
+            set
+            {
+                map = value;
+            }
+        }
+        public int Chance
+        {
+            get
+            {
+                return chance;
+            }
+            set
+            {
+                chance = value;
+            }
+        }
+        public int Limit
+        {
+            get
+            {
+                return limit;
+            }
+            set
+            {
+                limit = value;
+            }
+        }
         #endregion
 
-        public Dice(Map map)
+        public Dice(IMap map)
         {
             this.map = map;
+            random = new Random();
         }
 
         /// <summary>

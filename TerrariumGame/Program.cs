@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TerrariumGame.Infrastructure;
+using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
 
@@ -14,7 +15,10 @@ namespace TerrariumGame
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
+            IMap map = new Map(10, 10);
+            IMapManipulator mapManipulator = new MapManipulator(map);
+            IDice dice = new Dice(map);
+            IGame game = new Game(map, mapManipulator, dice);
             game.Start();            
             Console.ReadKey(true);
         }        

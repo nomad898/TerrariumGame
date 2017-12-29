@@ -13,45 +13,83 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Infrastructure
 {
-    class Game
+    class Game : IGame
     {
         #region Fields
         #region Public
-        public Map Map { get; private set; }
+        public bool GameIsRunning
+        {
+            get
+            {
+                return gameIsRunning;
+            }
+            set
+            {
+                gameIsRunning = value;
+            }
+        }
+        public IMap Map { get { return map; } }
+        public IMapManipulator MapManipulator
+        {
+            get
+            {
+                return mapManipulator;
+            }
+        }
+        public IDice Dice
+        {
+            get
+            {
+                return dice;
+            }
+        }
         #endregion
         #region Private
         private bool gameIsRunning = true;
-        private const int mapHeightValue = 10;
-        private const int mapWidthValue = 10;
 
         /// <summary>
         ///     Hour duration
         /// </summary>
         private const int minutesInHour = 30;
         private const int delayTime = 1000;
+        private Random random;
 
-        private MapManipulator mapManipulator = new MapManipulator();
-        private Random random = new Random();
-        private Dice dice;
+        private readonly IMap map;
+        private readonly IMapManipulator mapManipulator;        
+        private readonly IDice dice;
         #endregion
         #endregion
+
+        public Game(IMap map,
+            IMapManipulator mapManipulator,
+            IDice dice)
+        {
+            if (map == null ||
+                mapManipulator == null ||
+                dice == null)
+            {
+                throw new ArgumentNullException("gaming accessories are null");
+            }
+
+            random = new Random();
+            this.map = map;
+            this.mapManipulator = mapManipulator;
+            this.dice = dice;
+        }
 
         /// <summary>
         /// Start game
         /// </summary>
         public void Start()
-        {
-            Map = new Map(mapHeightValue, mapWidthValue);
-            mapManipulator.Init(Map);
-            mapManipulator.ShowMap(Map);
-            dice = new Dice(Map);
+        {           
+            mapManipulator.ShowMap();          
             while (gameIsRunning)
             {
                 for (int minute = 0; minute < minutesInHour; minute++)
                 {
                     StartLogic();
-                    mapManipulator.SetObjects(Map);
-                    mapManipulator.ShowMap(Map);
+                    mapManipulator.SetObjects();
+                    mapManipulator.ShowMap();
                     Thread.Sleep(delayTime);
                 }
                 mapManipulator.HourCounter++;

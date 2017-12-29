@@ -45,10 +45,16 @@
   <ItemGroup>
     <Compile Include="Infrastructure\Dice.cs" />
     <Compile Include="Infrastructure\Factory\GameObjectFactory.cs" />
+    <Compile Include="Infrastructure\Map.cs" />
     <Compile Include="Infrastructure\MapManipulator.cs" />
     <Compile Include="Interfaces\IAlivable.cs" />
+    <Compile Include="Interfaces\IDice.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
     <Compile Include="Interfaces\IManage.cs" />
+    <Compile Include="Interfaces\IMap.cs" />
+    <Compile Include="Interfaces\IMapManipulator.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Models\Alive\BigBoss.cs" />
     <Compile Include="Models\Alive\Boss.cs" />
@@ -60,7 +66,6 @@
     <Compile Include="Models\NotAlive\Work.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Alive\Worker.cs" />
-    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
