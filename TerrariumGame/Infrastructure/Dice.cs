@@ -12,7 +12,7 @@ namespace TerrariumGame.Infrastructure
     {
         #region Fields
         Random random;
-        private IMap map;
+        private readonly IMap map;
         private int chance = 100;
         private int limit = 50;
 
@@ -21,10 +21,6 @@ namespace TerrariumGame.Infrastructure
             get
             {
                 return map;
-            }
-            set
-            {
-                map = value;
             }
         }
         public int Chance

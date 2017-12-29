@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Interfaces
 {
-    interface IDice
+    interface IBigBoss
     {
-        IMap Map { get; }
-        int Chance { get; set; }
-        int Limit { get; set; }
-
-        void ChangeObjectPosition(IMovable mvbl);
     }
 }
