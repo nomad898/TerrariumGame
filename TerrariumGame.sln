@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRunner", "ConsoleApplic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLibrary", "ClassLibrary\InterfaceLibrary.csproj", "{570EF974-1E62-4E46-9831-F17072D1D47E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Training projects", "Training projects", "{E4B41B36-7BDD-4057-AD9F-A4FE4FB4C0D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacTraining", "AutofacTraining\AutofacTraining.csproj", "{DC4E5669-BABB-497F-8E21-E5B1964712FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{570EF974-1E62-4E46-9831-F17072D1D47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{570EF974-1E62-4E46-9831-F17072D1D47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{570EF974-1E62-4E46-9831-F17072D1D47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4E5669-BABB-497F-8E21-E5B1964712FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4E5669-BABB-497F-8E21-E5B1964712FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4E5669-BABB-497F-8E21-E5B1964712FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4E5669-BABB-497F-8E21-E5B1964712FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC4E5669-BABB-497F-8E21-E5B1964712FE} = {E4B41B36-7BDD-4057-AD9F-A4FE4FB4C0D8}
 	EndGlobalSection
 EndGlobal
