@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IManagable
+    public interface IManagable
     {
         int DoneWork { get; set; }
         void DoWork();

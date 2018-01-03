@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IWork : IGameObject
+    public interface IBigBoss : IBoss
     {
+        ISalaryAddition CreateSalaryAddition();
     }
 }

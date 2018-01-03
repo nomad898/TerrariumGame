@@ -1,14 +1,15 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
-    class Dice : IDice
+    public class Dice : IDice
     {
         #region Fields
         Random random;

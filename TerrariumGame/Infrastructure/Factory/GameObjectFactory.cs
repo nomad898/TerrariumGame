@@ -1,16 +1,16 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Infrastructure.Factory
 {
-    class GameObjectFactory : IGameObjectFactory
+    public class GameObjectFactory : IGameObjectFactory
     {
         /// <summary>
         ///     Create new GameObject

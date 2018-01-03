@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IManage
+    public interface IManage
     {
         void Manage(IManagable imngbl);
     }

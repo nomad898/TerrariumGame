@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IFactory<T> where T: class
+    public interface IAlivable
     {
-        T Create(int id);
+        bool IsAlive { get; }
     }
 }

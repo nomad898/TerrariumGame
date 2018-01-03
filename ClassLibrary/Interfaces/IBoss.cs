@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IAlivable
+    public interface IBoss : IEmployee, IManage, IManagable
     {
-        bool IsAlive { get; }
     }
 }

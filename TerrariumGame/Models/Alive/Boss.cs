@@ -1,10 +1,11 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive

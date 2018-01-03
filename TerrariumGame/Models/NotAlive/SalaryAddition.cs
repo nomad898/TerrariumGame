@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
+using InterfaceLibrary.Interfaces;
 
 namespace TerrariumGame.Models.NotAlive
 {

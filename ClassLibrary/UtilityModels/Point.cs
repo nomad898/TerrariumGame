@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
-using TerrariumGame.Models.Alive;
 
-namespace TerrariumGame.Models
+namespace InterfaceLibrary.UtilityModels
 {
-    struct Point
+    public struct Point
     {
         #region Fields
         public int X { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IEmployee : IGameObject
+    public interface IEmployee : IGameObject
     {
         decimal Salary { get; set; }
         string Name { get; set; }

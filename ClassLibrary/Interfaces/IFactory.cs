@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IBoss : IEmployee, IManage, IManagable
+    public interface IFactory<T> where T: class
     {
+        T Create(int id);
     }
 }

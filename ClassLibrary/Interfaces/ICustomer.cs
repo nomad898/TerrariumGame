@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Models
+namespace InterfaceLibrary.Interfaces
 {
-    enum State
+    public interface ICustomer : IGameObject, IManage
     {
-        InGame,
-        Deleted
+        IWork CreateWork();
     }
 }

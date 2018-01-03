@@ -1,13 +1,13 @@
-﻿using System;
+﻿using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Models;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IMovable
+    public interface IMovable
     {
         char Icon { get; }
         Point Position { get; set; }

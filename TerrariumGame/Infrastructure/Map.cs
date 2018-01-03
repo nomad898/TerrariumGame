@@ -1,14 +1,14 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
-    class Map : IMap
+    public class Map : IMap
     {
         #region Fields
         private char[,] matrix;

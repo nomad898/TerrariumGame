@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +8,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Infrastructure
 {
-    class Game : IGame
+    public class Game : IGame
     {
         #region Fields
         #region Public

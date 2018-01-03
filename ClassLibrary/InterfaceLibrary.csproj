@@ -4,36 +4,30 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DF681808-5987-413E-819B-2201ED91F584}</ProjectGuid>
+    <ProjectGuid>{570EF974-1E62-4E46-9831-F17072D1D47E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TerrariumGame</RootNamespace>
-    <AssemblyName>TerrariumGame</AssemblyName>
+    <RootNamespace>ClassLibrary</RootNamespace>
+    <AssemblyName>ClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>2</WarningLevel>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,29 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\Dice.cs" />
-    <Compile Include="Infrastructure\Factory\GameObjectFactory.cs" />
-    <Compile Include="Infrastructure\Map.cs" />
-    <Compile Include="Infrastructure\MapManipulator.cs" />
-    <Compile Include="Models\Alive\BigBoss.cs" />
-    <Compile Include="Models\Alive\Boss.cs" />
-    <Compile Include="Models\Alive\Customer.cs" />
-    <Compile Include="Models\Alive\Employee.cs" />
-    <Compile Include="Infrastructure\Game.cs" />
-    <Compile Include="Models\GameObject.cs" />
-    <Compile Include="Models\NotAlive\SalaryAddition.cs" />
-    <Compile Include="Models\NotAlive\Work.cs" />
-    <Compile Include="Models\Alive\Worker.cs" />
+    <Compile Include="Interfaces\IAlivable.cs" />
+    <Compile Include="Interfaces\IBigBoss.cs" />
+    <Compile Include="Interfaces\IBoss.cs" />
+    <Compile Include="Interfaces\ICustomer.cs" />
+    <Compile Include="Interfaces\IDice.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\IGame.cs" />
+    <Compile Include="Interfaces\IGameObject.cs" />
+    <Compile Include="Interfaces\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\IManagable.cs" />
+    <Compile Include="Interfaces\IManage.cs" />
+    <Compile Include="Interfaces\IMap.cs" />
+    <Compile Include="Interfaces\IMapManipulator.cs" />
+    <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\ISalaryAddition.cs" />
+    <Compile Include="Interfaces\IWork.cs" />
+    <Compile Include="Interfaces\IWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\InterfaceLibrary.csproj">
-      <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
-      <Name>InterfaceLibrary</Name>
-    </ProjectReference>
+    <Compile Include="UtilityModels\Point.cs" />
+    <Compile Include="UtilityModels\State.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

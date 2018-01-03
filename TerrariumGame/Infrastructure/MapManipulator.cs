@@ -1,15 +1,16 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.Infrastructure.Factory;
-using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 
 namespace TerrariumGame.Infrastructure
 {
-    class MapManipulator : IMapManipulator
+    public class MapManipulator : IMapManipulator
     {
         #region Fields
         #region Public

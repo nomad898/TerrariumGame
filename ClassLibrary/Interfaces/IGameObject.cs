@@ -1,13 +1,13 @@
-﻿using System;
+﻿using InterfaceLibrary.UtilityModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.Models;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IGameObject : IMovable, IAlivable
+    public interface IGameObject : IMovable, IAlivable
     {
         State State { get; set; }
     }

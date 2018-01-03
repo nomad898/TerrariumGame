@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TerrariumGame.Interfaces
+namespace InterfaceLibrary.Interfaces
 {
-    interface IGameObjectFactory : IFactory<IGameObject>
+    public interface IGameObjectFactory : IFactory<IGameObject>
     {
         IGameObject Create(int id, int x, int y);
         IGameObject Create(int id, string name, int x, int y);

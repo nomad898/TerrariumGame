@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using InterfaceLibrary.Interfaces;
+using System;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
-using TerrariumGame.Interfaces;
-using TerrariumGame.Models;
-using TerrariumGame.Models.Alive;
 
-namespace TerrariumGame
+namespace ConsoleApplication
 {
     class Program
     {
@@ -21,8 +14,8 @@ namespace TerrariumGame
             IMapManipulator mapManipulator = new MapManipulator(map, goFactory, 4, 12, 1, 6);
             IDice dice = new Dice(map);
             IGame game = new Game(map, mapManipulator, dice);
-            game.Start();            
+            game.Start();
             Console.ReadKey(true);
-        }        
+        }
     }
 }
