@@ -51,7 +51,7 @@ namespace TerrariumGame.Models.Alive
 
         public override string Talk(IEmployee ee)
         {
-            if (ee is BigBoss)
+            if (ee is IBigBoss)
             {
                 return this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
             }

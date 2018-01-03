@@ -12,7 +12,7 @@ namespace TerrariumGame.Interfaces
         int Height { get; set; }
         int Width { get; set; }
         char[,] Matrix { get; set; }
-        IList<GameObject> GameObjects { get; set; }
+        IList<IGameObject> GameObjects { get; }
         char this[int x, int y] { get; set; }
     }
 }

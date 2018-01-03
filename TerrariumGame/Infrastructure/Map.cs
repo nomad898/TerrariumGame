@@ -12,7 +12,7 @@ namespace TerrariumGame.Infrastructure
     {
         #region Fields
         private char[,] matrix;
-        private readonly IList<GameObject> gameObjects;
+        private readonly IList<IGameObject> gameObjects;
         private int height;
         private int width;
         #endregion
@@ -30,15 +30,11 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        public IList<GameObject> GameObjects
+        public IList<IGameObject> GameObjects
         {
             get
             {
                 return gameObjects;
-            }
-            set
-            {
-                gameObjects = value;
             }
         }
 
@@ -86,10 +82,10 @@ namespace TerrariumGame.Infrastructure
             this.Width = weight;
             this.Height = height;
             matrix = new char[Height, Width];
-            gameObjects = new List<GameObject>();
+            gameObjects = new List<IGameObject>();
         }
 
-        public Map(int height, int weight, IList<GameObject> objects)
+        public Map(int height, int weight, IList<IGameObject> objects)
         {
             this.Width = weight;
             this.Height = height;

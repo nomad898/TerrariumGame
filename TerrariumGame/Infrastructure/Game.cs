@@ -101,7 +101,7 @@ namespace TerrariumGame.Infrastructure
 
                 CreateNewWork();
             }
-        }
+        }        
 
         #region GameLogic
         /// <summary>
@@ -116,7 +116,7 @@ namespace TerrariumGame.Infrastructure
                 {
                     MoveObjects(gameObject);
 
-                    var gameO = gameObject as Employee;
+                    var gameO = gameObject as IEmployee;
 
                     if (gameO != null)
                     {
@@ -132,7 +132,7 @@ namespace TerrariumGame.Infrastructure
         ///     Greet with other employees or do work.
         /// </summary>
         /// <param name="employee">Employee instance</param>
-        private void AliveObjectActions(Employee employee)
+        private void AliveObjectActions(IEmployee employee)
         {
             foreach (var gameObject in Map.GameObjects)
             {
@@ -162,7 +162,7 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         /// If object's IsAlive is True, change object position.
         /// </summary>
-        private void MoveObjects(GameObject gameObject)
+        private void MoveObjects(IGameObject gameObject)
         {
             dice.ChangeObjectPosition(gameObject);
         }
@@ -173,7 +173,7 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         ///     If two alive employees have same position, call method 
         /// </summary>        
-        private void Greet(Employee firstAliveObject, Employee secondAliveObject)
+        private void Greet(IEmployee firstAliveObject, IEmployee secondAliveObject)
         {
             GreetLogic(firstAliveObject, secondAliveObject);
             GreetLogic(secondAliveObject, firstAliveObject);
@@ -184,21 +184,21 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         /// <param name="firstAliveObject">Employee instance</param>
         /// <param name="secondAliveObject">Employee instance</param>
-        private void GreetLogic(Employee firstAliveObject, Employee secondAliveObject)
+        private void GreetLogic(IEmployee firstAliveObject, IEmployee secondAliveObject)
         {
             Console.SetCursorPosition(Map.Width + 10, 2);
             string talkResult = string.Empty;
-            if (firstAliveObject is Worker)
+            if (firstAliveObject is IWorker)
             {
-                talkResult = (firstAliveObject as Worker).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as IWorker).Talk((secondAliveObject));
             }
-            else if (firstAliveObject is BigBoss)
+            else if (firstAliveObject is IBigBoss)
             {
-                talkResult = (firstAliveObject as BigBoss).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as IBigBoss).Talk((secondAliveObject));
             }
-            else if (firstAliveObject is Boss)
+            else if (firstAliveObject is IBoss)
             {
-                talkResult = (firstAliveObject as Boss).Talk((secondAliveObject));
+                talkResult = (firstAliveObject as IBoss).Talk((secondAliveObject));
             }
             Console.WriteLine(talkResult);
             Thread.Sleep(delayTime);
@@ -212,7 +212,7 @@ namespace TerrariumGame.Infrastructure
         ///     If Worker position equals work object position, collect work.
         /// </summary>
         /// <param name="worker">Worker class instance</param>
-        private void CollectWork(Worker worker, Work work)
+        private void CollectWork(IWorker worker, IWork work)
         {
             worker.DoWork(work);
         }
@@ -222,7 +222,7 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CollectionClear()
         {
-            (Map.GameObjects as List<GameObject>)
+            (Map.GameObjects as List<IGameObject>)
                 .RemoveAll(gameObject => gameObject.State == State.Deleted);
         }
 
@@ -234,9 +234,9 @@ namespace TerrariumGame.Infrastructure
             int mapObjectsCount = Map.GameObjects.Count;
             for (int obj = 0; obj < mapObjectsCount; obj++)
             {
-                if (Map.GameObjects[obj] is Customer)
+                if (Map.GameObjects[obj] is ICustomer)
                 {
-                    var newWork = (Map.GameObjects[obj] as Customer)
+                    var newWork = (Map.GameObjects[obj] as ICustomer)
                         .CreateWork();
                     Map.GameObjects.Add(newWork);
                 }

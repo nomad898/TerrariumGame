@@ -10,5 +10,6 @@ namespace TerrariumGame.Interfaces
     {
         int DoneWork { get; set; }
         void DoWork();
+        void DoWork(IWork work);
     }
 }

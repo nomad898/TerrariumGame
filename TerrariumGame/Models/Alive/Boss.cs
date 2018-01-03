@@ -37,6 +37,13 @@ namespace TerrariumGame.Models.Alive
         {
             DoneWork++;
         }
+
+        // TODO: Code repetition
+        public void DoWork(IWork work)
+        {
+            work.State = State.Deleted;
+            DoneWork++;
+        }
         #endregion
         #region IManage
         public virtual void Manage(IManagable imngbl)
