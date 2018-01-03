@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Interfaces
 {
-    interface IBigBoss
+    interface IBigBoss : IBoss
     {
+        ISalaryAddition CreateSalaryAddition();
     }
 }

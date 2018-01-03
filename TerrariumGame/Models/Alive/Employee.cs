@@ -7,7 +7,7 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.Alive
 {
-    abstract class Employee : GameObject
+    abstract class Employee : GameObject, IEmployee
     {
         #region Fields
         public decimal Salary { get; set; }
@@ -47,7 +47,7 @@ namespace TerrariumGame.Models.Alive
             return string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay);
         }
 
-        public abstract string Talk(Employee ee);
+        public abstract string Talk(IEmployee ee);
         #endregion
     }
 }

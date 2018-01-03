@@ -8,7 +8,7 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
-    class BigBoss : Boss
+    class BigBoss : Boss, IBigBoss
     {
         #region Fields
         public override char Icon { get { return 'K'; } }
@@ -31,14 +31,14 @@ namespace TerrariumGame.Models.Alive
         public override void Manage(IManagable imngbl)
         {
             imngbl.DoWork();
-            var mngbl = imngbl as Employee;
+            var mngbl = imngbl as IEmployee;
             if (mngbl != null)
             {
                 mngbl.Salary -= 100;
             }
         }
 
-        public SalaryAddition CreateSalaryAddition()
+        public ISalaryAddition CreateSalaryAddition()
         {
             return new SalaryAddition();
         }
@@ -49,7 +49,7 @@ namespace TerrariumGame.Models.Alive
             return Say("BigBoss", whatToSay);
         }
 
-        public override string Talk(Employee ee)
+        public override string Talk(IEmployee ee)
         {
             if (ee is BigBoss)
             {

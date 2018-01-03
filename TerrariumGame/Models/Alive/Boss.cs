@@ -9,12 +9,12 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
-    class Boss : Employee, IManage, IManagable
+    class Boss : Employee, IBoss
     {
         #region Fields
         public override char Icon { get { return 'B'; } }
 
-        public int DoneWork { get; private set; }
+        public int DoneWork { get; set; }
         #endregion
         #region Ctor
         public Boss() : base()
@@ -54,9 +54,9 @@ namespace TerrariumGame.Models.Alive
             return Say("Boss", whatToSay);
         }
 
-        public override string Talk(Employee ee)
+        public override string Talk(IEmployee ee)
         {
-            if (ee is Worker)
+            if (ee is IWorker)
             {
                 return this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
             }

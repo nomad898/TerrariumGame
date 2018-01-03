@@ -55,11 +55,14 @@
     <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\IGame.cs" />
+    <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\IManagable.cs" />
     <Compile Include="Interfaces\IManage.cs" />
     <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="Interfaces\IMapManipulator.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\ISalaryAddition.cs" />
+    <Compile Include="Interfaces\IWork.cs" />
     <Compile Include="Interfaces\IWorker.cs" />
     <Compile Include="Models\Alive\BigBoss.cs" />
     <Compile Include="Models\Alive\Boss.cs" />

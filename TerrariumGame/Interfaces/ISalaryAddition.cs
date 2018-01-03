@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Interfaces
 {
-    interface ICustomer : IGameObject, IManage
+    interface ISalaryAddition
     {
-        IWork CreateWork();
     }
 }

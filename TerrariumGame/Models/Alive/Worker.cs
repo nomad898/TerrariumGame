@@ -10,7 +10,7 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
-    class Worker : Employee, IManagable
+    class Worker : Employee, IWorker
     {
         #region Fields
         public override char Icon { get { return 'W'; } }
@@ -35,7 +35,7 @@ namespace TerrariumGame.Models.Alive
         public int DoneWork { get; set; }
 
 
-        public void DoWork(Work work)
+        public void DoWork(IWork work)
         {
             work.State = State.Deleted;
             DoneWork++;
@@ -52,9 +52,9 @@ namespace TerrariumGame.Models.Alive
             return Say("Worker", whatToSay);
         }
 
-        public override string Talk(Employee ee)
+        public override string Talk(IEmployee ee)
         {
-            if (ee is Worker)
+            if (ee is IWorker)
             {
                 return this.Say(string.Format("Привет, {0} - {1}!", ee.Name, ee.ToString()));
             }

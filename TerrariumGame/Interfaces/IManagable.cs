@@ -8,7 +8,7 @@ namespace TerrariumGame.Interfaces
 {
     interface IManagable
     {
-        int DoneWork { get; }
+        int DoneWork { get; set; }
         void DoWork();
     }
 }

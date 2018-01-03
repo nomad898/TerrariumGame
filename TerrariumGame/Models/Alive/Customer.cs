@@ -8,7 +8,7 @@ using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Models.Alive
 {
-    class Customer : GameObject, IManage
+    class Customer : GameObject, ICustomer
     {
         public override bool IsAlive
         {
@@ -29,7 +29,7 @@ namespace TerrariumGame.Models.Alive
             imngbl.DoWork();
         }
 
-        public Work CreateWork()
+        public IWork CreateWork()
         {
             return new Work(this.Position.X, this.Position.Y);
         }

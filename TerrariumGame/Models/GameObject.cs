@@ -7,7 +7,7 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models
 {
-    abstract class GameObject : IMovable, IAlivable
+    abstract class GameObject : IGameObject
     {
         #region Fields
         #region IMovable
@@ -25,7 +25,9 @@ namespace TerrariumGame.Models
         public abstract bool IsAlive { get; }
         #endregion
 
+        #region IGameObject
         public State State { get; set; }
+        #endregion
         #endregion
         #region Ctor
         public GameObject()

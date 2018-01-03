@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Interfaces
 {
-    interface IWorker
+    interface IWorker : IEmployee, IManagable
     {
     }
 }

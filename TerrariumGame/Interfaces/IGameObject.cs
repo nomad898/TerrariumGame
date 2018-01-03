@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TerrariumGame.Models;
 
 namespace TerrariumGame.Interfaces
 {
-    interface ICustomer : IGameObject, IManage
+    interface IGameObject : IMovable, IAlivable
     {
-        IWork CreateWork();
+        State State { get; set; }
     }
 }

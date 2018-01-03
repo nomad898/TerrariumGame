@@ -7,7 +7,7 @@ using TerrariumGame.Interfaces;
 
 namespace TerrariumGame.Models.NotAlive
 {
-    class Work : GameObject
+    class Work : GameObject, IWork
     {
         public override bool IsAlive
         {
