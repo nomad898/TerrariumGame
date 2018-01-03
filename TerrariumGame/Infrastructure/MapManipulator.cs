@@ -39,15 +39,15 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        public IFactory Factory
+        public IGameObjectFactory GameObjectFactory
         {
             get
             {
-                return factory;
+                return gOFactory;
             }
             set
             {
-                factory = value;
+                gOFactory = value;
             }
         }
 
@@ -59,15 +59,15 @@ namespace TerrariumGame.Infrastructure
         private int hourCounter = 0;
         private Random random;
         private IMap map;
-        private IFactory factory;
+        private IGameObjectFactory gOFactory;
         #endregion
         #endregion
 
-        public MapManipulator(IMap map, IFactory factory)
+        public MapManipulator(IMap map, IGameObjectFactory factory)
         {
             random = new Random();
             this.map = map;
-            this.factory = factory;
+            this.gOFactory = factory;
             Init();
         }
 
@@ -145,8 +145,6 @@ namespace TerrariumGame.Infrastructure
         }
 
         private static int objectId = 1;
-        private int createIdFirst = 1;
-        private int createIdSecond = 6;
 
         /// <summary>
         ///     Creates new objects.
@@ -157,9 +155,9 @@ namespace TerrariumGame.Infrastructure
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)
             {
-                map.GameObjects.Add(factory.Create(random.Next(
-                    createIdFirst,
-                    createIdSecond),
+                map.GameObjects.Add(gOFactory.Create(random.Next(
+                    gOFactory.IdBegin,
+                    gOFactory.IdEnd),
                     objectId.ToString(),
                     random.Next(0, map.Height),
                     random.Next(0, map.Width)));

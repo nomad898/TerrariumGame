@@ -17,7 +17,7 @@ namespace TerrariumGame.Interfaces
 
         IMap Map { get; set; }
 
-        IFactory Factory { get; set; }
+        IGameObjectFactory GameObjectFactory { get; set; }
 
         void ShowMap();
 

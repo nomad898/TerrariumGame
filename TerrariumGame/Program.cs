@@ -17,8 +17,8 @@ namespace TerrariumGame
         static void Main(string[] args)
         {
             IMap map = new Map(10, 10);
-            IFactory factory = new GameObjectFactory();
-            IMapManipulator mapManipulator = new MapManipulator(map, factory);
+            IGameObjectFactory goFactory = new GameObjectFactory(1, 6);
+            IMapManipulator mapManipulator = new MapManipulator(map, goFactory);
             IDice dice = new Dice(map);
             IGame game = new Game(map, mapManipulator, dice);
             game.Start();            

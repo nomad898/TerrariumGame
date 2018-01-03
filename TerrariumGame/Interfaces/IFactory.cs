@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Interfaces
 {
-    interface IFactory
+    interface IFactory<T> where T: class
     {
-        IGameObject Create(int id);
-        IGameObject Create(int id, int x, int y);
-        IGameObject Create(int id, string name, int x, int y);
+        T Create(int id);
     }
 }
