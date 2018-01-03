@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TerrariumGame.Infrastructure;
+using TerrariumGame.Infrastructure.Factory;
 using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
@@ -16,7 +17,8 @@ namespace TerrariumGame
         static void Main(string[] args)
         {
             IMap map = new Map(10, 10);
-            IMapManipulator mapManipulator = new MapManipulator(map);
+            IFactory factory = new GameObjectFactory();
+            IMapManipulator mapManipulator = new MapManipulator(map, factory);
             IDice dice = new Dice(map);
             IGame game = new Game(map, mapManipulator, dice);
             game.Start();            

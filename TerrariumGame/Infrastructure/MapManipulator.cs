@@ -24,7 +24,7 @@ namespace TerrariumGame.Infrastructure
                 hourCounter = value;
             }
         }
-       
+
         public int MaxHour { get { return maxHour; } }
 
         public IMap Map
@@ -38,7 +38,19 @@ namespace TerrariumGame.Infrastructure
                 map = value;
             }
         }
-        
+
+        public IFactory Factory
+        {
+            get
+            {
+                return factory;
+            }
+            set
+            {
+                factory = value;
+            }
+        }
+
         #endregion
         #region Private
         private int minObjectAmount = 4;
@@ -47,13 +59,15 @@ namespace TerrariumGame.Infrastructure
         private int hourCounter = 0;
         private Random random;
         private IMap map;
+        private IFactory factory;
         #endregion
         #endregion
 
-        public MapManipulator(IMap map)
+        public MapManipulator(IMap map, IFactory factory)
         {
             random = new Random();
             this.map = map;
+            this.factory = factory;
             Init();
         }
 
@@ -105,7 +119,7 @@ namespace TerrariumGame.Infrastructure
             MapInit();
             ObjectsInit();
         }
-        
+
         private void ShowHourCounter()
         {
             Console.SetCursorPosition(map.Width + 10, 0);
@@ -131,7 +145,9 @@ namespace TerrariumGame.Infrastructure
         }
 
         private static int objectId = 1;
-        
+        private int createIdFirst = 1;
+        private int createIdSecond = 6;
+
         /// <summary>
         ///     Creates new objects.
         /// </summary>
@@ -141,7 +157,9 @@ namespace TerrariumGame.Infrastructure
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)
             {
-                map.GameObjects.Add(GameObjectFactory.Create(random.Next(1, 6),
+                map.GameObjects.Add(factory.Create(random.Next(
+                    createIdFirst,
+                    createIdSecond),
                     objectId.ToString(),
                     random.Next(0, map.Height),
                     random.Next(0, map.Width)));

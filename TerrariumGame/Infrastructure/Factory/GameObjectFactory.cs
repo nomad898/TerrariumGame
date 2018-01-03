@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TerrariumGame.Interfaces;
 using TerrariumGame.Models;
 using TerrariumGame.Models.Alive;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Infrastructure.Factory
 {
-    static class GameObjectFactory
+    class GameObjectFactory : IGameObjectFactory
     {
         /// <summary>
         ///     Create new GameObject
         /// </summary>
         /// <param name="id">object's id</param>
         /// <returns>new GameObject instance</returns>
-        public static GameObject Create(int id)
+        public IGameObject Create(int id)
         {
             switch (id)
             {
@@ -42,7 +43,7 @@ namespace TerrariumGame.Infrastructure.Factory
         /// <param name="x">object's X position</param>
         /// <param name="y">object's Y position</param>
         /// <returns>new GameObject instance</returns>
-        public static GameObject Create(int id, int x, int y)
+        public IGameObject Create(int id, int x, int y)
         {
             switch (id)
             {
@@ -69,7 +70,7 @@ namespace TerrariumGame.Infrastructure.Factory
         /// <param name="x">object's X position</param>
         /// <param name="y">object's Y position</param>
         /// <returns>new GameObject instance</returns>
-        public static GameObject Create(int id, string name, int x, int y)
+        public IGameObject Create(int id, string name, int x, int y)
         {
             switch (id)
             {
