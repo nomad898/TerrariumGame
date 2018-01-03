@@ -53,8 +53,6 @@ namespace TerrariumGame.Infrastructure
 
         #endregion
         #region Private
-        private int minObjectAmount = 4;
-        private int maxObjectAmount = 12;
         private const int maxHour = 8;
         private int hourCounter = 0;
         private Random random;
@@ -63,22 +61,40 @@ namespace TerrariumGame.Infrastructure
         #endregion
         #endregion
 
-        public MapManipulator(IMap map, IGameObjectFactory factory, int begin, int end)
+        public MapManipulator(IMap map, 
+            IGameObjectFactory factory, 
+            int minObjectAmount, 
+            int maxObjectAmount, 
+            int begin, 
+            int end)
         {
             random = new Random();
             this.map = map;
             this.gOFactory = factory;
 
+            if (minObjectAmount < maxObjectAmount)
+            {
+                ExchangeValues(ref minObjectAmount, ref maxObjectAmount);
+            }
+
+            this.minObjectAmount = minObjectAmount;
+            this.maxObjectAmount = maxObjectAmount;
+
             if (begin > end)
             {
-                var temp = begin;
-                begin = end;
-                end = temp;
+                ExchangeValues(ref begin, ref end);
             }
 
             idBegin = begin;
             idEnd = end;
             Init();
+        }
+
+        private void ExchangeValues(ref int x, ref int y)
+        {
+            int temp = x;
+            x = y;
+            y = x;
         }
 
         /// <summary>
@@ -154,10 +170,12 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        #region Create GameObject Logic
         private static int objectId = 1;
         private readonly int idBegin;
         private readonly int idEnd;
-
+        private readonly int minObjectAmount;
+        private readonly int maxObjectAmount;
 
         /// <summary>
         ///     Creates new objects.
@@ -177,5 +195,6 @@ namespace TerrariumGame.Infrastructure
                 objectId++;
             }
         }
+        #endregion
     }
 }
