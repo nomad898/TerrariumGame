@@ -63,11 +63,21 @@ namespace TerrariumGame.Infrastructure
         #endregion
         #endregion
 
-        public MapManipulator(IMap map, IGameObjectFactory factory)
+        public MapManipulator(IMap map, IGameObjectFactory factory, int begin, int end)
         {
             random = new Random();
             this.map = map;
             this.gOFactory = factory;
+
+            if (begin > end)
+            {
+                var temp = begin;
+                begin = end;
+                end = temp;
+            }
+
+            idBegin = begin;
+            idEnd = end;
             Init();
         }
 
@@ -145,6 +155,9 @@ namespace TerrariumGame.Infrastructure
         }
 
         private static int objectId = 1;
+        private readonly int idBegin;
+        private readonly int idEnd;
+
 
         /// <summary>
         ///     Creates new objects.
@@ -156,8 +169,8 @@ namespace TerrariumGame.Infrastructure
             for (int i = 0; i < counterValue; i++)
             {
                 map.GameObjects.Add(gOFactory.Create(random.Next(
-                    gOFactory.IdBegin,
-                    gOFactory.IdEnd),
+                    idBegin,
+                    idEnd),
                     objectId.ToString(),
                     random.Next(0, map.Height),
                     random.Next(0, map.Width)));

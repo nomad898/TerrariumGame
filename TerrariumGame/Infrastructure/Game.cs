@@ -51,11 +51,11 @@ namespace TerrariumGame.Infrastructure
         ///     Hour duration
         /// </summary>
         private const int minutesInHour = 30;
-        private const int delayTime = 1000;
+        private const int timeDelay = 1000;
         private Random random;
 
         private readonly IMap map;
-        private readonly IMapManipulator mapManipulator;        
+        private readonly IMapManipulator mapManipulator;
         private readonly IDice dice;
         #endregion
         #endregion
@@ -81,8 +81,8 @@ namespace TerrariumGame.Infrastructure
         /// Start game
         /// </summary>
         public void Start()
-        {           
-            mapManipulator.ShowMap();          
+        {
+            mapManipulator.ShowMap();
             while (gameIsRunning)
             {
                 for (int minute = 0; minute < minutesInHour; minute++)
@@ -90,7 +90,7 @@ namespace TerrariumGame.Infrastructure
                     StartLogic();
                     mapManipulator.SetObjects();
                     mapManipulator.ShowMap();
-                    Thread.Sleep(delayTime);
+                    Thread.Sleep(timeDelay);
                 }
                 mapManipulator.HourCounter++;
 
@@ -101,7 +101,7 @@ namespace TerrariumGame.Infrastructure
 
                 CreateNewWork();
             }
-        }        
+        }
 
         #region GameLogic
         /// <summary>
@@ -201,9 +201,9 @@ namespace TerrariumGame.Infrastructure
                 talkResult = (firstAliveObject as IBoss).Talk((secondAliveObject));
             }
             Console.WriteLine(talkResult);
-            Thread.Sleep(delayTime);
+            Thread.Sleep(timeDelay + 1000);
             Console.SetCursorPosition(Map.Width + 10, 2);
-            Console.WriteLine();
+            Console.WriteLine(new string(' ', 100));
         }
         #endregion
 

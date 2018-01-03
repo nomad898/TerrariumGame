@@ -12,35 +12,6 @@ namespace TerrariumGame.Infrastructure.Factory
 {
     class GameObjectFactory : IGameObjectFactory
     {
-        // Dunno how to name it
-        #region Fields
-        #region Public
-        public int IdBegin
-        {
-            get
-            {
-                return idBegin;
-            }
-        }
-        public int IdEnd
-        {
-            get
-            {
-                return idEnd;
-            }
-        }
-        #endregion
-        #region Private
-        private readonly int idBegin;
-        private readonly int idEnd;
-        #endregion
-        #endregion
-        public GameObjectFactory(int begin, int end)
-        {
-            idBegin = begin;
-            idEnd = end;
-        }
-
         /// <summary>
         ///     Create new GameObject
         /// </summary>
@@ -116,6 +87,6 @@ namespace TerrariumGame.Infrastructure.Factory
                 default:
                     return null;
             }
-        }
+        }    
     }
 }
