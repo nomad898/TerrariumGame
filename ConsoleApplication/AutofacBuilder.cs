@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core;
 using InterfaceLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,14 @@ namespace ConsoleApplication
         public static IContainer Build()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<Map>().As<IMap>();
-            builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>();
-            builder.RegisterType<MapManipulator>().As<IMapManipulator>();
-            builder.RegisterType<Dice>().As<IDice>();
-            builder.RegisterType<Game>().As<IGame>();
+            // This is works, but should i use it?
+            //builder.Register(m => new Map(10, 10))
+            //    .As<IMap>();
+            builder.RegisterType<Map>().As<IMap>().SingleInstance();
+            builder.RegisterType<Dice>().As<IDice>().SingleInstance();
+            builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>().SingleInstance();
+            builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();            
+            builder.RegisterType<Game>().As<IGame>().SingleInstance();
 
             return builder.Build();
         }

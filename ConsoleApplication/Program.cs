@@ -11,15 +11,19 @@ namespace ConsoleApplication
         private static IContainer Container { get; set; }
 
         static void Main(string[] args)
-        {
-            IContainer container = AutofacBuilder.Build();
-            IMap map = new Map(10, 10);
-            IGameObjectFactory goFactory = new GameObjectFactory();
-            IMapManipulator mapManipulator = new MapManipulator(map, goFactory, 4, 12, 1, 6);
-            IDice dice = new Dice(map);
-            IGame game = new Game(map, mapManipulator, dice);
-            game.Start();
+        { 
+            Container = AutofacBuilder.Build();
+            Run(Container);            
             Console.ReadKey(true);
+        }
+
+        private static void Run(IContainer container)
+        {
+            using (var scope = Container.BeginLifetimeScope())
+            {
+                var game = scope.Resolve<IGame>();
+                game.Start();
+            }
         }
 
     }

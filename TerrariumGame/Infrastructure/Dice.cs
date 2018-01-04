@@ -50,6 +50,10 @@ namespace TerrariumGame.Infrastructure
 
         public Dice(IMap map)
         {
+            if (map == null)
+            {
+                throw new ArgumentNullException("Map is null");
+            }
             this.map = map;
             random = new Random();
         }

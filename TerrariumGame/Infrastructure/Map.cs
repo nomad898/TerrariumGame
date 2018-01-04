@@ -62,7 +62,7 @@ namespace TerrariumGame.Infrastructure
                 matrix = value;
             }
         }
-         
+
         public int Width
         {
             get
@@ -77,6 +77,14 @@ namespace TerrariumGame.Infrastructure
         }
         #endregion
         #region Ctor
+        public Map(IList<IGameObject> objects)
+        {
+            this.Width = Config.MAP_WIDTH;
+            this.Height = Config.MAP_HEIGHT;
+            matrix = new char[Height, Width];
+            gameObjects = objects;
+        }
+
         public Map(int height, int weight)
         {
             this.Width = weight;

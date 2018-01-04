@@ -64,14 +64,19 @@ namespace TerrariumGame.Infrastructure
         public Game(IMap map,
             IMapManipulator mapManipulator,
             IDice dice)
-        {
-            if (map == null ||
-                mapManipulator == null ||
-                dice == null)
+        {            
+            if (map == null)
             {
-                throw new ArgumentNullException("gaming accessories are null");
+                throw new ArgumentNullException("Map is null");
             }
-
+            if (mapManipulator == null)
+            {
+                throw new ArgumentNullException("MapManipulator is null");
+            }
+            if (dice == null)
+            {
+                throw new ArgumentNullException("Dice is null");
+            }
             random = new Random();
             this.map = map;
             this.mapManipulator = mapManipulator;
@@ -140,7 +145,7 @@ namespace TerrariumGame.Infrastructure
                 if (employee != gameObject
                     && employee.Position == gameObject.Position)
                 {
-                    var empl = gameObject as Employee;
+                    var empl = gameObject as IEmployee;
 
                     if (empl != null)
                     {
@@ -148,8 +153,8 @@ namespace TerrariumGame.Infrastructure
                     }
                     else
                     {
-                        var worker = employee as Worker;
-                        var work = gameObject as Work;
+                        var worker = employee as IWorker;
+                        var work = gameObject as IWork;
                         if (worker != null && work != null)
                         {
                             CollectWork(worker, work);

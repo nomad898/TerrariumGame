@@ -61,6 +61,27 @@ namespace TerrariumGame.Infrastructure
         private IGameObjectFactory gOFactory;
         #endregion
         #endregion
+        public MapManipulator(IMap map,
+            IGameObjectFactory factory)
+        {
+            if (map == null)
+            {
+                throw new ArgumentNullException("Map is null");
+            }
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Game factory is null");
+            }
+            random = new Random();
+            this.map = map;
+            this.gOFactory = factory;
+            minObjectAmount = Config.MIN_OBJECT_AMOUNT;
+            maxObjectAmount = Config.MAX_OBJECT_AMOUNT;
+            idBegin = Config.BEGIN_OBJECT_ID;
+            idEnd = Config.END_OBJECT_ID;
+
+            Init();
+        }
 
         public MapManipulator(IMap map, 
             IGameObjectFactory factory, 
@@ -69,6 +90,14 @@ namespace TerrariumGame.Infrastructure
             int begin, 
             int end)
         {
+            if (map == null)
+            {
+                throw new ArgumentNullException("Map is null");
+            }
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Game factory is null");
+            }
             random = new Random();
             this.map = map;
             this.gOFactory = factory;
@@ -91,6 +120,7 @@ namespace TerrariumGame.Infrastructure
             Init();
         }
 
+        // temporarily
         private void ExchangeValues(ref int x, ref int y)
         {
             int temp = x;
