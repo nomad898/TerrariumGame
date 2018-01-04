@@ -1,11 +1,7 @@
 ﻿using Autofac;
-using Autofac.Core;
+using Autofac.Configuration;
 using InterfaceLibrary.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
 
@@ -25,6 +21,26 @@ namespace ConsoleApplication
             builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();            
             builder.RegisterType<Game>().As<IGame>().SingleInstance();
 
+            return builder.Build();
+        }
+
+        public static IContainer ConfigByJson()
+        {
+            var builder = new ContainerBuilder();
+            var config = new ConfigurationBuilder();
+            config.AddJsonFile("autofac.json");
+            var module = new ConfigurationModule(config.Build());          
+            builder.RegisterModule(module);
+            return builder.Build();
+        }
+
+        public static IContainer ConfigByXml()
+        {
+            var builder = new ContainerBuilder();
+            var config = new ConfigurationBuilder();
+            config.AddXmlFile("autofacConfig");
+            var module = new ConfigurationModule(config.Build());            
+            builder.RegisterModule(module);
             return builder.Build();
         }
     }

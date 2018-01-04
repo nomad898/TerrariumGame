@@ -18,7 +18,7 @@ namespace AutofacTraining
             builder.RegisterType<TodayWriter>().As<IDateWriter>();
             Container = builder.Build();
 
-            WriteDate();
+            WriteDate();          
 
             Console.ReadKey(true);
         }

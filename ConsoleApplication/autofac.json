@@ -1,0 +1,13 @@
+﻿{
+  "defaultAssembly": "TerrariumGame",
+  "components": [
+    {
+      "type": "TerrariumGame.Infrastructure.Map, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.IMap"
+        }
+      ]
+    }
+  ]
+}

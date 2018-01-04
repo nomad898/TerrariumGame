@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <autofac>
+    <components>
+      <component type="TerrariumGame.Infrastructure.Map, TerrariumGame.Infrastructure.Map"
+                 service="InterfaceLibrary.Interfaces.IMap, TerrariumGame.Infrastructure.Map"
+                 instance-scope="single-instance"/>
+    </components>
+  </autofac>
+</configuration>
