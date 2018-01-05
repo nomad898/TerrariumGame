@@ -6,7 +6,7 @@ using System;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
 
-namespace ConsoleApplication
+namespace GameRunner
 {
     class Program
     {
@@ -15,7 +15,7 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {        
             Container = AutofacBuilder.ConfigByJson();
-            Console.WriteLine(Run(Container));            
+            Run(Container);            
             Console.ReadKey(true);
         }
 

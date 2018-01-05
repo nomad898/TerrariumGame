@@ -1,13 +1,50 @@
 ﻿{
-  "defaultAssembly": "GameRunner",
+  "defaultAssembly": "GameRunner", 
   "components": [
     {
       "type": "TerrariumGame.Infrastructure.Map, TerrariumGame",
       "services": [
         {
-          "type": "InterfaceLibrary.Interfaces.IMap"
+          "type": "InterfaceLibrary.Interfaces.IMap, InterfaceLibrary"
         }
-      ]
+      ],
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "TerrariumGame.Infrastructure.Dice, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.IDice, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "TerrariumGame.Infrastructure.Factory.GameObjectFactory, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.IGameObjectFactory, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "TerrariumGame.Infrastructure.MapManipulator, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.IMapManipulator, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+    {
+      "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.IGame, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
     }
   ]
 }

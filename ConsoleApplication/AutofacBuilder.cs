@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Infrastructure.Factory;
 
-namespace ConsoleApplication
+namespace GameRunner
 {
     class AutofacBuilder
     {
