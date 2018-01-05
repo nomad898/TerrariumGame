@@ -3,8 +3,6 @@ using Autofac.Configuration;
 using InterfaceLibrary.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System;
-using TerrariumGame.Infrastructure;
-using TerrariumGame.Infrastructure.Factory;
 
 namespace GameRunner
 {

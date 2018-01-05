@@ -1,9 +1,6 @@
 ﻿using Autofac;
 using Autofac.Configuration;
-using InterfaceLibrary.Interfaces;
 using Microsoft.Extensions.Configuration;
-using TerrariumGame.Infrastructure;
-using TerrariumGame.Infrastructure.Factory;
 
 namespace GameRunner
 {
@@ -12,14 +9,15 @@ namespace GameRunner
         public static IContainer Build()
         {
             var builder = new ContainerBuilder();
+            // REFERENCE DELETED!!!
             // This is works, but should i use it?
             //builder.Register(m => new Map(10, 10))
             //    .As<IMap>();
-            builder.RegisterType<Map>().As<IMap>().SingleInstance();
-            builder.RegisterType<Dice>().As<IDice>().SingleInstance();
-            builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>().SingleInstance();
-            builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();            
-            builder.RegisterType<Game>().As<IGame>().SingleInstance();
+            //builder.RegisterType<Map>().As<IMap>().SingleInstance();
+            //builder.RegisterType<Dice>().As<IDice>().SingleInstance();
+            //builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>().SingleInstance();
+            //builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();            
+            //builder.RegisterType<Game>().As<IGame>().SingleInstance();
 
             return builder.Build();
         }
