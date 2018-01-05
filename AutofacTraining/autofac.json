@@ -1,0 +1,21 @@
+﻿{
+  "defaultAssembly": "AutofacTraining",
+  "components": [
+    {
+      "type": "AutofacTraining.ConsoleOutput, AutofacTraining",
+      "services": [
+        {
+          "type": "AutoFacTest.IOutput"
+        }
+      ]
+    },
+    {      
+      "type": "AutofacTraining.TodayWriter, AutofacTraining",
+      "services": [
+        {
+          "type": "AutoFacTest.IDateWriter"
+        }
+      ]
+    }
+  ]
+}

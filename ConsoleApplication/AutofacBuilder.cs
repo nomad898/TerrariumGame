@@ -25,11 +25,11 @@ namespace ConsoleApplication
         }
 
         public static IContainer ConfigByJson()
-        {
-            var builder = new ContainerBuilder();
+        {           
             var config = new ConfigurationBuilder();
             config.AddJsonFile("autofac.json");
-            var module = new ConfigurationModule(config.Build());          
+            var module = new ConfigurationModule(config.Build());
+            var builder = new ContainerBuilder();
             builder.RegisterModule(module);
             return builder.Build();
         }

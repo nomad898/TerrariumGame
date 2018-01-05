@@ -6,24 +6,6 @@ using System.Threading.Tasks;
 
 namespace AutofacTraining
 {
-    public interface IOutput
-    {
-        void Write(string content);
-    }
-
-    public class ConsoleOutput : IOutput
-    {
-        public void Write(string content)
-        {
-            Console.WriteLine(content);
-        }
-    }
-
-    public interface IDateWriter
-    {
-        void WriteDate();
-    }
-
     public class TodayWriter : IDateWriter
     {
         private IOutput _output;

@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Autofac.Configuration;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,15 @@ namespace AutofacTraining
 
         static void Main(string[] args)
         {
+            // Add the configuration to the ConfigurationBuilder.
+            var config = new ConfigurationBuilder();
+            config.AddJsonFile("autofac.json");
+            // Register the ConfigurationModule with Autofac.
+            var module = new ConfigurationModule(config.Build());
             var builder = new ContainerBuilder();
-            builder.RegisterType<ConsoleOutput>().As<IOutput>();
-            builder.RegisterType<TodayWriter>().As<IDateWriter>();
+            builder.RegisterModule(module);
             Container = builder.Build();
-
-            WriteDate();          
+            WriteDate();         
 
             Console.ReadKey(true);
         }
