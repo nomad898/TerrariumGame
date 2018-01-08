@@ -22,21 +22,21 @@ namespace GameRunner
             return builder.Build();
         }
 
-        public static IContainer ConfigByJson()
+        public static IContainer ConfigByJson(string jsonFileName)
         {           
             var config = new ConfigurationBuilder();
-            config.AddJsonFile("autofac.json");
+            config.AddJsonFile(jsonFileName);
             var module = new ConfigurationModule(config.Build());
             var builder = new ContainerBuilder();
             builder.RegisterModule(module);
             return builder.Build();
         }
 
-        public static IContainer ConfigByXml()
+        public static IContainer ConfigByXml(string xmlFileName)
         {
             var builder = new ContainerBuilder();
             var config = new ConfigurationBuilder();
-            config.AddXmlFile("autofacConfig.xml");
+            config.AddXmlFile(xmlFileName);
             var module = new ConfigurationModule(config.Build());            
             builder.RegisterModule(module);
             return builder.Build();
