@@ -9,14 +9,14 @@ namespace GameRunner
         public static IContainer Build()
         {
             var builder = new ContainerBuilder();
-            // REFERENCE DELETED!!!
-            // This is works, but should i use it?
+            //REFERENCE DELETED!!!
+            //This is works, but should i use it?
             //builder.Register(m => new Map(10, 10))
             //    .As<IMap>();
             //builder.RegisterType<Map>().As<IMap>().SingleInstance();
             //builder.RegisterType<Dice>().As<IDice>().SingleInstance();
             //builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>().SingleInstance();
-            //builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();            
+            //builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();
             //builder.RegisterType<Game>().As<IGame>().SingleInstance();
 
             return builder.Build();
@@ -36,7 +36,7 @@ namespace GameRunner
         {
             var builder = new ContainerBuilder();
             var config = new ConfigurationBuilder();
-            config.AddXmlFile("autofacConfig");
+            config.AddXmlFile("autofacConfig.xml");
             var module = new ConfigurationModule(config.Build());            
             builder.RegisterModule(module);
             return builder.Build();

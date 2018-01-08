@@ -12,19 +12,17 @@ namespace GameRunner
 
         static void Main(string[] args)
         {        
-            Container = AutofacBuilder.ConfigByJson();
+            Container = AutofacBuilder.ConfigByXml();
             Run(Container);            
             Console.ReadKey(true);
         }
 
-        private static int Run(IContainer container)
+        private static void Run(IContainer container)
         {
             using (var scope = Container.BeginLifetimeScope())
             {
                 var game = scope.Resolve<IGame>();
                 game.Start();
-                var map = scope.Resolve<IMap>();
-                return map.Height;
             }
         }
 
