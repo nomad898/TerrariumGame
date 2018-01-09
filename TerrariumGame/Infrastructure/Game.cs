@@ -92,7 +92,7 @@ namespace TerrariumGame.Infrastructure
             while (gameIsRunning)
             {
                 for (int minute = 0; minute < minutesInHour; minute++)
-                {
+                {                  
                     StartLogic();
                     mapManipulator.SetObjects();
                     mapManipulator.ShowMap();
