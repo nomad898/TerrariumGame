@@ -63,14 +63,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\InterfaceLibrary.csproj">
+    <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Q /Y "$(Targetpath)" "$(SolutionDir)\ConsoleApplication\bin\Debug"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Q /Y "$(Targetpath)" "$(SolutionDir)\GameRunner\bin\Debug"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -123,7 +123,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\InterfaceLibrary.csproj">
+    <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>
     </ProjectReference>
