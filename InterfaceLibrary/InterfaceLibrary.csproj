@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\Models\NotAlive\ISalaryAddition.cs" />
     <Compile Include="Interfaces\Models\NotAlive\IWork.cs" />
     <Compile Include="Interfaces\Models\Alive\IWorker.cs" />
+    <Compile Include="Interfaces\Writer\IMessageWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityModels\Point.cs" />
     <Compile Include="UtilityModels\State.cs" />
