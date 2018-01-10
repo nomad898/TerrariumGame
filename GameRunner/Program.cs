@@ -1,7 +1,5 @@
 ﻿using Autofac;
-using Autofac.Configuration;
 using InterfaceLibrary.Interfaces;
-using Microsoft.Extensions.Configuration;
 using System;
 
 namespace GameRunner
@@ -15,8 +13,9 @@ namespace GameRunner
         static void Main(string[] args)
         {              
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+      
             // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            Run(Container);            
+            Run(Container);
             Console.ReadKey(true);
         }
 

@@ -14,26 +14,39 @@ namespace TerrariumGame.Models.Alive
     {
         #region Fields
         public override char Icon { get { return 'B'; } }
-
-        public int DoneWork { get; set; }
+               
         #endregion
         #region Ctor
         public Boss() : base()
         {
-            DoneWork = 0;
         }
 
         public Boss(int x, int y) : base(x, y)
         {
-            DoneWork = 0;
         }
 
         public Boss(string name, int x, int y) : base(name, x, y)
         {
-            DoneWork = 0;
+        }
+
+        public Boss(string name, decimal salary, int x, int y) : base(name, salary, x, y)
+        {
         }
         #endregion
         #region IManagable
+        private int doneWork = 0;
+        public int DoneWork
+        {
+            get
+            {
+                return doneWork;
+            }
+            set
+            {
+                doneWork = value;
+            }
+        }
+
         public void DoWork()
         {
             DoneWork++;

@@ -27,6 +27,12 @@ namespace TerrariumGame.Models.Alive
             : base(name, x, y)
         {
         }
+
+        public BigBoss(string name, decimal salary, int x, int y)
+           : base(name, salary, x, y)
+        {
+        }
+
         #endregion
         public override void Manage(IManagable imngbl)
         {

@@ -87,6 +87,25 @@ namespace TerrariumGame.Infrastructure.Factory
                 default:
                     return null;
             }
-        }    
+        }
+
+        public IGameObject Create(int id, string name, decimal salary, int x, int y)
+        {
+            switch (id)
+            {
+                case 1:
+                    return new Worker(name, salary, x, y);
+                case 2:
+                    return new Boss(name, salary, x, y);
+                case 3:
+                    return new BigBoss(name, salary, x, y);
+                case 4:
+                    return new Work(x, y);
+                case 5:
+                    return new Customer(x, y);
+                default:
+                    return null;
+            }
+        }
     }
 }

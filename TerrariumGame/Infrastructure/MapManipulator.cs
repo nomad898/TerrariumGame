@@ -207,6 +207,8 @@ namespace TerrariumGame.Infrastructure
         private readonly int idEnd;
         private readonly int minObjectAmount;
         private readonly int maxObjectAmount;
+        private const int salaryMinValue = 10000;
+        private const int salaryMaxValue = 20000;
 
         /// <summary>
         ///     Creates new objects.
@@ -221,6 +223,9 @@ namespace TerrariumGame.Infrastructure
                     idBegin,
                     idEnd),
                     objectId.ToString(),
+                    random.Next(
+                        salaryMinValue,
+                        salaryMaxValue),
                     random.Next(0, map.Height),
                     random.Next(0, map.Width)));
                 objectId++;

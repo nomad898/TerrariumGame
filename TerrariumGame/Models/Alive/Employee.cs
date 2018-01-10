@@ -38,6 +38,12 @@ namespace TerrariumGame.Models.Alive
         {
             Name = name;
         }
+        
+        public Employee(string name, decimal salary, int x, int y) : base(x, y)
+        {
+            Name = name;
+            Salary = salary;
+        }
         #endregion
         #region Methods
         protected abstract string Say(string whatToSay);

@@ -13,7 +13,7 @@ namespace TerrariumGame.Models.Alive
 {
     class Worker : Employee, IWorker
     {
-        #region Fields
+        #region Fields        
         public override char Icon { get { return 'W'; } }
         #endregion
         #region Ctor
@@ -23,19 +23,31 @@ namespace TerrariumGame.Models.Alive
         }
 
         public Worker(int x, int y) : base(x, y)
-        {
-            DoneWork = 0;
+        {            
         }
 
         public Worker(string name, int x, int y) : base(name, x, y)
-        {
-            DoneWork = 0;
+        {            
+        }
+
+        public Worker(string name, decimal salary, int x, int y) : base(name, salary, x, y)
+        {            
         }
         #endregion
         #region IManagable
-        public int DoneWork { get; set; }
-
-
+        private int doneWork = 0;
+        public int DoneWork
+        {
+            get
+            {
+                return doneWork;
+            }
+            set
+            {
+                doneWork = value;
+            }
+        }
+        
         public void DoWork(IWork work)
         {
             work.State = State.Deleted;
