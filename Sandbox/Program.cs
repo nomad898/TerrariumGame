@@ -10,6 +10,9 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("DONE!!!");
+            Console.ReadKey(true);
         }
     }
 }

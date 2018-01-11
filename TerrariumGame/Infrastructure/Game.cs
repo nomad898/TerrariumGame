@@ -75,7 +75,7 @@ namespace TerrariumGame.Infrastructure
         private readonly IMessageWriter msgWriter;
         #endregion
         #endregion
-
+        #region Ctor
         public Game(IMap map,
             IMapManipulator mapManipulator,
             IDice dice,
@@ -103,7 +103,7 @@ namespace TerrariumGame.Infrastructure
             this.dice = dice;
             this.msgWriter = msgWriter;
         }
-
+        #endregion
         /// <summary>
         /// Start game
         /// </summary>
@@ -117,7 +117,7 @@ namespace TerrariumGame.Infrastructure
                     StartLogic();
                     mapManipulator.SetObjects();
                     mapManipulator.ShowMap();
-                    // Thread.Sleep(timeDelay);
+                    Thread.Sleep(timeDelay);
                 }
                 mapManipulator.HourCounter++;
 
@@ -212,8 +212,7 @@ namespace TerrariumGame.Infrastructure
         /// <param name="firstAliveObject">Employee instance</param>
         /// <param name="secondAliveObject">Employee instance</param>
         private void GreetLogic(IEmployee firstAliveObject, IEmployee secondAliveObject)
-        {
-            // Console.SetCursorPosition(Map.Width + 10, 2);
+        {            
             string talkResult = string.Empty;
             if (firstAliveObject is IWorker)
             {
@@ -228,10 +227,10 @@ namespace TerrariumGame.Infrastructure
                 talkResult = (firstAliveObject as IBoss).Talk((secondAliveObject));
             }
             msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
-            // Console.WriteLine(talkResult);
-            // Thread.Sleep(timeDelay + 1000);
-            // Console.SetCursorPosition(Map.Width + 10, 2);
-            // Console.WriteLine(new string(' ', 100));
+            //Console.WriteLine(talkResult);
+            //Thread.Sleep(timeDelay + 1000);
+            //Console.SetCursorPosition(Map.Width + 10, 2);
+            //Console.WriteLine(new string(' ', 100));
         }
         #endregion
 

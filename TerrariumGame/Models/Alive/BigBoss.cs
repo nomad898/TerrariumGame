@@ -33,6 +33,12 @@ namespace TerrariumGame.Models.Alive
         {
         }
 
+        public new void DoWork()
+        {
+            throw new NotSupportedException();
+        }
+
+
         #endregion
         public override void Manage(IManagable imngbl)
         {

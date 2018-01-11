@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlMessageWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
+      <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
+      <Name>InterfaceLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

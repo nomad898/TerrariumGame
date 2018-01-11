@@ -43,7 +43,7 @@
     },
 
     {
-      "type": "MessageWriter.TextFileMessageWriter, TextFileMessageWriter",
+      "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
