@@ -7,7 +7,7 @@ namespace GameRunner
     class Program
     {
         private static IContainer Container { get; set; }
-        private const string JSON_FILE_NAME = "autofac.json";
+        private const string JSON_FILE_NAME = "autofacConfig.json";
         private const string XML_FILE_NAME = "autofacConfig.xml";
 
         static void Main(string[] args)

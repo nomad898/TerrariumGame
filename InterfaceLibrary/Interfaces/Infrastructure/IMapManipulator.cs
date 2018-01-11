@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces.Writer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace InterfaceLibrary.Interfaces
         IMap Map { get; set; }
 
         IGameObjectFactory GameObjectFactory { get; set; }
+
+        IMessageWriter MessageWriter { get; }
 
         void ShowMap();
 

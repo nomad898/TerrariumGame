@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConsoleWriter")]
+[assembly: AssemblyTitle("ConsoleMessageWriter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("EPAM Systems")]
-[assembly: AssemblyProduct("ConsoleWriter")]
+[assembly: AssemblyProduct("ConsoleMessageWriter")]
 [assembly: AssemblyCopyright("Copyright © EPAM Systems 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("431f303d-55f2-4937-aa14-8d40be90a952")]
+[assembly: Guid("32101ffc-08e8-4e2e-9687-1022c6b0e865")]
 
 // Version information for an assembly consists of the following four values:
 //

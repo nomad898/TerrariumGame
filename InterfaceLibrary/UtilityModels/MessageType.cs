@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextWriter
+namespace InterfaceLibrary.UtilityModels
 {
-    public class Class1
+    public enum MessageType
     {
+        MapInfoMsg,
+        ConversationMsg
     }
 }

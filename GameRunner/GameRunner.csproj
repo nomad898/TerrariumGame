@@ -112,15 +112,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="autofac.json">
+    <None Include="autofacConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="autofacConfigRepository.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="autofacConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="autofacConfigRepository.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
@@ -130,7 +132,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Q /Y "$(SolutionDir)$(SolutionName)\$(OutDir)$(SolutionName).dll" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Q /Y "$(SolutionDir)$(SolutionName)\$(OutDir)$(SolutionName).dll" "$(TargetDir)"
+
+xcopy /Q /Y "$(SolutionDir)ConsoleMessageWriter\$(OutDir)ConsoleMessageWriter.dll"   "$(TargetDir)"
+
+xcopy /Q /Y "$(SolutionDir)TextFileMessageWriter\$(OutDir)TextFileMessageWriter.dll"     "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

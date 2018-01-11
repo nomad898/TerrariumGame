@@ -18,7 +18,7 @@ namespace GameRunner
             //builder.RegisterType<GameObjectFactory>().As<IGameObjectFactory>().SingleInstance();
             //builder.RegisterType<MapManipulator>().As<IMapManipulator>().SingleInstance();
             //builder.RegisterType<Game>().As<IGame>().SingleInstance();
-
+            //builder.RegisterType<ConsoleMessageWriter>().As<IMessageWriter>().SingleInstance();
             return builder.Build();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceLibrary.Interfaces.Writer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace InterfaceLibrary.Interfaces
 
         IMap Map { get; }
         IMapManipulator MapManipulator { get; }
-        IDice Dice { get; }       
+        IDice Dice { get; } 
+        IMessageWriter MessageWriter { get; }      
 
         void Start();
     }

@@ -1,4 +1,5 @@
 ﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,13 @@ namespace TerrariumGame.Infrastructure
                 gameIsRunning = value;
             }
         }
-        public IMap Map { get { return map; } }
+        public IMap Map
+        {
+            get
+            {
+                return map;
+            }
+        }
         public IMapManipulator MapManipulator
         {
             get
@@ -42,6 +49,13 @@ namespace TerrariumGame.Infrastructure
             get
             {
                 return dice;
+            }
+        }
+        public IMessageWriter MessageWriter
+        {
+            get
+            {
+                return msgWriter;
             }
         }
         #endregion
@@ -58,12 +72,14 @@ namespace TerrariumGame.Infrastructure
         private readonly IMap map;
         private readonly IMapManipulator mapManipulator;
         private readonly IDice dice;
+        private readonly IMessageWriter msgWriter;
         #endregion
         #endregion
 
         public Game(IMap map,
             IMapManipulator mapManipulator,
-            IDice dice)
+            IDice dice,
+            IMessageWriter msgWriter)
         {            
             if (map == null)
             {
@@ -77,10 +93,15 @@ namespace TerrariumGame.Infrastructure
             {
                 throw new ArgumentNullException("Dice is null");
             }
+            if (msgWriter == null)
+            {
+                throw new ArgumentNullException("MessageWriter is null");
+            }
             random = new Random();
             this.map = map;
             this.mapManipulator = mapManipulator;
             this.dice = dice;
+            this.msgWriter = msgWriter;
         }
 
         /// <summary>
@@ -96,7 +117,7 @@ namespace TerrariumGame.Infrastructure
                     StartLogic();
                     mapManipulator.SetObjects();
                     mapManipulator.ShowMap();
-                    Thread.Sleep(timeDelay);
+                    // Thread.Sleep(timeDelay);
                 }
                 mapManipulator.HourCounter++;
 
@@ -192,7 +213,7 @@ namespace TerrariumGame.Infrastructure
         /// <param name="secondAliveObject">Employee instance</param>
         private void GreetLogic(IEmployee firstAliveObject, IEmployee secondAliveObject)
         {
-            Console.SetCursorPosition(Map.Width + 10, 2);
+            // Console.SetCursorPosition(Map.Width + 10, 2);
             string talkResult = string.Empty;
             if (firstAliveObject is IWorker)
             {
@@ -206,10 +227,11 @@ namespace TerrariumGame.Infrastructure
             {
                 talkResult = (firstAliveObject as IBoss).Talk((secondAliveObject));
             }
-            Console.WriteLine(talkResult);
-            Thread.Sleep(timeDelay + 1000);
-            Console.SetCursorPosition(Map.Width + 10, 2);
-            Console.WriteLine(new string(' ', 100));
+            msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
+            // Console.WriteLine(talkResult);
+            // Thread.Sleep(timeDelay + 1000);
+            // Console.SetCursorPosition(Map.Width + 10, 2);
+            // Console.WriteLine(new string(' ', 100));
         }
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,13 @@ namespace TerrariumGame.Infrastructure
                 hourCounter = value;
             }
         }
-
-        public int MaxHour { get { return maxHour; } }
+        public int MaxHour
+        {
+            get
+            {
+                return maxHour;
+            }
+        }
 
         public IMap Map
         {
@@ -52,6 +58,13 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        public IMessageWriter MessageWriter
+        {
+            get
+            {
+                return msgWriter;
+            }
+        }
         #endregion
         #region Private
         private const int maxHour = 8;
@@ -59,10 +72,12 @@ namespace TerrariumGame.Infrastructure
         private Random random;
         private IMap map;
         private IGameObjectFactory gOFactory;
+        private IMessageWriter msgWriter;
         #endregion
         #endregion
         public MapManipulator(IMap map,
-            IGameObjectFactory factory)
+            IGameObjectFactory factory,
+            IMessageWriter msgWriter)
         {
             if (map == null)
             {
@@ -72,9 +87,14 @@ namespace TerrariumGame.Infrastructure
             {
                 throw new ArgumentNullException("Game factory is null");
             }
+            if (msgWriter == null)
+            {
+                throw new ArgumentNullException("MessageWriter is null");
+            }
             random = new Random();
             this.map = map;
             this.gOFactory = factory;
+            this.msgWriter = msgWriter;
             minObjectAmount = Config.MIN_OBJECT_AMOUNT;
             maxObjectAmount = Config.MAX_OBJECT_AMOUNT;
             idBegin = Config.BEGIN_OBJECT_ID;
@@ -142,6 +162,7 @@ namespace TerrariumGame.Infrastructure
                 {
                     Console.Write(map[x, y]);
                 }
+                // msgWriter.PrintMessage(string.Empty);
                 Console.WriteLine();
             }
 
@@ -180,6 +201,8 @@ namespace TerrariumGame.Infrastructure
         private void ShowHourCounter()
         {
             Console.SetCursorPosition(map.Width + 10, 0);
+            //msgWriter.PrintMessage(string.Format("Hour Counter:  {0}",
+            //    this.HourCounter));
             Console.WriteLine(string.Format("Hour Counter:  {0}",
                 this.HourCounter));
         }
@@ -219,13 +242,10 @@ namespace TerrariumGame.Infrastructure
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)
             {
-                map.GameObjects.Add(gOFactory.Create(random.Next(
-                    idBegin,
-                    idEnd),
+                map.GameObjects.Add(gOFactory.Create(
+                    random.Next(idBegin, idEnd),
                     objectId.ToString(),
-                    random.Next(
-                        salaryMinValue,
-                        salaryMaxValue),
+                    random.Next(salaryMinValue, salaryMaxValue),
                     random.Next(0, map.Height),
                     random.Next(0, map.Width)));
                 objectId++;

@@ -26,11 +26,17 @@
   </components>
 
   <components name="4">
+    <type>MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="4">
     <type>MessageWriter.TextFileMessageWriter, TextFileMessageWriter</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
-  
+
   <components name="5">
     <type>TerrariumGame.Infrastructure.Game, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.IGame, InterfaceLibrary"/>

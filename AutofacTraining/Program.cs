@@ -24,7 +24,7 @@ namespace AutofacTraining
             builder.RegisterModule(module);
             Container = builder.Build();
             WriteDate();
-            
+
             Console.ReadKey(true);
         }
 
