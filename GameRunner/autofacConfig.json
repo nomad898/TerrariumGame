@@ -44,14 +44,14 @@
 
     // Writer
     {
-      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
+      "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
         }
       ],
       "instanceScope": "singleinstance"
-    },   
+    },
 
     {
       "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",

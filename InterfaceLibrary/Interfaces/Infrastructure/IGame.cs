@@ -1,9 +1,4 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InterfaceLibrary.Interfaces
 {
@@ -11,7 +6,7 @@ namespace InterfaceLibrary.Interfaces
     {
         bool GameIsRunning { get; set; }
 
-        IMap Map { get; }
+        // IMap Map { get; }
         IMapManipulator MapManipulator { get; }
         IDice Dice { get; } 
         IMessageWriter MessageWriter { get; }      

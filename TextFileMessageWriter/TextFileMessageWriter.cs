@@ -14,16 +14,11 @@ namespace MessageWriter
     {
         #region Files
         private const string TEXT_FILE_NAME = "Conversation.txt";
-        // private readonly string textFilePath = AppDomain.CurrentDomain.BaseDirectory + "Conversation.txt";
         #endregion
         #region Ctor
         public TextFileMessageWriter()
         {
-            if (!File.Exists(TEXT_FILE_NAME))
-            {
-                
-            }
-            else
+            if (File.Exists(TEXT_FILE_NAME))
             {
                 using (StreamWriter sw = new StreamWriter(TEXT_FILE_NAME, false))
                 {

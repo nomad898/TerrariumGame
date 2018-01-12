@@ -26,7 +26,7 @@
   </components>
   
   <components name="4">
-    <type>MessageWriter.XmlMessageWriter, XmlMessageWriter</type>
+    <type>MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>

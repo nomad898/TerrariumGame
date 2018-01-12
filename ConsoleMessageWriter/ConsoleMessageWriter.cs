@@ -30,11 +30,20 @@ namespace MessageWriter
         }
         #endregion
         #region IMessageWriter
+        /// <summary>
+        ///     This method prints message to Console
+        /// </summary>
+        /// <param name="message">Message from employee</param>
         public void PrintMessage(string message)
         {
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        ///     This method sets cursor to certain position and prints message.
+        /// </summary>
+        /// <param name="message">Message from employee</param>
+        /// <param name="msgType">Message type</param>
         public void PrintMessage(string message, MessageType msgType)
         {
             if (msgType == MessageType.ConversationMsg)

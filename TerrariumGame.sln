@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileMessageWriter", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{753197F1-8A91-49E7-B404-C644198CC0F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseMessageWriter", "DataBaseMessageWriter\DataBaseMessageWriter.csproj", "{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{753197F1-8A91-49E7-B404-C644198CC0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{753197F1-8A91-49E7-B404-C644198CC0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{753197F1-8A91-49E7-B404-C644198CC0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +83,6 @@ Global
 		{A3F9D2FF-A9D9-45C1-82B4-1CB8A32B4170} = {FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}
 		{9CC14E9C-E481-400F-9E14-E4D5A1B870D7} = {FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}
 		{753197F1-8A91-49E7-B404-C644198CC0F5} = {E4B41B36-7BDD-4057-AD9F-A4FE4FB4C0D8}
+		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4} = {FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}
 	EndGlobalSection
 EndGlobal

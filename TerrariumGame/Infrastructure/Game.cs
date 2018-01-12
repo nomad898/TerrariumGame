@@ -29,14 +29,7 @@ namespace TerrariumGame.Infrastructure
             {
                 gameIsRunning = value;
             }
-        }
-        public IMap Map
-        {
-            get
-            {
-                return map;
-            }
-        }
+        }      
         public IMapManipulator MapManipulator
         {
             get
@@ -68,23 +61,17 @@ namespace TerrariumGame.Infrastructure
         private const int minutesInHour = 30;
         private const int timeDelay = 1000;
         private Random random;
-
-        private readonly IMap map;
+        
         private readonly IMapManipulator mapManipulator;
         private readonly IDice dice;
         private readonly IMessageWriter msgWriter;
         #endregion
         #endregion
         #region Ctor
-        public Game(IMap map,
-            IMapManipulator mapManipulator,
+        public Game(IMapManipulator mapManipulator,
             IDice dice,
             IMessageWriter msgWriter)
-        {            
-            if (map == null)
-            {
-                throw new ArgumentNullException("Map is null");
-            }
+        {         
             if (mapManipulator == null)
             {
                 throw new ArgumentNullException("MapManipulator is null");
@@ -98,7 +85,6 @@ namespace TerrariumGame.Infrastructure
                 throw new ArgumentNullException("MessageWriter is null");
             }
             random = new Random();
-            this.map = map;
             this.mapManipulator = mapManipulator;
             this.dice = dice;
             this.msgWriter = msgWriter;
@@ -137,7 +123,7 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void StartLogic()
         {
-            foreach (var gameObject in Map.GameObjects)
+            foreach (var gameObject in MapManipulator.Map.GameObjects)
             {
                 if (gameObject.IsAlive)
                 {
@@ -161,7 +147,7 @@ namespace TerrariumGame.Infrastructure
         /// <param name="employee">Employee instance</param>
         private void AliveObjectActions(IEmployee employee)
         {
-            foreach (var gameObject in Map.GameObjects)
+            foreach (var gameObject in MapManipulator.Map.GameObjects)
             {
                 if (employee != gameObject
                     && employee.Position == gameObject.Position)
@@ -226,11 +212,18 @@ namespace TerrariumGame.Infrastructure
             {
                 talkResult = (firstAliveObject as IBoss).Talk((secondAliveObject));
             }
-            msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
-            //Console.WriteLine(talkResult);
-            //Thread.Sleep(timeDelay + 1000);
-            //Console.SetCursorPosition(Map.Width + 10, 2);
-            //Console.WriteLine(new string(' ', 100));
+
+            if (msgWriter != null)
+            {
+                msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
+            }
+            else
+            {
+                Console.WriteLine(talkResult);
+                Thread.Sleep(timeDelay + 1000);
+                Console.SetCursorPosition(MapManipulator.Map.Width + 10, 2);
+                Console.WriteLine(new string(' ', 100));
+            }
         }
         #endregion
 
@@ -249,7 +242,7 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CollectionClear()
         {
-            (Map.GameObjects as List<IGameObject>)
+            (MapManipulator.Map.GameObjects as List<IGameObject>)
                 .RemoveAll(gameObject => gameObject.State == State.Deleted);
         }
 
@@ -258,14 +251,14 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CreateNewWork()
         {
-            int mapObjectsCount = Map.GameObjects.Count;
+            int mapObjectsCount = MapManipulator.Map.GameObjects.Count;
             for (int obj = 0; obj < mapObjectsCount; obj++)
             {
-                if (Map.GameObjects[obj] is ICustomer)
+                if (MapManipulator.Map.GameObjects[obj] is ICustomer)
                 {
-                    var newWork = (Map.GameObjects[obj] as ICustomer)
+                    var newWork = (MapManipulator.Map.GameObjects[obj] as ICustomer)
                         .CreateWork();
-                    Map.GameObjects.Add(newWork);
+                    MapManipulator.Map.GameObjects.Add(newWork);
                 }
             }
         }

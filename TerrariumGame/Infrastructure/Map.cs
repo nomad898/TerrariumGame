@@ -75,6 +75,7 @@ namespace TerrariumGame.Infrastructure
                 width = value;
             }
         }
+              
         #endregion
         #region Ctor
         public Map(IList<IGameObject> objects)

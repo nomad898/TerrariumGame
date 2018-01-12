@@ -162,7 +162,6 @@ namespace TerrariumGame.Infrastructure
                 {
                     Console.Write(map[x, y]);
                 }
-                // msgWriter.PrintMessage(string.Empty);
                 Console.WriteLine();
             }
 
@@ -201,8 +200,6 @@ namespace TerrariumGame.Infrastructure
         private void ShowHourCounter()
         {
             Console.SetCursorPosition(map.Width + 10, 0);
-            //msgWriter.PrintMessage(string.Format("Hour Counter:  {0}",
-            //    this.HourCounter));
             Console.WriteLine(string.Format("Hour Counter:  {0}",
                 this.HourCounter));
         }
