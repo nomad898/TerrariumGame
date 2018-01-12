@@ -22,6 +22,7 @@
       "instanceScope": "singleinstance"
     },
 
+
     {
       "type": "TerrariumGame.Infrastructure.Factory.GameObjectFactory, TerrariumGame",
       "services": [
@@ -42,6 +43,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // MessageWriters
     {
       "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
       "services": [
@@ -61,6 +63,27 @@
       ],
       "instanceScope": "singleinstance"
     },
+
+    {
+      "type": "MessageWriter.XmlMessageWriter, XmlMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    {
+      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+    // MessageWriters
 
     {
       "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",

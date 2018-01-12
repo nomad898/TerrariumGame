@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMessageWriter.cs" />
     <Compile Include="XmlMessageWriter.cs" />
   </ItemGroup>
   <ItemGroup>

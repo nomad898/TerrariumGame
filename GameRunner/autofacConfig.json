@@ -42,15 +42,16 @@
       "instanceScope": "singleinstance"
     },
 
+    // Writer
     {
-      "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
+      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
         }
       ],
       "instanceScope": "singleinstance"
-    },
+    },   
 
     {
       "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",

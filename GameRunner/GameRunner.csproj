@@ -136,7 +136,9 @@
 
 xcopy /Q /Y "$(SolutionDir)ConsoleMessageWriter\$(OutDir)ConsoleMessageWriter.dll"   "$(TargetDir)"
 
-xcopy /Q /Y "$(SolutionDir)TextFileMessageWriter\$(OutDir)TextFileMessageWriter.dll"     "$(TargetDir)"</PostBuildEvent>
+xcopy /Q /Y "$(SolutionDir)TextFileMessageWriter\$(OutDir)TextFileMessageWriter.dll"     "$(TargetDir)"
+
+xcopy /Q /Y "$(SolutionDir)XmlMessageWriter\$(OutDir)XmlMessageWriter.dll"     "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

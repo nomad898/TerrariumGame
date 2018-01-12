@@ -13,20 +13,19 @@ namespace MessageWriter
     public class TextFileMessageWriter : IMessageWriter
     {
         #region Files
-        private readonly string textFilePath = AppDomain.CurrentDomain.BaseDirectory + "Conversation.txt";
+        private const string TEXT_FILE_NAME = "Conversation.txt";
+        // private readonly string textFilePath = AppDomain.CurrentDomain.BaseDirectory + "Conversation.txt";
         #endregion
         #region Ctor
         public TextFileMessageWriter()
         {
-            if (!File.Exists(textFilePath))
+            if (!File.Exists(TEXT_FILE_NAME))
             {
-                using (StreamWriter sw = File.CreateText(textFilePath))
-                {
-                }
+                
             }
             else
             {
-                using (StreamWriter sw = new StreamWriter(textFilePath, false))
+                using (StreamWriter sw = new StreamWriter(TEXT_FILE_NAME, false))
                 {
                 }
             }
@@ -35,7 +34,7 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            using (StreamWriter sw = File.AppendText(textFilePath))
+            using (StreamWriter sw = File.AppendText(TEXT_FILE_NAME))
             {
                 sw.WriteLine(message);
             }
@@ -46,7 +45,7 @@ namespace MessageWriter
             if (msgType == MessageType.ConversationMsg 
                 && message != string.Empty)
             {           
-                PrintMessage(message + " ---> " + DateTime.Now);                
+                PrintMessage(DateTime.Now + " ---> " + message);                
             }
         }
         #endregion
