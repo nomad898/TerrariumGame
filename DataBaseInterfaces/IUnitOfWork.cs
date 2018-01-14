@@ -8,6 +8,6 @@ namespace DataBaseInterfaces
     {
         void Save();
 
-        IConversationRepository<IConversation, int> ConversationRepository { get; }
+        IConversationRepository ConversationRepository { get; }
     }
 }

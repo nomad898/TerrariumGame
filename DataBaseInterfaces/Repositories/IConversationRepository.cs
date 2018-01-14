@@ -2,9 +2,7 @@
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IConversationRepository<T, V>
-        : IRepository<T, V> 
-        where T : class
+    public interface IConversationRepository
     {
     }
 }

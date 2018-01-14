@@ -22,7 +22,7 @@ namespace DataBaseLibrary.Repositories
 
         public abstract IEnumerable<T> GetAll();
 
-        public void Update(T item)
+        public virtual void Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;
         }

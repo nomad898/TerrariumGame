@@ -8,21 +8,20 @@ using System.Data.Entity;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : IConversationRepository<Conversation, int>
+    class ConversationRepository : Repository<Conversation, int>, IConversationRepository
     {
-        private DataBaseContext db;
 
         public ConversationRepository(DataBaseContext context)
+            : base(context)
         {
-            db = context;
         }
 
-        public void Create(Conversation item)
+        public override void Create(Conversation item)
         {
             db.Conversations.Add(item);
         }
 
-        public void DeleteById(int id)
+        public override void DeleteById(int id)
         {
             Conversation conversation = FindById(id);
             if (conversation != null)
@@ -31,7 +30,7 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public Conversation FindById(int id)
+        public override Conversation FindById(int id)
         {
             Conversation conversation = db.Conversations.Find(id);
             if (conversation != null)
@@ -46,12 +45,12 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public IEnumerable<Conversation> GetAll()
+        public override IEnumerable<Conversation> GetAll()
         {
             return db.Conversations;
         }
 
-        public void Update(Conversation item)
+        public override void Update(Conversation item)
         {
             db.Entry(item).State = EntityState.Modified;
         }
