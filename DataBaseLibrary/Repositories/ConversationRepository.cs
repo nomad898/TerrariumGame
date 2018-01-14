@@ -1,32 +1,37 @@
-﻿using DataBaseMessageWriter.EF;
-using DataBaseMessageWriter.Entities;
+﻿using DataBaseInterfaces.Entities;
+using DataBaseInterfaces.Repositories;
+using DataBaseLibrary.EFContext;
+using DataBaseLibrary.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 
-namespace DataBaseMessageWriter.Repositories
+namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<Conversation, int>
+    class ConversationRepository : IConversationRepository<Conversation, int>
     {
+        private DataBaseContext db;
+
         public ConversationRepository(DataBaseContext context)
-            : base(context)         
-        {                
+        {
+            db = context;
         }
 
-        public override void Create(Conversation item)
+        public void Create(Conversation item)
         {
             db.Conversations.Add(item);
         }
 
-        public override void Delete(int id)
+        public void DeleteById(int id)
         {
-            Conversation conversation = Get(id);
+            Conversation conversation = FindById(id);
             if (conversation != null)
             {
                 db.Conversations.Remove(conversation);
-            }           
+            }
         }
 
-        public override Conversation Get(int id)
+        public Conversation FindById(int id)
         {
             Conversation conversation = db.Conversations.Find(id);
             if (conversation != null)
@@ -41,9 +46,14 @@ namespace DataBaseMessageWriter.Repositories
             }
         }
 
-        public override IEnumerable<Conversation> GetAll()
+        public IEnumerable<Conversation> GetAll()
         {
             return db.Conversations;
+        }
+
+        public void Update(Conversation item)
+        {
+            db.Entry(item).State = EntityState.Modified;
         }
     }
 }

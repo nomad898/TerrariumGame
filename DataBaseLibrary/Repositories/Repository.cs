@@ -1,10 +1,9 @@
-﻿using DataBaseMessageWriter.EF;
-using InterfaceLibrary.Interfaces.Repository;
-using System;
+﻿using DataBaseInterfaces.Repositories;
+using DataBaseLibrary.EFContext;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace DataBaseMessageWriter.Repositories
+namespace DataBaseLibrary.Repositories
 {
     abstract class Repository<T, V> : IRepository<T, V> where T : class
     {
@@ -13,13 +12,13 @@ namespace DataBaseMessageWriter.Repositories
         public Repository(DataBaseContext context)
         {
             this.db = context;
-        }            
+        }
 
         public abstract void Create(T item);
 
-        public abstract void Delete(V id);
+        public abstract void DeleteById(V id);
 
-        public abstract T Get(V id);
+        public abstract T FindById(V id);
 
         public abstract IEnumerable<T> GetAll();
 

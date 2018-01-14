@@ -1,19 +1,17 @@
 ﻿using System;
+using DataBaseInterfaces;
 using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
-using InterfaceLibrary.Interfaces.Repository;
-using DataBaseMessageWriter.Repositories;
-using DataBaseMessageWriter.Entities;
 
 namespace MessageWriter
 {
     public class DataBaseMessageWriter : IMessageWriter
     {
-        private UnitOfWork uow;
+        private IUnitOfWork uow;
 
-        public DataBaseMessageWriter()
+        public DataBaseMessageWriter(IUnitOfWork uow)
         {
-            this.uow = new UnitOfWork();
+            this.uow = uow;
         }
 
         #region IMessageWriter

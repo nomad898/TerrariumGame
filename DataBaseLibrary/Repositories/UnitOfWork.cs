@@ -1,18 +1,14 @@
-﻿using DataBaseMessageWriter.EF;
-using InterfaceLibrary.Interfaces.Repository;
+﻿using DataBaseInterfaces;
+using DataBaseLibrary.EFContext;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataBaseMessageWriter.Repositories
+namespace DataBaseLibrary.Repositories
 {
     class UnitOfWork : IUnitOfWork
     {
         private DataBaseContext db;
         private ConversationRepository conversationRepository;
-        
+
         public UnitOfWork()
         {
             db = new DataBaseContext();

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame", "TerrariumGame\TerrariumGame.csproj", "{DF681808-5987-413E-819B-2201ED91F584}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -30,6 +30,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{753197F1-8A91-49E7-B404-C644198CC0F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseMessageWriter", "DataBaseMessageWriter\DataBaseMessageWriter.csproj", "{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseLayer", "DataBaseLayer", "{5BCC4570-34A4-4841-AE74-3078732A923B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseInterfaces", "DataBaseInterfaces\DataBaseInterfaces.csproj", "{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLibrary", "DataBaseLibrary\DataBaseLibrary.csproj", "{654C8275-A024-44C4-9329-6F92361606DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +79,14 @@ Global
 		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{654C8275-A024-44C4-9329-6F92361606DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{654C8275-A024-44C4-9329-6F92361606DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{654C8275-A024-44C4-9329-6F92361606DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{654C8275-A024-44C4-9329-6F92361606DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +98,10 @@ Global
 		{9CC14E9C-E481-400F-9E14-E4D5A1B870D7} = {FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}
 		{753197F1-8A91-49E7-B404-C644198CC0F5} = {E4B41B36-7BDD-4057-AD9F-A4FE4FB4C0D8}
 		{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4} = {FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}
+		{A3D628BE-BFF2-451E-BA4B-7C427E4E274B} = {5BCC4570-34A4-4841-AE74-3078732A923B}
+		{654C8275-A024-44C4-9329-6F92361606DA} = {5BCC4570-34A4-4841-AE74-3078732A923B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D860BF3A-5FA9-4E34-9AFC-DF63C5FEB384}
 	EndGlobalSection
 EndGlobal
