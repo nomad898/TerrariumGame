@@ -1,16 +1,16 @@
-﻿using DataBaseInterfaces.Entity;
+﻿using DataBaseInterfaces.Entities;
 using DataBaseLibrary.Entities;
 using System.Data.Entity;
 
 namespace DataBaseLibrary.EFContext
 {
-    class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext
     {
         public DataBaseContext() : base("TerrariumDB")
         {
 
         }
 
-        public DbSet<IConversation> Conversations { get; set; }
+        public DbSet<Conversation> Conversations { get; set; }
     }
 }

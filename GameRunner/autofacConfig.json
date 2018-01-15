@@ -61,6 +61,27 @@
         }
       ],
       "instanceScope": "singleinstance"
+    },
+
+    // Database
+    {
+      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
+      "services": [
+        {
+          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    {
+      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
+      "services": [
+        {
+          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
     }
 
   ]

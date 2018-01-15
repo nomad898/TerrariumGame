@@ -1,15 +1,13 @@
-﻿using DataBaseInterfaces;
-using DataBaseInterfaces.Repositories;
+﻿using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataBaseLibrary.Repositories
 {
-    class GenericUoW : IUnitOfWork
+    class GenericUoW 
     {
         private readonly DataBaseContext db;
         public Dictionary<Type, object> repositories;

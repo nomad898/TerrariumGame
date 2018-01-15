@@ -14,7 +14,14 @@ namespace DataBaseLibrary.Repositories
 
         public Repository(DataBaseContext context)
         {
-            this.db = context;
+            if (context != null)
+            {
+                this.db = context;
+            }
+            else
+            {
+                db = new DataBaseContext();
+            }
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)

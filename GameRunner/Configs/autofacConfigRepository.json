@@ -103,6 +103,17 @@
         }
       ],
       "instanceScope": "singleinstance"
+    },
+
+    // Dataase
+    {
+      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
+      "services": [
+        {
+          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
     }
 
   ]

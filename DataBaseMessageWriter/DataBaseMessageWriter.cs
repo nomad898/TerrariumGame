@@ -2,6 +2,8 @@
 using DataBaseInterfaces;
 using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
+using DataBaseInterfaces.Entities;
+using DataBaseMessageWriter;
 
 namespace MessageWriter
 {
@@ -17,7 +19,7 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            Conversation conv = new Conversation()
+            IConversation conv = new ConversationDto
             {
                 Message = message,
                 Date = DateTime.Now

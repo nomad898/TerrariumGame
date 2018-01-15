@@ -124,16 +124,20 @@
     <None Include="autofacConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="autofacConfigRepository.json" />
+    <None Include="Configs\autofacConfigRepository.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="autofacConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="autofacConfigRepository.xml" />
+    <Content Include="Configs\autofacConfigRepository.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
+      <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
+      <Name>DataBaseInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>
@@ -149,7 +153,9 @@ xcopy /Q /Y "$(SolutionDir)TextFileMessageWriter\$(OutDir)TextFileMessageWriter.
 
 xcopy /Q /Y "$(SolutionDir)XmlMessageWriter\$(OutDir)XmlMessageWriter.dll"     "$(TargetDir)"
 
-xcopy /Q /Y "$(SolutionDir)DataBaseMessageWriter\$(OutDir)DataBaseMessageWriter.dll" "$(TargetDir)"</PostBuildEvent>
+xcopy /Q /Y "$(SolutionDir)DataBaseMessageWriter\$(OutDir)DataBaseMessageWriter.dll" "$(TargetDir)"
+
+xcopy /Q /Y "$(SolutionDir)DataBaseLibrary\$(OutDir)DataBaseLibrary.dll" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

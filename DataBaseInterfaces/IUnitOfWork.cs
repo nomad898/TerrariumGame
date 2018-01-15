@@ -1,4 +1,5 @@
-﻿using DataBaseInterfaces.Repositories;
+﻿using DataBaseInterfaces.Entities;
+using DataBaseInterfaces.Repositories;
 using System;
 using System.Threading.Tasks;
 
@@ -9,5 +10,6 @@ namespace DataBaseInterfaces
         void Save();
         Task SaveAsync();
         
+        IConversationRepository<IConversation> ConversationRepository { get; }
     }
 }

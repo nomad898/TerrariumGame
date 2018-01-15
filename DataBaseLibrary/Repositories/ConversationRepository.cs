@@ -1,4 +1,5 @@
-﻿using DataBaseInterfaces.Repositories;
+﻿using DataBaseInterfaces.Entities;
+using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
 using DataBaseLibrary.Entities;
 using System;
@@ -7,31 +8,39 @@ using System.Data.Entity;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<Conversation, int>,
-         IConversationRepository<Conversation>
+    class ConversationRepository : Repository<IConversation, int>,
+         IConversationRepository<IConversation>
     {
         public ConversationRepository(DataBaseContext context)
             : base(context)
         {
         }
 
-        public override void Create(Conversation item)
+        public override void Create(IConversation item)
         {
-            db.Conversations.Add(item);
+            var entity = item as Conversation;
+            if (entity != null)
+            {
+                db.Conversations.Add(entity);
+            }
         }
 
         public override void DeleteById(int id)
         {
-            Conversation conversation = FindById(id);
+            var conversation = FindById(id);
             if (conversation != null)
             {
-                db.Conversations.Remove(conversation);
+                var entity = conversation as Conversation;
+                if (entity != null)
+                {
+                    db.Conversations.Remove(entity);
+                }
             }
         }
 
-        public override Conversation FindById(int id)
+        public override IConversation FindById(int id)
         {
-            Conversation conversation = db.Conversations.Find(id);
+            var conversation = db.Conversations.Find(id);
             if (conversation != null)
             {
                 return conversation;
@@ -44,12 +53,12 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public override IEnumerable<Conversation> GetAll()
+        public override IEnumerable<IConversation> GetAll()
         {
             return db.Conversations;
         }
 
-        public override void Update(Conversation item)
+        public override void Update(IConversation item)
         {
             db.Entry(item).State = EntityState.Modified;
         }

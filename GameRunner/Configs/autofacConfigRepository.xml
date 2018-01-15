@@ -61,4 +61,10 @@
     <instanceScope>single-instance</instanceScope>
   </components>
 
+  <components name="6">
+    <type>DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary</type>
+    <services name="0" type="DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
 </autofac>

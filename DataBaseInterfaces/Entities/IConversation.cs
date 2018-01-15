@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBaseInterfaces.Entity
+namespace DataBaseInterfaces.Entities
 {
     public interface IConversation
     {

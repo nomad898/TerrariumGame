@@ -1,9 +1,13 @@
 ﻿using DataBaseInterfaces.Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DataBaseLibrary.Entities
+namespace DataBaseMessageWriter
 {
-    public class Conversation : IConversation
+    class ConversationDto : IConversation
     {
         public int ConversationId { get; set; }
         public DateTime Date { get; set; }
