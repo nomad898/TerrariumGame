@@ -114,6 +114,16 @@
         }
       ],
       "instanceScope": "singleinstance"
+    },
+
+    {
+      "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
+      "services": [
+        {
+          "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
     }
 
   ]

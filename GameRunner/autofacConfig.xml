@@ -38,8 +38,8 @@
   </components>
 
   <components name="6">
-    <type>DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary</type>
-    <services name="0" type="DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"/>
+    <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
+    <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 

@@ -8,9 +8,16 @@ using System.Linq;
 
 namespace DataBaseLibrary.Repositories
 {
-    class Repository<TEntity, TIdType> : IRepository<TEntity, TIdType> where TEntity : class
+    public abstract class Repository<TEntity, TIdType>
+        : IRepository<TEntity, TIdType>
+        where TEntity : class
     {
         protected readonly DataBaseContext db;
+
+        public Repository()
+        {
+            db = new DataBaseContext();
+        }
 
         public Repository(DataBaseContext context)
         {
@@ -82,5 +89,29 @@ namespace DataBaseLibrary.Repositories
         {
             db.Entry(entity).State = EntityState.Modified;
         }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+
+        #region IDisposable
+        private bool disposed = false;
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                db.Dispose();
+            }
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

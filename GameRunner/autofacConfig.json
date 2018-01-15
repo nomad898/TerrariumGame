@@ -64,21 +64,12 @@
     },
 
     // Database
-    {
-      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
-      "services": [
-        {
-          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
-        }
-      ],
-      "instanceScope": "singleinstance"
-    },
 
     {
-      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
+      "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
       "services": [
         {
-          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
+          "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
         }
       ],
       "instanceScope": "singleinstance"

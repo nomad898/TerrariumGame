@@ -67,4 +67,10 @@
     <instanceScope>single-instance</instanceScope>
   </components>
 
+  <components name="7">
+    <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
+    <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
 </autofac>

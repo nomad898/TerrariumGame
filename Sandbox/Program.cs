@@ -1,4 +1,5 @@
 ﻿using DataBaseInterfaces.Entities;
+using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.Entities;
 using DataBaseLibrary.Repositories;
 using System;
@@ -9,16 +10,14 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-
-            UnitOfWork uow = new UnitOfWork();
+            IConversationRepository cRepo = new ConversationRepository();
             IConversation c = new Conversation
             {
                 Message = DateTime.Now.ToString(),
                 Date = DateTime.Now
             };
-
-            uow.ConversationRepository.Create(c);
-            uow.Save();
+            cRepo.Create(c);
+            cRepo.Save();
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);
         }

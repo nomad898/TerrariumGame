@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IConversationRepository<TEntity> : IRepository<TEntity, int> 
-        where TEntity : IConversation
+    public interface IConversationRepository : IRepository<IConversation, int> 
     {
     }
 }

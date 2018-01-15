@@ -8,9 +8,14 @@ using System.Data.Entity;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<IConversation, int>,
-         IConversationRepository<IConversation>
+    public class ConversationRepository : Repository<IConversation, int>,
+          IConversationRepository
     {
+        public ConversationRepository() : base()
+        {
+
+        }
+
         public ConversationRepository(DataBaseContext context)
             : base(context)
         {
@@ -18,7 +23,11 @@ namespace DataBaseLibrary.Repositories
 
         public override void Create(IConversation item)
         {
-            var entity = item as Conversation;
+            var entity = new Conversation
+            {
+                Date = item.Date,
+                Message = item.Message
+            };
             if (entity != null)
             {
                 db.Conversations.Add(entity);
