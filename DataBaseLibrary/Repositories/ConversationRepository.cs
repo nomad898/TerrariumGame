@@ -5,6 +5,7 @@ using DataBaseLibrary.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace DataBaseLibrary.Repositories
 {
@@ -62,9 +63,9 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public override IEnumerable<IConversation> GetAll()
+        public override IQueryable<IConversation> GetAll()
         {
-            return db.Conversations;
+            return db.Conversations.AsQueryable();
         }
 
         public override void Update(IConversation item)

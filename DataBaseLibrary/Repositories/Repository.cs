@@ -55,7 +55,7 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public virtual IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return db.Set<TEntity>().Where(predicate);
         }
@@ -75,9 +75,9 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetAll()
         {
-            return db.Set<TEntity>().ToList();
+            return db.Set<TEntity>().AsQueryable();
         }
 
         public virtual void RemoveRange(IEnumerable<TEntity> entities)

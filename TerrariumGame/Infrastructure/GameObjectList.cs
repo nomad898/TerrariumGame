@@ -10,8 +10,13 @@ using InterfaceLibrary.Interfaces;
 
 namespace TerrariumGame.Infrastructure
 {
-    public class GameObjectList : IGameObjectList<IGameObject>
+    public class GameObjectList : IGameObjectList
     {
+        class Node
+        {
+            Node 
+        }
+
         public IGameObject this[int index]
         {
             get
