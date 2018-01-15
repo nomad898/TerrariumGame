@@ -1,22 +1,36 @@
 ﻿using DataBaseInterfaces;
+using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
 using System;
-using DataBaseInterfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DataBaseLibrary.Repositories
 {
-    class UnitOfWork : IUnitOfWork
+    class GenericUoW : IUnitOfWork
     {
-        private readonly DataBaseContext db;       
+        private readonly DataBaseContext db;
+        public Dictionary<Type, object> repositories;
 
-        public UnitOfWork(DataBaseContext context)
+        public GenericUoW(DataBaseContext context)
         {
-            db = context;       
+            db = context;
+            repositories = new Dictionary<Type, object>();
         }
-       
+
+        public IRepository<T, V> Repository<T, V>() where T : class
+        {
+            if (repositories.Keys.Contains(typeof(T)) == true)
+            {
+                return repositories[typeof(T)] as IRepository<T, V>;
+            }
+
+            IRepository<T, V> repo = new Repository<T, V>(db);
+            repositories.Add(typeof(T), repo);
+            return repo;
+        }
         public void Save()
         {
             db.SaveChanges();
@@ -43,7 +57,7 @@ namespace DataBaseLibrary.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
+        }        
         #endregion
     }
 }

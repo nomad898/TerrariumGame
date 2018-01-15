@@ -1,4 +1,5 @@
-﻿using DataBaseLibrary.Entities;
+﻿using DataBaseInterfaces.Entity;
+using DataBaseLibrary.Entities;
 using System.Data.Entity;
 
 namespace DataBaseLibrary.EFContext
@@ -10,6 +11,6 @@ namespace DataBaseLibrary.EFContext
 
         }
 
-        public DbSet<Conversation> Conversations { get; set; }
+        public DbSet<IConversation> Conversations { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DataBaseInterfaces.Entities;
-using DataBaseInterfaces.Repositories;
+﻿using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
 using DataBaseLibrary.Entities;
 using System;
@@ -8,9 +7,9 @@ using System.Data.Entity;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<Conversation, int>, IConversationRepository
+    class ConversationRepository : Repository<Conversation, int>,
+         IConversationRepository<Conversation>
     {
-
         public ConversationRepository(DataBaseContext context)
             : base(context)
         {

@@ -1,13 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IRepository<T, V> where T : class
+    public interface IRepository<TEntity, TIdType>     
     {
-        IEnumerable<T> GetAll();
-        T FindById(V id);
-        void Create(T item);
-        void Update(T item);
-        void DeleteById(V id);
+        IEnumerable<TEntity> GetAll();
+
+        TEntity FindById(TIdType id);
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+              
+        void Create(TEntity entity);
+        void AddRange(IEnumerable<TEntity> entities);
+
+        void Update(TEntity entity);
+
+        void Delete(TEntity entity);
+        void DeleteById(TIdType id);
+        void RemoveRange(IEnumerable<TEntity> entities);
     }
 }
