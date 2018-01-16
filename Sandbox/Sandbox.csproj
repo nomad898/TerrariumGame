@@ -68,6 +68,14 @@
       <Project>{654c8275-a024-44c4-9329-6f92361606da}</Project>
       <Name>DataBaseLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
+      <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
+      <Name>InterfaceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame\TerrariumGame.csproj">
+      <Project>{df681808-5987-413e-819b-2201ed91f584}</Project>
+      <Name>TerrariumGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

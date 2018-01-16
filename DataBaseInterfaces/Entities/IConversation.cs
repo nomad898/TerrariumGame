@@ -11,5 +11,7 @@ namespace DataBaseInterfaces.Entities
         int ConversationId { get; set; }
         DateTime Date { get; set; }
         string Message { get; set; }
+
+        void TransferData(IConversation entity);
     }
 }

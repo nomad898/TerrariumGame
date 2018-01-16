@@ -52,7 +52,7 @@
     <Compile Include="Infrastructure\Config.cs" />
     <Compile Include="Infrastructure\Dice.cs" />
     <Compile Include="Infrastructure\Factory\GameObjectFactory.cs" />
-    <Compile Include="Infrastructure\GameObjectList.cs" />
+    <Compile Include="Infrastructure\GameObjectsList.cs" />
     <Compile Include="Infrastructure\Map.cs" />
     <Compile Include="Infrastructure\MapManipulator.cs" />
     <Compile Include="Models\Alive\BigBoss.cs" />

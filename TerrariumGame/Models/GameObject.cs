@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Models
 {
-    abstract class GameObject : IGameObject
+    public abstract class GameObject : IGameObject
     {
         #region Fields
         #region IMovable

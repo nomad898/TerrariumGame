@@ -2,7 +2,7 @@
 
 namespace InterfaceLibrary.Interfaces.Infrastructure
 {
-    public interface IGameObjectList : IList<IGameObject>
+    public interface IGameObjectsList : IList<IGameObject>
     {
 
     }

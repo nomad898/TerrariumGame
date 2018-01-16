@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Infrastructure\IGameObjectList.cs" />
+    <Compile Include="Interfaces\Infrastructure\IGameObjectsList.cs" />
     <Compile Include="Interfaces\Models\IAlivable.cs" />
     <Compile Include="Interfaces\Models\Alive\IBigBoss.cs" />
     <Compile Include="Interfaces\Models\Alive\IBoss.cs" />
