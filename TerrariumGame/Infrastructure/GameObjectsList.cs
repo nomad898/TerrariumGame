@@ -12,11 +12,15 @@ namespace TerrariumGame.Infrastructure
 {
     public class GameObjectsList : IGameObjectsList
     {
+        public GameObjectsList()
+        {
+
+        }
+
         public class Node
         {
             private Node next = null;
             private IGameObject data;
-            private int index;
 
             public Node Next
             {
@@ -40,34 +44,25 @@ namespace TerrariumGame.Infrastructure
                     data = value;
                 }
             }
-            public int Index
+
+            public Node() { }
+
+            public Node(IGameObject item)
             {
-                get
+                Data = item;
+            }
+
+            public void AddToEnd(IGameObject item)
+            {
+                if (next == null)
                 {
-                    return index;
+                    next = new Node(item);
                 }
-                set
+                else
                 {
-                    index = value;
+                    next.AddToEnd(item);
                 }
             }
-        }
-
-        public GameObjectsList()
-        {
-            gameObjects = new Node[capacity];
-        }
-
-        private Node[] gameObjects;
-
-        private const int SIZE_INDEX = 2;
-
-        private int capacity = 10;
-        private int indexCounter = 0;
-
-        private void EnsureCapacity()
-        {
-            capacity = capacity * 2;
         }
 
         private Node head = null;
@@ -95,38 +90,32 @@ namespace TerrariumGame.Infrastructure
                 }
                 return current;
             }
+            private set
+            {
+                Last = value;
+            }
         }
 
         public IGameObject this[int index]
         {
             get
             {
-                try
-                {
-                    return gameObjects[index].Data;
-                }
-                catch (NullReferenceException ex)
-                {
-                    throw new ArgumentOutOfRangeException
-                        (string.Format("Element with index {0} doesn't exist", index));
-                }
+                throw new NotImplementedException();
             }
 
             set
             {
-                gameObjects[index].Data = value;
+                throw new NotImplementedException();
             }
         }
+
+        private int count = 0;
 
         public int Count
         {
             get
             {
-                if (Last != null)
-                {
-                    return Last.Index + 1;
-                }
-                return 0;
+                return count;
             }
         }
 
@@ -134,58 +123,51 @@ namespace TerrariumGame.Infrastructure
         {
             get
             {
-                return gameObjects.IsReadOnly;
+                return false;
             }
         }
 
         public void Add(IGameObject item)
         {
-            if (Count == capacity)
-            {
-                EnsureCapacity();
-            }
-
-            Node node = new Node
-            {
-                Data = item,
-                Index = this.indexCounter
-            };
-
-            this.indexCounter++;
-
             if (head == null)
             {
-                head = node;
+                head = new Node(item);
             }
             else
             {
-                Last.Next = node;
+                head.AddToEnd(item);
             }
-            if (Last.Index == 0)
-            {
-                gameObjects[Last.Index] = node;
-            }
-            else
-            {
-                gameObjects[Last.Index + 1] = node;
-            }
+            count++;
         }
 
         public void Clear()
         {
-            gameObjects = new Node[capacity];
+            while (Last != null)
+            {
+                Last = null;
+            }
+            count = 0;
         }
 
         public bool Contains(IGameObject item)
         {
-            foreach (var go in gameObjects)
+            if (item != null)
             {
-                if (go.Data == item)
+                Node current = First;
+                while (current != null)
                 {
-                    return true;
+                    if (current.Data == item)
+                    {
+                        return true;
+                    }
+                    current = current.Next;
                 }
+                return false;
             }
-            return false;
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         public void CopyTo(IGameObject[] array, int arrayIndex)
@@ -195,13 +177,11 @@ namespace TerrariumGame.Infrastructure
 
         public IEnumerator<IGameObject> GetEnumerator()
         {
-            foreach (var go in gameObjects)
+            Node current = First;
+            while (current != null)
             {
-                if (go == null)
-                {
-                    break;
-                }
-                yield return go.Data;
+                yield return current.Data;
+                current = current.Next;
             }
         }
 
@@ -217,7 +197,24 @@ namespace TerrariumGame.Infrastructure
 
         public bool Remove(IGameObject item)
         {
-            throw new NotImplementedException();
+            if (this.Contains(item))
+            {
+                Node current = First;
+                Node prev = null;
+                while (current.Data != item)
+                {
+                    prev = current;
+                    current = current.Next;
+                }
+                prev.Next = current.Next;
+                current = null;
+                count -= 1;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void RemoveAt(int index)
@@ -227,7 +224,7 @@ namespace TerrariumGame.Infrastructure
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
     }
 }

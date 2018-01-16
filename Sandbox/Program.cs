@@ -23,14 +23,9 @@ namespace Sandbox
             goL.Add(sa4);
             goL.Add(sa5);
 
-            Console.WriteLine(goL.First.Data);
-            
+            goL.Remove(sa5);
 
-            Console.WriteLine(goL.IsReadOnly);
-
-            List<int> myList = new List<int>();
-            myList.Add(2);
-            Console.WriteLine(myList[0]);
+            Console.WriteLine(goL.Count);
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);

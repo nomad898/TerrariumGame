@@ -22,16 +22,14 @@ namespace DataBaseLibrary.Repositories
         {
         }
 
-        public override void Create(IConversation item)
+        public override void Create(IConversation entity)
         {
-            var entity = new Conversation
+            Conversation item = new Conversation();
+            item.TransferData(entity);
+            if (item.Message != null 
+                && item.Date != null)
             {
-                Date = item.Date,
-                Message = item.Message
-            };
-            if (entity != null)
-            {
-                db.Conversations.Add(entity);
+                db.Conversations.Add(item);
             }
         }
 
