@@ -21,6 +21,7 @@ namespace TerrariumGame.Infrastructure
         {
             private Node next = null;
             private IGameObject data;
+            private int index;
 
             public Node Next
             {
@@ -44,24 +45,23 @@ namespace TerrariumGame.Infrastructure
                     data = value;
                 }
             }
+            public int Index
+            {
+                get
+                {
+                    return index;
+                }
+                set
+                {
+                    index = value;
+                }
+            }
 
             public Node() { }
 
             public Node(IGameObject item)
             {
                 Data = item;
-            }
-
-            public void AddToEnd(IGameObject item)
-            {
-                if (next == null)
-                {
-                    next = new Node(item);
-                }
-                else
-                {
-                    next.AddToEnd(item);
-                }
             }
         }
 
@@ -72,6 +72,10 @@ namespace TerrariumGame.Infrastructure
             get
             {
                 return head;
+            }
+            private set
+            {
+                head = value;
             }
         }
 
@@ -100,12 +104,37 @@ namespace TerrariumGame.Infrastructure
         {
             get
             {
-                throw new NotImplementedException();
+                if (Count > index)
+                {
+                    Node current = First;
+                    while (current != null)
+                    {
+                        if (current.Index == index)
+                        {
+                            return current.Data;
+                        }
+                        current = current.Next;
+                    }
+                }
+                throw new ArgumentOutOfRangeException(
+                    string.Format("Element with index {0} does not exist", index));
             }
-
             set
             {
-                throw new NotImplementedException();
+                if (Count > index)
+                {
+                    Node current = First;
+                    while (current != null)
+                    {
+                        if (current.Index == index)
+                        {
+                            current.Data = value;
+                        }
+                        current = current.Next;
+                    }
+                }
+                throw new ArgumentOutOfRangeException(
+                   string.Format("Element with index {0} does not exist", index));
             }
         }
 
@@ -132,12 +161,24 @@ namespace TerrariumGame.Infrastructure
             if (head == null)
             {
                 head = new Node(item);
+                head.Index = 0;
             }
             else
             {
-                head.AddToEnd(item);
+                AddToEnd(item);
             }
             count++;
+        }
+
+        private int indexCounter = 1;
+
+        private void AddToEnd(IGameObject item)
+        {
+            Node last = Last;
+            Node newNode = new Node(item);
+            last.Next = newNode;
+            newNode.Index = indexCounter;
+            indexCounter++;
         }
 
         public void Clear()
@@ -187,7 +228,16 @@ namespace TerrariumGame.Infrastructure
 
         public int IndexOf(IGameObject item)
         {
-            throw new NotImplementedException();
+            Node current = First;
+            while (current != null)
+            {
+                if (current.Data == item)
+                {
+                    return current.Index;
+                }
+                current = current.Next;
+            }
+            return -1;
         }
 
         public void Insert(int index, IGameObject item)
@@ -199,17 +249,37 @@ namespace TerrariumGame.Infrastructure
         {
             if (this.Contains(item))
             {
-                Node current = First;
-                Node prev = null;
-                while (current.Data != item)
+                Node current, temp;
+                if (First.Data == item)
                 {
-                    prev = current;
-                    current = current.Next;
+                    First = First.Next;
+                    current = First;
+                    temp = current;
+                }               
+                else 
+                {
+                    current = First;
+                    Node prev = current;
+                    if (current != null)
+                    {
+                        while (current.Data != item)
+                        {
+                            prev = current;
+                            current = current.Next;
+                        }
+                    }
+                    if (current != null && prev != null)
+                        prev.Next = current.Next;
+                    temp = current.Next;
+                }              
+                while (temp != null)
+                {
+                    --temp.Index;
+                    temp = temp.Next;
                 }
-                if (current != null)
-                    prev.Next = current.Next;
                 current = null;
-                count -= 1;
+                --indexCounter;
+                --count;
                 return true;
             }
             else
@@ -220,7 +290,20 @@ namespace TerrariumGame.Infrastructure
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (Count > index)
+            {
+                Node current = First;
+                Node prev = null;
+                while (current.Index != index)
+                {
+                    prev = current;
+                    current = current.Next;
+                }
+                if (current != null && prev != null)
+                    prev.Next = current.Next;
+                current = null;
+
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
