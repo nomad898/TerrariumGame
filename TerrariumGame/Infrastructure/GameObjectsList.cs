@@ -206,7 +206,8 @@ namespace TerrariumGame.Infrastructure
                     prev = current;
                     current = current.Next;
                 }
-                prev.Next = current.Next;
+                if (current != null)
+                    prev.Next = current.Next;
                 current = null;
                 count -= 1;
                 return true;

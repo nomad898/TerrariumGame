@@ -1,4 +1,5 @@
 ﻿using InterfaceLibrary.Interfaces;
+using InterfaceLibrary.Interfaces.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace TerrariumGame.Infrastructure
     {
         #region Fields
         private char[,] matrix;
-        private readonly IList<IGameObject> gameObjects;
+        private IGameObjectsList gameObjects;
         private int height;
         private int width;
         #endregion
@@ -30,7 +31,7 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        public IList<IGameObject> GameObjects
+        public IGameObjectsList GameObjects
         {
             get
             {
@@ -78,7 +79,7 @@ namespace TerrariumGame.Infrastructure
               
         #endregion
         #region Ctor
-        public Map(IList<IGameObject> objects)
+        public Map(IGameObjectsList objects)
         {
             this.Width = Config.MAP_WIDTH;
             this.Height = Config.MAP_HEIGHT;
@@ -91,10 +92,10 @@ namespace TerrariumGame.Infrastructure
             this.Width = weight;
             this.Height = height;
             matrix = new char[Height, Width];
-            gameObjects = new List<IGameObject>();
+            gameObjects = new GameObjectsList();
         }
 
-        public Map(int height, int weight, IList<IGameObject> objects)
+        public Map(int height, int weight, IGameObjectsList objects)
         {
             this.Width = weight;
             this.Height = height;

@@ -105,7 +105,7 @@
       "instanceScope": "singleinstance"
     },
 
-    // Dataase
+    // Database
     {
       "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
       "services": [
@@ -121,6 +121,17 @@
       "services": [
         {
           "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // GameObjectsList
+    {
+      "type": "TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"
         }
       ],
       "instanceScope": "singleinstance"

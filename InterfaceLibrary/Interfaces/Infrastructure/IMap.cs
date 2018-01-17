@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using InterfaceLibrary.Interfaces.Infrastructure;
 
 namespace InterfaceLibrary.Interfaces
 {
@@ -7,7 +7,7 @@ namespace InterfaceLibrary.Interfaces
         int Height { get; set; }
         int Width { get; set; }
         char[,] Matrix { get; set; }
-        IList<IGameObject> GameObjects { get; }
+        IGameObjectsList GameObjects { get; }
         char this[int x, int y] { get; set; }
     }
 }

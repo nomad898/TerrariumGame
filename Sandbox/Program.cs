@@ -23,9 +23,10 @@ namespace Sandbox
             goL.Add(sa4);
             goL.Add(sa5);
 
-            goL.Remove(sa5);
+            goL.Remove(sa4);
 
-            Console.WriteLine(goL.Count);
+            foreach (var el in goL)
+            Console.WriteLine(goL);
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);

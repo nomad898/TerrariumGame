@@ -29,7 +29,7 @@ namespace TerrariumGame.Infrastructure
             {
                 gameIsRunning = value;
             }
-        }      
+        }
         public IMapManipulator MapManipulator
         {
             get
@@ -61,7 +61,7 @@ namespace TerrariumGame.Infrastructure
         private const int minutesInHour = 30;
         private const int timeDelay = 1000;
         private Random random;
-        
+
         private readonly IMapManipulator mapManipulator;
         private readonly IDice dice;
         private readonly IMessageWriter msgWriter;
@@ -71,7 +71,7 @@ namespace TerrariumGame.Infrastructure
         public Game(IMapManipulator mapManipulator,
             IDice dice,
             IMessageWriter msgWriter)
-        {         
+        {
             if (mapManipulator == null)
             {
                 throw new ArgumentNullException("MapManipulator is null");
@@ -99,7 +99,7 @@ namespace TerrariumGame.Infrastructure
             while (gameIsRunning)
             {
                 for (int minute = 0; minute < minutesInHour; minute++)
-                {                  
+                {
                     StartLogic();
                     mapManipulator.SetObjects();
                     mapManipulator.ShowMap();
@@ -198,7 +198,7 @@ namespace TerrariumGame.Infrastructure
         /// <param name="firstAliveObject">Employee instance</param>
         /// <param name="secondAliveObject">Employee instance</param>
         private void GreetLogic(IEmployee firstAliveObject, IEmployee secondAliveObject)
-        {            
+        {
             string talkResult = string.Empty;
             if (firstAliveObject is IWorker)
             {
@@ -242,8 +242,15 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CollectionClear()
         {
-            (MapManipulator.Map.GameObjects as List<IGameObject>)
-                .RemoveAll(gameObject => gameObject.State == State.Deleted);
+            foreach (var el in MapManipulator.Map.GameObjects)
+            {
+                if (el.State == State.Deleted)
+                {
+                    MapManipulator.Map.GameObjects.Remove(el);
+                }
+            }
+            //    (MapManipulator.Map.GameObjects as List<IGameObject>)
+            //        .RemoveAll(gameObject => gameObject.State == State.Deleted);
         }
 
         /// <summary>
@@ -251,13 +258,23 @@ namespace TerrariumGame.Infrastructure
         /// </summary>
         private void CreateNewWork()
         {
-            int mapObjectsCount = MapManipulator.Map.GameObjects.Count;
-            for (int obj = 0; obj < mapObjectsCount; obj++)
+            //int mapObjectsCount = MapManipulator.Map.GameObjects.Count;
+            //for (int obj = 0; obj < mapObjectsCount; obj++)
+            //{
+            //    if (MapManipulator.Map.GameObjects[obj] is ICustomer)
+            //    {
+            //        var newWork = (MapManipulator.Map.GameObjects[obj] as ICustomer)
+            //            .CreateWork();
+            //        MapManipulator.Map.GameObjects.Add(newWork);
+            //    }
+            //}
+
+            foreach (var el in MapManipulator.Map.GameObjects)
             {
-                if (MapManipulator.Map.GameObjects[obj] is ICustomer)
+                var customer = el as ICustomer;
+                if (customer != null)
                 {
-                    var newWork = (MapManipulator.Map.GameObjects[obj] as ICustomer)
-                        .CreateWork();
+                    var newWork = customer.CreateWork();
                     MapManipulator.Map.GameObjects.Add(newWork);
                 }
             }

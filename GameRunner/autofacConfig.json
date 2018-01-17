@@ -44,7 +44,7 @@
 
     // Writer
     {
-      "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
+      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
@@ -73,7 +73,16 @@
         }
       ],
       "instanceScope": "singleinstance"
-    }
+    },
 
+    {
+      "type": "TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    }
   ]
 }

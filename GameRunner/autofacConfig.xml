@@ -43,4 +43,10 @@
     <instanceScope>single-instance</instanceScope>
   </components>
 
+  <components name="7">
+    <type>TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
 </autofac>
