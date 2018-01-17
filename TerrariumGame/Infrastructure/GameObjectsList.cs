@@ -238,7 +238,12 @@ namespace TerrariumGame.Infrastructure
         //TODO
         public void CopyTo(IGameObject[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            Node current = First;
+            while (current != null)
+            {
+                array[arrayIndex] = current.Data;
+                arrayIndex++;
+            }
         }
 
         public IEnumerator<IGameObject> GetEnumerator()
@@ -273,7 +278,7 @@ namespace TerrariumGame.Infrastructure
         //TODO
         public void Insert(int index, IGameObject item)
         {
-            throw new NotImplementedException();
+            this[index] = item;
         }
 
         /// <summary>
@@ -350,22 +355,11 @@ namespace TerrariumGame.Infrastructure
             --count;
         }
 
-        //TODO
+        
         public void RemoveAt(int index)
         {
-            if (Count > index)
-            {
-                Node current = First;
-                Node prev = null;
-                while (current.Index != index)
-                {
-                    prev = current;
-                    current = current.Next;
-                }
-                if (current != null && prev != null)
-                    prev.Next = current.Next;
-                current = null;
-            }
+            var item = this[index];
+            Remove(item);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
