@@ -10,73 +10,47 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            //GameObjectsList goL = new GameObjectsList();
-            //SalaryAddition sa0 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(0, 0)
-            //};
-            //SalaryAddition sa1 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(1, 1)
-            //};
-            //SalaryAddition sa2 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(2, 2)
-            //};
-            //SalaryAddition sa3 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(3, 3)
-            //};
-            ////SalaryAddition sa4 = new SalaryAddition
-            ////{
-            ////    Position = new InterfaceLibrary.UtilityModels.Point(4, 4)
-            ////};
-            ////SalaryAddition sa5 = new SalaryAddition
-            ////{
-            ////    Position = new InterfaceLibrary.UtilityModels.Point(5, 5)
-            ////};
-            //SalaryAddition sa6 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(6, 6)
-            //};
-            //goL.Add(sa0);
-            //goL.Add(sa1);
-            //goL.Add(sa2);
-            //goL.Add(sa3);
-            ////goL.Add(sa4);
-            ////goL.Add(sa5);
-
-            //goL.Insert(1, sa6);
-
-            //foreach (var el in goL)
-            //    Console.WriteLine(el.Position.X);
-
-            List<string> dinosaurs = new List<string>();
-
-            dinosaurs.Add("Tyrannosaurus");
-            dinosaurs.Add("Amargasaurus");
-            dinosaurs.Add("Mamenchisaurus");
-            dinosaurs.Add("Brachiosaurus");
-            dinosaurs.Add("Compsognathus");
-
-            Console.WriteLine();
-            foreach (string dinosaur in dinosaurs)
+            GameObjectsList goL = new GameObjectsList();
+            SalaryAddition sa0 = new SalaryAddition
             {
-                Console.WriteLine(dinosaur);
-            }
-
-            // Declare an array with 15 elements.
-            string[] array = new string[15];
-
-            dinosaurs.CopyTo(array);
-            dinosaurs.CopyTo(array, 6);
-            dinosaurs.CopyTo(2, array, 12, 4);
-
-            Console.WriteLine("\nContents of the array:");
-            foreach (string dinosaur in array)
+                Position = new InterfaceLibrary.UtilityModels.Point(0, 0)
+            };
+            SalaryAddition sa1 = new SalaryAddition
             {
-                Console.WriteLine(dinosaur);
-            }
+                Position = new InterfaceLibrary.UtilityModels.Point(1, 1)
+            };
+            SalaryAddition sa2 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(2, 2)
+            };
+            SalaryAddition sa3 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(3, 3)
+            };
+            //SalaryAddition sa4 = new SalaryAddition
+            //{
+            //    Position = new InterfaceLibrary.UtilityModels.Point(4, 4)
+            //};
+            //SalaryAddition sa5 = new SalaryAddition
+            //{
+            //    Position = new InterfaceLibrary.UtilityModels.Point(5, 5)
+            //};
+            SalaryAddition sa6 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(6, 6)
+            };
+            goL.Add(sa0);
+            goL.Add(sa1);
+            goL.Add(sa2);
+            goL.Add(sa3);
+            //goL.Add(sa4);
+            //goL.Add(sa5);
+
+            goL.Insert(1, sa6);
+
+            foreach (var el in goL)
+                Console.WriteLine(el.Position.X);
+
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);
