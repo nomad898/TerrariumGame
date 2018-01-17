@@ -35,10 +35,10 @@ namespace Sandbox
             //{
             //    Position = new InterfaceLibrary.UtilityModels.Point(5, 5)
             //};
-            //SalaryAddition sa6 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(6, 6)
-            //};
+            SalaryAddition sa6 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(6, 6)
+            };
             goL.Add(sa0);
             goL.Add(sa1);
             goL.Add(sa2);
@@ -47,14 +47,14 @@ namespace Sandbox
             //goL.Add(sa5);
 
            
-            Console.WriteLine(goL[0].Position.X);
-            goL.Remove(sa0);
-            Console.WriteLine(goL[0].Position.X);
-            
-            //foreach (var el in goL)
-            //    Console.WriteLine(el.Position.X);
+            Console.WriteLine(goL[3].Position.X);
+            goL.Remove(sa1);
+            goL[2] = sa6;
+            Console.WriteLine(goL[2].Position.X);
 
 
+            foreach (var el in goL)
+                Console.WriteLine(el.Position.X);
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);
         }

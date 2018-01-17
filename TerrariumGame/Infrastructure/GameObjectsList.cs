@@ -12,11 +12,6 @@ namespace TerrariumGame.Infrastructure
 {
     public class GameObjectsList : IGameObjectsList
     {
-        public GameObjectsList()
-        {
-
-        }
-
         public class Node
         {
             private Node next = null;
@@ -65,8 +60,14 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     The first element in the list
+        /// </summary>
         private Node head = null;
-
+        
+        /// <summary>
+        ///     Returns the first item.
+        /// </summary>
         public Node First
         {
             get
@@ -79,6 +80,9 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Returns the last item.
+        /// </summary>
         public Node Last
         {
             get
@@ -129,6 +133,7 @@ namespace TerrariumGame.Infrastructure
                         if (current.Index == index)
                         {
                             current.Data = value;
+                            return;
                         }
                         current = current.Next;
                     }
@@ -140,6 +145,9 @@ namespace TerrariumGame.Infrastructure
 
         private int count = 0;
 
+        /// <summary>
+        ///     Returns the number of items.
+        /// </summary>
         public int Count
         {
             get
@@ -156,6 +164,10 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Add a new item to the list.
+        /// </summary>
+        /// <param name="item">Game object</param>
         public void Add(IGameObject item)
         {
             if (head == null)
@@ -172,6 +184,10 @@ namespace TerrariumGame.Infrastructure
 
         private int indexCounter = 1;
 
+        /// <summary>
+        ///     Add a new item to the end of the list.
+        /// </summary>
+        /// <param name="item">Game object</param>
         private void AddToEnd(IGameObject item)
         {
             Node last = Last;
@@ -181,15 +197,23 @@ namespace TerrariumGame.Infrastructure
             indexCounter++;
         }
 
+        /// <summary>
+        ///     Delete all items.
+        /// </summary>
         public void Clear()
         {
-            while (Last != null)
+            foreach (var el in this)
             {
-                Last = null;
+                this.Remove(el);
             }
             count = 0;
         }
 
+        /// <summary>
+        ///     Shows if the item is in the list.
+        /// </summary>
+        /// <param name="item">Game object</param>
+        /// <returns>Is contains</returns>
         public bool Contains(IGameObject item)
         {
             if (item != null)
@@ -211,6 +235,7 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        //TODO
         public void CopyTo(IGameObject[] array, int arrayIndex)
         {
             throw new NotImplementedException();
@@ -226,6 +251,11 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Returns the index of the item if it is in the list.
+        /// </summary>
+        /// <param name="item">item</param>
+        /// <returns>item's index</returns>
         public int IndexOf(IGameObject item)
         {
             Node current = First;
@@ -240,46 +270,31 @@ namespace TerrariumGame.Infrastructure
             return -1;
         }
 
+        //TODO
         public void Insert(int index, IGameObject item)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        ///     Delete the item in the list.
+        /// </summary>
+        /// <param name="item">Game object</param>
+        /// <returns>Is deleted</returns>
         public bool Remove(IGameObject item)
         {
             if (this.Contains(item))
             {
-                Node current, temp;
+                Node current = null;
                 if (First.Data == item)
                 {
-                    First = First.Next;
-                    current = First;
-                    temp = current;
-                }               
-                else 
-                {
-                    current = First;
-                    Node prev = current;
-                    if (current != null)
-                    {
-                        while (current.Data != item)
-                        {
-                            prev = current;
-                            current = current.Next;
-                        }
-                    }
-                    if (current != null && prev != null)
-                        prev.Next = current.Next;
-                    temp = current.Next;
-                }              
-                while (temp != null)
-                {
-                    --temp.Index;
-                    temp = temp.Next;
+                    DeleteFirstItem(ref current, item);
                 }
-                current = null;
-                --indexCounter;
-                --count;
+                else
+                {
+                    DeleteNoFirstItem(ref current, item);
+                }
+                IndexDecrement(current);
                 return true;
             }
             else
@@ -288,6 +303,54 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Delete the first item.
+        /// </summary>
+        /// <param name="current">Current node</param>
+        /// <param name="item">item to remove</param>
+        private void DeleteFirstItem(ref Node current, IGameObject item)
+        {
+            First = First.Next;
+            current = First;
+        }
+        /// <summary>
+        ///     Delete not the first item.
+        /// </summary>
+        /// <param name="current">Current node</param>
+        /// <param name="item">item to remove</param>
+        private void DeleteNoFirstItem(ref Node current, IGameObject item)
+        {
+            current = First;
+            Node prev = null;
+            if (current != null)
+            {
+                while (current.Data != item)
+                {
+                    prev = current;
+                    current = current.Next;
+                }
+            }
+            if (current != null)
+                prev.Next = current.Next;
+            current = current.Next;
+        }
+
+        /// <summary>
+        ///     Change the values of the indices.
+        /// </summary>
+        /// <param name="current">Current node</param>
+        private void IndexDecrement(Node current)
+        {
+            while (current != null)
+            {
+                --current.Index;
+                current = current.Next;
+            }
+            --indexCounter;
+            --count;
+        }
+
+        //TODO
         public void RemoveAt(int index)
         {
             if (Count > index)
@@ -302,7 +365,6 @@ namespace TerrariumGame.Infrastructure
                 if (current != null && prev != null)
                     prev.Next = current.Next;
                 current = null;
-
             }
         }
 
