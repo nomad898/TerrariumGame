@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IRepository<TEntity, TIdType>  : IDisposable
+    public interface IRepository<TEntity, TIdType>  
     {
         IQueryable<TEntity> GetAll();
 
@@ -20,6 +20,7 @@ namespace DataBaseInterfaces.Repositories
         void Delete(TEntity entity);
         void DeleteById(TIdType id);
         void RemoveRange(IEnumerable<TEntity> entities);
+
         void Save();
     }
 }

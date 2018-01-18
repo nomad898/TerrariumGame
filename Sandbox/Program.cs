@@ -1,4 +1,7 @@
-﻿using InterfaceLibrary.Interfaces;
+﻿using DataBaseLibrary.EFContext;
+using DataBaseLibrary.Entities;
+using DataBaseLibrary.Repositories;
+using InterfaceLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using TerrariumGame.Infrastructure;
@@ -27,14 +30,14 @@ namespace Sandbox
             {
                 Position = new InterfaceLibrary.UtilityModels.Point(3, 3)
             };
-            //SalaryAddition sa4 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(4, 4)
-            //};
-            //SalaryAddition sa5 = new SalaryAddition
-            //{
-            //    Position = new InterfaceLibrary.UtilityModels.Point(5, 5)
-            //};
+            SalaryAddition sa4 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(4, 4)
+            };
+            SalaryAddition sa5 = new SalaryAddition
+            {
+                Position = new InterfaceLibrary.UtilityModels.Point(5, 5)
+            };
             SalaryAddition sa6 = new SalaryAddition
             {
                 Position = new InterfaceLibrary.UtilityModels.Point(6, 6)
@@ -43,17 +46,18 @@ namespace Sandbox
             goL.Add(sa1);
             goL.Add(sa2);
             goL.Add(sa3);
-            //goL.Add(sa4);
-            //goL.Add(sa5);
+            goL.Add(sa4);
+            goL.Add(sa5);
+                       
 
-            goL.Insert(1, sa6);
-
-            foreach (var el in goL)
-                Console.WriteLine(el.Position.X);
-
+            //foreach (var el in goL)
+            //{
+            //    Console.WriteLine(el.Position.X);
+            //}
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);
         }
+       
     }
 }

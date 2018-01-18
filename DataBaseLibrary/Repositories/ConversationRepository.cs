@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace DataBaseLibrary.Repositories
 {
-    public class ConversationRepository : Repository<IConversation, int>,
+    class ConversationRepository : Repository<IConversation, int>,
           IConversationRepository
     {
         public ConversationRepository() : base()

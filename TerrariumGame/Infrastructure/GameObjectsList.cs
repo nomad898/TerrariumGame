@@ -64,7 +64,7 @@ namespace TerrariumGame.Infrastructure
         ///     The first element in the list
         /// </summary>
         private Node head = null;
-        
+
         /// <summary>
         ///     Returns the first item.
         /// </summary>
@@ -108,7 +108,7 @@ namespace TerrariumGame.Infrastructure
         {
             get
             {
-                if (Count > index)
+                if (Count > index && index >= 0)
                 {
                     Node current = First;
                     while (current != null)
@@ -125,7 +125,7 @@ namespace TerrariumGame.Infrastructure
             }
             set
             {
-                if (Count > index)
+                if (Count > index && index >= 0)
                 {
                     Node current = First;
                     while (current != null)
@@ -243,6 +243,7 @@ namespace TerrariumGame.Infrastructure
             {
                 array[arrayIndex] = current.Data;
                 arrayIndex++;
+                current = current.Next;
             }
         }
 
@@ -275,10 +276,32 @@ namespace TerrariumGame.Infrastructure
             return -1;
         }
 
-        //TODO
         public void Insert(int index, IGameObject item)
         {
-            this[index] = item;
+            if (Count > index && index >= 0)
+            {
+                var current = First;
+                while (current.Index != index)
+                {
+                    current = current.Next;
+                }
+                var oldCurrentData = current.Data;
+                current.Data = item;
+                current = current.Next;
+                while (current != null)
+                {
+                    var temp = current.Data;
+                    current.Data = oldCurrentData;
+                    current = current.Next;
+                    oldCurrentData = temp;
+
+                }
+                this.AddToEnd(oldCurrentData);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         /// <summary>
@@ -355,11 +378,17 @@ namespace TerrariumGame.Infrastructure
             --count;
         }
 
-        
         public void RemoveAt(int index)
         {
-            var item = this[index];
-            Remove(item);
+            if (Count > index && index >= 0)
+            {
+                var item = this[index];
+                Remove(item);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

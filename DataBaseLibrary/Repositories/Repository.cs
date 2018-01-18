@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DataBaseLibrary.Repositories
 {
-    public abstract class Repository<TEntity, TIdType>
+    abstract class Repository<TEntity, TIdType>
         : IRepository<TEntity, TIdType>
         where TEntity : class
     {
@@ -88,30 +88,12 @@ namespace DataBaseLibrary.Repositories
         public virtual void Update(TEntity entity)
         {
             db.Entry(entity).State = EntityState.Modified;
-        }
+        }               
 
-        public void Save()
+        public virtual void Save()
         {
             db.SaveChanges();
         }
-
-        #region IDisposable
-        private bool disposed = false;
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                db.Dispose();
-            }
-            disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
+       
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        IConversationRepository ConversationRepository { get; set; }
+        IConversationRepository ConversationRepository { get; }
+
+        void Save();
     }
 }

@@ -3,11 +3,11 @@ using System;
 
 namespace DataBaseLibrary.Entities
 {
-    public class Conversation : IConversation
+    class Conversation : IConversation
     {
-        public int ConversationId { get; set; }
-        public DateTime Date { get; set; }
-        public string Message { get; set; }
+        public virtual int ConversationId { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual string Message { get; set; }
 
         public void TransferData(IConversation entity)
         {
