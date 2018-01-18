@@ -129,7 +129,7 @@ namespace TerrariumGame.Infrastructure
                     mapManipulator.SetObjects();
                     UI.ShowMap(MapManipulator.Map);
                     UI.ShowHourCounter(MapManipulator.Map, this.HourCounter);
-                    Thread.Sleep(TIME_DELAY);
+                    // Thread.Sleep(TIME_DELAY);
                 }
                 this.hourCounter++;
 

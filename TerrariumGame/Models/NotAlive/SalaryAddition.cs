@@ -22,5 +22,10 @@ namespace TerrariumGame.Models.NotAlive
         public SalaryAddition() : base() { }
 
         public SalaryAddition(int x, int y) : base(x, y) { }
+
+        public override string ToString()
+        {
+            return string.Format("Icon: {0} | ", this.Icon);
+        }
     }
 }

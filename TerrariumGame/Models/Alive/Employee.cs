@@ -50,10 +50,15 @@ namespace TerrariumGame.Models.Alive
 
         protected virtual string Say(string rank, string whatToSay)
         {
-            return string.Format("Я {0}, {1}, {2}", this.Name, rank, whatToSay);
+            return string.Format("{0}, {1}, {2}", this.Name, rank, whatToSay);
         }
 
         public abstract string Talk(IEmployee ee);
+
+        public override string ToString()
+        {
+            return string.Format("Name: {0} | Salary: {1} | Mood: {2} ", this.Name, this.Salary, this.Mood);
+        }
         #endregion
     }
 }

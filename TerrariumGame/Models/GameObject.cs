@@ -40,6 +40,12 @@ namespace TerrariumGame.Models
         {
             Position = new Point(x, y);
         }
+
+        public override string ToString()
+        {
+            return string.Format("IsAlive: {0} | Icon: {1} | Position: {2} | State: {3} ",
+                this.IsAlive, this.Icon, this.Position, this.State);
+        }
         #endregion
     }
 }

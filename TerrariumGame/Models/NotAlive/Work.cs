@@ -22,5 +22,10 @@ namespace TerrariumGame.Models.NotAlive
         public Work(): base() { }
 
         public Work(int x, int y) : base(x, y) { }
+
+        public override string ToString()
+        {
+            return string.Format("Icon: {0} | ", this.Icon);
+        }
     }
 }

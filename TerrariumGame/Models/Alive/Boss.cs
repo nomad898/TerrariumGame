@@ -90,6 +90,11 @@ namespace TerrariumGame.Models.Alive
                 return null;
             }
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
         #endregion
     }
 }

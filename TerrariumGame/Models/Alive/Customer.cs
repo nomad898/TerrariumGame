@@ -24,6 +24,7 @@ namespace TerrariumGame.Models.Alive
 
         public Customer(int x, int y) : base(x, y) { }
 
+        #region Methods
         public void Manage(IManagable imngbl)
         {
             imngbl.DoWork();
@@ -33,5 +34,11 @@ namespace TerrariumGame.Models.Alive
         {
             return new Work(this.Position.X, this.Position.Y);
         }
+
+        public override string ToString()
+        {
+            return string.Format("Icon: {0} | ", this.Icon);
+        }
+        #endregion
     }
 }

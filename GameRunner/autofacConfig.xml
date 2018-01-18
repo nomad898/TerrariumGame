@@ -30,9 +30,9 @@
     <services name="0" type="InterfaceLibrary.Interfaces.UI.IUI, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
-  
+
   <components name="5">
-    <type>MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter</type>
+    <type>MessageWriter.XMessageWriter, XmlMessageWriter</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>

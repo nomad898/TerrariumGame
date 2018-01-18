@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRunner", "GameRunner\Ga
 		{570EF974-1E62-4E46-9831-F17072D1D47E} = {570EF974-1E62-4E46-9831-F17072D1D47E}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Writers", "Writers", "{FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageWriters", "MessageWriters", "{FED3210C-FEAA-4C3F-9E32-07A49DB8AC7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMessageWriter", "ConsoleMessageWriter\ConsoleMessageWriter.csproj", "{32101FFC-08E8-4E2E-9687-1022C6B0E865}"
 EndProject
