@@ -2,6 +2,7 @@
   "defaultAssembly": "GameRunner",
   "components": [
 
+    // Map
     {
       "type": "TerrariumGame.Infrastructure.Map, TerrariumGame",
       "services": [
@@ -12,6 +13,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // Dice
     {
       "type": "TerrariumGame.Infrastructure.Dice, TerrariumGame",
       "services": [
@@ -22,6 +24,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // GameObjectFactory
     {
       "type": "TerrariumGame.Infrastructure.Factory.GameObjectFactory, TerrariumGame",
       "services": [
@@ -32,6 +35,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // MapManipulator
     {
       "type": "TerrariumGame.Infrastructure.MapManipulator, TerrariumGame",
       "services": [
@@ -42,9 +46,20 @@
       "instanceScope": "singleinstance"
     },
 
+    // ConsoleUI
+    {
+      "type": "ConsoleUI.ConsoleUI, ConsoleUI",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.UI.IUI, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
     // Writer
     {
-      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
+      "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
@@ -53,6 +68,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // Game
     {
       "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",
       "services": [
@@ -75,6 +91,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // GameObjectsList
     {
       "type": "TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame",
       "services": [

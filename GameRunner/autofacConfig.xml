@@ -24,26 +24,32 @@
     <services name="0" type="InterfaceLibrary.Interfaces.IMapManipulator, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
-  
+
   <components name="4">
+    <type>ConsoleUI.ConsoleUI, ConsoleUI</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.UI.IUI, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+  
+  <components name="5">
     <type>MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
   
-  <components name="5">
+  <components name="6">
     <type>TerrariumGame.Infrastructure.Game, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.IGame, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="6">
+  <components name="7">
     <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
     <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="7">
+  <components name="8">
     <type>TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>

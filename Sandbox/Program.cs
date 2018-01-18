@@ -24,7 +24,8 @@ namespace Sandbox
             };
             SalaryAddition sa2 = new SalaryAddition
             {
-                Position = new InterfaceLibrary.UtilityModels.Point(2, 2)
+                Position = new InterfaceLibrary.UtilityModels.Point(2, 2),
+                State = InterfaceLibrary.UtilityModels.State.Deleted
             };
             SalaryAddition sa3 = new SalaryAddition
             {
@@ -48,12 +49,18 @@ namespace Sandbox
             goL.Add(sa3);
             goL.Add(sa4);
             goL.Add(sa5);
-                       
 
-            //foreach (var el in goL)
-            //{
-            //    Console.WriteLine(el.Position.X);
-            //}
+
+
+
+            foreach (var el in goL)
+            {
+                if (el.State == InterfaceLibrary.UtilityModels.State.Deleted)
+                {
+                    goL.Remove(el);
+                }
+                Console.WriteLine(el.Position.X);
+            }
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);

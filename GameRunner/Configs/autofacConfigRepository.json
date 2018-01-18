@@ -2,6 +2,7 @@
   "defaultAssembly": "GameRunner",
   "components": [
 
+    // Map
     {
       "type": "TerrariumGame.Infrastructure.Map, TerrariumGame",
       "services": [
@@ -12,6 +13,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // Dice
     {
       "type": "TerrariumGame.Infrastructure.Dice, TerrariumGame",
       "services": [
@@ -22,7 +24,7 @@
       "instanceScope": "singleinstance"
     },
 
-
+    // GameObjectFactory
     {
       "type": "TerrariumGame.Infrastructure.Factory.GameObjectFactory, TerrariumGame",
       "services": [
@@ -33,6 +35,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // MapManipulator
     {
       "type": "TerrariumGame.Infrastructure.MapManipulator, TerrariumGame",
       "services": [
@@ -43,7 +46,19 @@
       "instanceScope": "singleinstance"
     },
 
+    // ConsoleUI
+    {
+      "type": "ConsoleUI.ConsoleUI, ConsoleUI",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.UI.IUI, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
     // MessageWriters
+    // ConsoleMessageWriter
     {
       "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
       "services": [
@@ -54,6 +69,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // TextFileMessageWriter
     {
       "type": "MessageWriter.TextFileMessageWriter, TextFileMessageWriter",
       "services": [
@@ -64,6 +80,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // XmlMessageWriter --> XmlDocument version
     {
       "type": "MessageWriter.XmlMessageWriter, XmlMessageWriter",
       "services": [
@@ -74,6 +91,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // XMessageWriter --> XDocument version
     {
       "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
       "services": [
@@ -84,6 +102,7 @@
       "instanceScope": "singleinstance"
     },
 
+    // DataBaseMessageWriter
     {
       "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
       "services": [
@@ -95,6 +114,7 @@
     },
     // MessageWriters
 
+    // Game
     {
       "type": "TerrariumGame.Infrastructure.Game, TerrariumGame",
       "services": [
@@ -110,12 +130,13 @@
       "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
       "services": [
         {
-          "type": "DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"
+          "type": "DataBaseInterfaces.Repositories.IUnitOfWork, DataBaseInterfaces"
         }
       ],
       "instanceScope": "singleinstance"
     },
 
+    // ConversationRepository
     {
       "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
       "services": [

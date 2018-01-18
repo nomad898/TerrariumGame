@@ -1,23 +1,15 @@
-﻿using InterfaceLibrary.Interfaces.Writer;
+﻿using InterfaceLibrary.Interfaces.UI;
+using InterfaceLibrary.Interfaces.Writer;
 
 namespace InterfaceLibrary.Interfaces
 {
     public interface IMapManipulator
     {
-        int HourCounter
-        {
-            get; set;
-        }
+        IMap Map { get; }
 
-        int MaxHour { get; }
-
-        IMap Map { get; set; }
-
-        IGameObjectFactory GameObjectFactory { get; set; }
-
-        IMessageWriter MessageWriter { get; }
-
-        void ShowMap();
+        IGameObjectFactory GameObjectFactory { get; }
+        
+        IMessageWriter MessageWriter { get; }        
 
         void SetObjects();        
     }

@@ -1,12 +1,21 @@
-﻿using InterfaceLibrary.Interfaces.Writer;
+﻿using InterfaceLibrary.Interfaces.UI;
+using InterfaceLibrary.Interfaces.Writer;
 
 namespace InterfaceLibrary.Interfaces
 {
     public interface IGame
     {
         bool GameIsRunning { get; set; }
+        int HourCounter
+        {
+            get;
+        }
+        int MaxHour
+        {
+            get;
+        }
 
-        // IMap Map { get; }
+        IUI UI { get; }
         IMapManipulator MapManipulator { get; }
         IDice Dice { get; } 
         IMessageWriter MessageWriter { get; }      

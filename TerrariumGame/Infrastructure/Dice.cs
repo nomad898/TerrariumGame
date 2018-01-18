@@ -13,17 +13,9 @@ namespace TerrariumGame.Infrastructure
     {
         #region Fields
         Random random;
-        private readonly IMap map;
         private int chance = 100;
         private int limit = 50;
-
-        public IMap Map
-        {
-            get
-            {
-                return map;
-            }
-        }
+        
         public int Chance
         {
             get
@@ -48,13 +40,8 @@ namespace TerrariumGame.Infrastructure
         }
         #endregion
 
-        public Dice(IMap map)
-        {
-            if (map == null)
-            {
-                throw new ArgumentNullException("Map is null");
-            }
-            this.map = map;
+        public Dice()
+        {          
             random = new Random();
         }
 
@@ -62,15 +49,15 @@ namespace TerrariumGame.Infrastructure
         ///     Randomly change the position of the object
         /// </summary>
         /// <param name="mvbl">IMovable object</param>
-        public void ChangeObjectPosition(IMovable mvbl)
+        public void ChangeObjectPosition(IMovable mvbl, IMap map)
         {
             if (random.Next(chance) > limit)
             {
-                ChangeObjectPositionY(mvbl);
+                ChangeObjectPositionY(mvbl, map);
             }
             else
             {
-                ChangeObjectPositionX(mvbl);
+                ChangeObjectPositionX(mvbl, map);
             }
         }
 
@@ -79,7 +66,7 @@ namespace TerrariumGame.Infrastructure
         ///     Change object's X postion
         /// </summary>
         /// <param name="mvbl">IMovable object</param>
-        private void ChangeObjectPositionX(IMovable mvbl)
+        private void ChangeObjectPositionX(IMovable mvbl, IMap map)
         {
             int newX, newY;
             if (random.Next(chance) > limit)
@@ -104,7 +91,7 @@ namespace TerrariumGame.Infrastructure
         ///     Change object's Y postion
         /// </summary>
         /// <param name="mvbl">IMovable object</param>
-        private void ChangeObjectPositionY(IMovable mvbl)
+        private void ChangeObjectPositionY(IMovable mvbl, IMap map)
         {
             int newX, newY;
             if (random.Next(chance) > limit)
