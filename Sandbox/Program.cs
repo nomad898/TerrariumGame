@@ -51,16 +51,58 @@ namespace Sandbox
             goL.Add(sa5);
 
 
+            Console.WriteLine(goL.Contains(sa6));
 
 
-            foreach (var el in goL)
-            {
-                if (el.State == InterfaceLibrary.UtilityModels.State.Deleted)
-                {
-                    goL.Remove(el);
-                }
-                Console.WriteLine(el.Position.X);
-            }
+            //IGameObject[] array = new IGameObject[10];
+
+            //goL.CopyTo(array);
+
+            //goL.CopyTo(0, array, 4, 6);
+            //int x = 0;
+            //foreach (var el in array)
+            //{
+
+            //    if (el != null)
+            //    {
+            //        Console.Write(x.ToString() + "  " + el.Position.X);
+            //    }
+            //    else
+            //    {
+            //        Console.Write(x.ToString());
+            //    }
+            //    Console.WriteLine();
+            //    x++;
+            //}
+
+
+            //List<string> dinosaurs = new List<string>();
+
+            //dinosaurs.Add("Tyrannosaurus");
+            //dinosaurs.Add("Amargasaurus");
+            //dinosaurs.Add("Mamenchisaurus");
+            //dinosaurs.Add("Brachiosaurus");
+            //dinosaurs.Add("Compsognathus");
+
+            //Console.WriteLine();
+            //foreach (string dinosaur in dinosaurs)
+            //{
+            //    Console.WriteLine(dinosaur);
+            //}
+
+            //// Declare an array with 15 elements.
+            //string[] array = new string[15];
+
+            //dinosaurs.CopyTo(array);
+            //dinosaurs.CopyTo(array, 12);
+            //dinosaurs.CopyTo(2, array, 12, 3);
+
+            //Console.WriteLine("\nContents of the array:");
+            //foreach (string dinosaur in array)
+            //{
+            //    Console.WriteLine(dinosaur);
+            //}
+
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);

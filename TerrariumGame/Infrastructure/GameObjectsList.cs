@@ -218,14 +218,13 @@ namespace TerrariumGame.Infrastructure
         {
             if (item != null)
             {
-                Node current = First;
-                while (current != null)
+                for (Node current = First; current != null;
+                    current = current.Next)
                 {
                     if (current.Data == item)
                     {
                         return true;
                     }
-                    current = current.Next;
                 }
                 return false;
             }
@@ -235,15 +234,54 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
-        //TODO
+        public void CopyTo(IGameObject[] array)
+        {
+            if (array.Length >= Count)
+            {
+                Node current = First;
+                for (int arrayIndex = 0; arrayIndex <= array.Length;
+                    current = current.Next, arrayIndex++)
+                {
+                    if (current == null)
+                    {
+                        break;
+                    }
+                    array[arrayIndex] = current.Data;
+                }
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
         public void CopyTo(IGameObject[] array, int arrayIndex)
         {
-            Node current = First;
-            while (current != null)
+            if (array.Length - arrayIndex >= Count)
             {
-                array[arrayIndex] = current.Data;
-                arrayIndex++;
-                current = current.Next;
+                for (Node current = First; current != null;
+                    current = current.Next, arrayIndex++)
+                {
+                    array[arrayIndex] = current.Data;
+                }
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        public void CopyTo(int index, IGameObject[] array,
+            int arrayIndex, int count)
+        {
+            for (Node current = First; current != null;
+                current = current.Next, arrayIndex++, index++, count--)
+            {
+                if (count == 0)
+                {
+                    break;
+                }
+                array[arrayIndex] = this[index];
             }
         }
 
@@ -294,7 +332,6 @@ namespace TerrariumGame.Infrastructure
                     current.Data = oldCurrentData;
                     current = current.Next;
                     oldCurrentData = temp;
-
                 }
                 this.AddToEnd(oldCurrentData);
             }
@@ -369,10 +406,9 @@ namespace TerrariumGame.Infrastructure
         /// <param name="current">Current node</param>
         private void IndexDecrement(Node current)
         {
-            while (current != null)
+            for (; current != null; current = current.Next)
             {
                 --current.Index;
-                current = current.Next;
             }
             --indexCounter;
             --count;
