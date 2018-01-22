@@ -110,14 +110,13 @@ namespace TerrariumGame.Infrastructure
             {
                 if (Count > index && index >= 0)
                 {
-                    Node current = First;
-                    while (current != null)
+                    for (Node current = First; current != null;
+                        current = current.Next)
                     {
                         if (current.Index == index)
                         {
                             return current.Data;
                         }
-                        current = current.Next;
                     }
                 }
                 throw new ArgumentOutOfRangeException(
@@ -127,15 +126,14 @@ namespace TerrariumGame.Infrastructure
             {
                 if (Count > index && index >= 0)
                 {
-                    Node current = First;
-                    while (current != null)
+                    for (Node current = First; current != null;
+                       current = current.Next)
                     {
                         if (current.Index == index)
                         {
                             current.Data = value;
                             return;
                         }
-                        current = current.Next;
                     }
                 }
                 throw new ArgumentOutOfRangeException(
