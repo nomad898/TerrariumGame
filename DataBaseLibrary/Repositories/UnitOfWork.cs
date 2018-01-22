@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseLibrary.Repositories
 {
+    // Не работает.
     class UnitOfWork : IUnitOfWork
     {
         private readonly DataBaseContext db;

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<autofac defaultAssembly="GameRunner">
+
+  <components name="0">
+    <type>TerrariumGame.Infrastructure.Map, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.IMap, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="1">
+    <type>TerrariumGame.Infrastructure.Dice, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.IDice, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="2">
+    <type>TerrariumGame.Infrastructure.Factory.GameObjectFactory, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.IGameObjectFactory, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="3">
+    <type>TerrariumGame.Infrastructure.MapManipulator, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.IMapManipulator, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="4">
+    <type>ConsoleUI.ConsoleUI, ConsoleUI</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.UI.IUI, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="5">
+    <type>MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="5">
+    <type>MessageWriter.TextFileMessageWriter, TextFileMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="5">
+    <type>MessageWriter.XmlMessageWriter, XmlMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="5">
+    <type>MessageWriter.XMessageWriter, XmlMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="5">
+    <type>MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="6">
+    <type>TerrariumGame.Infrastructure.Game, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.IGame, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="7">
+    <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
+    <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="8">
+    <type>DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary</type>
+    <services name="0" type="DataBaseInterfaces.Repositories.IUnitOfWork, DataBaseInterfaces"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+  
+  <components name="9">
+    <type>TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame</type>
+    <services name="0" type="InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+</autofac>
