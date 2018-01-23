@@ -7,7 +7,7 @@ using DataBaseInterfaces.Repositories;
 
 namespace MessageWriter
 {
-    public class DataBaseMessageWriter : IMessageWriter
+    class DataBaseMessageWriter : IMessageWriter
     {
         private IConversationRepository conversationRepo;
 
