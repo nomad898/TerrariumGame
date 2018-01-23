@@ -14,21 +14,9 @@ namespace DataBaseLibrary.Repositories
     {
         protected readonly DataBaseContext db;
 
-        public Repository()
-        {
-            db = new DataBaseContext();
-        }
-
         public Repository(DataBaseContext context)
         {
-            if (context != null)
-            {
-                this.db = context;
-            }
-            else
-            {
-                db = new DataBaseContext();
-            }
+            this.db = context;
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)
@@ -88,12 +76,12 @@ namespace DataBaseLibrary.Repositories
         public virtual void Update(TEntity entity)
         {
             db.Entry(entity).State = EntityState.Modified;
-        }               
+        }
 
         public virtual void Save()
         {
             db.SaveChanges();
         }
-       
+
     }
 }

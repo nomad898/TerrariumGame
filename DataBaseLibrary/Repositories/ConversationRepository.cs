@@ -12,11 +12,6 @@ namespace DataBaseLibrary.Repositories
     class ConversationRepository : Repository<IConversation, int>,
           IConversationRepository
     {
-        public ConversationRepository() : base()
-        {
-
-        }
-
         public ConversationRepository(DataBaseContext context)
             : base(context)
         {

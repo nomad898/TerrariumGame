@@ -80,7 +80,10 @@
     },
 
     // Database
-
+    {
+      "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",     
+      "instanceScope": "singleinstance"
+    },
     {
       "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
       "services": [

@@ -21,7 +21,7 @@ namespace MessageWriter
         {
             IConversation c = new ConversationDto
             {
-                Message = DateTime.Now.ToString(),
+                Message = message,
                 Date = DateTime.Now
             };
             conversationRepo.Create(c);

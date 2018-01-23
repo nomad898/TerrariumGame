@@ -11,13 +11,7 @@ namespace DataBaseLibrary.Repositories
     // Не работает.
     class UnitOfWork : IUnitOfWork
     {
-        private readonly DataBaseContext db;
-
-        public UnitOfWork(IConversationRepository conversationRepository)
-        {
-            db = new DataBaseContext();
-            this.conversationRepository = conversationRepository;
-        }
+        private readonly DataBaseContext db;      
 
         public UnitOfWork(DataBaseContext context,
             IConversationRepository conversationRepository)
