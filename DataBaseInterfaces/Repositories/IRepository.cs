@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IRepository<TEntity, TIdType>  
+    public interface IRepository<TEntity, TIdType> : IDisposable
     {
         IQueryable<TEntity> GetAll();
 

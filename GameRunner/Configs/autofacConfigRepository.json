@@ -125,6 +125,12 @@
       "instanceScope": "singleinstance"
     },
 
+    // DataBaseContext
+    {
+      "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",     
+      "instanceScope": "singleinstance"
+    },
+
     // Database
     {
       "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",

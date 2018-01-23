@@ -68,18 +68,23 @@
   </components>
 
   <components name="7">
+    <type>DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary</type>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
+  <components name="8">
     <type>DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary</type>
     <services name="0" type="DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="8">
+  <components name="9">
     <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
     <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="9">
+  <components name="10">
     <type>TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>

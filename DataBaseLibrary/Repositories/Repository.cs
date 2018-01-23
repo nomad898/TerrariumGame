@@ -83,5 +83,23 @@ namespace DataBaseLibrary.Repositories
             db.SaveChanges();
         }
 
+        #region IDisposable
+        private bool disposed = false;
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                db.Dispose();
+            }
+            disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion      
     }
 }

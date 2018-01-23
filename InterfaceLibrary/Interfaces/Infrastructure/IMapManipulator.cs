@@ -9,8 +9,6 @@ namespace InterfaceLibrary.Interfaces
 
         IGameObjectFactory GameObjectFactory { get; }
         
-        IMessageWriter MessageWriter { get; }        
-
         void SetObjects();        
     }
 }

@@ -242,13 +242,6 @@ namespace TerrariumGame.Infrastructure
             {
                 msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
             }
-            else
-            {
-                Console.WriteLine(talkResult);
-                Thread.Sleep(TIME_DELAY + 1000);
-                Console.SetCursorPosition(MapManipulator.Map.Width + 10, 2);
-                Console.WriteLine(new string(' ', 100));
-            }
         }
         #endregion
 

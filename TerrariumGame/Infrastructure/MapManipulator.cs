@@ -30,27 +30,17 @@ namespace TerrariumGame.Infrastructure
             {
                 return gOFactory;
             }
-        }        
-
-        public IMessageWriter MessageWriter
-        {
-            get
-            {
-                return msgWriter;
-            }
-        }
+        }              
         #endregion
         #region Private
         
         private Random random;
         private readonly IMap map;
         private readonly IGameObjectFactory gOFactory;
-        private readonly IMessageWriter msgWriter;
         #endregion
         #endregion
         public MapManipulator(IMap map,
-            IGameObjectFactory factory,          
-            IMessageWriter msgWriter)
+            IGameObjectFactory factory)
         {
             if (map == null)
             {
@@ -60,14 +50,9 @@ namespace TerrariumGame.Infrastructure
             {
                 throw new ArgumentNullException("Game factory is null");
             }
-            if (msgWriter == null)
-            {
-                throw new ArgumentNullException("MessageWriter is null");
-            }
             random = new Random();
             this.map = map;
             this.gOFactory = factory;
-            this.msgWriter = msgWriter;
             minObjectAmount = Config.MIN_OBJECT_AMOUNT;
             maxObjectAmount = Config.MAX_OBJECT_AMOUNT;
             idBegin = Config.BEGIN_OBJECT_ID;
