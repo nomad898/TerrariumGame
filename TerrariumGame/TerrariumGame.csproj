@@ -61,6 +61,7 @@
     <Compile Include="Models\Alive\Employee.cs" />
     <Compile Include="Infrastructure\Game.cs" />
     <Compile Include="Models\GameObject.cs" />
+    <Compile Include="Models\NotAlive\NotAlive.cs" />
     <Compile Include="Models\NotAlive\SalaryAddition.cs" />
     <Compile Include="Models\NotAlive\Work.cs" />
     <Compile Include="Models\Alive\Worker.cs" />

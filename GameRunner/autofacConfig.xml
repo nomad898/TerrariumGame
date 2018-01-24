@@ -36,7 +36,7 @@
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
-  
+
   <components name="6">
     <type>TerrariumGame.Infrastructure.Game, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.IGame, InterfaceLibrary"/>

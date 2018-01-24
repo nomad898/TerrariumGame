@@ -52,7 +52,7 @@ namespace MessageWriter
                 if (message != string.Empty)
                 {
                     PrintMessage(message);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(500);
                     Console.SetCursorPosition(Map.Width + 10, 2);
                     Console.WriteLine(new string(' ', 100));
                 }

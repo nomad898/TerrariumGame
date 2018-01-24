@@ -49,10 +49,15 @@ namespace TerrariumGame.Models.Alive
                 mngbl.Salary -= 100;
             }
         }
-
+                
         public ISalaryAddition CreateSalaryAddition()
         {
-            return new SalaryAddition();
+            return new SalaryAddition(this.Position.X, this.Position.Y, new Random().Next(200, 500));
+        }
+
+        public override void TakeSalaryAddition(ISalaryAddition salary)
+        {
+
         }
 
         #region Employee abstract methods override

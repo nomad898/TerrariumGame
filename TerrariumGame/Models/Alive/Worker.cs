@@ -58,6 +58,12 @@ namespace TerrariumGame.Models.Alive
         {
             DoneWork++;
         }
+
+        public void TakeSalaryAddition(ISalaryAddition salary)
+        {            
+            Salary += salary.Amount;
+            salary.State = State.Deleted;
+        }
         #endregion
         #region Employee abstract methods override
         protected override string Say(string whatToSay)

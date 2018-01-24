@@ -77,7 +77,7 @@ namespace TerrariumGame.Infrastructure
         private int hourCounter = 0;
         private const int MAX_HOUR = 8;
         private const int MINUTES_IN_HOUR = 30;
-        private const int TIME_DELAY = 1000;
+        private const int TIME_DELAY = 300;
         private Random random;
 
         private readonly IMapManipulator mapManipulator;
@@ -129,7 +129,7 @@ namespace TerrariumGame.Infrastructure
                     mapManipulator.SetObjects();
                     UI.ShowMap(MapManipulator.Map);
                     UI.ShowHourCounter(MapManipulator.Map, this.HourCounter);
-                    // Thread.Sleep(TIME_DELAY);
+                    Thread.Sleep(TIME_DELAY);
                 }
                 this.hourCounter++;
 
@@ -138,7 +138,7 @@ namespace TerrariumGame.Infrastructure
                     gameIsRunning = false;
                 }
 
-                CreateNewWork();
+                CreateNewItems();
             }
         }
 
@@ -178,19 +178,31 @@ namespace TerrariumGame.Infrastructure
                 if (employee != gameObject
                     && employee.Position == gameObject.Position)
                 {
-                    var empl = gameObject as IEmployee;
-
-                    if (empl != null)
+                    if (gameObject is IEmployee)
                     {
-                        Greet(employee, empl);
-                    }
-                    else
+                        var empl = gameObject as IEmployee;
+
+                        if (empl != null)
+                        {
+                            Greet(employee, empl);
+                        }
+                    }                   
+                    else if (gameObject is IWork)
                     {
                         var worker = employee as IWorker;
                         var work = gameObject as IWork;
                         if (worker != null && work != null)
                         {
                             CollectWork(worker, work);
+                        }
+                    }
+                    else if (gameObject is ISalaryAddition)
+                    {
+                        var mngbl = employee as IManagable;
+                        var salary = gameObject as ISalaryAddition;
+                        if (mngbl != null && salary != null)
+                        {
+                            CollectSalaryAddition(mngbl, salary);
                         }
                     }
                 }
@@ -255,6 +267,11 @@ namespace TerrariumGame.Infrastructure
             worker.DoWork(work);
         }
 
+        private void CollectSalaryAddition(IManagable mngbl, ISalaryAddition salary)
+        {
+            mngbl.TakeSalaryAddition(salary);
+        }
+
         /// <summary>
         ///     Remove collected work instances
         /// </summary>
@@ -274,17 +291,32 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         /// Customers create new Work object to the Map
         /// </summary>
-        private void CreateNewWork()
+        private void CreateNewItems()
         {
-
             foreach (var el in MapManipulator.Map.GameObjects)
             {
-                var customer = el as ICustomer;
-                if (customer != null)
-                {
-                    var newWork = customer.CreateWork();
-                    MapManipulator.Map.GameObjects.Add(newWork);
-                }
+                CreateNewWork(el);
+                CreateNewSalaryAddition(el);
+            }
+        }
+
+        private void CreateNewWork(IGameObject gameObject)
+        {
+            var customer = gameObject as ICustomer;
+            if (customer != null)
+            {
+                var newWork = customer.CreateWork();
+                MapManipulator.Map.GameObjects.Add(newWork);
+            }
+        }
+
+        private void CreateNewSalaryAddition(IGameObject gameObject)
+        {
+            var bigBoss = gameObject as IBigBoss;
+            if (bigBoss != null)
+            {
+                var salaryAddition = bigBoss.CreateSalaryAddition();
+                MapManipulator.Map.GameObjects.Add(salaryAddition);
             }
         }
         #endregion

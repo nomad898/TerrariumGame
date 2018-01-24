@@ -53,6 +53,13 @@ namespace TerrariumGame.Models.Alive
         }
 
         // TODO: Code repetition
+        public virtual void TakeSalaryAddition(ISalaryAddition salary)
+        {
+            Salary += salary.Amount;
+            salary.State = State.Deleted;
+        }
+
+        // TODO: Code repetition
         public void DoWork(IWork work)
         {
             work.State = State.Deleted;

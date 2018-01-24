@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.Models.NotAlive
 {
-    class Work : GameObject, IWork
+    class Work : NotAlive, IWork
     {
         public override bool IsAlive
         {
