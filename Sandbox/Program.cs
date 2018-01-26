@@ -49,9 +49,7 @@ namespace Sandbox
             goL.Add(sa3);
             goL.Add(sa4);
             goL.Add(sa5);
-
-
-            Console.WriteLine(goL.Contains(sa6));
+            
 
 
             //IGameObject[] array = new IGameObject[10];
@@ -77,6 +75,8 @@ namespace Sandbox
 
 
             //List<string> dinosaurs = new List<string>();
+            
+                                    
 
             //dinosaurs.Add("Tyrannosaurus");
             //dinosaurs.Add("Amargasaurus");

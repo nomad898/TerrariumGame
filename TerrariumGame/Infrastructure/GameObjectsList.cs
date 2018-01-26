@@ -283,6 +283,16 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        public List<IGameObject> ToList()
+        {
+            List<IGameObject> list = new List<IGameObject>();
+            foreach (var el in this)
+            {
+                list.Add(el);
+            }
+            return list;
+        }
+
         public IEnumerator<IGameObject> GetEnumerator()
         {
             Node current = First;
