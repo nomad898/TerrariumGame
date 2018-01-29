@@ -209,7 +209,21 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Remove_RemoveItemByRef_TrueReturned()
         {
-
+            // arrange
+            IGameObjectsList goList = new GameObjectsList();
+            IGameObject gameObject1 = new SalaryAddition();
+            IGameObject gameObject2 = new SalaryAddition();
+            IGameObject gameObject3 = new SalaryAddition();
+            IGameObject notContained = new SalaryAddition();
+            bool expected = false;
+            bool actual;
+            // act
+            goList.Add(gameObject1);
+            goList.Add(gameObject2);
+            goList.Add(gameObject3);
+            actual = goList.Remove(gameObject1);
+            // assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }
