@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{6282D2AB-726A-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{88F06A77-B8AC-4309-80DD-59D0EC0577F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Tests", "TerrariumGame.Tests\TerrariumGame.Tests.csproj", "{23392F18-2109-41EF-890C-A458A79428EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{88F06A77-B8AC-4309-80DD-59D0EC0577F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88F06A77-B8AC-4309-80DD-59D0EC0577F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88F06A77-B8AC-4309-80DD-59D0EC0577F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23392F18-2109-41EF-890C-A458A79428EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23392F18-2109-41EF-890C-A458A79428EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23392F18-2109-41EF-890C-A458A79428EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23392F18-2109-41EF-890C-A458A79428EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
