@@ -191,7 +191,7 @@ namespace TerrariumGame.Infrastructure
                 AddToEnd(item);
             }
             count++;
-        }
+        }              
 
         private int indexCounter = 1;
 
@@ -380,7 +380,7 @@ namespace TerrariumGame.Infrastructure
                 {
                     DeleteNoFirstItem(ref current, item);
                 }
-                IndexAndCountDecrement(current);
+                IndexDecrement(current);
                 return true;
             }
             else
@@ -425,7 +425,7 @@ namespace TerrariumGame.Infrastructure
         ///     Change the values of the indices.
         /// </summary>
         /// <param name="current">Current node</param>
-        private void IndexAndCountDecrement(Node current)
+        private void IndexDecrement(Node current)
         {
             for (; current != null; current = current.Next)
             {
