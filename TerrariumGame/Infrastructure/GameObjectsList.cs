@@ -380,7 +380,7 @@ namespace TerrariumGame.Infrastructure
                 {
                     DeleteNoFirstItem(ref current, item);
                 }
-                IndexDecrement(current);
+                IndexAndCountDecrement(current);
                 return true;
             }
             else
@@ -425,7 +425,7 @@ namespace TerrariumGame.Infrastructure
         ///     Change the values of the indices.
         /// </summary>
         /// <param name="current">Current node</param>
-        private void IndexDecrement(Node current)
+        private void IndexAndCountDecrement(Node current)
         {
             for (; current != null; current = current.Next)
             {

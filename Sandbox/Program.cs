@@ -50,10 +50,22 @@ namespace Sandbox
             goL.Add(sa4);
             goL.Add(sa5);
 
+            foreach (var i in goL)
+            {
+                Console.WriteLine(i.Position.X);
+            }
 
+            var a = goL.Remove(sa0);
+
+            Console.WriteLine(a);
+
+            foreach (var i in goL)
+            {
+                Console.WriteLine(i.Position.X);
+            }
 
             //IGameObject[] array = new IGameObject[10];
-                      
+
 
             //goL.CopyTo(array);
 
