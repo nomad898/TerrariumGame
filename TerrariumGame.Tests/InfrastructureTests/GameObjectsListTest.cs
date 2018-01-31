@@ -1,6 +1,7 @@
 ﻿using InterfaceLibrary.Interfaces;
 using InterfaceLibrary.Interfaces.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 using TerrariumGame.Infrastructure;
 using TerrariumGame.Models.NotAlive;
 
@@ -9,20 +10,24 @@ namespace TerrariumGame.Tests.InfrastructureTests
     [TestClass]
     public class GameObjectsListTest
     {
-        private IGameObjectsList FillGameObjectList()
-        {
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
+        private IGameObjectsList goList;
+        private IGameObject gameObject1, gameObject2, gameObject3;
 
+        [TestInitialize]
+        public void GameObjectsListTestInitialize()
+        {
+            Debug.WriteLine("Test items initializing starts...");
+            goList = new GameObjectsList();
+            gameObject1 = new SalaryAddition();
+            gameObject2 = new SalaryAddition();
+            gameObject3 = new SalaryAddition();
+            Debug.WriteLine("Test items initializing complete...");
             goList.Add(gameObject1);
             goList.Add(gameObject2);
             goList.Add(gameObject3);
-
-            return goList;
+            Debug.WriteLine("Test items added to list...");
         }
-
+              
         /// <summary>
         ///     Test for First property. 
         ///     Returs first item in the list.
@@ -30,11 +35,9 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void First_GetFirstItem_FirstItemReturned()
         {
-            // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject expectedGameObject = new SalaryAddition();
-            goList.Add(expectedGameObject);
-            
+            // arrange          
+            var expectedGameObject = gameObject1;
+
             // act
             var actualFirstGameObject = goList.First;
 
@@ -49,16 +52,15 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Add_NewItemAddedToList_LastItemReturned()
         {
-            // arrange
-            IGameObjectsList goList = FillGameObjectList();
-            IGameObject newGameObject = new SalaryAddition();
+            // arrange        
+            IGameObject expectedNewGameObject = new SalaryAddition();
             
             // act
-            goList.Add(newGameObject);
+            goList.Add(expectedNewGameObject);
             var actualGameObject = goList.Last;
 
             // assert
-            Assert.AreSame(newGameObject, actualGameObject);
+            Assert.AreSame(expectedNewGameObject, actualGameObject);
         }
 
         /// <summary>
@@ -69,7 +71,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Clear_DeleteAllItems_NewFirstItemReturned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject newGameItem = new SalaryAddition();
 
             // act
@@ -89,11 +90,9 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Contains_FindsItem_ReturnsTrue()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject contained = new SalaryAddition();             
+            var contained = gameObject1;          
 
             // act
-            goList.Add(contained);
             bool result = goList.Contains(contained);
 
             // assert
@@ -108,7 +107,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Contains_FindsItem_ReturnsFalse()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
             IGameObject notContained = new SalaryAddition();
 
             // act
@@ -128,7 +126,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
 
             // act
@@ -149,7 +146,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void CopyToWithArrayIndexParam_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
 
             // act
@@ -171,7 +167,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
 
             // act
@@ -190,14 +185,9 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void IndexOf_FindsItemAndReturnsIndex_1Returned()
         {
-            // arrange
-            IGameObjectsList goList = new GameObjectsList();           
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
+            // arrange    
             
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
             int result = goList.IndexOf(gameObject2);
             
             // assert
@@ -212,7 +202,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void IndexOf_NotFindsItemAndReturnsIndex_Negative1Returned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject notContained = new SalaryAddition();
             
             // act
@@ -230,12 +219,11 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Remove_RemoveItemByRef_ReturnsTrue()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject = new SalaryAddition();
+            IGameObject removeGameObject = new SalaryAddition();
             
             // act
-            goList.Add(gameObject);
-            bool result = goList.Remove(gameObject);
+            goList.Add(removeGameObject);
+            bool result = goList.Remove(removeGameObject);
 
             // assert
             Assert.IsTrue(result);
@@ -249,7 +237,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Remove_RemoveItemByRef_ReturnsFalse()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
             IGameObject notContained = new SalaryAddition();
      
             // act
@@ -262,7 +249,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Count_ReturnsItemsCount_3Returned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
            
             // act
             int actualCountValue = goList.Count;
@@ -275,7 +261,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void ToList_CopyAllItemsToNewList_ItemsInListReturned()
         {
             // arrange
-            IGameObjectsList goList = FillGameObjectList();
 
             // act
             var list = goList.ToList();
