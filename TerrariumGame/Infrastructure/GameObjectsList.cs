@@ -12,6 +12,34 @@ namespace TerrariumGame.Infrastructure
 {
     public class GameObjectsList : IGameObjectsList
     {
+        private int indexCounter = 1;
+        private int count = 0;
+        /// <summary>
+        ///     The first element in the list
+        /// </summary>
+        private Node head = null;
+        /// <summary>
+        ///     The last element the list
+        /// </summary>
+        private Node tail = null;
+
+        private Node Tail
+        {
+            get
+            {
+                tail = head;
+                if (tail == null)
+                {
+                    return null;
+                }
+                while (tail.Next != null)
+                {
+                    tail = tail.Next;
+                }
+                return tail;
+            }
+        }
+
         private class Node
         {
             private Node next = null;
@@ -59,12 +87,7 @@ namespace TerrariumGame.Infrastructure
                 Data = item;
             }
         }
-
-        /// <summary>
-        ///     The first element in the list
-        /// </summary>
-        private Node head = null;
-
+           
         /// <summary>
         ///     Returns the first item.
         /// </summary>
@@ -79,29 +102,7 @@ namespace TerrariumGame.Infrastructure
                 head.Data = value;
             }
         }
-
-        /// <summary>
-        ///     The last element the list
-        /// </summary>
-        private Node tail = null;
-
-        private Node Tail
-        {
-            get
-            {
-                tail = head;
-                if (tail == null)
-                {
-                    return null;
-                }
-                while (tail.Next != null)
-                {
-                    tail = tail.Next;
-                }
-                return tail;
-            }
-        }
-
+              
         /// <summary>
         ///     Returns the last item.
         /// </summary>
@@ -153,9 +154,7 @@ namespace TerrariumGame.Infrastructure
                    string.Format("Element with index {0} does not exist", index));
             }
         }
-
-        private int count = 0;
-
+                
         /// <summary>
         ///     Returns the number of items.
         /// </summary>
@@ -192,9 +191,7 @@ namespace TerrariumGame.Infrastructure
             }
             count++;
         }              
-
-        private int indexCounter = 1;
-
+        
         /// <summary>
         ///     Add a new item to the end of the list.
         /// </summary>
@@ -296,6 +293,10 @@ namespace TerrariumGame.Infrastructure
             }
         }
 
+        /// <summary>
+        ///     Copy items to new list.
+        /// </summary>
+        /// <returns></returns>
         public List<IGameObject> ToList()
         {
             List<IGameObject> list = new List<IGameObject>();
@@ -335,6 +336,11 @@ namespace TerrariumGame.Infrastructure
             return -1;
         }
 
+        /// <summary>
+        ///     Put new item to certain index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="item"></param>
         public void Insert(int index, IGameObject item)
         {
             if (Count > index && index >= 0)
@@ -374,13 +380,13 @@ namespace TerrariumGame.Infrastructure
                 Node current = null;
                 if (head.Data == item)
                 {
-                    DeleteFirstItem(ref current, item);
+                    DeleteFirstItem(ref current, item);                    
                 }
                 else
                 {
-                    DeleteNoFirstItem(ref current, item);
+                    DeleteNoFirstItem(ref current, item);                  
                 }
-                IndexDecrement(current);
+                IndexAndCountDecrement(current);
                 return true;
             }
             else
@@ -425,16 +431,21 @@ namespace TerrariumGame.Infrastructure
         ///     Change the values of the indices.
         /// </summary>
         /// <param name="current">Current node</param>
-        private void IndexDecrement(Node current)
+        private void IndexAndCountDecrement(Node current)
         {
-            for (; current != null; current = current.Next)
+            while(current != null)
             {
-                --current.Index;
+                current.Index--;
+                current = current.Next;
             }
-            --indexCounter;
-            --count;
+            indexCounter--;
+            count--;
         }
 
+        /// <summary>
+        ///     Remove item by index.
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveAt(int index)
         {
             if (Count > index && index >= 0)

@@ -10,28 +10,54 @@ namespace TerrariumGame.Tests.InfrastructureTests
     [TestClass]
     public class GameObjectsListTest
     {
-        private IGameObjectsList goList;
-        private IGameObject gameObject1, gameObject2, gameObject3;
+        private static IGameObjectsList goList;
+        private static IGameObject gameObject1, gameObject2, gameObject3;
 
-        [TestInitialize]
-        public void GameObjectsListTestInitialize()
+        [ClassInitialize]
+        public static void GameObjectsListClassInitialize(TestContext testContext)
         {
             Debug.WriteLine("Test items initializing starts...");
             goList = new GameObjectsList();
             gameObject1 = new SalaryAddition();
             gameObject2 = new SalaryAddition();
             gameObject3 = new SalaryAddition();
-            Debug.WriteLine("Test items initializing complete...");
+
+            bool debugIsNotNullflag = goList != null
+                && gameObject1 != null
+                && gameObject2 != null
+                && gameObject3 != null;
+
+            Debug.WriteLineIf(debugIsNotNullflag, "Test items initializing complete...");
+            Debug.WriteLineIf(!debugIsNotNullflag, "Test items are null...");
+        }
+
+        [TestInitialize]
+        public void GameObjectsListTestInitialize()
+        {          
             goList.Add(gameObject1);
             goList.Add(gameObject2);
             goList.Add(gameObject3);
-            Debug.WriteLine("Test items added to list...");
+
+            bool debugIsContainsFlag = goList.Contains(gameObject1)
+                && goList.Contains(gameObject2)
+                && goList.Contains(gameObject3);
+
+            Debug.WriteLineIf(debugIsContainsFlag, "Test items added to list...");
+            Debug.WriteLineIf(!debugIsContainsFlag, "Add() method doesn't work right");
         }
-              
+
+        [TestCleanup]
+        public void GameObjectListTestCleanUp()
+        {
+            goList.Clear();
+            Debug.WriteLine("GameObjectsList is empty");
+        }        
+       
         /// <summary>
         ///     Test for First property. 
         ///     Returs first item in the list.
         /// </summary>
+        /// 
         [TestMethod]
         public void First_GetFirstItem_FirstItemReturned()
         {
