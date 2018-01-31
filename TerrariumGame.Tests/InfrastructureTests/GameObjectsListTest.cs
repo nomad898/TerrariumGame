@@ -32,21 +32,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange
             IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
-
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-
-            var expectedGameObject = gameObject1;
-
+            IGameObject expectedGameObject = new SalaryAddition();
+            goList.Add(expectedGameObject);
+            
             // act
             var actualFirstGameObject = goList.First;
 
             // assert
-            Assert.AreEqual(expectedGameObject, actualFirstGameObject);
+            Assert.AreSame(expectedGameObject, actualFirstGameObject);
         }
         
         /// <summary>
@@ -58,14 +51,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange
             IGameObjectsList goList = FillGameObjectList();
-
             IGameObject newGameObject = new SalaryAddition();
             
             // act
             goList.Add(newGameObject);
+            var actualGameObject = goList.Last;
 
             // assert
-            Assert.AreEqual(newGameObject, goList.Last);
+            Assert.AreSame(newGameObject, actualGameObject);
         }
 
         /// <summary>
@@ -77,15 +70,15 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange
             IGameObjectsList goList = FillGameObjectList();
-
             IGameObject newGameItem = new SalaryAddition();
 
             // act
             goList.Clear();
             goList.Add(newGameItem);
+            var actualGameObject = goList.First;
         
             // assert
-            Assert.AreEqual(newGameItem, goList.First);
+            Assert.AreSame(newGameItem, actualGameObject);
         }
 
         /// <summary>
@@ -93,20 +86,18 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     Returns true.
         /// </summary>
         [TestMethod]
-        public void Contains_FindsItem_TrueReturned()
+        public void Contains_FindsItem_ReturnsTrue()
         {
             // arrange
             IGameObjectsList goList = new GameObjectsList();
-            IGameObject contained = new SalaryAddition();
-            bool isContainsTrue = false;      
-            bool expectedTrue = true;
+            IGameObject contained = new SalaryAddition();             
 
             // act
             goList.Add(contained);
-            isContainsTrue = goList.Contains(contained);
+            bool result = goList.Contains(contained);
 
             // assert
-            Assert.AreEqual(expectedTrue, isContainsTrue);
+            Assert.IsTrue(result);
         }
 
         /// <summary>
@@ -114,19 +105,17 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     Returns false.
         /// </summary>
         [TestMethod]
-        public void Contains_FindsItem_FalseReturned()
+        public void Contains_FindsItem_ReturnsFalse()
         {
             // arrange
             IGameObjectsList goList = new GameObjectsList();
             IGameObject notContained = new SalaryAddition();
-            bool isContainsFalse = false;
-            bool expectedFalse = false;
 
             // act
-            isContainsFalse = goList.Contains(notContained);
+            bool result = goList.Contains(notContained);
 
             // assert
-            Assert.AreEqual(expectedFalse, isContainsFalse);
+            Assert.IsFalse(result);
         }
 
 
@@ -136,28 +125,19 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod]
-        public void CopyTo_CopyItemsToArray_TrueReturned()
+        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
             IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
-            bool expectedTrue = true;
-            bool actual = false;
-            bool flag1 = false;
-            bool flag2 = false;
-            bool flag3 = false;
 
             // act
             goList.CopyTo(goArr);
-            flag1 = goArr[0] == goList[0];
-            flag2 = goArr[1] == goList[1];
-            flag3 = goArr[2] == goList[2];
-            if (flag1 == flag2 == flag3 == true)
-            {
-                actual = true;
-            }
+
             // assert
-            Assert.AreEqual(expectedTrue, actual);
+            Assert.AreSame(goArr[0], goList[0]);
+            Assert.AreSame(goArr[1], goList[1]);
+            Assert.AreSame(goArr[2], goList[2]);
         }
 
         /// <summary>
@@ -166,28 +146,19 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod] 
-        public void CopyToWithArrayIndexParam_CopyItemsToArray_TrueReturned()
+        public void CopyToWithArrayIndexParam_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
             IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
-            bool expectedTrue = true;
-            bool actual = false;
-            bool flag1 = false;
-            bool flag2 = false;
-            bool flag3 = false;
 
             // act
             goList.CopyTo(goArr, 2);
-            flag1 = goArr[2] == goList[0];
-            flag2 = goArr[3] == goList[1];
-            flag3 = goArr[4] == goList[2];
-            if (flag1 == flag2 == flag3 == true)
-            {
-                actual = true;
-            }
+           
             // assert
-            Assert.AreEqual(expectedTrue, actual);
+            Assert.AreSame(goArr[2], goList[0]);
+            Assert.AreSame(goArr[3], goList[1]);
+            Assert.AreSame(goArr[4], goList[2]);
         }
 
         /// <summary>
@@ -197,25 +168,19 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod]
-        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_TrueReturned()
+        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
             IGameObjectsList goList = FillGameObjectList();
             IGameObject[] goArr = new IGameObject[5];
-            bool expectedTrue = true;
-            bool actual = false;
-            bool flag1 = false;
-            bool flag2 = false;
+
             // act
             goList.CopyTo(1, goArr, 2, 2);
-            flag1 = goArr[2] == goList[1];
-            flag2 = goArr[3] == goList[2];
-            if (flag1 == flag2 == true)
-            {
-                actual = true;
-            }
+
             // assert
-            Assert.AreEqual(expectedTrue, actual);
+            Assert.AreNotSame(goArr[1], goList[0]);
+            Assert.AreSame(goArr[2], goList[1]);
+            Assert.AreSame(goArr[3], goList[2]);           
         }
 
         /// <summary>
@@ -229,13 +194,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
             IGameObjectsList goList = new GameObjectsList();           
             IGameObject gameObject1 = new SalaryAddition();
             IGameObject gameObject2 = new SalaryAddition();
-            int index, expectedValue = 1;
+            
             // act
             goList.Add(gameObject1);
             goList.Add(gameObject2);
-            index = goList.IndexOf(gameObject2);
+            int result = goList.IndexOf(gameObject2);
+            
             // assert
-            Assert.AreEqual(expectedValue, index);
+            Assert.AreEqual(1, result);
         }
 
         /// <summary>
@@ -246,21 +212,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void IndexOf_NotFindsItemAndReturnsIndex_Negative1Returned()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
+            IGameObjectsList goList = FillGameObjectList();
             IGameObject notContained = new SalaryAddition();
-            int notIndex, expectedValue = -1;
-
+            
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-            notIndex = goList.IndexOf(notContained);
+            int result = goList.IndexOf(notContained);
 
             // assert
-            Assert.AreEqual(expectedValue, notIndex);
+            Assert.AreEqual(-1, result);
         }
 
         /// <summary>
@@ -268,24 +227,18 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     Returns true.
         /// </summary>
         [TestMethod]
-        public void Remove_RemoveItemByRef_TrueReturned()
+        public void Remove_RemoveItemByRef_ReturnsTrue()
         {
             // arrange
             IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
-            bool expected = true;
-            bool actual = false;
-
+            IGameObject gameObject = new SalaryAddition();
+            
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-            actual = goList.Remove(gameObject1);
+            goList.Add(gameObject);
+            bool result = goList.Remove(gameObject);
 
             // assert
-            Assert.AreEqual(expected, actual);
+            Assert.IsTrue(result);
         }
 
         /// <summary>
@@ -293,64 +246,44 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     Returns false.
         /// </summary>
         [TestMethod]
-        public void Remove_RemoveItemByRef_FalseReturned()
+        public void Remove_RemoveItemByRef_ReturnsFalse()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
+            IGameObjectsList goList = FillGameObjectList();
             IGameObject notContained = new SalaryAddition();
-            bool expected = false;
-            bool actual;
-
+     
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-            actual = goList.Remove(notContained);
+            bool result = goList.Remove(notContained);
 
             // assert
-            Assert.AreEqual(expected, actual);
+            Assert.IsFalse(result);
         }
         [TestMethod]
         public void Count_ReturnsItemsCount_3Returned()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
-            int actualCountValue, expectedCountValue = 3;
-
+            IGameObjectsList goList = FillGameObjectList();
+           
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-            actualCountValue = goList.Count;
+            int actualCountValue = goList.Count;
 
             // assert
-            Assert.AreEqual(expectedCountValue, actualCountValue);
+            Assert.AreEqual(3, actualCountValue);
         }
 
         [TestMethod]
-        public void ToList_CopyAllItemsToNewList_TrueReturned()
+        public void ToList_CopyAllItemsToNewList_ItemsInListReturned()
         {
             // arrange
-            IGameObjectsList goList = new GameObjectsList();
-            IGameObject gameObject1 = new SalaryAddition();
-            IGameObject gameObject2 = new SalaryAddition();
-            IGameObject gameObject3 = new SalaryAddition();
-            int actualCountValue, expectedCountValue = 3;
+            IGameObjectsList goList = FillGameObjectList();
 
             // act
-            goList.Add(gameObject1);
-            goList.Add(gameObject2);
-            goList.Add(gameObject3);
-            actualCountValue = goList.Count;
+            var list = goList.ToList();
 
             // assert
-            Assert.AreEqual(expectedCountValue, actualCountValue);
+            Assert.AreSame(list[0], goList[0]);
+            Assert.AreSame(list[1], goList[1]);
+            Assert.AreSame(list[2], goList[2]);
         }
     }
 }
