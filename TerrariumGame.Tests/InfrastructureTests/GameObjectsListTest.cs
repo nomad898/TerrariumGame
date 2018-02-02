@@ -33,9 +33,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
 
         [TestInitialize]
         public void GameObjectsListTestInitialize()
-        {
-            goList.Clear();
-            Debug.WriteLine("GameObjectsList is empty");
+        {           
             goList.Add(gameObject1);
             goList.Add(gameObject2);
             goList.Add(gameObject3);          
@@ -51,7 +49,8 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestCleanup]
         public void GameObjectListTestCleanUp()
         {
-
+            goList.Clear();
+            Debug.WriteLine("GameObjectsList is empty");
         }
                
 
