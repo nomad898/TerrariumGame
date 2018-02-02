@@ -18,9 +18,9 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             Debug.WriteLine("Test items initializing starts...");
             goList = new GameObjectsList();
-            gameObject1 = new SalaryAddition();
-            gameObject2 = new SalaryAddition();
-            gameObject3 = new SalaryAddition();
+            gameObject1 = new SalaryAddition(1, 1);
+            gameObject2 = new SalaryAddition(2, 2);
+            gameObject3 = new SalaryAddition(3, 3);
 
             bool debugIsNotNullflag = goList != null
                 && gameObject1 != null
@@ -33,10 +33,12 @@ namespace TerrariumGame.Tests.InfrastructureTests
 
         [TestInitialize]
         public void GameObjectsListTestInitialize()
-        {          
+        {
+            goList.Clear();
+            Debug.WriteLine("GameObjectsList is empty");
             goList.Add(gameObject1);
             goList.Add(gameObject2);
-            goList.Add(gameObject3);
+            goList.Add(gameObject3);          
 
             bool debugIsContainsFlag = goList.Contains(gameObject1)
                 && goList.Contains(gameObject2)
@@ -49,10 +51,10 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestCleanup]
         public void GameObjectListTestCleanUp()
         {
-            goList.Clear();
-            Debug.WriteLine("GameObjectsList is empty");
-        }        
-       
+
+        }
+               
+
         /// <summary>
         ///     Test for First property. 
         ///     Returs first item in the list.
@@ -70,7 +72,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
             // assert
             Assert.AreSame(expectedGameObject, actualFirstGameObject);
         }
-        
+
         /// <summary>
         ///     Test for Add() method.
         ///     Returns the last item in the list.
@@ -80,7 +82,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange        
             IGameObject expectedNewGameObject = new SalaryAddition();
-            
+
             // act
             goList.Add(expectedNewGameObject);
             var actualGameObject = goList.Last;
@@ -103,7 +105,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
             goList.Clear();
             goList.Add(newGameItem);
             var actualGameObject = goList.First;
-        
+
             // assert
             Assert.AreSame(newGameItem, actualGameObject);
         }
@@ -116,7 +118,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public void Contains_FindsItem_ReturnsTrue()
         {
             // arrange
-            var contained = gameObject1;          
+            var contained = gameObject1;
 
             // act
             bool result = goList.Contains(contained);
@@ -143,32 +145,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
         }
 
 
-        /// <summary>
-        ///     Test for CopyTo(IGameObject[] array) method. 
-        ///     Returns true, if array has all item 
-        ///     that contained in the GameObjectList.
-        /// </summary>
-        [TestMethod]
-        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
-        {
-            // arrange
-            IGameObject[] goArr = new IGameObject[5];
-
-            // act
-            goList.CopyTo(goArr);
-
-            // assert
-            Assert.AreSame(goArr[0], goList[0]);
-            Assert.AreSame(goArr[1], goList[1]);
-            Assert.AreSame(goArr[2], goList[2]);
-        }
-
+      
+               
         /// <summary>
         ///     Test for CopyTo(IGameObject[] array, int arrayIndex) method. 
         ///     Returns true, if array has all item on certain indexes
         ///     that contained in the GameObjectList.
         /// </summary>
-        [TestMethod] 
+        [TestMethod]
         public void CopyToWithArrayIndexParam_CopyItemsToArray_ItemsInArrayReturned()
         {
             // arrange
@@ -176,7 +160,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
 
             // act
             goList.CopyTo(goArr, 2);
-           
+
             // assert
             Assert.AreSame(goArr[2], goList[0]);
             Assert.AreSame(goArr[3], goList[1]);
@@ -201,35 +185,19 @@ namespace TerrariumGame.Tests.InfrastructureTests
             // assert
             Assert.AreNotSame(goArr[1], goList[0]);
             Assert.AreSame(goArr[2], goList[1]);
-            Assert.AreSame(goArr[3], goList[2]);           
-        }
-
-        /// <summary>
-        ///     Test for IndexOf() method.
-        ///     Returns second item's index 1.
-        /// </summary>
-        [TestMethod]
-        public void IndexOf_FindsItemAndReturnsIndex_1Returned()
-        {
-            // arrange    
-            
-            // act
-            int result = goList.IndexOf(gameObject2);
-            
-            // assert
-            Assert.AreEqual(1, result);
-        }
-
+            Assert.AreSame(goArr[3], goList[2]);
+        }            
+        
         /// <summary>
         ///     Test for IndexOf() method.
         ///     Returns -1.
         /// </summary>     
-        [TestMethod]        
+        [TestMethod]
         public void IndexOf_NotFindsItemAndReturnsIndex_Negative1Returned()
         {
             // arrange
             IGameObject notContained = new SalaryAddition();
-            
+
             // act
             int result = goList.IndexOf(notContained);
 
@@ -246,7 +214,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange
             IGameObject removeGameObject = new SalaryAddition();
-            
+
             // act
             goList.Add(removeGameObject);
             bool result = goList.Remove(removeGameObject);
@@ -264,18 +232,19 @@ namespace TerrariumGame.Tests.InfrastructureTests
         {
             // arrange
             IGameObject notContained = new SalaryAddition();
-     
+
             // act
             bool result = goList.Remove(notContained);
 
             // assert
             Assert.IsFalse(result);
         }
+
         [TestMethod]
         public void Count_ReturnsItemsCount_3Returned()
         {
             // arrange
-           
+
             // act
             int actualCountValue = goList.Count;
 
@@ -292,9 +261,49 @@ namespace TerrariumGame.Tests.InfrastructureTests
             var list = goList.ToList();
 
             // assert
+            Debug.WriteLine("0");
             Assert.AreSame(list[0], goList[0]);
+            Debug.WriteLine("1");
             Assert.AreSame(list[1], goList[1]);
+            Debug.WriteLine("2");
             Assert.AreSame(list[2], goList[2]);
+        }
+
+        /// <summary>
+        ///     Test for IndexOf() method.
+        ///     Returns second item's index 1.
+        /// </summary>
+        [TestMethod]
+        public void IndexOf_FindsItemAndReturnsIndex_1Returned()
+        {
+            // arrange
+            foreach (var el in goList)
+            {
+                Debug.WriteLine(goList.IndexOf(el));
+            }
+            // act
+            int result = goList.IndexOf(gameObject2);
+
+            // assert
+            Assert.AreEqual(1, result);
+        }
+
+        /// <summary>
+        ///     Test for CopyTo(IGameObject[] array) method. 
+        ///     Returns true, if array has all item 
+        ///     that contained in the GameObjectList.
+        /// </summary>
+        [TestMethod]
+        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(goArr);
+
+            // assert
+            Assert.AreSame(goArr[0], goList[0]);
         }
     }
 }
