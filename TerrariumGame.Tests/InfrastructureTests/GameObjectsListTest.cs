@@ -144,9 +144,27 @@ namespace TerrariumGame.Tests.InfrastructureTests
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        ///     Test for CopyTo(IGameObject[] array) method. 
+        ///     Returns true, if array has all item 
+        ///     that contained in the GameObjectList.
+        /// </summary>
+        [TestMethod]
+        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
 
-      
-               
+            // act
+            goList.CopyTo(goArr);
+
+            // assert
+            Assert.AreSame(goArr[0], goList[0]);
+            Assert.AreSame(goArr[1], goList[1]);
+            Assert.AreSame(goArr[2], goList[2]);
+        }
+
+
         /// <summary>
         ///     Test for CopyTo(IGameObject[] array, int arrayIndex) method. 
         ///     Returns true, if array has all item on certain indexes
@@ -261,11 +279,8 @@ namespace TerrariumGame.Tests.InfrastructureTests
             var list = goList.ToList();
 
             // assert
-            Debug.WriteLine("0");
             Assert.AreSame(list[0], goList[0]);
-            Debug.WriteLine("1");
             Assert.AreSame(list[1], goList[1]);
-            Debug.WriteLine("2");
             Assert.AreSame(list[2], goList[2]);
         }
 
@@ -286,24 +301,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
 
             // assert
             Assert.AreEqual(1, result);
-        }
-
-        /// <summary>
-        ///     Test for CopyTo(IGameObject[] array) method. 
-        ///     Returns true, if array has all item 
-        ///     that contained in the GameObjectList.
-        /// </summary>
-        [TestMethod]
-        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
-        {
-            // arrange
-            IGameObject[] goArr = new IGameObject[5];
-
-            // act
-            goList.CopyTo(goArr);
-
-            // assert
-            Assert.AreSame(goArr[0], goList[0]);
-        }
+        }        
     }
 }
