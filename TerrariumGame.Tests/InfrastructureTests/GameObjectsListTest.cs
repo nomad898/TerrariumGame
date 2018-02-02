@@ -109,6 +109,21 @@ namespace TerrariumGame.Tests.InfrastructureTests
             Assert.AreSame(newGameItem, actualGameObject);
         }
 
+        [TestMethod]
+        public void Clear_DeleteAllItems_NewLastItemReturned()
+        {
+            // arrange
+            IGameObject newGameItem = new SalaryAddition();
+
+            // act
+            goList.Clear();
+            goList.Add(newGameItem);
+            var actualGameObject = goList.Last;
+
+            // assert
+            Assert.AreSame(newGameItem, actualGameObject);
+        }
+
         /// <summary>
         ///     Test for Contains() method. 
         ///     Returns true.
@@ -162,8 +177,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
             Assert.AreSame(goArr[1], goList[1]);
             Assert.AreSame(goArr[2], goList[2]);
         }
-
-
+        
         /// <summary>
         ///     Test for CopyTo(IGameObject[] array, int arrayIndex) method. 
         ///     Returns true, if array has all item on certain indexes
