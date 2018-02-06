@@ -2,10 +2,6 @@
 using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
 using DataBaseLibrary.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 
 namespace DataBaseLibrary.Repositories
 {

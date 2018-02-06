@@ -127,7 +127,7 @@
 
     // DataBaseContext
     {
-      "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",     
+      "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",
       "instanceScope": "singleinstance"
     },
 
@@ -159,6 +159,17 @@
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // ConversationService
+    {
+      "type": "BusinessLibrary.Services.ConversationService, BusinessLibrary",
+      "services": [
+        {
+          "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
         }
       ],
       "instanceScope": "singleinstance"

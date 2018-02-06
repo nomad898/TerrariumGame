@@ -134,6 +134,10 @@
     <Content Include="Configs\autofacConfigRepository.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
+      <Project>{8bcfcafd-01aa-4462-bb82-0198fd6e602d}</Project>
+      <Name>BusinessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
@@ -157,7 +161,9 @@ xcopy /Q /Y "$(SolutionDir)DataBaseMessageWriter\$(OutDir)DataBaseMessageWriter.
 
 xcopy /Q /Y "$(SolutionDir)DataBaseLibrary\$(OutDir)DataBaseLibrary.dll"                              "$(TargetDir)" 
 
-xcopy /Q /Y "$(SolutionDir)ConsoleUI\$(OutDir)ConsoleUI.dll"                                                  "$(TargetDir)"</PostBuildEvent>
+xcopy /Q /Y "$(SolutionDir)ConsoleUI\$(OutDir)ConsoleUI.dll"                                                  "$(TargetDir)"
+
+xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)BusinessLibrary.dll"                                "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

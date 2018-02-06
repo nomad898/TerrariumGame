@@ -46,8 +46,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">
+      <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
+      <Name>BusinessInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
-      <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
+      <Project>{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}</Project>
       <Name>DataBaseInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
@@ -55,7 +59,6 @@
       <Name>InterfaceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,31 +1,24 @@
 ﻿using System;
 using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
-using DataBaseInterfaces.Entities;
 using DataBaseMessageWriter;
-using DataBaseInterfaces.Repositories;
+using BusinessInterfaces.Services;
 
 namespace MessageWriter
 {
     class DataBaseMessageWriter : IMessageWriter
     {
-        private IConversationRepository conversationRepo;
+        private IConversationService conversationService;
 
-        public DataBaseMessageWriter(IConversationRepository cRepo)
+        public DataBaseMessageWriter(IConversationService convSerive)
         {
-            this.conversationRepo = cRepo;
+            this.conversationService = convSerive;
         }
 
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            IConversation c = new ConversationDto
-            {
-                Message = message,
-                Date = DateTime.Now
-            };
-            conversationRepo.Create(c);
-            conversationRepo.Save();
+            conversationService.WriteMessage(message);
         }
 
         public void PrintMessage(string message, MessageType msgType)

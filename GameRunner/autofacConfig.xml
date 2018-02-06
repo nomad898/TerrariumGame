@@ -60,4 +60,10 @@
     <instanceScope>single-instance</instanceScope>
   </components>
 
+  <components name="10">
+    <type>BusinessLibrary.Services.ConversationService, BusinessLibrary</type>
+    <services name="0" type="BusinessInterfaces.Services.IConversationService, BusinessInterfaces"/>
+    <instanceScope>single-instance</instanceScope>
+  </components>
+
 </autofac>
