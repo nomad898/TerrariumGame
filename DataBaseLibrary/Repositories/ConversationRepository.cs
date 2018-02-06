@@ -56,9 +56,9 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public override IQueryable<IConversation> GetAll()
+        public override IEnumerable<IConversation> GetAll()
         {
-            return db.Conversations.AsQueryable();
+            return db.Conversations;
         }
 
         public override void Update(IConversation item)

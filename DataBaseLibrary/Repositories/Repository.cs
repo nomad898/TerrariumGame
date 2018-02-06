@@ -43,7 +43,7 @@ namespace DataBaseLibrary.Repositories
             }
         }
 
-        public virtual IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return db.Set<TEntity>().Where(predicate);
         }
@@ -57,15 +57,14 @@ namespace DataBaseLibrary.Repositories
             }
             else
             {
-                string errMsg = string
-                  .Format("Can't find {0} with id {1}", GetType(), id);
+                string errMsg = $"Can't find {GetType()} with id {id}";
                 throw new NullReferenceException(errMsg);
             }
         }
 
-        public virtual IQueryable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return db.Set<TEntity>().AsQueryable();
+            return db.Set<TEntity>();
         }
 
         public virtual void RemoveRange(IEnumerable<TEntity> entities)

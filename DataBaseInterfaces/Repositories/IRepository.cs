@@ -7,10 +7,10 @@ namespace DataBaseInterfaces.Repositories
 {
     public interface IRepository<TEntity, TIdType> : IDisposable
     {
-        IQueryable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
 
         TEntity FindById(TIdType id);
-        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
               
         void Create(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
