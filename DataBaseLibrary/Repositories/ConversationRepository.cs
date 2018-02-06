@@ -39,31 +39,6 @@ namespace DataBaseLibrary.Repositories
                     db.Conversations.Remove(entity);
                 }
             }
-        }
-
-        public override IConversation FindById(int id)
-        {
-            var conversation = db.Conversations.Find(id);
-            if (conversation != null)
-            {
-                return conversation;
-            }
-            else
-            {
-                string errMsg = string
-                    .Format("Can't find {0} with id {1}", GetType(), id);
-                throw new NullReferenceException(errMsg);
-            }
-        }
-
-        public override IEnumerable<IConversation> GetAll()
-        {
-            return db.Conversations;
-        }
-
-        public override void Update(IConversation item)
-        {
-            db.Entry(item).State = EntityState.Modified;
-        }
+        }  
     }
 }
