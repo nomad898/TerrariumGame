@@ -1,13 +1,10 @@
-﻿using DataBaseInterfaces.Entities;
+﻿using BusinessInterfaces.DTO;
+using DataBaseInterfaces.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLibrary.DTO
 {
-    class ConversationDto : IConversation
+    class ConversationDto : IConversationDto
     {
         public int ConversationId { get; set; }
         public DateTime Date { get; set; }
