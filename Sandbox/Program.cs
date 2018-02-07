@@ -56,8 +56,9 @@ namespace Sandbox
 
             Console.WriteLine(goL.First.Position.X);
 
-           
-          
+
+
+
 
             //IGameObject[] array = new IGameObject[10];
 
@@ -82,35 +83,35 @@ namespace Sandbox
             //}
 
 
-            //List<string> dinosaurs = new List<string>();
+            List<string> dinosaurs = new List<string>();
 
 
 
-            //dinosaurs.Add("Tyrannosaurus");
-            //dinosaurs.Add("Amargasaurus");
-            //dinosaurs.Add("Mamenchisaurus");
-            //dinosaurs.Add("Brachiosaurus");
-            //dinosaurs.Add("Compsognathus");
+            dinosaurs.Add("Tyrannosaurus");
+            dinosaurs.Add("Amargasaurus");
+            dinosaurs.Add("Mamenchisaurus");
+            dinosaurs.Add("Brachiosaurus");
+            dinosaurs.Add("Compsognathus");
 
-            //Console.WriteLine();
-            //foreach (string dinosaur in dinosaurs)
-            //{
-            //    Console.WriteLine(dinosaur);
-            //}
+            Console.WriteLine();
+            foreach (string dinosaur in dinosaurs)
+            {
+                Console.WriteLine(dinosaur);
+            }
 
-            //// Declare an array with 15 elements.
-            //string[] array = new string[15];
+            // Declare an array with 15 elements.
+            string[] array = new string[15];
 
-            //dinosaurs.CopyTo(array);
-            //dinosaurs.CopyTo(array, 12);
-            //dinosaurs.CopyTo(2, array, 12, 3);
+            dinosaurs.CopyTo(array);
+            dinosaurs.CopyTo(array, 12);
+            dinosaurs.CopyTo(2, array, 12, 3);
 
-            //Console.WriteLine("\nContents of the array:");
-            //foreach (string dinosaur in array)
-            //{
-            //    Console.WriteLine(dinosaur);
-            //}
-
+            Console.WriteLine("\nContents of the array:");
+            foreach (string dinosaur in array)
+            {
+                Console.WriteLine(dinosaur);
+            }
+            
 
             Console.WriteLine("DONE!!!");
             Console.ReadKey(true);
