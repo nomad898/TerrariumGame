@@ -53,7 +53,6 @@ namespace TerrariumGame.Tests.InfrastructureTests
             Debug.WriteLine("GameObjectsList is empty");
         }
                
-
         /// <summary>
         ///     Test for First property. 
         ///     Returs first item in the list.
@@ -158,13 +157,14 @@ namespace TerrariumGame.Tests.InfrastructureTests
             Assert.IsFalse(result);
         }
 
+        #region CopyTo(IGameObject[] array) method
         /// <summary>
         ///     Test for CopyTo(IGameObject[] array) method. 
         ///     Returns true, if array has all item 
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod]
-        public void CopyTo_CopyItemsToArray_ItemsInArrayReturned()
+        public void CopyTo_CopyItemsToArray_FirstInArrayReturned()
         {
             // arrange
             IGameObject[] goArr = new IGameObject[5];
@@ -173,18 +173,44 @@ namespace TerrariumGame.Tests.InfrastructureTests
             goList.CopyTo(goArr);
 
             // assert
-            Assert.AreSame(goArr[0], goList[0]);
-            Assert.AreSame(goArr[1], goList[1]);
-            Assert.AreSame(goArr[2], goList[2]);
+            Assert.AreSame(goArr[0], goList.First);
         }
-        
+
+        [TestMethod]
+        public void CopyTo_CopyItemsToArray_SecondInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(goArr);
+
+            // assert
+            Assert.AreSame(goArr[1], goList[1]);
+        }
+
+        [TestMethod]
+        public void CopyTo_CopyItemsToArray_ThirdInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(goArr);
+
+            // assert
+            Assert.AreSame(goArr[2], goList.Last);
+        }
+        #endregion
+
+        #region CopyTo(IGameObject[] array, int arrayIndex) method
         /// <summary>
         ///     Test for CopyTo(IGameObject[] array, int arrayIndex) method. 
         ///     Returns true, if array has all item on certain indexes
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod]
-        public void CopyToWithArrayIndexParam_CopyItemsToArray_ItemsInArrayReturned()
+        public void CopyToWithArrayIndexParam_CopyItemsToArray_FirstInArrayReturned()
         {
             // arrange
             IGameObject[] goArr = new IGameObject[5];
@@ -193,10 +219,37 @@ namespace TerrariumGame.Tests.InfrastructureTests
             goList.CopyTo(goArr, 2);
 
             // assert
-            Assert.AreSame(goArr[2], goList[0]);
-            Assert.AreSame(goArr[3], goList[1]);
+            Assert.AreSame(goArr[2], goList.First);
+        }
+
+        [TestMethod]
+        public void CopyToWithArrayIndexParam_CopyItemsToArray_SecondInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(goArr, 2);
+
+            // assert
+            Assert.AreSame(goArr[3], goList[1]); 
+        }
+
+        [TestMethod]
+        public void CopyToWithArrayIndexParam_CopyItemsToArray_ThirdInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(goArr, 2);
+
+            // assert
             Assert.AreSame(goArr[4], goList[2]);
         }
+        #endregion
+
+        #region CopyTo(int index, IGameObject[] array, int arrayIndex, int count) method
 
         /// <summary>
         ///     Test for CopyTo(int index, IGameObject[] array,
@@ -205,7 +258,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
         ///     that contained in the GameObjectList.
         /// </summary>
         [TestMethod]
-        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_ItemsInArrayReturned()
+        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_NothingInArrayReturned()
         {
             // arrange
             IGameObject[] goArr = new IGameObject[5];
@@ -214,11 +267,37 @@ namespace TerrariumGame.Tests.InfrastructureTests
             goList.CopyTo(1, goArr, 2, 2);
 
             // assert
-            Assert.AreNotSame(goArr[1], goList[0]);
+            Assert.AreNotSame(goArr[1], goList[0]);           
+        }
+
+        [TestMethod]
+        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_SecondInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(1, goArr, 2, 2);
+
+            // assert
             Assert.AreSame(goArr[2], goList[1]);
+        }
+
+        [TestMethod]
+        public void CopyToWithArrayIndexAndCountAndIndex_CopyItemsToArray_ThirdInArrayReturned()
+        {
+            // arrange
+            IGameObject[] goArr = new IGameObject[5];
+
+            // act
+            goList.CopyTo(1, goArr, 2, 2);
+
+            // assert
             Assert.AreSame(goArr[3], goList[2]);
-        }            
-        
+        }
+
+        #endregion
+
         /// <summary>
         ///     Test for IndexOf() method.
         ///     Returns -1.
