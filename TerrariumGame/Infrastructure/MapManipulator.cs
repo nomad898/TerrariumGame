@@ -15,15 +15,7 @@ namespace TerrariumGame.Infrastructure
     public class MapManipulator : IMapManipulator
     {
         #region Fields
-        #region Public
-        public IMap Map
-        {
-            get
-            {
-                return map;
-            }
-        }
-
+        #region Public    
         public IGameObjectFactory GameObjectFactory
         {
             get
@@ -41,10 +33,6 @@ namespace TerrariumGame.Infrastructure
         #endregion
         public MapManipulator(IGameObjectFactory factory)
         {
-            if (map == null)
-            {
-                throw new ArgumentNullException("Map is null");
-            }
             if (factory == null)
             {
                 throw new ArgumentNullException("Game factory is null");
@@ -55,17 +43,15 @@ namespace TerrariumGame.Infrastructure
             maxObjectAmount = Config.MAX_OBJECT_AMOUNT;
             idBegin = Config.BEGIN_OBJECT_ID;
             idEnd = Config.END_OBJECT_ID;
-
-            Init();
         }
 
         /// <summary>
         ///     Place the objects on the map
         /// </summary>
         /// <param name="map">Map instance</param>
-        public void SetObjects()
+        public void SetObjects(IMap map)
         {
-            MapInit();
+            MapInit(map);
             foreach (var obj in map.GameObjects)
             {
                 if (obj.Position.X >= 0
@@ -80,14 +66,14 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         ///     Map initialization
         /// </summary>
-        private void Init()
+        public void Init(IMap map)
         {
-            MapInit();
-            ObjectsInit();
+            MapInit(map);
+            ObjectsInit(map);
         }
 
 
-        private void MapInit()
+        private void MapInit(IMap map)
         {
             for (int x = 0; x < map.Height; x++)
             {
@@ -111,7 +97,7 @@ namespace TerrariumGame.Infrastructure
         ///     Creates new objects.
         /// </summary>
         /// <param name="map">Map instance</param>
-        private void ObjectsInit()
+        private void ObjectsInit(IMap map)
         {
             int counterValue = random.Next(minObjectAmount, maxObjectAmount);
             for (int i = 0; i < counterValue; i++)

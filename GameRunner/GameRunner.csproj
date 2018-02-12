@@ -121,17 +121,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="autofacConfig.json">
+    <None Include="Configs\autofacConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Configs\autofacConfigRepository.json" />
+    <None Include="ConfigsRepo\autofacConfigRepository.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="autofacConfig.xml">
+    <Content Include="Configs\autofacConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configs\autofacConfigRepository.xml" />
+    <Content Include="ConfigsRepo\autofacConfigRepository.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">

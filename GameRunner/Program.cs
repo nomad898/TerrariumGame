@@ -7,14 +7,14 @@ namespace GameRunner
     class Program
     {
         private static IContainer Container { get; set; }
-        private const string JSON_FILE_NAME = "autofacConfig.json";
-        private const string XML_FILE_NAME = "autofacConfig.xml";
+        private const string JSON_FILE_NAME = "Configs/autofacConfig.json";
+        private const string XML_FILE_NAME = "Configs/autofacConfig.xml";
 
         static void Main(string[] args)
         {
             // Container = AutofacBuilder.Build();
-            Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
-            // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            // Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+            Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
             Run(Container);
             Console.ReadKey(true);
         }

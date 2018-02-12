@@ -5,10 +5,9 @@ namespace InterfaceLibrary.Interfaces
 {
     public interface IMapManipulator
     {
-        IMap Map { get; }
-
         IGameObjectFactory GameObjectFactory { get; }
         
-        void SetObjects();        
+        void SetObjects(IMap map);
+        void Init(IMap map); 
     }
 }
