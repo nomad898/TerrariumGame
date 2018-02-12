@@ -1,8 +1,10 @@
-﻿using InterfaceLibrary.Interfaces;
+﻿using Autofac.Extras.Moq;
+using InterfaceLibrary.Interfaces;
 using InterfaceLibrary.Interfaces.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using TerrariumGame.Infrastructure;
+using TerrariumGame.Models;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Tests.InfrastructureTests
@@ -17,11 +19,15 @@ namespace TerrariumGame.Tests.InfrastructureTests
         public static void GameObjectsListClassInitialize(TestContext testContext)
         {
             Debug.WriteLine("Test items initializing starts...");
-            goList = new GameObjectsList();
-            gameObject1 = new SalaryAddition(1, 1);
-            gameObject2 = new SalaryAddition(2, 2);
-            gameObject3 = new SalaryAddition(3, 3);
 
+            using (var mock = AutoMock.GetLoose())
+            {
+                goList = mock.Create<GameObjectsList>();
+                gameObject1 = mock.Create<SalaryAddition>();
+                gameObject2 = mock.Create<SalaryAddition>(); 
+                gameObject3 = mock.Create<SalaryAddition>(); 
+            }     
+       
             bool debugIsNotNullflag = goList != null
                 && gameObject1 != null
                 && gameObject2 != null
@@ -78,15 +84,18 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Add_NewItemAddedToList_LastItemReturned()
         {
-            // arrange        
-            IGameObject expectedNewGameObject = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange        
+                IGameObject expectedNewGameObject = mock.Create<SalaryAddition>();
 
-            // act
-            goList.Add(expectedNewGameObject);
-            var actualGameObject = goList.Last;
+                // act
+                goList.Add(expectedNewGameObject);
+                var actualGameObject = goList.Last;
 
-            // assert
-            Assert.AreSame(expectedNewGameObject, actualGameObject);
+                // assert
+                Assert.AreSame(expectedNewGameObject, actualGameObject);
+            }
         }
 
         /// <summary>
@@ -95,32 +104,38 @@ namespace TerrariumGame.Tests.InfrastructureTests
         /// </summary>
         [TestMethod]
         public void Clear_DeleteAllItems_NewFirstItemReturned()
-        {
-            // arrange
-            IGameObject newGameItem = new SalaryAddition();
+        {           
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject newGameItem = mock.Create<SalaryAddition>();
 
-            // act
-            goList.Clear();
-            goList.Add(newGameItem);
-            var actualGameObject = goList.First;
+                // act
+                goList.Clear();
+                goList.Add(newGameItem);
+                var actualGameObject = goList.First;
 
-            // assert
-            Assert.AreSame(newGameItem, actualGameObject);
+                // assert
+                Assert.AreSame(newGameItem, actualGameObject);
+            }
         }
 
         [TestMethod]
         public void Clear_DeleteAllItems_NewLastItemReturned()
         {
-            // arrange
-            IGameObject newGameItem = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject newGameItem = mock.Create<SalaryAddition>();
 
-            // act
-            goList.Clear();
-            goList.Add(newGameItem);
-            var actualGameObject = goList.Last;
+                // act
+                goList.Clear();
+                goList.Add(newGameItem);
+                var actualGameObject = goList.Last;
 
-            // assert
-            Assert.AreSame(newGameItem, actualGameObject);
+                // assert
+                Assert.AreSame(newGameItem, actualGameObject);
+            }
         }
 
         /// <summary>
@@ -147,14 +162,17 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Contains_FindsItem_ReturnsFalse()
         {
-            // arrange
-            IGameObject notContained = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject notContained = mock.Create<SalaryAddition>();
 
-            // act
-            bool result = goList.Contains(notContained);
+                // act
+                bool result = goList.Contains(notContained);
 
-            // assert
-            Assert.IsFalse(result);
+                // assert
+                Assert.IsFalse(result);
+            }
         }
 
         #region CopyTo(IGameObject[] array) method
@@ -305,14 +323,17 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void IndexOf_NotFindsItemAndReturnsIndex_Negative1Returned()
         {
-            // arrange
-            IGameObject notContained = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject notContained = mock.Create<SalaryAddition>();
 
-            // act
-            int result = goList.IndexOf(notContained);
+                // act
+                int result = goList.IndexOf(notContained);
 
-            // assert
-            Assert.AreEqual(-1, result);
+                // assert
+                Assert.AreEqual(-1, result);
+            }
         }
 
         /// <summary>
@@ -322,15 +343,18 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Remove_RemoveItemByRef_ReturnsTrue()
         {
-            // arrange
-            IGameObject removeGameObject = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject removeGameObject = mock.Create<SalaryAddition>();
 
-            // act
-            goList.Add(removeGameObject);
-            bool result = goList.Remove(removeGameObject);
+                // act
+                goList.Add(removeGameObject);
+                bool result = goList.Remove(removeGameObject);
 
-            // assert
-            Assert.IsTrue(result);
+                // assert
+                Assert.IsTrue(result);
+            }
         }
 
         /// <summary>
@@ -340,14 +364,17 @@ namespace TerrariumGame.Tests.InfrastructureTests
         [TestMethod]
         public void Remove_RemoveItemByRef_ReturnsFalse()
         {
-            // arrange
-            IGameObject notContained = new SalaryAddition();
+            using (var mock = AutoMock.GetLoose())
+            {
+                // arrange
+                IGameObject notContained = mock.Create<SalaryAddition>();
 
-            // act
-            bool result = goList.Remove(notContained);
+                // act
+                bool result = goList.Remove(notContained);
 
-            // assert
-            Assert.IsFalse(result);
+                // assert
+                Assert.IsFalse(result);
+            }
         }
 
         [TestMethod]
@@ -363,7 +390,7 @@ namespace TerrariumGame.Tests.InfrastructureTests
         }
 
         [TestMethod]
-        public void ToList_CopyAllItemsToNewList_ItemsInListReturned()
+        public void ToList_CopyAllItemsToNewList_FirstInListReturned()
         {
             // arrange
 
@@ -372,7 +399,29 @@ namespace TerrariumGame.Tests.InfrastructureTests
 
             // assert
             Assert.AreSame(list[0], goList[0]);
+        }
+
+        [TestMethod]
+        public void ToList_CopyAllItemsToNewList_SecondInListReturned()
+        {
+            // arrange
+
+            // act
+            var list = goList.ToList();
+
+            // assert
             Assert.AreSame(list[1], goList[1]);
+        }
+
+        [TestMethod]
+        public void ToList_CopyAllItemsToNewList_ThirdInListReturned()
+        {
+            // arrange
+
+            // act
+            var list = goList.ToList();
+
+            // assert
             Assert.AreSame(list[2], goList[2]);
         }
 
