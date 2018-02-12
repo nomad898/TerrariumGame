@@ -39,8 +39,7 @@ namespace TerrariumGame.Infrastructure
         private readonly IGameObjectFactory gOFactory;
         #endregion
         #endregion
-        public MapManipulator(IMap map,
-            IGameObjectFactory factory)
+        public MapManipulator(IGameObjectFactory factory)
         {
             if (map == null)
             {
@@ -51,7 +50,6 @@ namespace TerrariumGame.Infrastructure
                 throw new ArgumentNullException("Game factory is null");
             }
             random = new Random();
-            this.map = map;
             this.gOFactory = factory;
             minObjectAmount = Config.MIN_OBJECT_AMOUNT;
             maxObjectAmount = Config.MAX_OBJECT_AMOUNT;
@@ -82,7 +80,6 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         ///     Map initialization
         /// </summary>
-        /// <param name="map">Map instance</param>
         private void Init()
         {
             MapInit();
