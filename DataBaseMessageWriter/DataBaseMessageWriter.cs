@@ -1,7 +1,5 @@
-﻿using System;
-using InterfaceLibrary.Interfaces.Writer;
+﻿using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
-using DataBaseMessageWriter;
 using BusinessInterfaces.Services;
 
 namespace MessageWriter
