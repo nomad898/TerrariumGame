@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Управление общими сведениями о сборке осуществляется следующим образом
+// Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных с этой сборкой.
 [assembly: AssemblyTitle("TerrariumGame.WebApi.Tests")]
@@ -10,26 +10,27 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TerrariumGame.WebApi.Tests")]
-[assembly: AssemblyCopyright("© , 2018")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Установка значения False в параметре ComVisible делает типы в этой сборке невидимыми
-// для компонентов COM.  Если требуется обратиться к типу в этой сборке через
+// Установка значения false в параметре ComVisible делает типы в этой сборке невидимыми 
+// для компонентов COM. Если требуется обратиться к типу в этой сборке через 
 // COM, задайте атрибуту ComVisible значение true для требуемого типа.
 [assembly: ComVisible(false)]
 
-// Следующий GUID служит для ID библиотеки типов typelib, если этот проект видим для COM
-[assembly: Guid("d04302da-6f73-4f30-9e73-12727af1d8ff")]
+// Следующий GUID служит для идентификации библиотеки типов typelib, если этот проект видим для COM
+[assembly: Guid("0090c6b4-e055-437d-aa26-a2a0536dd01c")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
 //      основной номер версии;
-//      Дополнительный номер версии
+//      дополнительный номер версии;
 //      номер сборки;
 //      редакция.
 //
-// Можно задать все значения или принять номер редакции и номер сборки по умолчанию,
+// Можно задать все значения или принять номер сборки и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
+// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

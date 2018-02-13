@@ -4,7 +4,6 @@ using InterfaceLibrary.Interfaces.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using TerrariumGame.Infrastructure;
-using TerrariumGame.Models;
 using TerrariumGame.Models.NotAlive;
 
 namespace TerrariumGame.Tests.InfrastructureTests
