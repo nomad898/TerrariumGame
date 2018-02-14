@@ -1,5 +1,5 @@
 ﻿{
-  "defaultAssembly": "GameRunner",
+  "defaultAssembly": "TerrariumGame.GameRunner",
   "components": [
 
     // Map
@@ -177,3 +177,6 @@
 
   ]
 }
+
+
+//https://github.com/thomasgalliker/EmployeeManagement

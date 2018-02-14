@@ -16,9 +16,17 @@ namespace TerrariumGame.WebApi.Controllers
             this.conversationService = conversationService;
         }     
 
-        public IEnumerable<IConversation> Get()
+        public IEnumerable<ConversationViewModel> Get()
         {
-            return conversationService.GetAll();
+            var iconversations = conversationService.GetAll();
+            List<ConversationViewModel> list = new List<ConversationViewModel>();
+            foreach (var el in iconversations)
+            {
+                var conVM = new ConversationViewModel();
+                conVM.TransferData(el);
+                list.Add(conVM);
+            }
+            return list;
         }
 
         public ConversationViewModel Get(int id)

@@ -1,0 +1,35 @@
+﻿{
+  "defaultAssembly": "TerrariumGame.WebApi",
+  "components": [           
+      
+    // DataBaseContext
+    {
+      "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",
+      "instanceScope": "perrequest"
+    },
+
+    // ConversationRepository
+    {
+      "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
+      "services": [
+        {
+          "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
+        }
+      ],
+      "instanceScope": "perrequest"
+    },
+   
+    // ConversationService
+    {
+      "type": "BusinessLibrary.Services.ConversationService, BusinessLibrary",
+      "services": [
+        {
+          "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
+        }
+      ],
+      "instanceScope": "perrequest"
+    }
+
+  ]
+}
+

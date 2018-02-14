@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using TerrariumGame.WebApi.App_Start;
 
 namespace TerrariumGame.WebApi
 {
@@ -14,11 +15,7 @@ namespace TerrariumGame.WebApi
     {
         protected void Application_Start()
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<ConversationService>().As<IConversationService>().InstancePerRequest();
-            var config = GlobalConfiguration.Configuration;
-          
-            
+            Bootstrapper.Run();   
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
