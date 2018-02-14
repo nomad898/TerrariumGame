@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.Http;
 
 namespace TerrariumGame.WebApi
@@ -18,7 +20,7 @@ namespace TerrariumGame.WebApi
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+            );         
         }
     }
 }

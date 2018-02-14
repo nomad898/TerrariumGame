@@ -2,7 +2,7 @@
 
 namespace BusinessLibrary.Services
 {
-    class Service<TEntity> : IService<TEntity> 
+    public class Service<TEntity> : IService<TEntity> 
         where TEntity : class
     {
     }

@@ -3,10 +3,11 @@ using BusinessLibrary.DTO;
 using DataBaseInterfaces.Entities;
 using DataBaseInterfaces.Repositories;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessLibrary.Services
 {
-    class ConversationService : Service<IConversation>,
+    public class ConversationService : Service<IConversation>,
         IConversationService
     {
         public IConversationRepository conversationRepo;
@@ -14,6 +15,16 @@ namespace BusinessLibrary.Services
         public ConversationService(IConversationRepository cRepo)
         {
             this.conversationRepo = cRepo;
+        }
+
+        public IConversation Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<IConversation> GetAll()
+        {
+            return conversationRepo.GetAll();
         }
 
         public void WriteMessage(string message)
