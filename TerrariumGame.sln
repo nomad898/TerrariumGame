@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame", "TerrariumGame\TerrariumGame.csproj", "{DF681808-5987-413E-819B-2201ED91F584}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacTraining", "AutofacT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLibrary", "InterfaceLibrary\InterfaceLibrary.csproj", "{570EF974-1E62-4E46-9831-F17072D1D47E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRunner", "GameRunner\GameRunner.csproj", "{4F93A5A8-F6F2-45C7-B92C-FF1D15AF4C15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.GameRunner", "GameRunner\TerrariumGame.GameRunner.csproj", "{4F93A5A8-F6F2-45C7-B92C-FF1D15AF4C15}"
 	ProjectSection(ProjectDependencies) = postProject
 		{570EF974-1E62-4E46-9831-F17072D1D47E} = {570EF974-1E62-4E46-9831-F17072D1D47E}
 	EndProjectSection
@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseMessageWriter", "DataBaseMessageWriter\DataBaseMessageWriter.csproj", "{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseLayer", "DataBaseLayer", "{5BCC4570-34A4-4841-AE74-3078732A923B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{5BCC4570-34A4-4841-AE74-3078732A923B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseInterfaces", "DataBaseInterfaces\DataBaseInterfaces.csproj", "{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}"
 EndProject
@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Tests", "TerrariumGame.Tests\TerrariumGame.Tests.csproj", "{23392F18-2109-41EF-890C-A458A79428EB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogicLayer", "BusinessLogicLayer", "{6DF4284A-0FD2-4406-971D-174DD380FCCF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{6DF4284A-0FD2-4406-971D-174DD380FCCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessInterfaces", "BusinessInterfaces\BusinessInterfaces.csproj", "{B5E86F05-08EF-4C35-BBFF-F3590C6F8B67}"
 EndProject

@@ -2,7 +2,7 @@
 using InterfaceLibrary.Interfaces;
 using System;
 
-namespace GameRunner
+namespace TerrariumGame.GameRunner
 {
     class Program
     {
