@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
 

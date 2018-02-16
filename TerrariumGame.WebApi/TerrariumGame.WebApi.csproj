@@ -57,6 +57,14 @@
       <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -235,17 +243,9 @@
       <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
       <Name>BusinessInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
-      <Project>{8bcfcafd-01aa-4462-bb82-0198fd6e602d}</Project>
-      <Name>BusinessLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataBaseLibrary\DataBaseLibrary.csproj">
-      <Project>{654c8275-a024-44c4-9329-6f92361606da}</Project>
-      <Name>DataBaseLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -281,8 +281,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /Q /Y "$(SolutionDir)DataBaseLibrary\$(OutDir)$(ConfigurationName)\DataBaseLibrary.dll"                              "$(TargetDir)" 
+
+xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)$(ConfigurationName)\BusinessLibrary.dll"                                "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -119,7 +119,6 @@
     <Compile Include="AutofacBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebApiClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -136,6 +135,10 @@
     <Content Include="ConfigsRepo\autofacConfigRepository.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">
+      <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
+      <Name>BusinessInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
       <Project>{8bcfcafd-01aa-4462-bb82-0198fd6e602d}</Project>
       <Name>BusinessLibrary</Name>

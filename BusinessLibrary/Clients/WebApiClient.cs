@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BusinessInterfaces.Clients;
+using System;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TerrariumGame.GameRunner
+namespace BusinessLibrary.Clients
 {
-    public class WebApiClient
+    public class WebApiClient : IWebApiClient
     {
         public void GetAllConversations()
         {

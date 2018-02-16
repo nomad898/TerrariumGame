@@ -2,7 +2,6 @@
 using Autofac.Configuration;
 using Autofac.Integration.WebApi;
 using BusinessInterfaces.Services;
-using BusinessLibrary.Services;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Web.Http;
@@ -30,7 +29,7 @@ namespace TerrariumGame.WebApi.App_Start
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<ConversationService>().As<IConversationService>().InstancePerRequest();
+            //builder.RegisterType<ConversationService>().As<IConversationService>().InstancePerRequest();
 
           
             var module = new ConfigurationModule(cfg.Build());
