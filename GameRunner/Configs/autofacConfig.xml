@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<autofac defaultAssembly="TerrariumGame.GameRunner">
+<autofac defaultAssembly="Terrarium.GameRunner">
 
   <components name="0">
     <type>TerrariumGame.Infrastructure.Map, TerrariumGame</type>

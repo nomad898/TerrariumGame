@@ -3,7 +3,7 @@ using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
 
-namespace TerrariumGame.GameRunner
+namespace Terrarium.GameRunner
 {
     class Program
     {

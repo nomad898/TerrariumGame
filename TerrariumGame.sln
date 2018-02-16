@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacTraining", "AutofacT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLibrary", "InterfaceLibrary\InterfaceLibrary.csproj", "{570EF974-1E62-4E46-9831-F17072D1D47E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.GameRunner", "GameRunner\TerrariumGame.GameRunner.csproj", "{4F93A5A8-F6F2-45C7-B92C-FF1D15AF4C15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrarium.GameRunner", "GameRunner\Terrarium.GameRunner.csproj", "{4F93A5A8-F6F2-45C7-B92C-FF1D15AF4C15}"
 	ProjectSection(ProjectDependencies) = postProject
 		{570EF974-1E62-4E46-9831-F17072D1D47E} = {570EF974-1E62-4E46-9831-F17072D1D47E}
 	EndProjectSection
