@@ -1,9 +1,9 @@
-﻿using DataBaseInterfaces.Entities;
+﻿using TerrariumGame.Model.Entities;
 
 namespace DataBaseInterfaces.Repositories
 {
     public interface IConversationRepository :
-        IRepository<IConversation, int> 
+        IRepository<Conversation, int>
     {
     }
 }

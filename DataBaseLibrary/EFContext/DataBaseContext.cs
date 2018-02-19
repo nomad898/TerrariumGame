@@ -1,7 +1,6 @@
-﻿using DataBaseInterfaces.Entities;
-using DataBaseLibrary.Entities;
-using System.Data.Common;
+﻿using System.Data.Common;
 using System.Data.Entity;
+using TerrariumGame.Model.Entities;
 
 namespace DataBaseLibrary.EFContext
 {

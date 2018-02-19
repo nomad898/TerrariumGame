@@ -5,7 +5,8 @@ using System.Linq.Expressions;
 
 namespace DataBaseInterfaces.Repositories
 {
-    public interface IRepository<TEntity, TIdType> : IDisposable
+    public interface IRepository<TEntity, TIdType> : IDisposable 
+        where TEntity : class
     {
         IEnumerable<TEntity> GetAll();
 

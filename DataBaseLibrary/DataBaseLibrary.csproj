@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFContext\DataBaseContext.cs" />
-    <Compile Include="Entities\Conversation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ConversationRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -62,6 +62,10 @@
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Model\TerrariumGame.Model.csproj">
+      <Project>{428abc57-b1a6-425d-b869-e76c7c7e07b2}</Project>
+      <Name>TerrariumGame.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

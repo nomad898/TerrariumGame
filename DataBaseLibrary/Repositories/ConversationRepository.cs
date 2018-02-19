@@ -1,11 +1,10 @@
-﻿using DataBaseInterfaces.Entities;
-using DataBaseInterfaces.Repositories;
+﻿using DataBaseInterfaces.Repositories;
 using DataBaseLibrary.EFContext;
-using DataBaseLibrary.Entities;
+using TerrariumGame.Model.Entities;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<IConversation, int>,
+    class ConversationRepository : Repository<Conversation, int>,
           IConversationRepository
     {
         public ConversationRepository(DataBaseContext context)
