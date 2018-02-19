@@ -247,6 +247,10 @@
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Model\TerrariumGame.Model.csproj">
+      <Project>{428abc57-b1a6-425d-b869-e76c7c7e07b2}</Project>
+      <Name>TerrariumGame.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -28,10 +28,7 @@ namespace TerrariumGame.WebApi.App_Start
             cfg.AddJsonFile("config.json");
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
-            //builder.RegisterType<ConversationService>().As<IConversationService>().InstancePerRequest();
-
-          
+               
             var module = new ConfigurationModule(cfg.Build());
             builder.RegisterModule(module);
 

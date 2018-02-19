@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using TerrariumGame.Model.Entities;
 
 namespace BusinessInterfaces.Services
 {
-    public interface IConversationService : IService<IConversation>
+    public interface IConversationService : IService<Conversation>
     {
-        IEnumerable<IConversation> GetAll();
-        IConversation Get(int id);
+        IEnumerable<Conversation> GetAll();
+        Conversation Get(int id);
         void WriteMessage(string message);
     }
 }

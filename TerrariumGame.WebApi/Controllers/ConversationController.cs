@@ -16,12 +16,16 @@ namespace TerrariumGame.WebApi.Controllers
 
         public IEnumerable<ConversationViewModel> Get()
         {
-            var iconversations = conversationService.GetAll();
+            var conversations = conversationService.GetAll();
             List<ConversationViewModel> list = new List<ConversationViewModel>();
-            foreach (var el in iconversations)
+            foreach (var el in conversations)
             {
-                var conVM = new ConversationViewModel();
-                conVM.TransferData(el);
+                var conVM = new ConversationViewModel()
+                {
+                    ConversationId = el.ConversationId,
+                    Date = el.Date,
+                    Message = el.Message
+                };                                
                 list.Add(conVM);
             }
             return list;
@@ -29,7 +33,14 @@ namespace TerrariumGame.WebApi.Controllers
 
         public ConversationViewModel Get(int id)
         {
-            return (ConversationViewModel)conversationService.Get(id);
+            var conversation = conversationService.Get(id);
+            ConversationViewModel conVM = new ConversationViewModel()
+            {
+                ConversationId = conversation.ConversationId,
+                Date = conversation.Date,
+                Message = conversation.Message
+            };
+            return conVM;
         }
 
         [HttpPost]

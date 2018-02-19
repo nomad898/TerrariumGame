@@ -1,13 +1,13 @@
 ﻿using BusinessInterfaces.Services;
 using BusinessLibrary.DTO;
-using DataBaseInterfaces.Entities;
 using DataBaseInterfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using TerrariumGame.Model.Entities;
 
 namespace BusinessLibrary.Services
 {
-    public class ConversationService : Service<IConversation>,
+    public class ConversationService : Service<Conversation>,
         IConversationService
     {
         public IConversationRepository conversationRepo;
@@ -17,24 +17,24 @@ namespace BusinessLibrary.Services
             this.conversationRepo = cRepo;
         }
 
-        public IConversation Get(int id)
+        public Conversation Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IConversation> GetAll()
+        public IEnumerable<Conversation> GetAll()
         {
             return conversationRepo.GetAll();
         }
 
         public void WriteMessage(string message)
         {
-            IConversation conversationDto = new ConversationDto
+            Conversation conversation = new Conversation()
             {
                 Message = message,
                 Date = DateTime.Now
             };
-            conversationRepo.Create(conversationDto);
+            conversationRepo.Create(conversation);
             conversationRepo.Save();
         }
     }

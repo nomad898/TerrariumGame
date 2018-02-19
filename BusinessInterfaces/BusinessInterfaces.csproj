@@ -51,6 +51,10 @@
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Model\TerrariumGame.Model.csproj">
+      <Project>{428ABC57-B1A6-425D-B869-E76C7C7E07B2}</Project>
+      <Name>TerrariumGame.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
