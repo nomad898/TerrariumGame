@@ -7,8 +7,8 @@
     <ProjectGuid>{4F93A5A8-F6F2-45C7-B92C-FF1D15AF4C15}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameRunner</RootNamespace>
-    <AssemblyName>Terrarium.GameRunner</AssemblyName>
+    <RootNamespace>TerrariumGame.GameRunner</RootNamespace>
+    <AssemblyName>TerrariumGame.GameRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

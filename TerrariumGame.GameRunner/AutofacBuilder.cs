@@ -2,7 +2,7 @@
 using Autofac.Configuration;
 using Microsoft.Extensions.Configuration;
 
-namespace Terrarium.GameRunner
+namespace TerrariumGame.GameRunner
 {
     class AutofacBuilder
     {

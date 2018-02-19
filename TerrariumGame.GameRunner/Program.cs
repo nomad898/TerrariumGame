@@ -3,7 +3,7 @@ using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
 
-namespace Terrarium.GameRunner
+namespace TerrariumGame.GameRunner
 {
     class Program
     {
@@ -15,8 +15,8 @@ namespace Terrarium.GameRunner
         {
 
             // WebApiClient
-            WebApiClient webApiClient = new WebApiClient();
-            webApiClient.GetAllConversations();
+            //WebApiClient webApiClient = new WebApiClient();
+            //webApiClient.GetAllConversations();
 
             // Container = AutofacBuilder.Build();
             // Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);

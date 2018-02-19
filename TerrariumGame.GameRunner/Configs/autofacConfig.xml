@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<autofac defaultAssembly="Terrarium.GameRunner">
+<autofac defaultAssembly="TerrariumGame.GameRunner">
 
   <components name="0">
     <type>TerrariumGame.Infrastructure.Map, TerrariumGame</type>
@@ -32,31 +32,7 @@
   </components>
 
   <components name="5">
-    <type>MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter</type>
-    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
-    <instanceScope>single-instance</instanceScope>
-  </components>
-
-  <components name="5">
-    <type>MessageWriter.TextFileMessageWriter, TextFileMessageWriter</type>
-    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
-    <instanceScope>single-instance</instanceScope>
-  </components>
-
-  <components name="5">
-    <type>MessageWriter.XmlMessageWriter, XmlMessageWriter</type>
-    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
-    <instanceScope>single-instance</instanceScope>
-  </components>
-
-  <components name="5">
     <type>MessageWriter.XMessageWriter, XmlMessageWriter</type>
-    <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
-    <instanceScope>single-instance</instanceScope>
-  </components>
-
-  <components name="5">
-    <type>MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
@@ -73,29 +49,21 @@
   </components>
 
   <components name="8">
-    <type>DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary</type>
-    <services name="0" type="DataBaseInterfaces.IUnitOfWork, DataBaseInterfaces"/>
-    <instanceScope>single-instance</instanceScope>
-  </components>
-
-  <components name="9">
     <type>DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary</type>
     <services name="0" type="DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="10">
+  <components name="9">
     <type>TerrariumGame.Infrastructure.GameObjectsList, TerrariumGame</type>
     <services name="0" type="InterfaceLibrary.Interfaces.Infrastructure.IGameObjectsList, InterfaceLibrary"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
-  <components name="11">
+  <components name="10">
     <type>BusinessLibrary.Services.ConversationService, BusinessLibrary</type>
     <services name="0" type="BusinessInterfaces.Services.IConversationService, BusinessInterfaces"/>
     <instanceScope>single-instance</instanceScope>
   </components>
 
 </autofac>
-
-

@@ -1,5 +1,5 @@
 ﻿{
-  "defaultAssembly": "Terrarium.GameRunner",
+  "defaultAssembly": "TerrariumGame.GameRunner",
   "components": [
 
     // Map
@@ -57,7 +57,52 @@
       "instanceScope": "singleinstance"
     },
 
-    // Writer
+    // MessageWriters
+    // ConsoleMessageWriter
+    {
+      "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // TextFileMessageWriter
+    {
+      "type": "MessageWriter.TextFileMessageWriter, TextFileMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // XmlMessageWriter --> XmlDocument version
+    {
+      "type": "MessageWriter.XmlMessageWriter, XmlMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // XMessageWriter --> XDocument version
+    {
+      "type": "MessageWriter.XMessageWriter, XmlMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
+
+    // DataBaseMessageWriter
     {
       "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
       "services": [
@@ -67,6 +112,7 @@
       ],
       "instanceScope": "singleinstance"
     },
+    // MessageWriters
 
     // Game
     {
@@ -79,27 +125,29 @@
       "instanceScope": "singleinstance"
     },
 
-    // Database
+    // DataBaseContext
     {
       "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",
       "instanceScope": "singleinstance"
     },
+
+    // Database
     {
-      "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
+      "type": "DataBaseLibrary.Repositories.UnitOfWork, DataBaseLibrary",
       "services": [
         {
-          "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
+          "type": "DataBaseInterfaces.Repositories.IUnitOfWork, DataBaseInterfaces"
         }
       ],
       "instanceScope": "singleinstance"
     },
 
-    // ConversationService
+    // ConversationRepository
     {
-      "type": "BusinessLibrary.Services.ConversationService, BusinessLibrary",
+      "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
       "services": [
         {
-          "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
+          "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
         }
       ],
       "instanceScope": "singleinstance"
@@ -114,6 +162,21 @@
         }
       ],
       "instanceScope": "singleinstance"
-    }   
+    },
+
+    // ConversationService
+    {
+      "type": "BusinessLibrary.Services.ConversationService, BusinessLibrary",
+      "services": [
+        {
+          "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    }
+
   ]
 }
+
+
+//https://github.com/thomasgalliker/EmployeeManagement
