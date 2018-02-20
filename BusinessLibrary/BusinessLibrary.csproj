@@ -44,7 +44,6 @@
     <Compile Include="DTO\ConversationDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConversationService.cs" />
-    <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">

@@ -5,10 +5,11 @@ using System.Data.Entity;
 using System;
 using System.Linq.Expressions;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DataBaseLibrary.Repositories
 {
-    abstract class Repository<TEntity, TIdType>
+    public class Repository<TEntity, TIdType>
         : IRepository<TEntity, TIdType>
         where TEntity : class
     {
@@ -19,6 +20,7 @@ namespace DataBaseLibrary.Repositories
             this.db = context;
         }
 
+        #region Sync
         public virtual void AddRange(IEnumerable<TEntity> entities)
         {
             db.Set<TEntity>().AddRange(entities);
@@ -81,6 +83,47 @@ namespace DataBaseLibrary.Repositories
         {
             db.SaveChanges();
         }
+        #endregion
+
+        #region Async
+
+        public async void CreateAsync(TEntity entity)
+        {
+            db.Set<TEntity>().Add(entity);
+            await db.SaveChangesAsync();
+        }
+
+        public async void DeleteAsync(TEntity entity)
+        {
+            db.Set<TEntity>().Remove(entity);
+            await db.SaveChangesAsync();
+        }
+
+        public Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity> FindByIdAsync(TIdType id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void SaveAsync()
+        {
+            await db.SaveChangesAsync();
+        }
+        #endregion
 
         #region IDisposable
         private bool disposed = false;
@@ -99,6 +142,6 @@ namespace DataBaseLibrary.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        #endregion      
+        #endregion
     }
 }

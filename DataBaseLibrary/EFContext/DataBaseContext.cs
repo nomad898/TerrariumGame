@@ -4,7 +4,7 @@ using TerrariumGame.Model.Entities;
 
 namespace DataBaseLibrary.EFContext
 {
-    class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext
     {
         public DataBaseContext() : base("TerrariumDB")
         {
@@ -25,5 +25,14 @@ namespace DataBaseLibrary.EFContext
         }
 
         public virtual IDbSet<Conversation> Conversations { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Conversation>().ToTable("Conversations");
+            modelBuilder.Entity<Conversation>().HasKey(c => c.ConversationId);
+            modelBuilder.Entity<Conversation>().Property(c => c.Date).HasColumnName("DateTime");
+            modelBuilder.Entity<Conversation>().Property(c => c.Message).IsRequired();
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

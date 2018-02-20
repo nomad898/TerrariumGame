@@ -7,8 +7,7 @@ using TerrariumGame.Model.Entities;
 
 namespace BusinessLibrary.Services
 {
-    public class ConversationService : Service<Conversation>,
-        IConversationService
+    public class ConversationService : IConversationService
     {
         public IConversationRepository conversationRepo;
 
@@ -19,7 +18,7 @@ namespace BusinessLibrary.Services
 
         public Conversation Get(int id)
         {
-            throw new NotImplementedException();
+            return conversationRepo.FindById(id);
         }
 
         public IEnumerable<Conversation> GetAll()
