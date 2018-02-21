@@ -86,17 +86,15 @@ namespace DataBaseLibrary.Repositories
         #endregion
 
         #region Async
-
-        public async void CreateAsync(TEntity entity)
+        public async Task CreateAsync(TEntity entity)
         {
-            db.Set<TEntity>().Add(entity);
+            db.Set<TEntity>().Add(entity);  
             await db.SaveChangesAsync();
         }
 
-        public async void DeleteAsync(TEntity entity)
+        public Task DeleteAsync(TEntity entity)
         {
-            db.Set<TEntity>().Remove(entity);
-            await db.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
         public Task<IEnumerable<TEntity>> GetAllAsync()
@@ -114,15 +112,16 @@ namespace DataBaseLibrary.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateAsync(TEntity entity)
+        public Task UpdateAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public async void SaveAsync()
+        public async Task SaveAsync()
         {
             await db.SaveChangesAsync();
         }
+
         #endregion
 
         #region IDisposable
@@ -141,7 +140,7 @@ namespace DataBaseLibrary.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
+        }       
         #endregion
     }
 }

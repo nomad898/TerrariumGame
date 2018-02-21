@@ -28,17 +28,17 @@ namespace DataBaseInterfaces.Repositories
         #endregion
 
         #region Async
-        void CreateAsync(TEntity entity);
+        Task CreateAsync(TEntity entity);
 
-        void DeleteAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
 
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> FindByIdAsync(TIdType id);
         Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
 
-        void UpdateAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
-        void SaveAsync();
+        Task SaveAsync();
         #endregion
     }
 }
