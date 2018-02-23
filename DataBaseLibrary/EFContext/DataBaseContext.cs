@@ -8,6 +8,7 @@ namespace DataBaseLibrary.EFContext
     {
         public DataBaseContext() : base("TerrariumDB")
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
         }
 
         public DataBaseContext(string connectionString)

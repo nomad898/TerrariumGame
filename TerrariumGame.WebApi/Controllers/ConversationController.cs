@@ -45,9 +45,9 @@ namespace TerrariumGame.WebApi.Controllers
         }
 
         [HttpPost]
-        public void WriteMessage(string message)
+        public async Task WriteMessage(string message)
         {
-            conversationService.WriteMessage(message);
+            await conversationService.WriteMessage(message);
         }
     }
 }

@@ -15,12 +15,12 @@ namespace TerrariumGame.GameRunner
         {
 
             // WebApiClient
-            WebApiClient webApiClient = new WebApiClient();
-            webApiClient.GetAllConversations();
+            //WebApiClient webApiClient = new WebApiClient();
+            //webApiClient.GetAllConversations();
 
             // Container = AutofacBuilder.Build();
-            // Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
-            Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+            // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
             Run(Container);
             Console.ReadKey(true);
         }
