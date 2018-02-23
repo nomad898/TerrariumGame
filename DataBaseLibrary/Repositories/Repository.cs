@@ -20,7 +20,7 @@ namespace DataBaseLibrary.Repositories
             this.db = context;
         }
 
-        #region Sync
+        #region Sync Scenario
         public virtual void AddRange(IEnumerable<TEntity> entities)
         {
             db.Set<TEntity>().AddRange(entities);
@@ -85,7 +85,7 @@ namespace DataBaseLibrary.Repositories
         }
         #endregion
 
-        #region Async
+        #region Async Scenario
         public virtual async Task CreateAsync(TEntity entity)
         {
             db.Set<TEntity>().Add(entity);
@@ -125,7 +125,7 @@ namespace DataBaseLibrary.Repositories
         }
 
         #endregion
-
+        
         #region IDisposable
         private bool disposed = false;
 

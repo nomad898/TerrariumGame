@@ -19,12 +19,18 @@ namespace BusinessLibrary.Services
 
         public async Task<Conversation> GetAsync(int id)
         {
-            return await conversationRepo.FindByIdAsync(id);
+            using (conversationRepo)
+            {
+                return await conversationRepo.FindByIdAsync(id);
+            }
         }
 
         public async Task<IEnumerable<Conversation>> GetAllAsync()
         {
-            return await conversationRepo.GetAllAsync();
+            using (conversationRepo)
+            {
+                return await conversationRepo.GetAllAsync();
+            }
         }
 
         public async Task WriteMessage(string message)
@@ -34,7 +40,10 @@ namespace BusinessLibrary.Services
                 Message = message,
                 Date = DateTime.Now
             };
-            await conversationRepo.CreateAsync(conversation);
+            using (conversationRepo)
+            {
+                await conversationRepo.CreateAsync(conversation);
+            }
         }
     }
 }
