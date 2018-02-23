@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BusinessInterfaces.Services
 {
     public interface IService<TEntity, TIdType> where TEntity : class
     {
-        IEnumerable<TEntity> GetAll();
-        TEntity Get(TIdType id);
+        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<TEntity> GetAsync(TIdType id);
     }
 }

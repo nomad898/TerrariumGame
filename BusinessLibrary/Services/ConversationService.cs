@@ -3,6 +3,7 @@ using BusinessLibrary.DTO;
 using DataBaseInterfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TerrariumGame.Model.Entities;
 
 namespace BusinessLibrary.Services
@@ -16,25 +17,24 @@ namespace BusinessLibrary.Services
             this.conversationRepo = cRepo;
         }
 
-        public Conversation Get(int id)
+        public async Task<Conversation> GetAsync(int id)
         {
-            return conversationRepo.FindById(id);
+            return await conversationRepo.FindByIdAsync(id);
         }
 
-        public IEnumerable<Conversation> GetAll()
+        public async Task<IEnumerable<Conversation>> GetAllAsync()
         {
-            return conversationRepo.GetAll();
+            return await conversationRepo.GetAllAsync();
         }
 
-        public void WriteMessage(string message)
+        public async Task WriteMessage(string message)
         {
             Conversation conversation = new Conversation()
             {
                 Message = message,
                 Date = DateTime.Now
             };
-            conversationRepo.Create(conversation);
-            conversationRepo.Save();
+            await conversationRepo.CreateAsync(conversation);
         }
     }
 }

@@ -86,38 +86,40 @@ namespace DataBaseLibrary.Repositories
         #endregion
 
         #region Async
-        public async Task CreateAsync(TEntity entity)
+        public virtual async Task CreateAsync(TEntity entity)
         {
-            db.Set<TEntity>().Add(entity);  
+            db.Set<TEntity>().Add(entity);
             await db.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(TEntity entity)
+        public virtual async Task DeleteAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            db.Set<TEntity>().Remove(entity);
+            await db.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await db.Set<TEntity>().ToListAsync();
         }
 
-        public Task<TEntity> FindByIdAsync(TIdType id)
+        public virtual async Task<TEntity> FindByIdAsync(TIdType id)
         {
-            throw new NotImplementedException();
+            return await db.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await db.Set<TEntity>().Where(predicate).ToListAsync();
         }
 
-        public Task UpdateAsync(TEntity entity)
+        public virtual async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            db.Entry(entity).State = EntityState.Modified;
+            await db.SaveChangesAsync();
         }
 
-        public async Task SaveAsync()
+        public virtual async Task SaveAsync()
         {
             await db.SaveChangesAsync();
         }
@@ -140,7 +142,7 @@ namespace DataBaseLibrary.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }       
+        }
         #endregion
     }
 }
