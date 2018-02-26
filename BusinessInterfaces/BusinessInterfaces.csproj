@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\IWebApiClient.cs" />
-    <Compile Include="DTO\IConversationDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IConversationService.cs" />
     <Compile Include="Services\IService.cs" />
@@ -50,6 +49,10 @@
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
+      <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
+      <Name>TerrariumGame.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\TerrariumGame.Model\TerrariumGame.Model.csproj">
       <Project>{428ABC57-B1A6-425D-B869-E76C7C7E07B2}</Project>

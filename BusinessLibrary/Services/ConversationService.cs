@@ -1,9 +1,9 @@
 ﻿using BusinessInterfaces.Services;
-using BusinessLibrary.DTO;
 using DataBaseInterfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
 using TerrariumGame.Model.Entities;
 
 namespace BusinessLibrary.Services
@@ -17,33 +17,24 @@ namespace BusinessLibrary.Services
             this.conversationRepo = cRepo;
         }
 
-        public async Task<Conversation> GetAsync(int id)
+        public async Task<ConversationDto> GetAsync(int id)
         {
-            using (conversationRepo)
-            {
-                return await conversationRepo.FindByIdAsync(id);
-            }
+            Conversation conversation = await conversationRepo.FindByIdAsync(id);
         }
 
-        public async Task<IEnumerable<Conversation>> GetAllAsync()
+        public async Task<IEnumerable<ConversationDto>> GetAllAsync()
         {
-            using (conversationRepo)
-            {
-                return await conversationRepo.GetAllAsync();
-            }
+            return await conversationRepo.GetAllAsync();
         }
 
-        public async Task WriteMessage(string message)
+        public async Task CreateAsync(ConversationDto conversationDto)
         {
             Conversation conversation = new Conversation()
             {
                 Message = message,
                 Date = DateTime.Now
             };
-            using (conversationRepo)
-            {
-                await conversationRepo.CreateAsync(conversation);
-            }
+            await conversationRepo.CreateAsync(conversation);
         }
     }
 }

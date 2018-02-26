@@ -20,7 +20,7 @@ namespace DataBaseLibrary.Repositories
             this.db = context;
         }
 
-        #region Sync Scenario
+        #region Sync 
         public virtual void AddRange(IEnumerable<TEntity> entities)
         {
             db.Set<TEntity>().AddRange(entities);
@@ -85,7 +85,7 @@ namespace DataBaseLibrary.Repositories
         }
         #endregion
 
-        #region Async Scenario
+        #region Async 
         public virtual async Task CreateAsync(TEntity entity)
         {
             db.Set<TEntity>().Add(entity);
@@ -115,6 +115,7 @@ namespace DataBaseLibrary.Repositories
 
         public virtual async Task UpdateAsync(TEntity entity)
         {
+            
             db.Entry(entity).State = EntityState.Modified;
             await db.SaveChangesAsync();
         }

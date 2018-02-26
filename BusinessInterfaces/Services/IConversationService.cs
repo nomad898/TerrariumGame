@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
 using TerrariumGame.Model.Entities;
 
 namespace BusinessInterfaces.Services
 {
-    public interface IConversationService : IService<Conversation, int>
+    public interface IConversationService : IService<ConversationDto, int>
     {
-        Task WriteMessage(string message);
+        Task CreateAsync(ConversationDto conversationDto);
     }
 }
