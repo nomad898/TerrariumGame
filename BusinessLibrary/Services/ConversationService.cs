@@ -11,7 +11,8 @@ namespace BusinessLibrary.Services
 {
     public class ConversationService : IConversationService
     {
-        public IConversationRepository conversationRepo;
+        public readonly IConversationRepository conversationRepo;
+        public readonly IMapper mapper; 
 
         public ConversationService(IConversationRepository cRepo)
         {
@@ -21,8 +22,12 @@ namespace BusinessLibrary.Services
         public async Task<ConversationDto> GetAsync(int id)
         {
             Conversation conversation = await conversationRepo.FindByIdAsync(id);
-            Mapper.Initialize(cfg => cfg.CreateMap<Conversation, ConversationDto>());
-            ConversationDto conversationDto = Mapper.Map<Conversation, ConversationDto>(conversation);
+            ConversationDto conversationDto = new ConversationDto()
+            {
+                ConversationId = conversation.ConversationId,
+                Date = conversation.Date,
+                Message = conversation.Message
+            };
             return conversationDto;
         }
 

@@ -11,6 +11,7 @@ namespace TerrariumGame.WebApi.Controllers
     public class ConversationController : ApiController
     {
         private readonly IConversationService conversationService;
+        private readonly IMapper mapper;
 
         public ConversationController(IConversationService conversationService)
         {
@@ -37,8 +38,12 @@ namespace TerrariumGame.WebApi.Controllers
         public async Task<ConversationViewModel> Get(int id)
         {
             ConversationDto conversationDto = await conversationService.GetAsync(id);
-           // Mapper.Initialize(cfg => cfg.CreateMap<ConversationDto, ConversationViewModel>());
-            ConversationViewModel conVM = Mapper.Map<ConversationDto, ConversationViewModel>(conversationDto);
+            var conVM = new ConversationViewModel()
+            {
+                ConversationId = conversationDto.ConversationId,
+                Message = conversationDto.Message,
+                Date = conversationDto.Date
+            };
             return conVM;
         }
 
