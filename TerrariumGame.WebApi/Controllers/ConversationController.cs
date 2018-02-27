@@ -1,7 +1,9 @@
-﻿using BusinessInterfaces.Services;
+﻿using AutoMapper;
+using BusinessInterfaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using TerrariumGame.Dto.DTO;
 using TerrariumGame.WebApi.Models;
 
 namespace TerrariumGame.WebApi.Controllers
@@ -34,20 +36,17 @@ namespace TerrariumGame.WebApi.Controllers
 
         public async Task<ConversationViewModel> Get(int id)
         {
-            var conversation = await conversationService.GetAsync(id);
-            ConversationViewModel conVM = new ConversationViewModel()
-            {
-                ConversationId = conversation.ConversationId,
-                Date = conversation.Date,
-                Message = conversation.Message
-            };
+            ConversationDto conversationDto = await conversationService.GetAsync(id);
+           // Mapper.Initialize(cfg => cfg.CreateMap<ConversationDto, ConversationViewModel>());
+            ConversationViewModel conVM = Mapper.Map<ConversationDto, ConversationViewModel>(conversationDto);
             return conVM;
         }
 
         [HttpPost]
         public async Task WriteMessage(string message)
         {
-            await conversationService.WriteMessage(message);
+          //  await conversationService.WriteMessage(message);
+            throw new System.Exception();
         }
     }
 }

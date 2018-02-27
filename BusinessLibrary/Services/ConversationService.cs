@@ -1,4 +1,5 @@
-﻿using BusinessInterfaces.Services;
+﻿using AutoMapper;
+using BusinessInterfaces.Services;
 using DataBaseInterfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,27 +15,32 @@ namespace BusinessLibrary.Services
 
         public ConversationService(IConversationRepository cRepo)
         {
-            this.conversationRepo = cRepo;
+            this.conversationRepo = cRepo;          
         }
 
         public async Task<ConversationDto> GetAsync(int id)
         {
             Conversation conversation = await conversationRepo.FindByIdAsync(id);
+            Mapper.Initialize(cfg => cfg.CreateMap<Conversation, ConversationDto>());
+            ConversationDto conversationDto = Mapper.Map<Conversation, ConversationDto>(conversation);
+            return conversationDto;
         }
 
         public async Task<IEnumerable<ConversationDto>> GetAllAsync()
         {
-            return await conversationRepo.GetAllAsync();
+            throw new NotImplementedException();
+           // return await conversationRepo.GetAllAsync();
         }
 
         public async Task CreateAsync(ConversationDto conversationDto)
         {
-            Conversation conversation = new Conversation()
-            {
-                Message = message,
-                Date = DateTime.Now
-            };
-            await conversationRepo.CreateAsync(conversation);
+            //Conversation conversation = new Conversation()
+            //{
+            //    Message = message,
+            //    Date = DateTime.Now
+            //};
+            //await conversationRepo.CreateAsync(conversation);
+            throw new NotImplementedException();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            conversationService.WriteMessage(message);
+            throw new System.Exception();
         }
 
         public void PrintMessage(string message, MessageType msgType)
