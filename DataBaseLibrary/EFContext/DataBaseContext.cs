@@ -8,12 +8,14 @@ namespace DataBaseLibrary.EFContext
     {
         public DataBaseContext() : base("TerrariumDB")
         {
+            Configuration.LazyLoadingEnabled = false;
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
         }
 
         public DataBaseContext(string connectionString)
             : base(connectionString)
         {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         /// <summary>
