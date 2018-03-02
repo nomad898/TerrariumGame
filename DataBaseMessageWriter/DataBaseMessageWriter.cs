@@ -1,8 +1,4 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
-using InterfaceLibrary.UtilityModels;
-using BusinessInterfaces.Services;
-using TerrariumGame.Dto.DTO;
-using System;
 using BusinessInterfaces.Clients;
 
 namespace MessageWriter
@@ -19,7 +15,7 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            
+            webApiClient.CreateConversation();
         }
         #endregion
     }

@@ -9,5 +9,6 @@ namespace BusinessInterfaces.Clients
     public interface IWebApiClient
     {
         string GetAllConversations();
+        void CreateConversation();
     }
 }
