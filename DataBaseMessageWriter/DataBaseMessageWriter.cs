@@ -1,31 +1,25 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
 using BusinessInterfaces.Services;
+using TerrariumGame.Dto.DTO;
+using System;
+using BusinessInterfaces.Clients;
 
 namespace MessageWriter
 {
     class DataBaseMessageWriter : IMessageWriter
     {
-        private IConversationService conversationService;
+        private readonly IWebApiClient webApiClient;
 
-        public DataBaseMessageWriter(IConversationService convSerive)
+        public DataBaseMessageWriter(IWebApiClient webApiClient)
         {
-            this.conversationService = convSerive;
+            this.webApiClient = webApiClient;
         }
 
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            throw new System.Exception();
-        }
-
-        public void PrintMessage(string message, MessageType msgType)
-        {
-            if (msgType == MessageType.ConversationMsg
-                && message != string.Empty)
-            {
-                PrintMessage(message);
-            }
+            
         }
         #endregion
     }

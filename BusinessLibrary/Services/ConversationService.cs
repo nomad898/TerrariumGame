@@ -12,11 +12,11 @@ namespace BusinessLibrary.Services
     public class ConversationService : IConversationService
     {
         public readonly IConversationRepository conversationRepo;
-        public readonly IMapper mapper; 
+        public readonly IMapper mapper;
 
-        public ConversationService(IConversationRepository cRepo)
+        public ConversationService(IConversationRepository conversationRepo)
         {
-            this.conversationRepo = cRepo;          
+            this.conversationRepo = conversationRepo;
         }
 
         public async Task<ConversationDto> GetAsync(int id)
@@ -33,19 +33,28 @@ namespace BusinessLibrary.Services
 
         public async Task<IEnumerable<ConversationDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
-           // return await conversationRepo.GetAllAsync();
+            ICollection<ConversationDto> conversationDtos = new List<ConversationDto>();
+            var conversations = await conversationRepo.GetAllAsync();
+            foreach (var c in conversations)
+            {
+                conversationDtos.Add(new ConversationDto()
+                {
+                    ConversationId = c.ConversationId,
+                    Date = c.Date,
+                    Message = c.Message
+                });
+            }
+            return conversationDtos;
         }
 
         public async Task CreateAsync(ConversationDto conversationDto)
         {
-            //Conversation conversation = new Conversation()
-            //{
-            //    Message = message,
-            //    Date = DateTime.Now
-            //};
-            //await conversationRepo.CreateAsync(conversation);
-            throw new NotImplementedException();
+            Conversation conversation = new Conversation()
+            {
+                Message = conversationDto.Message,
+                Date = conversationDto.Date
+            };
+            await conversationRepo.CreateAsync(conversation);
         }
     }
 }

@@ -57,6 +57,10 @@
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
+      <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
+      <Name>TerrariumGame.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

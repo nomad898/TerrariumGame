@@ -6,15 +6,14 @@ namespace BusinessLibrary.Clients
 {
     public class WebApiClient : IWebApiClient
     {
-        public void GetAllConversations()
+        public string GetAllConversations()
         {
             using (var client = new WebClient())
             {
                 client.Headers.Add("Content-Type:application/json");
                 client.Headers.Add("Accept:application/json");
                 var result = client.DownloadString("http://localhost:50808/api/Conversation");
-                Console.WriteLine(Environment.NewLine + result);
-                Console.ReadKey();
+                return result;      
             }
         }
     }

@@ -27,24 +27,17 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            XmlElement convElem = xmlDoc.CreateElement("Conversation");
-            XmlElement msgElem = xmlDoc.CreateElement("Message");
-            msgElem.InnerText = message;
-            XmlElement dateElem = xmlDoc.CreateElement("Date");
-            dateElem.InnerText = DateTime.Now.ToString();
-            convElem.AppendChild(msgElem);
-            convElem.AppendChild(dateElem);
-            root.AppendChild(convElem);
-        }
-
-        public void PrintMessage(string message, MessageType msgType)
-        {
-            if (msgType == MessageType.ConversationMsg
-                && message != string.Empty)
+            if (message != string.Empty)
             {
-                PrintMessage(message);
+                XmlElement convElem = xmlDoc.CreateElement("Conversation");
+                XmlElement msgElem = xmlDoc.CreateElement("Message");
+                msgElem.InnerText = message;
+                XmlElement dateElem = xmlDoc.CreateElement("Date");
+                dateElem.InnerText = DateTime.Now.ToString();
+                convElem.AppendChild(msgElem);
+                convElem.AppendChild(dateElem);
+                root.AppendChild(convElem);
             }
-            xmlDoc.Save(XML_FILE_NAME);
         }
         #endregion
     }

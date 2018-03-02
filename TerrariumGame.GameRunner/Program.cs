@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using BusinessInterfaces.Clients;
 using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
@@ -18,7 +19,7 @@ namespace TerrariumGame.GameRunner
         {
 
             // WebApiClient
-            //WebApiClient webApiClient = new WebApiClient();
+            IWebApiClient webApiClient = new WebApiClient();
             //webApiClient.GetAllConversations();
 
             // Container = AutofacBuilder.Build();

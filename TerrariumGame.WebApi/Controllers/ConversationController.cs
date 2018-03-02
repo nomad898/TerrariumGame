@@ -47,11 +47,11 @@ namespace TerrariumGame.WebApi.Controllers
             return conVM;
         }
 
-        [HttpPost]
-        public async Task WriteMessage(string message)
-        {
-          //  await conversationService.WriteMessage(message);
-            throw new System.Exception();
-        }
+        //[HttpPost]
+        //public async Task WriteMessage(string message)
+        //{
+        //  //  await conversationService.WriteMessage(message);
+        //    throw new System.Exception();
+        //}
     }
 }

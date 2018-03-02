@@ -31,18 +31,12 @@ namespace MessageWriter
         {
             using (StreamWriter sw = File.AppendText(TEXT_FILE_NAME))
             {
-                sw.WriteLine(message);
+                if (message != string.Empty)
+                {
+                    sw.WriteLine(DateTime.Now + " ---> " + message);
+                }
             }
-        }
-
-        public void PrintMessage(string message, MessageType msgType)
-        {
-            if (msgType == MessageType.ConversationMsg 
-                && message != string.Empty)
-            {           
-                PrintMessage(DateTime.Now + " ---> " + message);                
-            }
-        }
+        }        
         #endregion
     }
 }

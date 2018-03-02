@@ -27,20 +27,13 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            XElement convElem = new XElement("Conversation",
-                new XElement("Message", message),
-                new XElement("Date", DateTime.Now));
-            root.Add(convElem);
-        }
-
-        public void PrintMessage(string message, MessageType msgType)
-        {
-            if (msgType == MessageType.ConversationMsg
-              && message != string.Empty)
+            if (message != string.Empty)
             {
-                PrintMessage(message);
+                XElement convElem = new XElement("Conversation",
+                    new XElement("Message", message),
+                    new XElement("Date", DateTime.Now));
+                root.Add(convElem);
             }
-            xDoc.Save(XML_FILE_NAME);
         }
         #endregion
     }

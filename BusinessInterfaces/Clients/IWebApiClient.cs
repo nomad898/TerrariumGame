@@ -8,6 +8,6 @@ namespace BusinessInterfaces.Clients
 {
     public interface IWebApiClient
     {
-        void GetAllConversations();
+        string GetAllConversations();
     }
 }

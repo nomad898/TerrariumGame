@@ -62,9 +62,14 @@
     <Compile Include="Interfaces\UI\IUI.cs" />
     <Compile Include="Interfaces\Writer\IMessageWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UtilityModels\MessageType.cs" />
     <Compile Include="UtilityModels\Point.cs" />
     <Compile Include="UtilityModels\State.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
+      <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
+      <Name>TerrariumGame.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -260,7 +260,7 @@ namespace TerrariumGame.Infrastructure
 
             if (msgWriter != null)
             {
-                msgWriter.PrintMessage(talkResult, MessageType.ConversationMsg);
+                msgWriter.PrintMessage(talkResult);
             }
         }
         #endregion
