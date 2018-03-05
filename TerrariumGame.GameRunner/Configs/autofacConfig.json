@@ -114,6 +114,17 @@
         }
       ],
       "instanceScope": "singleinstance"
-    }   
+    },
+
+    // WebApiClient
+    {
+      "type": "BusinessLibrary.Clients.WebApiClient, BusinessLibrary",
+      "services": [
+        {
+          "type": "BusinessInterfaces.Clients.IWebApiClient, BusinessInterfaces"
+        }
+      ],
+      "instanceScope": "perrequest"
+    }
   ]
 }

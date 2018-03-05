@@ -15,7 +15,7 @@ namespace MessageWriter
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            webApiClient.CreateConversation();
+            webApiClient.CreateConversationAsync(message);
         }
         #endregion
     }

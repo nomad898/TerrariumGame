@@ -49,6 +49,7 @@ namespace TerrariumGame.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("api/Conversation/{message}")]
         public async Task Post(string message)
         {
             //  await conversationService.WriteMessage(message);

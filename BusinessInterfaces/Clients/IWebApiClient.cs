@@ -9,7 +9,7 @@ namespace BusinessInterfaces.Clients
     public interface IWebApiClient
     {
         Task<string> GetAllConversationsAsync();
-        Task<string> GetConversation(int id);
-        Task CreateConversation(string message);
+        Task<string> GetConversationAsync(int id);
+        Task CreateConversationAsync(string message);
     }
 }

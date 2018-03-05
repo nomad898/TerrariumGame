@@ -3,7 +3,6 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TerrariumGame.Dto.DTO;
 
 namespace BusinessLibrary.Clients
 {
@@ -28,11 +27,12 @@ namespace BusinessLibrary.Clients
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task CreateConversation(string message)
+        public async Task CreateConversationAsync(string message)
         {
             using (httpClient)
             {
-                await httpClient.PostAsJsonAsync($"api/Employee", message);
+                StringContent queryString = new StringContent(message);
+                await httpClient.PostAsync($"api/Conversation/{message}", queryString);
             }
         }
 
@@ -40,16 +40,15 @@ namespace BusinessLibrary.Clients
         {
             using (httpClient)
             {
-                var result = await httpClient.GetAsync("api/Employee/",
+                var result = await httpClient.GetAsync("api/Conversation/",
                     HttpCompletionOption.ResponseContentRead);
-
                 return await result.Content.ReadAsStringAsync();
             }
         }
 
-        public async Task<string> GetConversation(int id)
+        public async Task<string> GetConversationAsync(int id)
         {
-            var result = await httpClient.GetAsync($"api/Employee/{id}",
+            var result = await httpClient.GetAsync($"api/Conversation/{id}",
                 HttpCompletionOption.ResponseContentRead);
             return await result.Content.ReadAsStringAsync();
         }
