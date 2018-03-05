@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessInterfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -21,7 +22,7 @@ namespace TerrariumGame.WebApi.Controllers
         public async Task<IEnumerable<ConversationViewModel>> Get()
         {
             var conversations = await conversationService.GetAllAsync();
-            List<ConversationViewModel> list = new List<ConversationViewModel>();
+            ICollection<ConversationViewModel> list = new List<ConversationViewModel>();
             foreach (var el in conversations)
             {
                 var conVM = new ConversationViewModel()
@@ -38,7 +39,7 @@ namespace TerrariumGame.WebApi.Controllers
         public async Task<ConversationViewModel> Get(int id)
         {
             ConversationDto conversationDto = await conversationService.GetAsync(id);
-            var conVM = new ConversationViewModel()
+            ConversationViewModel conVM = new ConversationViewModel()
             {
                 ConversationId = conversationDto.ConversationId,
                 Message = conversationDto.Message,
@@ -47,11 +48,16 @@ namespace TerrariumGame.WebApi.Controllers
             return conVM;
         }
 
-        //[HttpPost]
-        //public async Task WriteMessage(string message)
-        //{
-        //  //  await conversationService.WriteMessage(message);
-        //    throw new System.Exception();
-        //}
+        [HttpPost]
+        public async Task Post(string message)
+        {
+            //  await conversationService.WriteMessage(message);
+            ConversationDto conDto = new ConversationDto()
+            {
+                Message = message,
+                Date = DateTime.Now
+            };
+            await conversationService.CreateAsync(conDto);
+        }
     }
 }
