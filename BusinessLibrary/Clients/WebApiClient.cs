@@ -1,36 +1,57 @@
 ﻿using BusinessInterfaces.Clients;
+using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using TerrariumGame.Dto.DTO;
 
 namespace BusinessLibrary.Clients
 {
     public class WebApiClient : IWebApiClient
     {
-        public void CreateConversation()
+        private HttpClient httpClient;
+
+        public WebApiClient()
         {
-            using (var client = new HttpClient())
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("http://localhost:50808/");
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public WebApiClient(HttpClient httpClient, Uri uri)
+        {
+            this.httpClient = httpClient;
+            this.httpClient.BaseAddress = uri;
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        public async Task CreateConversation(string message)
+        {
+            using (httpClient)
             {
-            //    client.Headers.Add("Content-Type:application/json");
-            //    client.Headers.Add("Accept:application/json");
-            //    var result = client.DownloadString("http://localhost:50808/api/Conversation");
+                await httpClient.PostAsJsonAsync($"api/Employee", message);
             }
         }
 
-        public string GetAllConversations()
+        public async Task<string> GetAllConversationsAsync()
         {
-            using (var client = new HttpClient())
+            using (httpClient)
             {
-                client.Headers.Add("Content-Type:application/json");
-                client.Headers.Add("Accept:application/json");
-                var result = client.DownloadString("http://localhost:50808/api/Conversation");
-                return result;      
+                var result = await httpClient.GetAsync("api/Employee/",
+                    HttpCompletionOption.ResponseContentRead);
+
+                return await result.Content.ReadAsStringAsync();
             }
         }
 
-        private ConversationDto GetConversation(string path)
+        public async Task<string> GetConversation(int id)
         {
-            ConversationDto conversationDto = null;
-            HttpResponseMessage response = await clie
+            var result = await httpClient.GetAsync($"api/Employee/{id}",
+                HttpCompletionOption.ResponseContentRead);
+            return await result.Content.ReadAsStringAsync();
         }
     }
 }

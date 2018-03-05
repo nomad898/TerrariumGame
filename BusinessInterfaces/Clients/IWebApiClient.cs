@@ -8,7 +8,8 @@ namespace BusinessInterfaces.Clients
 {
     public interface IWebApiClient
     {
-        string GetAllConversations();
-        void CreateConversation();
+        Task<string> GetAllConversationsAsync();
+        Task<string> GetConversation(int id);
+        Task CreateConversation(string message);
     }
 }
