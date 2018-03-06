@@ -59,7 +59,7 @@
 
     // Writer
     {
-      "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
+      "type": "MessageWriter.DbWebApiMessageWriter, DataBaseMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"

@@ -1,22 +1,25 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
 using BusinessInterfaces.Clients;
-using System.Threading.Tasks;
+using BusinessInterfaces.Services;
 
 namespace MessageWriter
 {
     class DataBaseMessageWriter : IMessageWriter
     {
-        private readonly IWebApiClient webApiClient;
+        private readonly IConversationService conversationService;
         
-        public DataBaseMessageWriter(IWebApiClient webApiClient)
+        public DataBaseMessageWriter(IConversationService conversationService)
         {
-            this.webApiClient = webApiClient;
+            this.conversationService = conversationService;
         }
 
         #region IMessageWriter
         public void PrintMessage(string message)
         {
-            webApiClient.CreateConversationAsync(message);
+            if (message != string.Empty)
+            {
+                conversationService.WriteMessage(message);
+            }
         }
         #endregion
     }

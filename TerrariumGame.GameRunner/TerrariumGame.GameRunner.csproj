@@ -154,7 +154,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Q /Y "$(SolutionDir)$(SolutionName)\$(OutDir)$(SolutionName).dll"                          "$(TargetDir)"
+    <PostBuildEvent>xcopy /Q /Y "$(SolutionDir)DataBaseLibrary\$(OutDir)DataBaseLibrary.dll"                              "$(TargetDir)" 
+
+xcopy /Q /Y "$(SolutionDir)$(SolutionName)\$(OutDir)$(SolutionName).dll"                          "$(TargetDir)"
 
 xcopy /Q /Y "$(SolutionDir)ConsoleMessageWriter\$(OutDir)ConsoleMessageWriter.dll"     "$(TargetDir)"
 
@@ -164,13 +166,9 @@ xcopy /Q /Y "$(SolutionDir)XmlMessageWriter\$(OutDir)XmlMessageWriter.dll"      
 
 xcopy /Q /Y "$(SolutionDir)DataBaseMessageWriter\$(OutDir)DataBaseMessageWriter.dll"  "$(TargetDir)"
 
-
 xcopy /Q /Y "$(SolutionDir)ConsoleUI\$(OutDir)ConsoleUI.dll"                                                  "$(TargetDir)"
 
-xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)BusinessLibrary.dll"                                "$(TargetDir)"
-
-
-xcopy /Q /Y "$(SolutionDir)DataBaseLibrary\$(OutDir)DataBaseLibrary.dll"                              "$(TargetDir)"</PostBuildEvent>
+xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)BusinessLibrary.dll"                                "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

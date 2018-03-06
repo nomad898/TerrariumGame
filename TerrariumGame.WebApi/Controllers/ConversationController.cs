@@ -17,8 +17,9 @@ namespace TerrariumGame.WebApi.Controllers
         public ConversationController(IConversationService conversationService)
         {
             this.conversationService = conversationService;
-        }     
+        }
 
+        [HttpGet]
         public async Task<IEnumerable<ConversationViewModel>> Get()
         {
             var conversations = await conversationService.GetAllAsync();
@@ -36,6 +37,8 @@ namespace TerrariumGame.WebApi.Controllers
             return list;
         }
 
+        [HttpGet]
+        [Route("api/Conversation/{id}")]
         public async Task<ConversationViewModel> Get(int id)
         {
             ConversationDto conversationDto = await conversationService.GetAsync(id);

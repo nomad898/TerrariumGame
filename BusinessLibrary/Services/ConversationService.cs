@@ -56,5 +56,16 @@ namespace BusinessLibrary.Services
             };
             await conversationRepo.CreateAsync(conversation);
         }
+
+        public void WriteMessage(string message)
+        {
+            Conversation conversation = new Conversation()
+            {
+                Message = message,
+                Date = DateTime.Now
+            };
+            conversationRepo.Create(conversation);
+            conversationRepo.Save();
+        }
     }
 }

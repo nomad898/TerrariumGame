@@ -3,6 +3,7 @@ using BusinessInterfaces.Clients;
 using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
+using System.Threading;
 
 namespace TerrariumGame.GameRunner
 {
@@ -14,14 +15,19 @@ namespace TerrariumGame.GameRunner
 
         static void Main(string[] args)
         {
-
             // WebApiClient
-            //for (int i = 0; i <= 20; i++)
-            //{
-            //    IWebApiClient webApiClient = new WebApiClient();
-            //    webApiClient.CreateConversationAsync("Simple");
+            //IWebApiClient webApiClient = new WebApiClient();
+            //int b = 517;
+            //for (int i = 0; i <= 20; i++, b++)
+            //{            
+            //    var x1 = webApiClient.GetConversationAsync(b);
+            //    Console.WriteLine(x1.Result);
+               
+            //    Console.WriteLine("========");
+            //    Thread.Sleep(500);
+
             //}
-            // Console.ReadKey();
+
             Container = AutofacBuilder.Build();
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
             // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
