@@ -1,4 +1,5 @@
-﻿using InterfaceLibrary.Interfaces;
+﻿using BusinessLibrary.Clients;
+using InterfaceLibrary.Interfaces;
 using InterfaceLibrary.Interfaces.UI;
 using InterfaceLibrary.Interfaces.Writer;
 using InterfaceLibrary.UtilityModels;
@@ -137,7 +138,7 @@ namespace TerrariumGame.Infrastructure
                     mapManipulator.SetObjects(map);
                     UI.ShowMap(map);
                     UI.ShowHourCounter(map, this.HourCounter);
-                    Thread.Sleep(TIME_DELAY);
+                   // Thread.Sleep(TIME_DELAY);
                 }
                 this.hourCounter++;
 
@@ -260,7 +261,7 @@ namespace TerrariumGame.Infrastructure
 
             if (msgWriter != null)
             {
-                msgWriter.PrintMessage(talkResult);
+                msgWriter.PrintMessage(talkResult);              
             }
         }
         #endregion

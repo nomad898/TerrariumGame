@@ -37,6 +37,7 @@ namespace MessageWriter
                 convElem.AppendChild(msgElem);
                 convElem.AppendChild(dateElem);
                 root.AppendChild(convElem);
+                xmlDoc.Save(XML_FILE_NAME);
             }
         }
         #endregion

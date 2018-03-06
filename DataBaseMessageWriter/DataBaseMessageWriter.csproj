@@ -49,6 +49,10 @@
       <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
       <Name>BusinessInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
+      <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
+      <Name>BusinessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}</Project>
       <Name>DataBaseInterfaces</Name>

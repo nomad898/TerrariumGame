@@ -68,6 +68,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
+      <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
+      <Name>BusinessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>

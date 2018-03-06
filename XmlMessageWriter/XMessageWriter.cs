@@ -32,8 +32,9 @@ namespace MessageWriter
                 XElement convElem = new XElement("Conversation",
                     new XElement("Message", message),
                     new XElement("Date", DateTime.Now));
-                root.Add(convElem);
+                root.Add(convElem);              
             }
+            xDoc.Save(XML_FILE_NAME);
         }
         #endregion
     }
