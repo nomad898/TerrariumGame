@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using InterfaceLibrary.Interfaces;
 using System;
-using System.Threading;
 
 namespace TerrariumGame.GameRunner
 {
@@ -13,23 +12,12 @@ namespace TerrariumGame.GameRunner
 
         static void Main(string[] args)
         {
-            // WebApiClient
-            //IWebApiClient webApiClient = new WebApiClient();
-            //int b = 517;
-            //for (int i = 0; i <= 20; i++, b++)
-            //{            
-            //    var x1 = webApiClient.GetConversationAsync(b);
-            //    Console.WriteLine(x1.Result);
-               
-            //    Console.WriteLine("========");
-            //    Thread.Sleep(500);
+            // WebApiClient           
 
-            //}
-
-            Container = AutofacBuilder.Build();
-            Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
-            // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            Run(Container);
+            //Container = AutofacBuilder.Build();
+            //Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+            //// Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            //Run(Container);
             Console.ReadKey(true);
         }
 
@@ -40,6 +28,6 @@ namespace TerrariumGame.GameRunner
                 var game = scope.Resolve<IGame>();
                 game.Start();
             }
-        }       
+        }
     }
 }

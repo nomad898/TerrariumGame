@@ -63,5 +63,14 @@ namespace TerrariumGame.WebApi.Controllers
             };
             await conversationService.CreateAsync(conDto);
         }
+
+        [Route("api/Conversation/{id}/{message}")]
+        public async Task Put(int id, string message)
+        {
+            var conversationDto = await conversationService.GetByIdAsync(id);
+            conversationDto.Message = message;
+            conversationDto.Date = DateTime.Now;
+            await conversationService.UpdateAsync(conversationDto);
+        }
     }
 }

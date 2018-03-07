@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using TerrariumGame.Model.Entities;
 
 namespace BusinessInterfaces.Clients
 {
     public interface IWebApiClient
     {
         Task<string> GetAllConversationsAsync();
-        Task<string> GetConversationAsync(int id);
+        Task<string> GetConversationStringAsync(int id);
         Task CreateConversationAsync(string message);
+        Task<Conversation> GetConversationAsync(int id);
     }
 }

@@ -68,9 +68,12 @@ namespace BusinessLibrary.Services
             conversationRepo.Save();
         }
 
-        public Task UpdateAsync(ConversationDto entity)
+        public async Task UpdateAsync(ConversationDto entity)
         {
-            throw new NotImplementedException();
-        }
+            var conversation = await conversationRepo.FindByIdAsync(entity.ConversationId);
+            conversation.Message = entity.Message;
+            conversation.Date = entity.Date;
+            await conversationRepo.UpdateAsync(conversation);
+        }        
     }
 }
