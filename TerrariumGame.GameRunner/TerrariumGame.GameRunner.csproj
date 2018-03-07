@@ -139,10 +139,6 @@
       <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
       <Name>BusinessInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
-      <Project>{8bcfcafd-01aa-4462-bb82-0198fd6e602d}</Project>
-      <Name>BusinessLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>

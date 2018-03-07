@@ -5,7 +5,9 @@ namespace BusinessInterfaces.Services
 {
     public interface IService<TEntity, TIdType> where TEntity : class
     {
+        Task CreateAsync(TEntity entity);
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<TEntity> GetAsync(TIdType id);
+        Task<TEntity> GetByIdAsync(TIdType id);
+        Task UpdateAsync(TEntity entity);
     }
 }

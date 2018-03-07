@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using BusinessInterfaces.Clients;
-using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
 using System.Threading;

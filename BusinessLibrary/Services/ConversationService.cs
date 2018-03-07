@@ -19,7 +19,7 @@ namespace BusinessLibrary.Services
             this.conversationRepo = conversationRepo;
         }
 
-        public async Task<ConversationDto> GetAsync(int id)
+        public async Task<ConversationDto> GetByIdAsync(int id)
         {
             Conversation conversation = await conversationRepo.FindByIdAsync(id);
             ConversationDto conversationDto = new ConversationDto()
@@ -66,6 +66,11 @@ namespace BusinessLibrary.Services
             };
             conversationRepo.Create(conversation);
             conversationRepo.Save();
+        }
+
+        public Task UpdateAsync(ConversationDto entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,7 +6,6 @@ namespace BusinessInterfaces.Services
 {
     public interface IConversationService : IService<ConversationDto, int>
     {
-        Task CreateAsync(ConversationDto conversationDto);
         void WriteMessage(string message);
     }
 }

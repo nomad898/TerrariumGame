@@ -41,7 +41,7 @@ namespace TerrariumGame.WebApi.Controllers
         [Route("api/Conversation/{id}")]
         public async Task<ConversationViewModel> Get(int id)
         {
-            ConversationDto conversationDto = await conversationService.GetAsync(id);
+            ConversationDto conversationDto = await conversationService.GetByIdAsync(id);
             ConversationViewModel conVM = new ConversationViewModel()
             {
                 ConversationId = conversationDto.ConversationId,
