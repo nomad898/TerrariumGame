@@ -37,7 +37,7 @@ namespace TerrariumGame.Models.Alive
 
         public override string ToString()
         {
-            return string.Format("Icon: {0} | ", this.Icon);
+            return string.Format("Icon {0} | ", this.Icon);
         }
         #endregion
     }

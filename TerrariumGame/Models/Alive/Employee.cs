@@ -57,7 +57,7 @@ namespace TerrariumGame.Models.Alive
 
         public override string ToString()
         {
-            return string.Format("Name: {0} | Salary: {1} | Mood: {2} ", this.Name, this.Salary, this.Mood);
+            return string.Format("Name {0} | Salary {1} | Mood {2} ", this.Name, this.Salary, this.Mood);
         }
         #endregion
     }

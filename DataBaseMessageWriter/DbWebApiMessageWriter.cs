@@ -21,7 +21,6 @@ namespace MessageWriter
         {
             if (message != string.Empty)
             {
-                Console.WriteLine(message);
                 webApiClient.CreateConversationAsync(message);
             }
         }
