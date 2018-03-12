@@ -14,47 +14,28 @@ namespace BusinessLibrary.Services
         public readonly IConversationRepository conversationRepo;
         public readonly IMapper mapper;
 
-        public ConversationService(IConversationRepository conversationRepo)
+        public ConversationService(IConversationRepository conversationRepo,
+            IMapper mapper)
         {
             this.conversationRepo = conversationRepo;
+            this.mapper = mapper;
         }
 
         public async Task<ConversationDto> GetByIdAsync(int id)
         {
             Conversation conversation = await conversationRepo.FindByIdAsync(id);
-            ConversationDto conversationDto = new ConversationDto()
-            {
-                ConversationId = conversation.ConversationId,
-                Date = conversation.Date,
-                Message = conversation.Message
-            };
-            return conversationDto;
+            return mapper.Map<ConversationDto>(conversation);
         }
 
         public async Task<IEnumerable<ConversationDto>> GetAllAsync()
         {
-            ICollection<ConversationDto> conversationDtos = new List<ConversationDto>();
             var conversations = await conversationRepo.GetAllAsync();
-            foreach (var c in conversations)
-            {
-                conversationDtos.Add(new ConversationDto()
-                {
-                    ConversationId = c.ConversationId,
-                    Date = c.Date,
-                    Message = c.Message
-                });
-            }
-            return conversationDtos;
+            return mapper.Map<IEnumerable<ConversationDto>>(conversations);
         }
 
         public async Task CreateAsync(ConversationDto conversationDto)
         {
-            Conversation conversation = new Conversation()
-            {
-                Message = conversationDto.Message,
-                Date = conversationDto.Date
-            };
-            await conversationRepo.CreateAsync(conversation);
+            await conversationRepo.CreateAsync(mapper.Map<Conversation>(conversationDto));
         }
 
         public void WriteMessage(string message)
