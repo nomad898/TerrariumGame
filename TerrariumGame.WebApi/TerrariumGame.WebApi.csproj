@@ -229,6 +229,7 @@
     <Compile Include="Models\ConversationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Automapper\ApplicationProfile.cs" />
+    <Compile Include="Utility\Automapper\MappingProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.json" />
@@ -247,6 +248,10 @@
     <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">
       <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
       <Name>BusinessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
+      <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
+      <Name>BusinessLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>

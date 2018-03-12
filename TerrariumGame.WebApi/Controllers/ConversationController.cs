@@ -14,27 +14,19 @@ namespace TerrariumGame.WebApi.Controllers
         private readonly IConversationService conversationService;
         private readonly IMapper mapper;
 
-        public ConversationController(IConversationService conversationService)
+        public ConversationController(IConversationService conversationService,
+            IMapper mapper)
         {
             this.conversationService = conversationService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IEnumerable<ConversationViewModel>> Get()
         {
             var conversations = await conversationService.GetAllAsync();
-            ICollection<ConversationViewModel> list = new List<ConversationViewModel>();
-            foreach (var el in conversations)
-            {
-                var conVM = new ConversationViewModel()
-                {
-                    ConversationId = el.ConversationId,
-                    Date = el.Date,
-                    Message = el.Message
-                };                                
-                list.Add(conVM);
-            }
-            return list;
+            return mapper.Map<IEnumerable<ConversationDto>,
+            IEnumerable <ConversationViewModel>>(conversations);           
         }
 
         [HttpGet]
