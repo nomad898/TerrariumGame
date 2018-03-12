@@ -25,8 +25,7 @@ namespace TerrariumGame.WebApi.Controllers
         public async Task<IEnumerable<ConversationViewModel>> Get()
         {
             var conversations = await conversationService.GetAllAsync();
-            return mapper.Map<IEnumerable<ConversationDto>,
-                 IEnumerable<ConversationViewModel>>(conversations);
+            return mapper.Map<IEnumerable<ConversationViewModel>>(conversations);
         }
 
         [HttpGet]
@@ -34,8 +33,7 @@ namespace TerrariumGame.WebApi.Controllers
         public async Task<ConversationViewModel> Get(int id)
         {
             var conversationDto = await conversationService.GetByIdAsync(id);
-            return mapper.Map<ConversationDto,
-                ConversationViewModel>(conversationDto);
+            return mapper.Map<ConversationViewModel>(conversationDto);
         }
 
         [HttpPost]
