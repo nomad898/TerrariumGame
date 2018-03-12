@@ -26,28 +26,22 @@ namespace TerrariumGame.WebApi.Controllers
         {
             var conversations = await conversationService.GetAllAsync();
             return mapper.Map<IEnumerable<ConversationDto>,
-            IEnumerable <ConversationViewModel>>(conversations);           
+                 IEnumerable<ConversationViewModel>>(conversations);
         }
 
         [HttpGet]
         [Route("api/Conversation/{id}")]
         public async Task<ConversationViewModel> Get(int id)
         {
-            ConversationDto conversationDto = await conversationService.GetByIdAsync(id);
-            ConversationViewModel conVM = new ConversationViewModel()
-            {
-                ConversationId = conversationDto.ConversationId,
-                Message = conversationDto.Message,
-                Date = conversationDto.Date
-            };
-            return conVM;
+            var conversationDto = await conversationService.GetByIdAsync(id);
+            return mapper.Map<ConversationDto,
+                ConversationViewModel>(conversationDto);
         }
 
         [HttpPost]
         [Route("api/Conversation/{message}")]
         public async Task Post(string message)
         {
-            //  await conversationService.WriteMessage(message);
             ConversationDto conDto = new ConversationDto()
             {
                 Message = message,
