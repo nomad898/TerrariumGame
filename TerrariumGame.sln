@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileMessageWriter", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseMessageWriter", "DataBaseMessageWriter\DataBaseMessageWriter.csproj", "{5D061BA4-65A5-4DC9-8090-9CA4C8C6CAA4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{5BCC4570-34A4-4841-AE74-3078732A923B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{5BCC4570-34A4-4841-AE74-3078732A923B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseInterfaces", "DataBaseInterfaces\DataBaseInterfaces.csproj", "{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}"
 EndProject
@@ -36,13 +36,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Tests", "TerrariumGame.Tests\TerrariumGame.Tests.csproj", "{23392F18-2109-41EF-890C-A458A79428EB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{6DF4284A-0FD2-4406-971D-174DD380FCCF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{6DF4284A-0FD2-4406-971D-174DD380FCCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessInterfaces", "BusinessInterfaces\BusinessInterfaces.csproj", "{B5E86F05-08EF-4C35-BBFF-F3590C6F8B67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLibrary", "BusinessLibrary\BusinessLibrary.csproj", "{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreLogic", "CoreLogic", "{D2B6932F-E255-40F5-BFAA-477B0718178D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreLayer", "CoreLayer", "{D2B6932F-E255-40F5-BFAA-477B0718178D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{623E1FC8-887D-4586-BD14-96E1DFF178C3}"
 EndProject
@@ -55,6 +55,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Model", "TerrariumGame.Model\TerrariumGame.Model.csproj", "{428ABC57-B1A6-425D-B869-E76C7C7E07B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Dto", "TerrariumGame.Dto\TerrariumGame.Dto.csproj", "{5A8A8726-6865-44B3-8BA2-86C10822CFA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceLayer", "ServiceLayer", "{ADCE1684-4734-47C2-B5C5-AC9F37C90513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
