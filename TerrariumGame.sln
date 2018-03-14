@@ -62,6 +62,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfInterfaces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfServices", "TerrariumGame.WcfServices\TerrariumGame.WcfServices.csproj", "{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfService.Host", "TerrariumGame.WcfService.Host\TerrariumGame.WcfService.Host.csproj", "{625DCBF8-B8B3-41D4-8146-F65156AE7558}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -148,6 +150,10 @@ Global
 		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625DCBF8-B8B3-41D4-8146-F65156AE7558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625DCBF8-B8B3-41D4-8146-F65156AE7558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625DCBF8-B8B3-41D4-8146-F65156AE7558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625DCBF8-B8B3-41D4-8146-F65156AE7558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{5A8A8726-6865-44B3-8BA2-86C10822CFA2} = {6DF4284A-0FD2-4406-971D-174DD380FCCF}
 		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
 		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
+		{625DCBF8-B8B3-41D4-8146-F65156AE7558} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D860BF3A-5FA9-4E34-9AFC-DF63C5FEB384}
