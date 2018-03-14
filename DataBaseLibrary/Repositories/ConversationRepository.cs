@@ -4,7 +4,7 @@ using TerrariumGame.Model.Entities;
 
 namespace DataBaseLibrary.Repositories
 {
-    class ConversationRepository : Repository<Conversation, int>,
+    public class ConversationRepository : Repository<Conversation, int>,
           IConversationRepository
     {
         public ConversationRepository(DataBaseContext context)

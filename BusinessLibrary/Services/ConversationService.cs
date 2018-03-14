@@ -20,7 +20,7 @@ namespace BusinessLibrary.Services
             this.conversationRepo = conversationRepo;
             this.mapper = mapper;
         }
-
+        
         public async Task<ConversationDto> GetByIdAsync(int id)
         {
             Conversation conversation = await conversationRepo.FindByIdAsync(id);

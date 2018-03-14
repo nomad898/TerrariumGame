@@ -58,6 +58,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.Dto", "Terrar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceLayer", "ServiceLayer", "{ADCE1684-4734-47C2-B5C5-AC9F37C90513}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfInterfaces", "TerrariumGame.WcfInterfaces\TerrariumGame.WcfInterfaces.csproj", "{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfServices", "TerrariumGame.WcfServices\TerrariumGame.WcfServices.csproj", "{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +140,14 @@ Global
 		{5A8A8726-6865-44B3-8BA2-86C10822CFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A8A8726-6865-44B3-8BA2-86C10822CFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A8A8726-6865-44B3-8BA2-86C10822CFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +170,8 @@ Global
 		{0090C6B4-E055-437D-AA26-A2A0536DD01C} = {623E1FC8-887D-4586-BD14-96E1DFF178C3}
 		{428ABC57-B1A6-425D-B869-E76C7C7E07B2} = {5BCC4570-34A4-4841-AE74-3078732A923B}
 		{5A8A8726-6865-44B3-8BA2-86C10822CFA2} = {6DF4284A-0FD2-4406-971D-174DD380FCCF}
+		{874CC9B7-0F1B-4DC9-A148-CDC7C441786C} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
+		{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D860BF3A-5FA9-4E34-9AFC-DF63C5FEB384}
