@@ -55,6 +55,10 @@
       <Project>{874cc9b7-0f1b-4dc9-a148-cdc7c441786c}</Project>
       <Name>TerrariumGame.WcfInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.WcfServices\TerrariumGame.WcfServices.csproj">
+      <Project>{CA1842D2-49C6-40B2-88D0-F761EFA3BBC1}</Project>
+      <Name>TerrariumGame.WcfServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
