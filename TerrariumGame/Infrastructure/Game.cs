@@ -126,7 +126,7 @@ namespace TerrariumGame.Infrastructure
         /// <summary>
         /// Start game
         /// </summary>
-        public void Start()
+        public void Start(bool withDelay)
         {
             mapManipulator.Init(map);
             UI.ShowMap(map);
@@ -138,7 +138,8 @@ namespace TerrariumGame.Infrastructure
                     mapManipulator.SetObjects(map);
                     UI.ShowMap(map);
                     UI.ShowHourCounter(map, this.HourCounter);
-                   // Thread.Sleep(TIME_DELAY);
+                    if (withDelay)
+                        Thread.Sleep(TIME_DELAY);
                 }
                 this.hourCounter++;
 
@@ -261,7 +262,7 @@ namespace TerrariumGame.Infrastructure
 
             if (msgWriter != null)
             {
-                msgWriter.PrintMessage(talkResult);              
+                msgWriter.PrintMessage(talkResult);
             }
         }
         #endregion

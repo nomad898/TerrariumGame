@@ -8,6 +8,7 @@ namespace BusinessInterfaces.Clients
         Task<string> GetAllConversationsAsync();
         Task<string> GetConversationStringAsync(int id);
         Task CreateConversationAsync(string message);
+        void CreateConversation(string message);
         Task<Conversation> GetConversationAsync(int id);
     }
 }

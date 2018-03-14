@@ -32,21 +32,21 @@ namespace BusinessLibrary.Clients
 
         public async Task CreateConversationAsync(string message)
         {
-            using (httpClient)
-            {
                 StringContent queryString = new StringContent(message);
-                await httpClient.PostAsync($"api/Conversation/{message}", queryString);
-            }
+                await httpClient.PostAsync($"api/Conversation/{message}", queryString);         
+        }
+
+        public void CreateConversation(string message)
+        {
+                StringContent queryString = new StringContent(message);
+                httpClient.PostAsync($"api/Conversation/{message}", queryString);         
         }
 
         public async Task<string> GetAllConversationsAsync()
         {
-            using (httpClient)
-            {
                 var result = await httpClient.GetAsync("api/Conversation/",
                     HttpCompletionOption.ResponseContentRead);
-                return await result.Content.ReadAsStringAsync();
-            }
+                return await result.Content.ReadAsStringAsync();            
         }
 
         public async Task<string> GetConversationStringAsync(int id)
@@ -58,12 +58,9 @@ namespace BusinessLibrary.Clients
 
         public async Task UpdateAsync(Conversation entity)
         {
-            using (httpClient)
-            {
                 StringContent queryString = new StringContent(entity.Message);
                 await httpClient.PutAsync($"api/Conversation/{entity.ConversationId}/{entity.Message}",
-                    queryString);
-            }
+                    queryString);            
         }
 
         public async Task<Conversation> GetConversationAsync(int id)

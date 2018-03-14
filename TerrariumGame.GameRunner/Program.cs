@@ -14,10 +14,10 @@ namespace TerrariumGame.GameRunner
         {
             // WebApiClient           
 
-            //Container = AutofacBuilder.Build();
-            //Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
-            //// Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            //Run(Container);
+            Container = AutofacBuilder.Build();
+            Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+            // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            Run(Container);
             Console.ReadKey(true);
         }
 
@@ -26,7 +26,7 @@ namespace TerrariumGame.GameRunner
             using (var scope = Container.BeginLifetimeScope())
             {
                 var game = scope.Resolve<IGame>();
-                game.Start();
+                game.Start(false);
             }
         }
     }

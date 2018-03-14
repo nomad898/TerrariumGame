@@ -20,6 +20,6 @@ namespace InterfaceLibrary.Interfaces
         IDice Dice { get; } 
         IMessageWriter MessageWriter { get; }      
 
-        void Start();
+        void Start(bool withDelay);
     }
 }

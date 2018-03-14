@@ -1,5 +1,4 @@
 ﻿
-
 namespace InterfaceLibrary.Interfaces.Writer
 {
     public interface IMessageWriter
