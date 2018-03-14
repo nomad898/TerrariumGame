@@ -4,8 +4,6 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariumGame.WcfServices;
-using TerrariumGame.WcfServices.Services;
 
 namespace TerrariumGame.WcfService.Host
 {
