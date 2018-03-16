@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="TerrariumGame.WcfApp.Service1" CodeBehind="WcfServiceConversation.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TerrariumGame.WcfApp.WcfServiceConversation" CodeBehind="WcfServiceConversation.svc.cs" %>

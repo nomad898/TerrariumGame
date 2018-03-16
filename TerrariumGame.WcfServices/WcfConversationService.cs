@@ -21,6 +21,11 @@ namespace TerrariumGame.WcfServices
         public async Task<IEnumerable<ConversationDto>> GetAsync()
         {
             return await conversationService.GetAllAsync();            
-        }        
+        }
+
+        public int TestMethod()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients\WcfClient.cs" />
-    <Compile Include="Clients\WebApiClient.cs" />
+    <Compile Include="Clients\Wcf\WcfClient.cs" />
+    <Compile Include="Clients\WebApi\WebApiClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
