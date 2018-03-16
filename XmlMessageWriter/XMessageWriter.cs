@@ -1,10 +1,5 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InterfaceLibrary.UtilityModels;
 using System.Xml.Linq;
 
 namespace MessageWriter
