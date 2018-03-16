@@ -1,15 +1,14 @@
-﻿using BusinessInterfaces.Clients;
+﻿using ClientInterfaces.Clients;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TerrariumGame.Dto.DTO;
 using TerrariumGame.Model.Entities;
 
-namespace BusinessLibrary.Clients
+namespace ClientLibrary.Clients
 {
-    public class WebApiClient : IWebApiClient
+    public class WebApiClient : IClient
     {
         private HttpClient httpClient;
 

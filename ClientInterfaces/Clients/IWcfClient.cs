@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessInterfaces.Clients
+namespace ClientInterfaces.Clients
 {
-    class IWcfClent
+    public interface IWcfClient : IClient
     {
     }
 }

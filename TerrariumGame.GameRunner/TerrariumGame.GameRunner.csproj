@@ -143,6 +143,10 @@
       <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
       <Name>BusinessLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClientLibrary\ClientLibrary.csproj">
+      <Project>{6543b604-f123-44d8-bd73-a2fa3e47c5db}</Project>
+      <Name>ClientLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
@@ -172,7 +176,10 @@ xcopy /Q /Y "$(SolutionDir)DataBaseMessageWriter\$(OutDir)DataBaseMessageWriter.
 
 xcopy /Q /Y "$(SolutionDir)ConsoleUI\$(OutDir)ConsoleUI.dll"                                                  "$(TargetDir)"
 
-xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)BusinessLibrary.dll"                                "$(TargetDir)"</PostBuildEvent>
+xcopy /Q /Y "$(SolutionDir)BusinessLibrary\$(OutDir)BusinessLibrary.dll"                                "$(TargetDir)"
+
+
+xcopy /Q /Y "$(SolutionDir)ClientLibrary\$(OutDir)ClientLibrary.dll"                                "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

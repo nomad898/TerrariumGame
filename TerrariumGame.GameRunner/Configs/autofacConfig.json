@@ -59,7 +59,7 @@
 
     // Writer
     {
-      "type": "MessageWriter.DbWebApiMessageWriter, DataBaseMessageWriter",
+      "type": "MessageWriter.DbApiMessageWriter, DataBaseMessageWriter",
       "services": [
         {
           "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
@@ -118,10 +118,10 @@
 
     // WebApiClient
     {
-      "type": "BusinessLibrary.Clients.WebApiClient, BusinessLibrary",
+      "type": "ClientLibrary.Clients.WebApiClient, ClientLibrary",
       "services": [
         {
-          "type": "BusinessInterfaces.Clients.IWebApiClient, BusinessInterfaces"
+          "type": "ClientInterfaces.Clients.IClient, ClientInterfaces"
         }
       ],
       "instanceScope": "singleinstance"

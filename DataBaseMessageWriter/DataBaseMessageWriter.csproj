@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseMessageWriter.cs" />
-    <Compile Include="DbWebApiMessageWriter.cs" />
+    <Compile Include="DbApiMessageWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +53,10 @@
     <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
       <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
       <Name>BusinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClientInterfaces\ClientInterfaces.csproj">
+      <Project>{EE3366D0-104F-41DD-B360-E6E1E4EACBA1}</Project>
+      <Name>ClientInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}</Project>

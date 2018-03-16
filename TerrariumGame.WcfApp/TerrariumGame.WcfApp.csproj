@@ -118,6 +118,10 @@
       <Project>{B5E86F05-08EF-4C35-BBFF-F3590C6F8B67}</Project>
       <Name>BusinessInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseLibrary\DataBaseLibrary.csproj">
+      <Project>{654C8275-A024-44C4-9329-6F92361606DA}</Project>
+      <Name>DataBaseLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
       <Project>{5a8a8726-6865-44b3-8ba2-86c10822cfa2}</Project>
       <Name>TerrariumGame.Dto</Name>

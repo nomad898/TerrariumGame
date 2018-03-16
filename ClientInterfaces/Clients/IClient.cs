@@ -1,9 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TerrariumGame.Model.Entities;
 
-namespace BusinessInterfaces.Clients
+namespace ClientInterfaces.Clients
 {
-    public interface IWebApiClient
+    public interface IClient 
     {
         Task<string> GetAllConversationsAsync();
         Task<string> GetConversationStringAsync(int id);

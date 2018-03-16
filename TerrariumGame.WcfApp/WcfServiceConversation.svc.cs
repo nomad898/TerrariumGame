@@ -24,9 +24,9 @@ namespace TerrariumGame.WcfApp
             this.conversationService = conversationService;
         }
 
-        public async Task<IEnumerable<ConversationDto>> Get()
+        public async Task<IEnumerable<ConversationDto>> GetAsync()
         {
-            return await conversationService.GetAllAsync();
-        }
+            return await conversationService.GetAllAsync();            
+        }        
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using BusinessLibrary.Clients;
 using InterfaceLibrary.Interfaces;
 using System;
 
@@ -13,18 +12,10 @@ namespace TerrariumGame.GameRunner
 
         static void Main(string[] args)
         {
-            // WebApiClient           
-
-            ////Container = AutofacBuilder.Build();
-            ////Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
-            ////// Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            ////Run(Container);
-            WcfClient client = new WcfClient();
-            var list = client.Get();
-            foreach (var item in list)
-            {
-                Console.WriteLine(item.Message);
-            }
+            Container = AutofacBuilder.Build();
+            Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
+            // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            Run(Container);
             Console.ReadKey(true);
         }
 

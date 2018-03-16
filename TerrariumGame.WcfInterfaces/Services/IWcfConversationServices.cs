@@ -12,6 +12,6 @@ namespace TerrariumGame.WcfInterfaces.Services
     public interface IWcfConversationService
     {
         [OperationContract]
-        Task<IEnumerable<ConversationDto>> Get();
+        Task<IEnumerable<ConversationDto>> GetAsync();
     }
 }
