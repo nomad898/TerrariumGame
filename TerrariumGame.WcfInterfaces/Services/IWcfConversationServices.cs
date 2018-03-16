@@ -12,12 +12,6 @@ namespace TerrariumGame.WcfInterfaces.Services
     public interface IWcfConversationService
     {
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
-        string Sum(int value, int b);
-
-        [OperationContract]
-        IEnumerable<ConversationDto> Get();
+        Task<IEnumerable<ConversationDto>> Get();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using InterfaceLibrary.Interfaces.Writer;
-using BusinessInterfaces.Clients;
 using BusinessInterfaces.Services;
 
 namespace MessageWriter

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessInterfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,16 @@ namespace TerrariumGame.WcfServices
 {
     public class WcfConversationService : IWcfConversationService
     {
-        public IEnumerable<ConversationDto> Get()
+        private readonly IConversationService conversationService;
+
+        public WcfConversationService(IConversationService conversationService)
         {
-            throw new NotImplementedException();
+            this.conversationService = conversationService;
         }
 
-        public string GetData(int value)
+        public async Task<IEnumerable<ConversationDto>> Get()
         {
-            return value.ToString();
-        }
-
-        public string Sum(int value, int b)
-        {
-            throw new NotImplementedException();
-        }
+            return await conversationService.GetAllAsync();            
+        }        
     }
 }

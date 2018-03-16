@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">
+      <Project>{B5E86F05-08EF-4C35-BBFF-F3590C6F8B67}</Project>
+      <Name>BusinessInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
       <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
       <Name>TerrariumGame.Dto</Name>

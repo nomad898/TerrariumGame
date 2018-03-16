@@ -139,6 +139,10 @@
       <Project>{b5e86f05-08ef-4c35-bbff-f3590c6f8b67}</Project>
       <Name>BusinessInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
+      <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
+      <Name>BusinessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
       <Name>DataBaseInterfaces</Name>
@@ -146,6 +150,10 @@
     <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
       <Project>{570ef974-1e62-4e46-9831-f17072d1d47e}</Project>
       <Name>InterfaceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
+      <Project>{5a8a8726-6865-44b3-8ba2-86c10822cfa2}</Project>
+      <Name>TerrariumGame.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

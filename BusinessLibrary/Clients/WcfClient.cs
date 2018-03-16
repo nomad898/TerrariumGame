@@ -4,17 +4,25 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
+using TerrariumGame.WcfApp;
 using TerrariumGame.WcfInterfaces.Services;
 
 namespace BusinessLibrary.Clients
 {
     public class WcfClient 
     {
-        public void Start()
+        private readonly WcfServiceConversation client;
+
+        public WcfClient()
         {
-            ChannelFactory<IWcfConversationService> channelFactory =
-                new ChannelFactory<IWcfConversationService>(new BasicHttpBinding(),
-                new EndpointAddress(""));
+            client = new WcfServiceConversation();
+        }
+
+        public IEnumerable<ConversationDto> Get()
+        {
+            var res = client.Get().Result;
+            return res;
         }
     }
 }

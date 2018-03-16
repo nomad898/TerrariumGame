@@ -13,9 +13,11 @@ namespace TerrariumGame.WcfService.Host
     {
         static void Main(string[] args)
         {
-            ServiceHost host = new ServiceHost(typeof(WcfConversationService));
-            host.Open();
-            Console.WriteLine("Service hosted successfully");
+            using (ServiceHost host = new ServiceHost(typeof(WcfConversationService)))
+            {
+                host.Open();
+                Console.WriteLine("Service hosted successfully");
+            }
             Console.ReadKey(true);
         }
     }
