@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IWcfConversationServices.cs" />
+    <Compile Include="Services\IWcfConversationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
