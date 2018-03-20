@@ -6,11 +6,11 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WcfServiceApp
+namespace TerrariumGame.WcfServiceApp
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WcfConversationService" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select WcfConversationService.svc or WcfConversationService.svc.cs at the Solution Explorer and start debugging.
-    public class WcfConversationService : IWcfConversationService
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ConversationWcfService" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select ConversationWcfService.svc or ConversationWcfService.svc.cs at the Solution Explorer and start debugging.
+    public class ConversationWcfService : IConversationWcfService
     {
         public string GetData(int value)
         {

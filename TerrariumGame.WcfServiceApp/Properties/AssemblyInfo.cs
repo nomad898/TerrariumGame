@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WcfServiceApp")]
+[assembly: AssemblyTitle("TerrariumGame.WcfServiceApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("EPAM Systems")]
-[assembly: AssemblyProduct("WcfServiceApp")]
+[assembly: AssemblyProduct("TerrariumGame.WcfServiceApp")]
 [assembly: AssemblyCopyright("Copyright © EPAM Systems 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7697d152-b534-460f-918e-72086b88f54c")]
+[assembly: Guid("05cc7d63-b348-4813-995f-887f9a9d1323")]
 
 // Version information for an assembly consists of the following four values:
 //
