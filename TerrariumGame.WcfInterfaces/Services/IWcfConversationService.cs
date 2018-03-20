@@ -8,6 +8,7 @@ using TerrariumGame.Dto.DTO;
 
 namespace TerrariumGame.WcfInterfaces.Services
 {
+    [ServiceContract]
     public interface IWcfConversationService
     {
         [OperationContract]

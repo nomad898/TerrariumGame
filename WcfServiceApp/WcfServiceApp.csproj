@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0FC002C6-EAE3-4055-A3B3-E0FDB25FC132}</ProjectGuid>
+    <ProjectGuid>{7697D152-B534-460F-918E-72086B88F54C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -96,6 +96,7 @@
     <Compile Include="WcfConversationService.svc.cs">
       <DependentUpon>WcfConversationService.svc</DependentUpon>
     </Compile>
+    <Compile Include="IWcfConversationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,16 +114,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
-      <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
-      <Name>TerrariumGame.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TerrariumGame.WcfInterfaces\TerrariumGame.WcfInterfaces.csproj">
-      <Project>{874CC9B7-0F1B-4DC9-A148-CDC7C441786C}</Project>
-      <Name>TerrariumGame.WcfInterfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -136,7 +127,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49370</DevelopmentServerPort>
+          <DevelopmentServerPort>51010</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:49370/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

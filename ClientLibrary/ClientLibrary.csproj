@@ -65,10 +65,6 @@
       <Project>{428ABC57-B1A6-425D-B869-E76C7C7E07B2}</Project>
       <Name>TerrariumGame.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TerrariumGame.WcfApp\TerrariumGame.WcfApp.csproj">
-      <Project>{6600330C-CAF2-4831-9C59-93C24C0A58FC}</Project>
-      <Name>TerrariumGame.WcfApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

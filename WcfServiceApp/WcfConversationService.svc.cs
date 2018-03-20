@@ -5,23 +5,29 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using TerrariumGame.Dto.DTO;
-using TerrariumGame.WcfInterfaces.Services;
 
 namespace WcfServiceApp
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WcfConversationService" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select WcfConversationService.svc or WcfConversationService.svc.cs at the Solution Explorer and start debugging.
     public class WcfConversationService : IWcfConversationService
     {
-        public IEnumerable<ConversationDto> Get()
+        public string GetData(int value)
         {
-            throw new NotImplementedException();
+            return string.Format("You entered: {0}", value);
         }
-        
-        public string Sum(int value, int b)
+
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
-            return (value + b).ToString();
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
         }
     }
 }
