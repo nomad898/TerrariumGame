@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
 
 namespace TerrariumGame.WcfServiceApp
 {
@@ -12,22 +14,14 @@ namespace TerrariumGame.WcfServiceApp
     // NOTE: In order to launch WCF Test Client for testing this service, please select ConversationWcfService.svc or ConversationWcfService.svc.cs at the Solution Explorer and start debugging.
     public class ConversationWcfService : IConversationWcfService
     {
-        public string GetData(int value)
+        public Task<IEnumerable<ConversationDto>> GetAsync()
         {
-            return string.Format("You entered: {0}", value);
+            throw new NotImplementedException();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int TestMethod()
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
         }
     }
 }

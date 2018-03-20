@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
 
 namespace TerrariumGame.WcfServiceApp
 {
@@ -14,10 +16,10 @@ namespace TerrariumGame.WcfServiceApp
     {
 
         [OperationContract]
-        string GetData(int value);
+        Task<IEnumerable<ConversationDto>> GetAsync();
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        int TestMethod();
 
         // TODO: Add your service operations here
     }
