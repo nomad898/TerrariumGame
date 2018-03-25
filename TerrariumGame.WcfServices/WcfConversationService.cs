@@ -13,19 +13,24 @@ namespace TerrariumGame.WcfServices
     {
         private readonly IConversationService conversationService;
 
+        //public WcfConversationService()
+        //{
+
+        //}
+
         public WcfConversationService(IConversationService conversationService)
         {
             this.conversationService = conversationService;
         }
 
+        public async Task CreateAsync(ConversationDto conversationDto)
+        {
+            await conversationService.CreateAsync(conversationDto);
+        }
+
         public async Task<IEnumerable<ConversationDto>> GetAsync()
         {
             return await conversationService.GetAllAsync();            
-        }
-
-        public int TestMethod()
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }

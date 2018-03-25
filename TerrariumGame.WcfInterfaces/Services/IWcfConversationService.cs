@@ -15,6 +15,6 @@ namespace TerrariumGame.WcfInterfaces.Services
         Task<IEnumerable<ConversationDto>> GetAsync();
 
         [OperationContract]
-        int TestMethod();
+        Task CreateAsync(ConversationDto conversationDto);
     }
 }
