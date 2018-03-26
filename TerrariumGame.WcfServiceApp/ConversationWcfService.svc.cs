@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using BusinessInterfaces.Services;
+using BusinessLibrary.Services;
+using DataBaseLibrary.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,9 +18,12 @@ namespace TerrariumGame.WcfServiceApp
     // NOTE: In order to launch WCF Test Client for testing this service, please select ConversationWcfService.svc or ConversationWcfService.svc.cs at the Solution Explorer and start debugging.
     public class ConversationWcfService : IConversationWcfService
     {
-        public Task<IEnumerable<ConversationDto>> GetAsync()
+        private IConversationService conversationService;      
+        
+        public async Task<IEnumerable<ConversationDto>> GetAsync()
         {
-            throw new NotImplementedException();
+            conversationService = new ConversationService(new ConversationRepository());
+            return await conversationService.GetAllAsync();
         }
 
         public int TestMethod()
