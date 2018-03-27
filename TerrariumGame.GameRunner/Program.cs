@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using InterfaceLibrary.Interfaces;
 using System;
+using TerrariumGame.WcfServiceApp;
 
 namespace TerrariumGame.GameRunner
 {
@@ -14,7 +15,12 @@ namespace TerrariumGame.GameRunner
         {
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
             // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            Run(Container);
+            // Run(Container);
+            ConversationWcfService cws = new ConversationWcfService();
+            foreach (var item in cws.Get())
+            {
+                Console.WriteLine(item);
+            } 
             Console.ReadKey(true);
         }
 

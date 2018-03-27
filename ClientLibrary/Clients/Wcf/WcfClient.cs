@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using TerrariumGame.Dto.DTO;
 using System;
 using TerrariumGame.Model.Entities;
+using TerrariumGame.WcfServiceApp;
 
 namespace ClientLibrary.Clients
 {
     public class WcfClient : IClient
     {
-        private readonly IConversationService conversationService;
+        // private readonly IConversationService conversationService;
+        private readonly IWcfConversationService convWcfService;
 
-        public WcfClient(IConversationService conversationService)
+        public WcfClient() //IConversationService conversationService)
         {
-            this.conversationService = conversationService;
+            // this.conversationService = conversationService;
+            this.convWcfService = new ConversationWcfService();
         }
 
         public void CreateConversation(string message)
@@ -32,9 +35,14 @@ namespace ClientLibrary.Clients
             throw new NotImplementedException();
         }
 
-        public async  Task<IEnumerable<ConversationDto>> GetAsync()
+        public async Task<IEnumerable<ConversationDto>> GetAsync()
         {
-            throw new NotImplementedException();
+            return convWcfService.Get();
+        }
+
+        public IEnumerable<ConversationDto> Get()
+        {
+            return convWcfService.Get();
         }
 
         public Task<Conversation> GetConversationAsync(int id)

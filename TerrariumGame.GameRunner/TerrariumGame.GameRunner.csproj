@@ -159,6 +159,10 @@
       <Project>{5a8a8726-6865-44b3-8ba2-86c10822cfa2}</Project>
       <Name>TerrariumGame.Dto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.WcfServiceApp\TerrariumGame.WcfServiceApp.csproj">
+      <Project>{05CC7D63-B348-4813-995F-887F9A9D1323}</Project>
+      <Name>TerrariumGame.WcfServiceApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

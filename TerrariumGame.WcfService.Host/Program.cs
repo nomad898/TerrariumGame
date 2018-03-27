@@ -19,13 +19,13 @@ namespace TerrariumGame.WcfService.Host
         {
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
 
-            using (ServiceHost host = new ServiceHost(typeof(WcfConversationService)))
-            {
-                // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-                host.Open();
-                Console.WriteLine("Service hosted successfully");
-            }
-            Console.ReadKey(true);
+            //using (ServiceHost host = new ServiceHost(typeof(WcfConversationService)))
+            //{
+            //    // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
+            //    host.Open();
+            //    Console.WriteLine("Service hosted successfully");
+            //}
+            //Console.ReadKey(true);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessInterfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,13 +11,13 @@ using TerrariumGame.Dto.DTO;
 
 namespace TerrariumGame.WcfServiceApp
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IConversationWcfService" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IWcfConversationService" in both code and config file together.
     [ServiceContract]
-    public interface IConversationWcfService
+    public interface IWcfConversationService
     {
 
         [OperationContract]
-        Task<IEnumerable<ConversationDto>> GetAsync();
+        IEnumerable<ConversationDto> Get();
 
         [OperationContract]
         int TestMethod();

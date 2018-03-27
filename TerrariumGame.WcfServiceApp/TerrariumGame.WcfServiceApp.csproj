@@ -49,6 +49,18 @@
       <HintPath>..\packages\Autofac.Configuration.4.0.1\lib\net45\Autofac.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +127,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
@@ -150,6 +163,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Automapper\ApplicationProfile.cs" />
+    <Compile Include="Automapper\MappingProfile.cs" />
     <Compile Include="ConversationWcfService.svc.cs">
       <DependentUpon>ConversationWcfService.svc</DependentUpon>
     </Compile>
@@ -180,6 +195,10 @@
       <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
       <Name>BusinessLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
+      <Project>{A3D628BE-BFF2-451E-BA4B-7C427E4E274B}</Project>
+      <Name>DataBaseInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseLibrary\DataBaseLibrary.csproj">
       <Project>{654C8275-A024-44C4-9329-6F92361606DA}</Project>
       <Name>DataBaseLibrary</Name>
@@ -187,6 +206,10 @@
     <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
       <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
       <Name>TerrariumGame.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.WcfInterfaces\TerrariumGame.WcfInterfaces.csproj">
+      <Project>{874cc9b7-0f1b-4dc9-a148-cdc7c441786c}</Project>
+      <Name>TerrariumGame.WcfInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
