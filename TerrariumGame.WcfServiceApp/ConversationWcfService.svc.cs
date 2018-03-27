@@ -26,18 +26,7 @@ namespace TerrariumGame.WcfServiceApp
 
         public ConversationWcfService()
         {
-            var mapper = MappingProfile.InitializeAutoMapper().CreateMapper();
-            var builder = new ContainerBuilder();
-            builder.RegisterType<ConversationService>().As<IConversationService>().InstancePerDependency();
-            builder.RegisterType<ConversationRepository>().As<IConversationRepository>().InstancePerDependency();
-            builder.RegisterInstance<IMapper>(mapper);
-            builder.RegisterInstance<DataBaseContext>(new DataBaseContext());
-            container = builder.Build();
-
-            using (var scope = container.BeginLifetimeScope())
-            {
-                this.conversationService = scope.Resolve<IConversationService>();
-            }
+          
         }        
 
         public IEnumerable<ConversationDto> Get()
