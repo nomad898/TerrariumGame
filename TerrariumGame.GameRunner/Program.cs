@@ -15,12 +15,7 @@ namespace TerrariumGame.GameRunner
         {
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
             // Container = AutofacBuilder.ConfigByXml(XML_FILE_NAME);
-            // Run(Container);
-            ConversationWcfService cws = new ConversationWcfService();
-            foreach (var item in cws.Get())
-            {
-                Console.WriteLine(item);
-            } 
+            Run(Container);
             Console.ReadKey(true);
         }
 

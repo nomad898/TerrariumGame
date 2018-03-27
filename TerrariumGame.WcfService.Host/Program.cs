@@ -25,7 +25,7 @@ namespace TerrariumGame.WcfService.Host
             //    host.Open();
             //    Console.WriteLine("Service hosted successfully");
             //}
-            //Console.ReadKey(true);
+            Console.ReadKey(true);
         }
     }
 }
