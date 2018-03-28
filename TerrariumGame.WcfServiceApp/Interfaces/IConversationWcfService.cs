@@ -19,6 +19,9 @@ namespace TerrariumGame.WcfServiceApp
         IEnumerable<ConversationDataContract> Get();
 
         [OperationContract]
-        int TestMethod();
+        Task Create(ConversationDataContract conversation);
+        
+        [OperationContract]
+        void CreateConversation(string message);
     }    
 }

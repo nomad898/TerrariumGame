@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using BusinessInterfaces.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TerrariumGame.Dto.DTO;
 using TerrariumGame.WcfServiceApp.DataMembers;
+using System;
 
 namespace TerrariumGame.WcfServiceApp
 {
@@ -25,9 +28,18 @@ namespace TerrariumGame.WcfServiceApp
             return mapper.Map<IEnumerable<ConversationDataContract>>(conversationDtos);
         }
 
-        public int TestMethod()
+        public async Task Create(ConversationDataContract conversation)
         {
-            return 10;
+            await conversationService.CreateAsync(mapper.Map<ConversationDto>(conversation));
+        }
+
+        public void CreateConversation(string message)
+        {
+            conversationService.CreateAsync(new ConversationDto()
+            {
+                Message = message,
+                Date = DateTime.Now,
+            });
         }
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ab618786-7c29-4a79-8847-a12b6cae6d07" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50805/Services/ConversationWcfService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ConversationWcfService.xsd" MetadataType="Schema" ID="75e327fd-a2fd-44f9-b6b1-17b92fa74b44" SourceId="1" SourceUrl="http://localhost:50805/Services/ConversationWcfService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConversationWcfService.wsdl" MetadataType="Wsdl" ID="86a199d5-a640-4ead-bc08-a7f67bfd3f01" SourceId="1" SourceUrl="http://localhost:50805/Services/ConversationWcfService.svc?wsdl" />
+    <MetadataFile FileName="ConversationWcfService1.xsd" MetadataType="Schema" ID="772f7f04-846a-40b7-8f48-5cd7086610b1" SourceId="1" SourceUrl="http://localhost:50805/Services/ConversationWcfService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConversationWcfService.disco" MetadataType="Disco" ID="0394ced5-97ab-45c2-bf8c-7abab5c55620" SourceId="1" SourceUrl="http://localhost:50805/Services/ConversationWcfService.svc?disco" />
+    <MetadataFile FileName="ConversationWcfService2.xsd" MetadataType="Schema" ID="d6bbc16c-ffe4-423e-beb2-dced8909e5c4" SourceId="1" SourceUrl="http://localhost:50805/Services/ConversationWcfService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

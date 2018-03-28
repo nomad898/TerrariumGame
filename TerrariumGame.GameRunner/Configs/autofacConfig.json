@@ -118,7 +118,7 @@
 
     // WebApiClient
     {
-      "type": "ClientLibrary.Clients.WebApiClient, ClientLibrary",
+      "type": "ClientLibrary.Clients.WcfClient, ClientLibrary",
       "services": [
         {
           "type": "ClientInterfaces.Clients.IClient, ClientInterfaces"

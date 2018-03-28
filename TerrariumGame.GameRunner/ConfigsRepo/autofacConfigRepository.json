@@ -173,6 +173,17 @@
         }
       ],
       "instanceScope": "singleinstance"
+    },
+
+      // WebApiClient
+    {
+      "type": "ClientLibrary.Clients.WebApiClient, ClientLibrary",
+      "services": [
+        {
+          "type": "ClientInterfaces.Clients.IClient, ClientInterfaces"
+        }
+      ],
+      "instanceScope": "singleinstance"
     }
 
   ]

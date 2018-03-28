@@ -100,11 +100,17 @@ namespace AutofacTraining.ConversationServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Get", ReplyAction="http://tempuri.org/IConversationWcfService/GetResponse")]
         System.Threading.Tasks.Task<AutofacTraining.ConversationServiceReference.ConversationDataContract[]> GetAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/TestMethod", ReplyAction="http://tempuri.org/IConversationWcfService/TestMethodResponse")]
-        int TestMethod();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Create", ReplyAction="http://tempuri.org/IConversationWcfService/CreateResponse")]
+        void Create(AutofacTraining.ConversationServiceReference.ConversationDataContract conversation);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/TestMethod", ReplyAction="http://tempuri.org/IConversationWcfService/TestMethodResponse")]
-        System.Threading.Tasks.Task<int> TestMethodAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Create", ReplyAction="http://tempuri.org/IConversationWcfService/CreateResponse")]
+        System.Threading.Tasks.Task CreateAsync(AutofacTraining.ConversationServiceReference.ConversationDataContract conversation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/CreateConversation", ReplyAction="http://tempuri.org/IConversationWcfService/CreateConversationResponse")]
+        void CreateConversation(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/CreateConversation", ReplyAction="http://tempuri.org/IConversationWcfService/CreateConversationResponse")]
+        System.Threading.Tasks.Task CreateConversationAsync(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -142,12 +148,20 @@ namespace AutofacTraining.ConversationServiceReference {
             return base.Channel.GetAsync();
         }
         
-        public int TestMethod() {
-            return base.Channel.TestMethod();
+        public void Create(AutofacTraining.ConversationServiceReference.ConversationDataContract conversation) {
+            base.Channel.Create(conversation);
         }
         
-        public System.Threading.Tasks.Task<int> TestMethodAsync() {
-            return base.Channel.TestMethodAsync();
+        public System.Threading.Tasks.Task CreateAsync(AutofacTraining.ConversationServiceReference.ConversationDataContract conversation) {
+            return base.Channel.CreateAsync(conversation);
+        }
+        
+        public void CreateConversation(string message) {
+            base.Channel.CreateConversation(message);
+        }
+        
+        public System.Threading.Tasks.Task CreateConversationAsync(string message) {
+            return base.Channel.CreateConversationAsync(message);
         }
     }
 }
