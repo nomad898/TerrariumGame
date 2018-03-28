@@ -13,7 +13,6 @@ namespace TerrariumGame.WcfService.Host
     {
         private static IContainer Container { get; set; }
         private const string JSON_FILE_NAME = "Configs/autofacConfig.json";
-        private const string XML_FILE_NAME = "Configs/autofacConfig.xml";
 
         static void Main(string[] args)
         {

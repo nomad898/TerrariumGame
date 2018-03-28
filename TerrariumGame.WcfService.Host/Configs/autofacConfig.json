@@ -5,7 +5,7 @@
     // Database
     {
       "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",
-      "instanceScope": "perrequest"
+      "instanceScope": "singleinstance"
     },
     {
       "type": "DataBaseLibrary.Repositories.ConversationRepository, DataBaseLibrary",
@@ -14,7 +14,7 @@
           "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
         }
       ],
-      "instanceScope": "perrequest"
+      "instanceScope": "singleinstance"
     },
 
     // ConversationRepository
@@ -25,7 +25,7 @@
           "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
         }
       ],
-      "instanceScope": "perrequest"
+      "instanceScope": "singleinstance"
     },
 
     // ConversationService
@@ -36,7 +36,7 @@
           "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
         }
       ],
-      "instanceScope": "perrequest"
+      "instanceScope": "singleinstance"
     }
 
 

@@ -16,7 +16,7 @@ namespace TerrariumGame.WcfServiceApp
         protected void Application_Start(object sender, EventArgs e)
         {
             Container = AutofacBuilder.ConfigByJson("config.json");
-            AutofacHostFactory.Container = Container;
+            AutofacHostFactory.Container = Container;            
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace TerrariumGame.WcfServiceApp
             var builder = new ContainerBuilder();
             builder.RegisterModule(module);
             var mapper = MappingProfile.InitializeAutoMapper().CreateMapper();
-            builder.RegisterType<ConversationWcfService>();
+            builder.RegisterType<ConversationWcfService>().InstancePerLifetimeScope();
             builder.RegisterInstance<IMapper>(mapper);
             return builder.Build();
         }

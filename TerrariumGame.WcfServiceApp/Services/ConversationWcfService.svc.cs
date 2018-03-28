@@ -1,19 +1,6 @@
-﻿using Autofac;
-using AutoMapper;
+﻿using AutoMapper;
 using BusinessInterfaces.Services;
-using BusinessLibrary.Services;
-using DataBaseInterfaces.Repositories;
-using DataBaseLibrary.EFContext;
-using DataBaseLibrary.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using System.Threading.Tasks;
-using TerrariumGame.Dto.DTO;
 using TerrariumGame.WcfServiceApp.DataMembers;
 
 namespace TerrariumGame.WcfServiceApp
@@ -23,19 +10,36 @@ namespace TerrariumGame.WcfServiceApp
     public class ConversationWcfService : IConversationWcfService
     {
         private IConversationService conversationService;
-        private readonly IMapper mapper;       
+        private readonly IMapper mapper;
 
         public ConversationWcfService(IConversationService conversationService,
             IMapper mapper)
         {
             this.conversationService = conversationService;
             this.mapper = mapper;
-        }        
+        }
 
         public IEnumerable<ConversationDataContract> Get()
-        {            
-            var conversationDtos = conversationService.GetAllAsync().Result;
-            return mapper.Map<IEnumerable<ConversationDataContract>>(conversationDtos);            
+        {
+            return new List<ConversationDataContract>()
+            {
+                new ConversationDataContract()
+                {
+                    Id = 1
+                },
+                new ConversationDataContract()
+                {
+                    Id = 2
+                },
+                new ConversationDataContract()
+                {
+                    Id = 3
+                },
+                new ConversationDataContract()
+                {
+                    Id = 4
+                },
+            };
         }
 
         public int TestMethod()

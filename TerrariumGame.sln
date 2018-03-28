@@ -11,6 +11,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Training projects", "Training projects", "{E4B41B36-7BDD-4057-AD9F-A4FE4FB4C0D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacTraining", "AutofacTraining\AutofacTraining.csproj", "{DC4E5669-BABB-497F-8E21-E5B1964712FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{05CC7D63-B348-4813-995F-887F9A9D1323} = {05CC7D63-B348-4813-995F-887F9A9D1323}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLibrary", "InterfaceLibrary\InterfaceLibrary.csproj", "{570EF974-1E62-4E46-9831-F17072D1D47E}"
 EndProject

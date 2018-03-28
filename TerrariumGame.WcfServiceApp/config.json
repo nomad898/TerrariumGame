@@ -5,7 +5,7 @@
     // DataBaseContext
     {
       "type": "DataBaseLibrary.EFContext.DataBaseContext, DataBaseLibrary",
-      "instanceScope": "perrequest"
+      "instanceScope": "per-lifetime-scope"
     },
 
     // ConversationRepository
@@ -16,7 +16,7 @@
           "type": "DataBaseInterfaces.Repositories.IConversationRepository, DataBaseInterfaces"
         }
       ],
-      "instanceScope": "perrequest"
+      "instanceScope": "per-lifetime-scope"
     },
    
     // ConversationService
@@ -27,7 +27,7 @@
           "type": "BusinessInterfaces.Services.IConversationService, BusinessInterfaces"
         }
       ],
-      "instanceScope": "perrequest"
+      "instanceScope": "per-lifetime-scope"
     }
 
   ]

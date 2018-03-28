@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Configuration;
+using AutofacTraining.ConversationServiceReference;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,22 @@ namespace AutofacTraining
         static void Main(string[] args)
         {
             // Add the configuration to the ConfigurationBuilder.
-            var config = new ConfigurationBuilder();
-            config.AddJsonFile("autofac.json");
-            // Register the ConfigurationModule with Autofac.
-            var module = new ConfigurationModule(config.Build());
-            var builder = new ContainerBuilder();
-            builder.RegisterModule(module);
-            Container = builder.Build();
-            WriteDate();
-
+            //var config = new ConfigurationBuilder();
+            //config.AddJsonFile("autofac.json");
+            //// Register the ConfigurationModule with Autofac.
+            //var module = new ConfigurationModule(config.Build());
+            //var builder = new ContainerBuilder();
+            //builder.RegisterModule(module);
+            //Container = builder.Build();
+            //WriteDate();
+            using (var client = new ConversationWcfServiceClient())
+            {
+                foreach (var item in client.Get())
+                {
+                    Console.WriteLine(item.Id);
+                }
+               
+            }
             Console.ReadKey(true);
         }
 
