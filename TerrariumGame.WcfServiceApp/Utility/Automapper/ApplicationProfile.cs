@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TerrariumGame.Dto.DTO;
+using TerrariumGame.WcfServiceApp.DataMembers;
 
 namespace TerrariumGame.WcfServiceApp
 {
@@ -7,7 +8,8 @@ namespace TerrariumGame.WcfServiceApp
     {
         public ApplicationProfile()
         {
-           
+            CreateMap<ConversationDto, ConversationDataContract>()
+            .ReverseMap();
         }
     }
 }

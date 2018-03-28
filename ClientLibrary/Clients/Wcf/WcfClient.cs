@@ -12,12 +12,11 @@ namespace ClientLibrary.Clients
     public class WcfClient : IClient
     {
         // private readonly IConversationService conversationService;
-        private readonly IWcfConversationService convWcfService;
+        private readonly IConversationWcfService convWcfService;
 
         public WcfClient() //IConversationService conversationService)
         {
             // this.conversationService = conversationService;
-            this.convWcfService = new ConversationWcfService();
         }
 
         public void CreateConversation(string message)
@@ -35,14 +34,15 @@ namespace ClientLibrary.Clients
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<ConversationDto>> GetAsync()
-        {
-            return convWcfService.Get();
-        }
+        //public async Task<IEnumerable<ConversationDto>> GetAsync()
+        //{
+        //    return convWcfService.Get();
+        //}
 
         public IEnumerable<ConversationDto> Get()
         {
-            return convWcfService.Get();
+            //return convWcfService.Get();
+            throw new NotImplementedException();
         }
 
         public Task<Conversation> GetConversationAsync(int id)
