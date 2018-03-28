@@ -29,7 +29,7 @@ namespace AutofacTraining
             {
                 foreach (var item in client.Get())
                 {
-                    Console.WriteLine(item.Id);
+                    Console.WriteLine(item.Message);
                 }
                
             }

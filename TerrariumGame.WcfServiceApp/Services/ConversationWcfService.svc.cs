@@ -21,25 +21,8 @@ namespace TerrariumGame.WcfServiceApp
 
         public IEnumerable<ConversationDataContract> Get()
         {
-            return new List<ConversationDataContract>()
-            {
-                new ConversationDataContract()
-                {
-                    Id = 1
-                },
-                new ConversationDataContract()
-                {
-                    Id = 2
-                },
-                new ConversationDataContract()
-                {
-                    Id = 3
-                },
-                new ConversationDataContract()
-                {
-                    Id = 4
-                },
-            };
+            var conversationDtos = conversationService.GetAllAsync().Result;
+            return mapper.Map<IEnumerable<ConversationDataContract>>(conversationDtos);
         }
 
         public int TestMethod()
