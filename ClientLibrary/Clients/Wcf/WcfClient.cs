@@ -22,7 +22,7 @@ namespace ClientLibrary.Clients
         {
             using (var client = new ConversationWcfServiceClient())
             {
-                client.CreateConversation(message);
+                await client.CreateConversationAsync(message);
             }
         }
 
@@ -33,7 +33,7 @@ namespace ClientLibrary.Clients
 
         public IEnumerable<ConversationDto> Get()
         {
-            throw new NotImplementedException();         
+            throw new NotImplementedException();
         }
 
         public Task<Conversation> GetConversationAsync(int id)

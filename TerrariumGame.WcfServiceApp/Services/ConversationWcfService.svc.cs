@@ -35,11 +35,8 @@ namespace TerrariumGame.WcfServiceApp
 
         public void CreateConversation(string message)
         {
-            conversationService.CreateAsync(new ConversationDto()
-            {
-                Message = message,
-                Date = DateTime.Now,
-            });
+            conversationService.WriteMessage(message);
         }
     }
 }
+

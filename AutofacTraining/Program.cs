@@ -16,15 +16,20 @@ namespace AutofacTraining
 
         static void Main(string[] args)
         {
-            // Add the configuration to the ConfigurationBuilder.
-            var config = new ConfigurationBuilder();
-            config.AddJsonFile("autofac.json");
-            // Register the ConfigurationModule with Autofac.
-            var module = new ConfigurationModule(config.Build());
-            var builder = new ContainerBuilder();
-            builder.RegisterModule(module);
-            Container = builder.Build();
-            WriteDate();
+            //// Add the configuration to the ConfigurationBuilder.
+            //var config = new ConfigurationBuilder();
+            //config.AddJsonFile("autofac.json");
+            //// Register the ConfigurationModule with Autofac.
+            //var module = new ConfigurationModule(config.Build());
+            //var builder = new ContainerBuilder();
+            //builder.RegisterModule(module);
+            //Container = builder.Build();
+            //WriteDate();
+
+            using (var client = new ConversationWcfServiceClient())
+            {
+                client.CreateConversation("Hello");
+            }
 
             Console.ReadKey(true);
         }
