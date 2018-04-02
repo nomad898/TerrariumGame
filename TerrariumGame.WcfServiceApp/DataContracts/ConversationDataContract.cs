@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace TerrariumGame.WcfServiceApp.DataMembers
+namespace TerrariumGame.WcfServiceApp.DataContracts
 {
     [DataContract]
     public class ConversationDataContract

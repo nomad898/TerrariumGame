@@ -1,6 +1,9 @@
 ﻿using Autofac;
 using Autofac.Configuration;
+using Autofac.Configuration.Core;
 using Microsoft.Extensions.Configuration;
+using TerrariumGame.WcfInterfaces.Services;
+using TerrariumGame.WcfServices;
 
 namespace TerrariumGame.WcfService.Host
 {
@@ -12,6 +15,7 @@ namespace TerrariumGame.WcfService.Host
             config.AddJsonFile(jsonFileName);
             var module = new ConfigurationModule(config.Build());
             var builder = new ContainerBuilder();
+            builder.RegisterType<WcfConversationService>().As<IWcfConversationService>();
             builder.RegisterModule(module);
             return builder.Build();
         }        

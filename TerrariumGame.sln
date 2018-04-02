@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientLibrary", "ClientLibr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfServiceApp", "TerrariumGame.WcfServiceApp\TerrariumGame.WcfServiceApp.csproj", "{05CC7D63-B348-4813-995F-887F9A9D1323}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WcfDataContracts", "TerrariumGame.WcfDataContracts\TerrariumGame.WcfDataContracts.csproj", "{A50B9AF0-41F6-4814-814A-350CD0811236}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{05CC7D63-B348-4813-995F-887F9A9D1323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CC7D63-B348-4813-995F-887F9A9D1323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CC7D63-B348-4813-995F-887F9A9D1323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50B9AF0-41F6-4814-814A-350CD0811236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50B9AF0-41F6-4814-814A-350CD0811236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50B9AF0-41F6-4814-814A-350CD0811236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50B9AF0-41F6-4814-814A-350CD0811236}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -205,6 +211,7 @@ Global
 		{EE3366D0-104F-41DD-B360-E6E1E4EACBA1} = {B8358492-41A7-47CE-9330-414AAD9921CE}
 		{6543B604-F123-44D8-BD73-A2FA3E47C5DB} = {B8358492-41A7-47CE-9330-414AAD9921CE}
 		{05CC7D63-B348-4813-995F-887F9A9D1323} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
+		{A50B9AF0-41F6-4814-814A-350CD0811236} = {ADCE1684-4734-47C2-B5C5-AC9F37C90513}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D860BF3A-5FA9-4E34-9AFC-DF63C5FEB384}

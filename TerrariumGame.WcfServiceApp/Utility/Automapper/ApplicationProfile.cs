@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TerrariumGame.Dto.DTO;
-using TerrariumGame.WcfServiceApp.DataMembers;
+using TerrariumGame.WcfServiceApp.DataContracts;
 
 namespace TerrariumGame.WcfServiceApp
 {

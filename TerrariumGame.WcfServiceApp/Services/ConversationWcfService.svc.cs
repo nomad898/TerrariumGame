@@ -3,8 +3,7 @@ using BusinessInterfaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TerrariumGame.Dto.DTO;
-using TerrariumGame.WcfServiceApp.DataMembers;
-using System;
+using TerrariumGame.WcfServiceApp.DataContracts;
 
 namespace TerrariumGame.WcfServiceApp
 {

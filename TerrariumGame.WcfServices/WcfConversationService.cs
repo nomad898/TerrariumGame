@@ -1,10 +1,9 @@
 ﻿using BusinessInterfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.Dto.DTO;
+using TerrariumGame.WcfDataContracts;
 using TerrariumGame.WcfInterfaces.Services;
 
 namespace TerrariumGame.WcfServices
@@ -13,24 +12,42 @@ namespace TerrariumGame.WcfServices
     {
         private readonly IConversationService conversationService;
 
-        //public WcfConversationService()
-        //{
-
-        //}
-
         public WcfConversationService(IConversationService conversationService)
         {
             this.conversationService = conversationService;
         }
 
-        public async Task CreateAsync(ConversationDto conversationDto)
+        public async Task Create(ConversationDataContract conversation)
         {
-            await conversationService.CreateAsync(conversationDto);
+            await conversationService.CreateAsync(new ConversationDto()
+            {
+                ConversationId = conversation.Id,
+                Message = conversation.Message,
+                Date = conversation.Date
+            });
         }
 
-        public async Task<IEnumerable<ConversationDto>> GetAsync()
+        public void CreateConversation(string message)
         {
-            return await conversationService.GetAllAsync();            
-        }        
+            conversationService.WriteMessage(message);
+        }
+
+        public IEnumerable<ConversationDataContract> Get()
+        {
+            var conversationDtos = conversationService.GetAllAsync().Result;
+            var list = new List<ConversationDataContract>();
+
+            foreach (var item in conversationDtos)
+            {
+                list.Add(new ConversationDataContract()
+                {
+                    Id = item.ConversationId,
+                    Message = item.Message,
+                    Date = item.Date
+                });
+            }
+
+            return list;
+        }
     }
 }

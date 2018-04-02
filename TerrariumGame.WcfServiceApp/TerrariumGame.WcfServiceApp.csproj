@@ -174,7 +174,7 @@
     <Compile Include="Services\ConversationWcfService.svc.cs">
       <DependentUpon>ConversationWcfService.svc</DependentUpon>
     </Compile>
-    <Compile Include="DataMembers\ConversationDataContract.cs" />
+    <Compile Include="DataContracts\ConversationDataContract.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

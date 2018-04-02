@@ -80,6 +80,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract.datasource" />
     <None Include="Properties\DataSources\TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract.datasource" />
     <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService.wsdl" />
     <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService.xsd">

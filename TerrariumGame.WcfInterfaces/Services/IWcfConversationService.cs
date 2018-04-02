@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.Dto.DTO;
+using TerrariumGame.WcfDataContracts;
 
 namespace TerrariumGame.WcfInterfaces.Services
 {
@@ -13,22 +14,12 @@ namespace TerrariumGame.WcfInterfaces.Services
     public interface IWcfConversationService
     {
         [OperationContract]
-        Task<IEnumerable<ConversationDto>> GetAsync();
+        IEnumerable<ConversationDataContract> Get();
 
         [OperationContract]
-        Task CreateAsync(ConversationDto conversationDto);
-    }
+        Task Create(ConversationDataContract conversation);
 
-    [DataContract]
-    public class Conversation
-    {
-        [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
-        public DateTime Date { get; set; }
-
-        [DataMember]
-        public string Message { get; set; }
-    }
+        [OperationContract]
+        void CreateConversation(string message);
+    }   
 }

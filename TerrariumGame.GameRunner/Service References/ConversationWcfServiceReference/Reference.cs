@@ -16,16 +16,16 @@ namespace TerrariumGame.GameRunner.ConversationWcfServiceReference {
     public interface IConversationWcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Get", ReplyAction="http://tempuri.org/IConversationWcfService/GetResponse")]
-        TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract[] Get();
+        TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract[] Get();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Get", ReplyAction="http://tempuri.org/IConversationWcfService/GetResponse")]
-        System.Threading.Tasks.Task<TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract[]> GetAsync();
+        System.Threading.Tasks.Task<TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract[]> GetAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Create", ReplyAction="http://tempuri.org/IConversationWcfService/CreateResponse")]
-        void Create(TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract conversation);
+        void Create(TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract conversation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/Create", ReplyAction="http://tempuri.org/IConversationWcfService/CreateResponse")]
-        System.Threading.Tasks.Task CreateAsync(TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract conversation);
+        System.Threading.Tasks.Task CreateAsync(TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract conversation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConversationWcfService/CreateConversation", ReplyAction="http://tempuri.org/IConversationWcfService/CreateConversationResponse")]
         void CreateConversation(string message);
@@ -61,19 +61,19 @@ namespace TerrariumGame.GameRunner.ConversationWcfServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract[] Get() {
+        public TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract[] Get() {
             return base.Channel.Get();
         }
         
-        public System.Threading.Tasks.Task<TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract[]> GetAsync() {
+        public System.Threading.Tasks.Task<TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract[]> GetAsync() {
             return base.Channel.GetAsync();
         }
         
-        public void Create(TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract conversation) {
+        public void Create(TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract conversation) {
             base.Channel.Create(conversation);
         }
         
-        public System.Threading.Tasks.Task CreateAsync(TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract conversation) {
+        public System.Threading.Tasks.Task CreateAsync(TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract conversation) {
             return base.Channel.CreateAsync(conversation);
         }
         
