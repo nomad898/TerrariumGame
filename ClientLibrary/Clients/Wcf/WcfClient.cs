@@ -5,6 +5,7 @@ using TerrariumGame.Dto.DTO;
 using System;
 using TerrariumGame.Model.Entities;
 using ClientLibrary.ConversationWcfServiceReference;
+using ClientLibrary.WcfConversationService;
 
 namespace ClientLibrary.Clients
 {
@@ -12,7 +13,12 @@ namespace ClientLibrary.Clients
     {
         public void CreateConversation(string message)
         {
-            using (var client = new ConversationWcfServiceClient())
+            //using (var client = new ConversationWcfServiceClient())
+            //{
+            //    client.CreateConversation(message);
+            //}
+
+            using (var client = new WcfConversationServiceClient())
             {
                 client.CreateConversation(message);
             }
@@ -20,7 +26,12 @@ namespace ClientLibrary.Clients
 
         public async Task CreateConversationAsync(string message)
         {
-            using (var client = new ConversationWcfServiceClient())
+            //using (var client = new ConversationWcfServiceClient())
+            //{
+            //    await client.CreateConversationAsync(message);
+            //}
+
+            using (var client = new WcfConversationServiceClient())
             {
                 await client.CreateConversationAsync(message);
             }

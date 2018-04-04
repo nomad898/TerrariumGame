@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Configuration;
 using AutofacTraining.ConversationServiceReference;
+using AutofacTraining.WcfConversationService;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,10 @@ namespace AutofacTraining
             //Container = builder.Build();
             //WriteDate();
 
-            using (var client = new ConversationWcfServiceClient())
+            using (var client = new WcfConversationServiceClient())
             {
-                client.CreateConversation("Hello");
+
+                client.CreateConversation("Hello111");
             }
 
             Console.ReadKey(true);

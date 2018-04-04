@@ -34,15 +34,18 @@ namespace TerrariumGame.WcfService.Host
             //}
 
             ServiceHost host = new ServiceHost(typeof(WcfConversationService));
-            
-                host.AddDependencyInjectionBehavior<IWcfConversationService>(Container);
 
-                host.Open();
+            host.AddDependencyInjectionBehavior<IWcfConversationService>(Container);
 
-                Console.WriteLine("Service hosted successfully");
+            host.Open();
+            foreach (var item in host.BaseAddresses)
+            {
+                Console.WriteLine(item.AbsoluteUri);
+            }
+            Console.WriteLine("Service hosted successfully");
 
-                Console.ReadKey(true);
-            
+            Console.ReadKey(true);
+
         }
     }
 }
