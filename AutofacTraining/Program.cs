@@ -27,7 +27,7 @@ namespace AutofacTraining
             //Container = builder.Build();
             //WriteDate();
 
-            using (var client = new WcfConversationServiceClient())
+            using (var client = new WcfConversationServiceClient("BasicHttpBinding_IWcfConversationService"))
             {
 
                 client.CreateConversation("Hello111");
