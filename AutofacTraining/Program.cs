@@ -1,7 +1,8 @@
 ﻿using Autofac;
 using Autofac.Configuration;
 using AutofacTraining.ConversationServiceReference;
-using AutofacTraining.WcfConversationService;
+// using AutofacTraining.WcfConversationService;
+using AutofacTraining.WcfConversationServiceTcp;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,12 @@ namespace AutofacTraining
             //builder.RegisterModule(module);
             //Container = builder.Build();
             //WriteDate();
+                                  
 
-           
-
-            using (var client = new WcfConversationServiceClient("BasicHttpBinding_IWcfConversationService"))
+            using (var client = new WcfConversationServiceClient("NetTcpBinding_IWcfConversationService"))
             {
 
-                client.CreateConversation("Hello111");
+                client.CreateConversation("1251");
             }
 
             Console.ReadKey(true);

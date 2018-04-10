@@ -5,7 +5,7 @@ using TerrariumGame.Dto.DTO;
 using System;
 using TerrariumGame.Model.Entities;
 using ClientLibrary.ConversationWcfServiceReference;
-using ClientLibrary.WcfConversationService;
+using ClientLibrary.WcfConversationServiceTcp;
 
 namespace ClientLibrary.Clients
 {

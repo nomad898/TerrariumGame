@@ -140,7 +140,7 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IWcfConversationService" binding="tns:BasicHttpBinding_IWcfConversationService">
-      <soap:address location="http://localhost:10080/" />
+      <soap:address location="http://localhost:10080/WcfHttp" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

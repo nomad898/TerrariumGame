@@ -107,6 +107,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacBuilder.cs" />
+    <Compile Include="Profiles\ApplicationProfile.cs" />
+    <Compile Include="Profiles\MappingProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -126,6 +128,14 @@
       <Project>{654c8275-a024-44c4-9329-6f92361606da}</Project>
       <Name>DataBaseLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.Dto\TerrariumGame.Dto.csproj">
+      <Project>{5A8A8726-6865-44B3-8BA2-86C10822CFA2}</Project>
+      <Name>TerrariumGame.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.WcfDataContracts\TerrariumGame.WcfDataContracts.csproj">
+      <Project>{A50B9AF0-41F6-4814-814A-350CD0811236}</Project>
+      <Name>TerrariumGame.WcfDataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TerrariumGame.WcfInterfaces\TerrariumGame.WcfInterfaces.csproj">
       <Project>{874cc9b7-0f1b-4dc9-a148-cdc7c441786c}</Project>
       <Name>TerrariumGame.WcfInterfaces</Name>
@@ -135,6 +145,7 @@
       <Name>TerrariumGame.WcfServices</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
