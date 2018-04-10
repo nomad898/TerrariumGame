@@ -114,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WcfConversationServiceTcp\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WcfConversationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,6 +145,19 @@
     <None Include="Service References\ConversationServiceReference\ConversationWcfService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WcfConversationServiceTcp\AutofacTraining.WcfConversationServiceTcp.ConversationDataContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WcfConversationServiceTcp\service.wsdl" />
+    <None Include="Service References\WcfConversationServiceTcp\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WcfConversationServiceTcp\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WcfConversationServiceTcp\TerrariumGame.WcfDataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WcfConversationService\AutofacTraining.WcfConversationService.ConversationDataContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -159,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ConversationServiceReference\" />
+    <WCFMetadataStorage Include="Service References\WcfConversationServiceTcp\" />
     <WCFMetadataStorage Include="Service References\WcfConversationService\" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +206,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WcfConversationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfConversationServiceTcp\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfConversationServiceTcp\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WcfConversationServiceTcp\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
