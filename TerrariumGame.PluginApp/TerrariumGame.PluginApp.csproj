@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterfaceLibrary\InterfaceLibrary.csproj">
+      <Project>{570EF974-1E62-4E46-9831-F17072D1D47E}</Project>
+      <Name>InterfaceLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TerrariumGame.PluginInterfaces\TerrariumGame.PluginInterfaces.csproj">
       <Project>{F6884B33-B935-4DC9-B014-C8C5EC4BF83C}</Project>
       <Name>TerrariumGame.PluginInterfaces</Name>
