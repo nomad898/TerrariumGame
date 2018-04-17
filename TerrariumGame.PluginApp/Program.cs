@@ -41,8 +41,8 @@ namespace TerrariumGame.PluginApp
             string[] dlls = Directory.GetFiles(path, ext);
             int startIndex = path.Length;
 
-            
-           
+
+
             foreach (var dll in dlls)
             {
                 string dllName = dll.Substring(startIndex);
@@ -55,7 +55,6 @@ namespace TerrariumGame.PluginApp
                     {
                         if (!type.GetTypeInfo().IsAbstract)
                         {
-                            //Console.WriteLine(type);
                             object instance = Activator.CreateInstance(type);
                             var methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
                             foreach (var method in methods)
@@ -72,8 +71,8 @@ namespace TerrariumGame.PluginApp
                 }
                 catch (ReflectionTypeLoadException ex)
                 {
-                    
-                }                   
+
+                }
             }
 
             Console.ReadKey(true);
