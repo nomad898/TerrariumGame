@@ -42,7 +42,7 @@ namespace TerrariumGame.PluginLibrary
             stringsStartIndex = path.Length;
         }
         #endregion
-        public ICollection<object> Action(string methodName)
+        public void Action(string methodName)
         {
             foreach (var dll in dllFiles)
             {
