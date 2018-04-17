@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -26,6 +27,12 @@ namespace TerrariumGame.PluginLibrary
 
         public string Action(string action)
         {
+            string[] dlls = Directory.GetFiles(@"..\..\TerrariumGame\bin\Debug\'");
+            foreach (var item in dlls)
+            {
+                Console.WriteLine(item);
+            }
+            var dllsPath = new FileInfo(@"..\..\TerrariumGame\bin\Debug\'");
             return "";
         }
     }
