@@ -13,10 +13,6 @@ namespace ClientLibrary.Clients
     {
         public void CreateConversation(string message)
         {
-            //using (var client = new ConversationWcfServiceClient())
-            //{
-            //    client.CreateConversation(message);
-            //}
 
             using (var client = new WcfConversationServiceClient())
             {
@@ -26,10 +22,6 @@ namespace ClientLibrary.Clients
 
         public async Task CreateConversationAsync(string message)
         {
-            //using (var client = new ConversationWcfServiceClient())
-            //{
-            //    await client.CreateConversationAsync(message);
-            //}
 
             using (var client = new WcfConversationServiceClient())
             {

@@ -32,7 +32,7 @@ namespace ClientLibrary.Clients
         public async Task CreateConversationAsync(string message)
         {
                 StringContent queryString = new StringContent(message);
-                await httpClient.PostAsync($"api/Conversation/{message}", queryString);         
+                await httpClient.PostAsync($"api/Conversation/{message}", queryString);                                
         }
 
         public void CreateConversation(string message)

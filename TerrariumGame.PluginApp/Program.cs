@@ -51,10 +51,13 @@ namespace TerrariumGame.PluginApp
                     var typesInAssembly = assembly.GetTypes().Where(t => t.GetInterfaces().Contains(parentType));
                     foreach (var type in typesInAssembly)
                     {
-                        Console.WriteLine(type);
-                        //object instance = Activator.CreateInstance(type);
-                        MethodInfo method = type.GetMethod("Talk");
-                        Console.WriteLine(method);
+                        if (!type.GetTypeInfo().IsAbstract)
+                        {
+                            Console.WriteLine(type);
+                            object instance = Activator.CreateInstance(type);
+                            MethodInfo method = type.GetMethod("Talk");
+                            Console.WriteLine(method);
+                        }
                     }
                 }
                 catch (ReflectionTypeLoadException ex)
