@@ -40,6 +40,8 @@ namespace TerrariumGame.PluginApp
             string ext = "*.dll";
             string[] dlls = Directory.GetFiles(path, ext);
             int startIndex = path.Length;
+
+            
            
             foreach (var dll in dlls)
             {
@@ -53,10 +55,18 @@ namespace TerrariumGame.PluginApp
                     {
                         if (!type.GetTypeInfo().IsAbstract)
                         {
-                            Console.WriteLine(type);
+                            //Console.WriteLine(type);
                             object instance = Activator.CreateInstance(type);
-                            MethodInfo method = type.GetMethod("Talk");
-                            Console.WriteLine(method);
+                            var methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
+                            foreach (var method in methods)
+                            {
+                                if (method.GetParameters().Length == 1)
+                                {
+                                    var invokeResult = method.Invoke(instance, new string[] { "Hello, world!" });
+                                    Console.WriteLine(invokeResult);
+                                }
+                            }
+
                         }
                     }
                 }
