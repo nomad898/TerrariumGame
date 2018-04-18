@@ -12,17 +12,27 @@ namespace TerrariumGame.PluginApp
         {
 
             PluginActivator activator = new PluginActivator();
-            IPlugin plugin = new Plugin<IEmployee>(4, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Hello" });
-            IPlugin plugin2 = new Plugin<IEmployee>(1, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Hello World" });
+            IPlugin plugin1 = new Plugin<IEmployee>(4, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Plugin 1" });
+            IPlugin plugin2 = new Plugin<IEmployee>(1, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Plugin 2" });
 
 
 
 
 
-            activator.AddPlugin(plugin);
+            activator.AddPlugin(plugin1);
             activator.AddPlugin(plugin2);
             //activator.RemovePlugin(plugin);
-            activator.Activate();
+            foreach (var plugins in activator.Activate())
+            {
+                foreach (var plugin in plugins)
+                {
+                    foreach (var result in plugin.Action())
+                    {
+                        Console.WriteLine(result.ToString());
+                    }
+                }
+            }
+            
             
          
 

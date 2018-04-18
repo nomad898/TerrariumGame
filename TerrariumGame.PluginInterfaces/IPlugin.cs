@@ -9,6 +9,6 @@ namespace TerrariumGame.PluginInterfaces
     public interface IPlugin
     {
         int Order { get; set; }
-        List<object> Action();
+        ICollection<object> Action();
     }
 }

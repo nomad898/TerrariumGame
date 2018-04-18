@@ -78,7 +78,7 @@ namespace TerrariumGame.PluginLibrary
             stringsStartIndex = path.Length;
         }
         #endregion
-        public List<object> Action()
+        public ICollection<object> Action()
         {
             List<object> list = new List<object>();
             Type interfaceType = typeof(T);
