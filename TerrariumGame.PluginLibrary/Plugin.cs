@@ -10,7 +10,7 @@ using TerrariumGame.PluginInterfaces;
 
 namespace TerrariumGame.PluginLibrary
 {
-    public class Plugin<T> where T : class, IPlugin<T>
+    public class Plugin<T> : IPlugin<T> where T : class
     {
         #region Fields
         private int order;
@@ -23,10 +23,13 @@ namespace TerrariumGame.PluginLibrary
 
             set
             {
-                order = value;
+                if (value > 0)
+                    order = value;
+                else
+                    throw new ArgumentOutOfRangeException("Must be greater than 0");
             }
         }
-
+        private string methodName;
         private string folderName;
         private string path;
         private string fileExtension = "*.dll";
@@ -34,22 +37,25 @@ namespace TerrariumGame.PluginLibrary
         private int stringsStartIndex;
         #endregion
         #region ctor
-        public Plugin(string folderName)
+        public Plugin(int order, string methodName, string folderName)
         {
+            this.Order = order;
+            this.methodName = methodName;
             this.folderName = folderName;
             this.path = $@"..\..\..\{folderName}\bin\Debug\";
             dllFiles = Directory.GetFiles(path, fileExtension);
             stringsStartIndex = path.Length;
         }
         #endregion
-        public void Action(string methodName)
+        public List<object> Action()
         {
+            List<object> list = new List<object>();
+            Type interfaceType = typeof(T);
             foreach (var dll in dllFiles)
             {
                 string dllName = dll.Substring(stringsStartIndex);
-                Assembly assembly = Assembly.LoadFile(Path.GetFileName(path + dllName));
-                Type interfaceType = typeof(T);
-                List<object> list = new List<object>();
+                Assembly assembly = Assembly.LoadFile(Path.GetFullPath(path + dllName));
+
                 try
                 {
                     var typesInAssembly = assembly.GetTypes()
@@ -59,27 +65,26 @@ namespace TerrariumGame.PluginLibrary
                         if (type.GetTypeInfo().IsClass &&
                             !type.GetTypeInfo().IsAbstract)
                         {
-                            list.Add(CallTypesMethod(type, methodName
-                                , BindingFlags.NonPublic | BindingFlags.Instance));                            
+                            list.Add(CallTypesMethod(type, BindingFlags.NonPublic | BindingFlags.Instance));
                         }
                     }
-                    return list;
                 }
                 catch (ReflectionTypeLoadException ex)
                 {
-                    Console.WriteLine(ex.Message);                    
-                }                
+                    Console.WriteLine(ex.Message);
+                }
             }
-        } 
-            
+            return list;
+        }
 
-        private object CallTypesMethod(Type type, string methodName, BindingFlags bindingFlags)
+
+        private object CallTypesMethod(Type type, BindingFlags bindingFlags)
         {
             object instance = Activator.CreateInstance(type);
             var methods = type.GetMethods(bindingFlags);
             foreach (var method in methods)
             {
-                var methodResult = CallMethod(instance, method, methodName);
+                var methodResult = CallMethod(instance, method);
                 if (methodResult != null)
                 {
                     return methodResult;
@@ -88,10 +93,9 @@ namespace TerrariumGame.PluginLibrary
             return null;
         }
 
-        private object CallMethod(object instance, MethodInfo method, string methodName)
+        private object CallMethod(object instance, MethodInfo method)
         {
-            if (method.GetParameters().Length == 1
-                && method.Name == methodName)
+            if (method.GetParameters().Length == 1)
             {
                 var invokeResult = method.Invoke(instance, new string[]
                 {

@@ -58,6 +58,10 @@
       <Project>{F6884B33-B935-4DC9-B014-C8C5EC4BF83C}</Project>
       <Name>TerrariumGame.PluginInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.PluginLibrary\TerrariumGame.PluginLibrary.csproj">
+      <Project>{B2E0C52A-0D6F-42D9-AE26-C4E585B5E5EC}</Project>
+      <Name>TerrariumGame.PluginLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
