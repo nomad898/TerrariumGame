@@ -9,9 +9,18 @@ namespace TerrariumGame.PluginApp
     {
         static void Main(string[] args)
         {
-            IPlugin plugin = new Plugin<IEmployee>(1, "TerrariumGame", "Say", 2, new string[] {"Hello"});
+
             PluginActivator activator = new PluginActivator();
+            IPlugin plugin = new Plugin<IEmployee>(4, "TerrariumGame", "Say", 1, new string[] { "Hello" });
+            IPlugin plugin2 = new Plugin<IEmployee>(1, "TerrariumGame", "Say", 1, new string[] { "Hello World" });
+
+
+
+
+
             activator.AddPlugin(plugin);
+            activator.AddPlugin(plugin2);
+            activator.RemovePlugin(plugin);
             activator.Activate();
             
          

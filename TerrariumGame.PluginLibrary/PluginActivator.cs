@@ -9,51 +9,42 @@ namespace TerrariumGame.PluginLibrary
 {
     public class PluginActivator
     {
-        <IPlugin> plugins = new List<IPlugin>();
+        IDictionary<int, ICollection<IPlugin>> pluginsMap
+            = new SortedDictionary<int, ICollection<IPlugin>>();
 
         public void AddPlugin(IPlugin plugin)
-        {            
-            plugins.Add(plugin);
-            SortByOrder();
+        {
+            ICollection<IPlugin> pluginsList;
+            if (!pluginsMap.Keys.Contains(plugin.Order))
+            {
+                pluginsMap.Add(plugin.Order, new List<IPlugin>());
+            }
+            pluginsList = pluginsMap[plugin.Order];
+
+            pluginsList.Add(plugin);
         }
 
         public void RemovePlugin(IPlugin plugin)
         {
-            plugins.Remove(plugin);
-            SortByOrder();
+            ICollection<IPlugin> pluginsList = pluginsMap[plugin.Order]; 
+            pluginsList.Remove(plugin);
         }
 
         public void Activate()
         {
-            if (plugins.Count > 0)
-                foreach (var plugin in plugins)
+            if (pluginsMap.Keys.Count > 0)
+                foreach (var plugin in pluginsMap.Values)
                 {
-                    foreach (var item in plugin.Action())
+                    foreach (var item in plugin)
                     {
-                        Console.WriteLine(item.ToString());
+                        item.Action().ForEach(delegate (object result)
+                        {
+                            Console.WriteLine(result.ToString());
+                        });
                     }
                 }
         }
 
-        /// <summary>
-        ///     Bubble sorting
-        /// </summary>
-        private void SortByOrder()
-        {
-            IPlugin temp;
 
-            for (int i = 0; i < plugins.Count; i++)
-            {
-                for (int j = 0; j < plugins.Count - 1; j++)
-                {
-                    if (plugins[j].Order > plugins[i + 1].Order)
-                    {
-                        temp = plugins[j + 1];
-                        plugins[j + 1] = plugins[j];
-                        plugins[j] = temp;
-                    }
-                }
-            }
-        }
     }
 }
