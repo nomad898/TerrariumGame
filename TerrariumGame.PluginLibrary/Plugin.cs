@@ -84,8 +84,9 @@ namespace TerrariumGame.PluginLibrary
             Type interfaceType = typeof(T);
             foreach (var dll in dllFiles)
             {
-                string dllName = dll.Substring(stringsStartIndex);
-                Assembly assembly = Assembly.LoadFile(Path.GetFullPath(path + dllName));
+                Assembly assembly = Assembly
+                    .LoadFile(Path
+                    .GetFullPath(path + dll.Substring(stringsStartIndex)));
 
                 try
                 {
