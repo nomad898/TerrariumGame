@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerrariumGame.PluginInterfaces
 {
-    public interface IPlugin<T> where T : class
+    public interface IPlugin
     {
         int Order { get; set; }
         List<object> Action();

@@ -7,17 +7,17 @@ using TerrariumGame.PluginInterfaces;
 
 namespace TerrariumGame.PluginLibrary
 {
-    public class PluginActivator<T> where T : class
+    public class PluginActivator
     {
-        List<IPlugin<T>> plugins = new List<IPlugin<T>>();
+        List<IPlugin> plugins = new List<IPlugin>();
 
-        public void AddPlugin(IPlugin<T> plugin)
-        {
+        public void AddPlugin(IPlugin plugin)
+        {            
             plugins.Add(plugin);
             SortByOrder();
         }
 
-        public void RemovePlugin(IPlugin<T> plugin)
+        public void RemovePlugin(IPlugin plugin)
         {
             plugins.Remove(plugin);
             SortByOrder();
@@ -40,7 +40,7 @@ namespace TerrariumGame.PluginLibrary
         /// </summary>
         private void SortByOrder()
         {
-            IPlugin<T> temp;
+            IPlugin temp;
 
             for (int i = 0; i < plugins.Count; i++)
             {

@@ -10,7 +10,7 @@ using TerrariumGame.PluginInterfaces;
 
 namespace TerrariumGame.PluginLibrary
 {
-    public class Plugin<T> : IPlugin<T> where T : class
+    public class Plugin<T> : IPlugin where T : class
     {
         #region Fields
         private int order;
