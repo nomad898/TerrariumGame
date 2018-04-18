@@ -1,5 +1,6 @@
 ﻿using InterfaceLibrary.Interfaces;
 using System;
+using System.Reflection;
 using TerrariumGame.PluginInterfaces;
 using TerrariumGame.PluginLibrary;
 
@@ -11,15 +12,15 @@ namespace TerrariumGame.PluginApp
         {
 
             PluginActivator activator = new PluginActivator();
-            IPlugin plugin = new Plugin<IEmployee>(4, "TerrariumGame", "Say", 1, new string[] { "Hello" });
-            IPlugin plugin2 = new Plugin<IEmployee>(1, "TerrariumGame", "Say", 1, new string[] { "Hello World" });
+            IPlugin plugin = new Plugin<IEmployee>(4, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Hello" });
+            IPlugin plugin2 = new Plugin<IEmployee>(1, "TerrariumGame", "Say", BindingFlags.NonPublic | BindingFlags.Instance, 1, new string[] { "Hello World" });
 
 
 
 
 
-            //activator.AddPlugin(plugin);
-            //activator.AddPlugin(plugin2);
+            activator.AddPlugin(plugin);
+            activator.AddPlugin(plugin2);
             //activator.RemovePlugin(plugin);
             activator.Activate();
             

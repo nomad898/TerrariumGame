@@ -50,6 +50,8 @@ namespace TerrariumGame.PluginLibrary
             }
         }
         private object[] methodParameters;
+        private BindingFlags bindingFlags;
+
         private string folderName;
         private string path;
         private string fileExtension = "*.dll";
@@ -57,13 +59,20 @@ namespace TerrariumGame.PluginLibrary
         private int stringsStartIndex;
         #endregion
         #region ctor
-        public Plugin(int order, string folderName, string methodName, int parametersCount, object[] parameters)
+        public Plugin(int order
+            , string folderName
+            , string methodName
+            , BindingFlags bindingFlags
+            , int parametersCount
+            , object[] parameters)
         {
             this.Order = order;
             this.folderName = folderName;
             this.methodName = methodName;
             this.ParametersCount = parametersCount;
             this.methodParameters = parameters;
+            this.bindingFlags = bindingFlags;
+
             this.path = $@"..\..\..\{folderName}\bin\Debug\";
             dllFiles = Directory.GetFiles(path, fileExtension);
             stringsStartIndex = path.Length;
@@ -82,14 +91,11 @@ namespace TerrariumGame.PluginLibrary
                 {
                     var typesInAssembly = assembly.GetTypes()
                         .Where(t => t.GetInterfaces().Contains(interfaceType));
-                    foreach (var type in typesInAssembly)
+                    foreach (var type in typesInAssembly
+                        .Where(t => t.IsClass
+                         && !t.IsAbstract))
                     {
-                        if (type.GetTypeInfo().IsClass &&
-                            !type.GetTypeInfo().IsAbstract)
-                        {
-                            list.Add(CallTypesMethod(type
-                                , BindingFlags.NonPublic | BindingFlags.Instance));
-                        }
+                        list.Add(CallTypesMethod(type));
                     }
                 }
                 catch (ReflectionTypeLoadException ex)
@@ -101,32 +107,31 @@ namespace TerrariumGame.PluginLibrary
         }
 
 
-        private object CallTypesMethod(Type type
-            , BindingFlags bindingFlags)
+        private object CallTypesMethod(Type type)
         {
             object instance = Activator.CreateInstance(type);
             var methods = type.GetMethods(bindingFlags);
-            foreach (var method in methods)
+            var method = methods.SingleOrDefault(m => m.GetParameters().Length == parametersCount
+                    && methodName == m.Name);
+            if (method != null)
             {
                 var methodResult = CallMethod(instance, method);
-                if (methodResult != null)
-                {
-                    return methodResult;
-                }
+                return methodResult;
             }
             return null;
         }
 
+        /// <summary>
+        ///  Calls instance's method
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="method"></param>
+        /// <returns></returns>
         private object CallMethod(object instance
             , MethodInfo method)
         {
-            if (method.GetParameters().Length == parametersCount 
-                && methodName == method.Name)
-            {
-                var invokeResult = method.Invoke(instance, methodParameters);
-                return invokeResult;
-            }
-            else return null;
-        }      
+            var invokeResult = method.Invoke(instance, methodParameters);
+            return invokeResult;
+        }
     }
 }

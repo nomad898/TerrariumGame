@@ -35,7 +35,8 @@ namespace TerrariumGame.PluginLibrary
                 {
                     item.Action().ForEach(delegate (object result)
                     {
-                        Console.WriteLine(result.ToString());
+                        if (result != null)
+                            Console.WriteLine(result.ToString());
                     });
                 }
             }
