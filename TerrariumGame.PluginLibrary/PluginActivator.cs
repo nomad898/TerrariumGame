@@ -9,7 +9,7 @@ namespace TerrariumGame.PluginLibrary
 {
     public class PluginActivator
     {
-        List<IPlugin> plugins = new List<IPlugin>();
+        <IPlugin> plugins = new List<IPlugin>();
 
         public void AddPlugin(IPlugin plugin)
         {            

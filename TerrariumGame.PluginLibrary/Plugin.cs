@@ -30,6 +30,26 @@ namespace TerrariumGame.PluginLibrary
             }
         }
         private string methodName;
+        private int parametersCount;
+        private int ParametersCount
+        {
+            get
+            {
+                return parametersCount;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    parametersCount = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Must be equal or greater than 0");
+                }
+            }
+        }
+        private object[] methodParameters;
         private string folderName;
         private string path;
         private string fileExtension = "*.dll";
@@ -37,11 +57,13 @@ namespace TerrariumGame.PluginLibrary
         private int stringsStartIndex;
         #endregion
         #region ctor
-        public Plugin(int order, string methodName, string folderName)
+        public Plugin(int order, string folderName, string methodName, int parametersCount, object[] parameters)
         {
             this.Order = order;
-            this.methodName = methodName;
             this.folderName = folderName;
+            this.methodName = methodName;
+            this.ParametersCount = parametersCount;
+            this.methodParameters = parameters;
             this.path = $@"..\..\..\{folderName}\bin\Debug\";
             dllFiles = Directory.GetFiles(path, fileExtension);
             stringsStartIndex = path.Length;
@@ -65,20 +87,22 @@ namespace TerrariumGame.PluginLibrary
                         if (type.GetTypeInfo().IsClass &&
                             !type.GetTypeInfo().IsAbstract)
                         {
-                            list.Add(CallTypesMethod(type, BindingFlags.NonPublic | BindingFlags.Instance));
+                            list.Add(CallTypesMethod(type
+                                , BindingFlags.NonPublic | BindingFlags.Instance));
                         }
                     }
                 }
                 catch (ReflectionTypeLoadException ex)
                 {
-                    Console.WriteLine(ex.Message);
+
                 }
             }
             return list;
         }
 
 
-        private object CallTypesMethod(Type type, BindingFlags bindingFlags)
+        private object CallTypesMethod(Type type
+            , BindingFlags bindingFlags)
         {
             object instance = Activator.CreateInstance(type);
             var methods = type.GetMethods(bindingFlags);
@@ -93,62 +117,16 @@ namespace TerrariumGame.PluginLibrary
             return null;
         }
 
-        private object CallMethod(object instance, MethodInfo method)
+        private object CallMethod(object instance
+            , MethodInfo method)
         {
-            if (method.GetParameters().Length == 1)
+            if (method.GetParameters().Length == parametersCount 
+                && methodName == method.Name)
             {
-                var invokeResult = method.Invoke(instance, new string[]
-                {
-                        "Hello, world!"
-                });
+                var invokeResult = method.Invoke(instance, methodParameters);
                 return invokeResult;
             }
             else return null;
-        }
-
-
-        //private void Method()
-        //{
-        //    string folderName = "TerrariumGame";
-        //    string path = $@"..\..\..\{folderName}\bin\Debug\";
-        //    string ext = "*.dll";
-        //    string[] dlls = Directory.GetFiles(path, ext);
-        //    int startIndex = path.Length;
-
-
-
-        //    foreach (var dll in dlls)
-        //    {
-        //        string dllName = dll.Substring(startIndex);
-        //        Assembly assembly = Assembly.LoadFile(Path.GetFullPath(path + dllName));
-        //        Type parentType = typeof(IEmployee);
-        //        try
-        //        {
-        //            var typesInAssembly = assembly.GetTypes().Where(t => t.GetInterfaces().Contains(parentType));
-        //            foreach (var type in typesInAssembly)
-        //            {
-        //                if (!type.GetTypeInfo().IsAbstract)
-        //                {
-        //                    object instance = Activator.CreateInstance(type);
-        //                    var methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
-        //                    foreach (var method in methods)
-        //                    {
-        //                        if (method.GetParameters().Length == 1)
-        //                        {
-        //                            var invokeResult = method.Invoke(instance, new string[] { "Hello, world!" });
-        //                            Console.WriteLine(invokeResult);
-        //                        }
-        //                    }
-
-        //                }
-        //            }
-        //        }
-        //        catch (ReflectionTypeLoadException ex)
-        //        {
-
-        //        }
-        //    }
-        //}
-
+        }      
     }
 }
