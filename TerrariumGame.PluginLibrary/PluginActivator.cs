@@ -14,35 +14,31 @@ namespace TerrariumGame.PluginLibrary
 
         public void AddPlugin(IPlugin plugin)
         {
-            ICollection<IPlugin> pluginsList;
             if (!pluginsMap.Keys.Contains(plugin.Order))
             {
                 pluginsMap.Add(plugin.Order, new List<IPlugin>());
             }
-            pluginsList = pluginsMap[plugin.Order];
 
-            pluginsList.Add(plugin);
+            pluginsMap[plugin.Order].Add(plugin);
         }
 
         public void RemovePlugin(IPlugin plugin)
         {
-            ICollection<IPlugin> pluginsList = pluginsMap[plugin.Order]; 
-            pluginsList.Remove(plugin);
+            pluginsMap[plugin.Order].Remove(plugin);
         }
 
         public void Activate()
         {
-            if (pluginsMap.Keys.Count > 0)
-                foreach (var plugin in pluginsMap.Values)
+            foreach (var plugin in pluginsMap.Values)
+            {
+                foreach (var item in plugin)
                 {
-                    foreach (var item in plugin)
+                    item.Action().ForEach(delegate (object result)
                     {
-                        item.Action().ForEach(delegate (object result)
-                        {
-                            Console.WriteLine(result.ToString());
-                        });
-                    }
+                        Console.WriteLine(result.ToString());
+                    });
                 }
+            }
         }
 
 

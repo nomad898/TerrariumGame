@@ -18,9 +18,9 @@ namespace TerrariumGame.PluginApp
 
 
 
-            activator.AddPlugin(plugin);
-            activator.AddPlugin(plugin2);
-            activator.RemovePlugin(plugin);
+            //activator.AddPlugin(plugin);
+            //activator.AddPlugin(plugin2);
+            //activator.RemovePlugin(plugin);
             activator.Activate();
             
          
