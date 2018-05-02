@@ -49,6 +49,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TerrariumGame.DelegateInterfaces\TerrariumGame.DelegateInterfaces.csproj">
+      <Project>{A590D15A-706D-4E25-937B-AE598A3D60B6}</Project>
+      <Name>TerrariumGame.DelegateInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrariumGame.DelegateLibrary\TerrariumGame.DelegateLibrary.csproj">
+      <Project>{CEFD3931-7773-40CC-8088-E59F1EE7F368}</Project>
+      <Name>TerrariumGame.DelegateLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
