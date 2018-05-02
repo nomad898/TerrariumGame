@@ -101,7 +101,7 @@ namespace TerrariumGame.PluginLibrary
                 }
                 catch (ReflectionTypeLoadException ex)
                 {
-
+                    Console.WriteLine(ex.Message);
                 }
             }
             return list;
