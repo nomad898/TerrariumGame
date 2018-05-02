@@ -16,9 +16,9 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
+                    if (!classDelegates.Contains(typeof(MessageHandler)))
                     {
-                        classDelegates.Add(typeof(MessageHandler), changedHandler);
+                        classDelegates.Add(typeof(MessageHandler));
                     }
                     changedHandler += value;
                 }
@@ -38,9 +38,9 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
+                    if (!classDelegates.Contains(typeof(MessageHandler)))
                     {
-                        classDelegates.Add(typeof(MessageHandler), showedHandler);
+                        classDelegates.Add(typeof(MessageHandler));
                     }
                     showedHandler += value;
                 }
@@ -53,7 +53,28 @@ namespace TerrariumGame.DelegateLibrary
                 }
             }
         }
-        public event CalcHandler OnAdded;
+        private CalcHandler addedHandler;
+        public event CalcHandler OnAdded
+        {
+            add
+            {
+                lock (this)
+                {
+                    if (!classDelegates.Contains(typeof(CalcHandler)))
+                    {
+                        classDelegates.Add(typeof(CalcHandler));
+                    }
+                    addedHandler += value;
+                }
+            }
+            remove
+            {
+                lock (this)
+                {
+                    addedHandler -= value;
+                }
+            }
+        }
 
         private string message;
 
@@ -61,7 +82,7 @@ namespace TerrariumGame.DelegateLibrary
         {
             get
             {
-                OnShowed?.Invoke("Message was called");
+                showedHandler?.Invoke("Message was called");
                 return this.message;
             }
             set
@@ -75,16 +96,19 @@ namespace TerrariumGame.DelegateLibrary
         public void Add(string addString, out int length)
         {
             Message += addString;
-            length = (int)OnAdded?.Invoke(Message.Length);
+            length = (int)addedHandler?.Invoke(Message.Length);
         }
 
-        private Dictionary<Type, Delegate> classDelegates = new Dictionary<Type, Delegate>();
+        private List<Type> classDelegates = new List<Type>();
 
         public void UnhandleAllDelegates()
         {
-            foreach (var d in classDelegates.Keys)
+            foreach (var d in classDelegates)
             {
-
+                var c = changedHandler.GetInvocationList()[0];
+                CalcHandler.RemoveAll(changedHandler, changedHandler.GetInvocationList[0]);
+                var methodList = d.GetMethods();
+                methodList.Select(m => m.Name == "RemoveAll").First();
             }
         }
 
