@@ -118,10 +118,12 @@ namespace TerrariumGame.DelegateLibrary
             foreach (var d in classDelegates.Keys)
             {                
                 var par = classDelegates[d];
-               
-                foreach (var item in par)
+                var method = d.GetMethods(System.Reflection.BindingFlags.Static);
+                Console.WriteLine();
+                foreach (var item in method)
                 {
-                    Console.WriteLine(item.Method.Name);
+                    Console.WriteLine(item);
+                    
                 }
                 //var methodList = d.GetMethods();
                 //methodList.Select(m => m.Name == "RemoveAll").First();
