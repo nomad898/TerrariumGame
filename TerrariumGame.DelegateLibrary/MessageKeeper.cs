@@ -16,8 +16,11 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
+                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
+                    {
+                        classDelegates.Add(typeof(MessageHandler), changedHandler);
+                    }
                     changedHandler += value;
-                    delegatesList.Add(value);
                 }
             }
             remove
@@ -25,11 +28,31 @@ namespace TerrariumGame.DelegateLibrary
                 lock (this)
                 {
                     changedHandler -= value;
-                    delegatesList.Remove(value);
                 }
             }
         }
-        public event MessageHandler OnShowed;
+        private MessageHandler showedHandler;
+        public event MessageHandler OnShowed
+        {
+            add
+            {
+                lock (this)
+                {
+                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
+                    {
+                        classDelegates.Add(typeof(MessageHandler), showedHandler);
+                    }
+                    showedHandler += value;
+                }
+            }
+            remove
+            {
+                lock (this)
+                {
+                    showedHandler -= value;
+                }
+            }
+        }
         public event CalcHandler OnAdded;
 
         private string message;
@@ -55,13 +78,13 @@ namespace TerrariumGame.DelegateLibrary
             length = (int)OnAdded?.Invoke(Message.Length);
         }
 
-        private List<Delegate> delegatesList = new List<Delegate>();
+        private Dictionary<Type, Delegate> classDelegates = new Dictionary<Type, Delegate>();
 
         public void UnhandleAllDelegates()
         {
-            foreach (var d in delegatesList)
+            foreach (var d in classDelegates.Keys)
             {
-               
+
             }
         }
 
