@@ -16,11 +16,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.Contains(typeof(MessageHandler)))
+                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
                     {
-                        classDelegates.Add(typeof(MessageHandler));
+                        classDelegates.Add(typeof(MessageHandler), new List<Delegate>());
                     }
                     changedHandler += value;
+                    if (classDelegates[typeof(MessageHandler)].Capacity >= 0)
+                    {
+                        classDelegates[typeof(MessageHandler)].Add(value);
+                    }
                 }
             }
             remove
@@ -38,11 +42,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.Contains(typeof(MessageHandler)))
+                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
                     {
-                        classDelegates.Add(typeof(MessageHandler));
+                        classDelegates.Add(typeof(MessageHandler), new List<Delegate>());
                     }
                     showedHandler += value;
+                    if (classDelegates[typeof(MessageHandler)].Capacity >= 0)
+                    {
+                        classDelegates[typeof(MessageHandler)].Add(value);
+                    }
                 }
             }
             remove
@@ -60,11 +68,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.Contains(typeof(CalcHandler)))
+                    if (!classDelegates.ContainsKey(typeof(CalcHandler)))
                     {
-                        classDelegates.Add(typeof(CalcHandler));
+                        classDelegates.Add(typeof(CalcHandler), new List<Delegate>());
                     }
                     addedHandler += value;
+                    if (classDelegates[typeof(CalcHandler)].Capacity >= 0)
+                    {
+                        classDelegates[typeof(CalcHandler)].Add(value);
+                    }
                 }
             }
             remove
@@ -99,16 +111,20 @@ namespace TerrariumGame.DelegateLibrary
             length = (int)addedHandler?.Invoke(Message.Length);
         }
 
-        private List<Type> classDelegates = new List<Type>();
+        private Dictionary<Type, List<Delegate>> classDelegates = new Dictionary<Type, List<Delegate>>();
 
         public void UnhandleAllDelegates()
         {
-            foreach (var d in classDelegates)
-            {
-                var c = changedHandler.GetInvocationList()[0];
-                CalcHandler.RemoveAll(changedHandler, changedHandler.GetInvocationList[0]);
-                var methodList = d.GetMethods();
-                methodList.Select(m => m.Name == "RemoveAll").First();
+            foreach (var d in classDelegates.Keys)
+            {                
+                var par = classDelegates[d];
+               
+                foreach (var item in par)
+                {
+                    Console.WriteLine(item.Method.Name);
+                }
+                //var methodList = d.GetMethods();
+                //methodList.Select(m => m.Name == "RemoveAll").First();
             }
         }
 

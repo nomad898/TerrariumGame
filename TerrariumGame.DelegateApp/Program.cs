@@ -16,13 +16,13 @@ namespace TerrariumGame.DelegateApp
             msgKeeper.Message = "Hello, World!";
             msgKeeper.OnChanged += ShowMessage;
             msgKeeper.OnShowed += ShowMessage;
-            msgKeeper.Message = "String";
-            Console.WriteLine(msgKeeper.Message);
-
             msgKeeper.OnAdded += AddValue;
-            int x;
-            msgKeeper.Add("Good luck!", out x);
-            Console.WriteLine(x);
+            //msgKeeper.Message = "String";
+            //Console.WriteLine(msgKeeper.Message);
+            //int x;
+            //msgKeeper.Add("Good luck!", out x);
+            //Console.WriteLine(x);
+            msgKeeper.UnhandleAllDelegates();
             Console.ReadKey(true);
 
         }

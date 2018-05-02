@@ -17,5 +17,6 @@ namespace TerrariumGame.DelegateInterfaces
         string Message { get; set; }
 
         void Add(string addString, out int length);
+        void UnhandleAllDelegates();
     }
 }
