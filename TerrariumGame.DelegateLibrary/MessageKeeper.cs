@@ -21,7 +21,7 @@ namespace TerrariumGame.DelegateLibrary
                     if (!classDelegates.ContainsKey(changedHandler))
                     {
                         classDelegates.Add(changedHandler, new List<Delegate>());
-                    }                  
+                    }
                     if (classDelegates[changedHandler].Capacity >= 0)
                     {
                         classDelegates[changedHandler].Add(value);
@@ -119,14 +119,12 @@ namespace TerrariumGame.DelegateLibrary
         public void UnhandleAllDelegates()
         {
             for (int i = 0; i < classDelegates.Count; i++)
-            { 
+            {
                 Console.WriteLine("------------------");
-                var x = classDelegates.ElementAt(i);
-                var y = x.Key;
-                foreach (var item in x.Value)
-                {
-                    y -= item;
-                }
+                var x = classDelegates.Keys.ElementAt(i);
+                //foreach (var item in x.)
+                //{
+                //}
                 Console.WriteLine("------------------");
             }
         }
