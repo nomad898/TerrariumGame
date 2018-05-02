@@ -16,14 +16,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
-                    {
-                        classDelegates.Add(typeof(MessageHandler), new List<Delegate>());
-                    }
+                    this.changedHandler -= changedHandler;
                     changedHandler += value;
-                    if (classDelegates[typeof(MessageHandler)].Capacity >= 0)
+                    if (!classDelegates.ContainsKey(changedHandler))
                     {
-                        classDelegates[typeof(MessageHandler)].Add(value);
+                        classDelegates.Add(changedHandler, new List<Delegate>());
+                    }                  
+                    if (classDelegates[changedHandler].Capacity >= 0)
+                    {
+                        classDelegates[changedHandler].Add(value);
                     }
                 }
             }
@@ -42,14 +43,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.ContainsKey(typeof(MessageHandler)))
-                    {
-                        classDelegates.Add(typeof(MessageHandler), new List<Delegate>());
-                    }
+                    this.showedHandler -= showedHandler;
                     showedHandler += value;
-                    if (classDelegates[typeof(MessageHandler)].Capacity >= 0)
+                    if (!classDelegates.ContainsKey(showedHandler))
                     {
-                        classDelegates[typeof(MessageHandler)].Add(value);
+                        classDelegates.Add(showedHandler, new List<Delegate>());
+                    }
+                    if (classDelegates[showedHandler].Capacity >= 0)
+                    {
+                        classDelegates[showedHandler].Add(value);
                     }
                 }
             }
@@ -68,14 +70,15 @@ namespace TerrariumGame.DelegateLibrary
             {
                 lock (this)
                 {
-                    if (!classDelegates.ContainsKey(typeof(CalcHandler)))
-                    {
-                        classDelegates.Add(typeof(CalcHandler), new List<Delegate>());
-                    }
+                    this.addedHandler -= addedHandler;
                     addedHandler += value;
-                    if (classDelegates[typeof(CalcHandler)].Capacity >= 0)
+                    if (!classDelegates.ContainsKey(addedHandler))
                     {
-                        classDelegates[typeof(CalcHandler)].Add(value);
+                        classDelegates.Add(addedHandler, new List<Delegate>());
+                    }
+                    if (classDelegates[addedHandler].Capacity >= 0)
+                    {
+                        classDelegates[addedHandler].Add(value);
                     }
                 }
             }
@@ -111,22 +114,20 @@ namespace TerrariumGame.DelegateLibrary
             length = (int)addedHandler?.Invoke(Message.Length);
         }
 
-        private Dictionary<Type, List<Delegate>> classDelegates = new Dictionary<Type, List<Delegate>>();
+        private Dictionary<Delegate, List<Delegate>> classDelegates = new Dictionary<Delegate, List<Delegate>>();
 
         public void UnhandleAllDelegates()
         {
-            foreach (var d in classDelegates.Keys)
-            {                
-                var par = classDelegates[d];
-                var method = d.GetMethods(System.Reflection.BindingFlags.Static);
-                Console.WriteLine();
-                foreach (var item in method)
+            for (int i = 0; i < classDelegates.Count; i++)
+            { 
+                Console.WriteLine("------------------");
+                var x = classDelegates.ElementAt(i);
+                var y = x.Key;
+                foreach (var item in x.Value)
                 {
-                    Console.WriteLine(item);
-                    
+                    y -= item;
                 }
-                //var methodList = d.GetMethods();
-                //methodList.Select(m => m.Name == "RemoveAll").First();
+                Console.WriteLine("------------------");
             }
         }
 
