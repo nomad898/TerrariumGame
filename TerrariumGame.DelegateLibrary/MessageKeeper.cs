@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TerrariumGame.DelegateInterfaces;
@@ -118,16 +119,17 @@ namespace TerrariumGame.DelegateLibrary
 
         public void UnhandleAllDelegates()
         {
-            for (int i = 0; i < classDelegates.Count; i++)
-            {
-                Console.WriteLine("------------------");
-                var x = classDelegates.Keys.ElementAt(i);
-                //foreach (var item in x.)
-                //{
-                //}
-                Console.WriteLine("------------------");
-            }
-        }
+            //for (int i = 0; i < classDelegates.Count; i++)
+            //{
+            //    Console.WriteLine("------------------");
+            //    var x = classDelegates.Keys.ElementAt(i);
 
+            //    Console.WriteLine(x.Method);
+            //    Console.WriteLine("------------------");
+
+            //}
+            Delegate.RemoveAll(showedHandler, changedHandler);
+        }
+        
     }
 }
