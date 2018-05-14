@@ -121,7 +121,7 @@ namespace TerrariumGame.DelegateLibrary
         {
             for (int i = 0; i < handlers.Keys.Count; i++)
             {
-                handlers = null;
+                handlers[handlers.Keys.ElementAt(i)] = null;
             }
         }
     }
