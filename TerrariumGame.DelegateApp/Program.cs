@@ -17,7 +17,7 @@ namespace TerrariumGame.DelegateApp
             msgKeeper.OnChanged += ShowMessage;
             msgKeeper.OnShowed += ShowMessage;
             msgKeeper.OnAdded += AddValue;
-            msgKeeper.UnhandleAllDelegates();
+            // msgKeeper.UnhandleAllDelegates();
             msgKeeper.Message = "String";
             Console.WriteLine(msgKeeper.Message);
             int x;
