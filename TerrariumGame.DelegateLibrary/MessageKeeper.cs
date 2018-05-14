@@ -10,84 +10,61 @@ namespace TerrariumGame.DelegateLibrary
 {
     public class MessageKeeper : IMessageKeeper
     {
-        private MessageHandler changedHandler;
+        public MessageKeeper()
+        {
+            handlers.Add("OnChanged", null);
+            handlers.Add("OnShowed", null);
+            handlers.Add("OnAdded", null);
+        }
+
         public event MessageHandler OnChanged
         {
             add
             {
                 lock (this)
                 {
-                    this.changedHandler -= changedHandler;
-                    changedHandler += value;
-                    if (!classDelegates.ContainsKey(changedHandler))
-                    {
-                        classDelegates.Add(changedHandler, new List<Delegate>());
-                    }
-                    if (classDelegates[changedHandler].Capacity >= 0)
-                    {
-                        classDelegates[changedHandler].Add(value);
-                    }
+                    handlers["OnChanged"] = (MessageHandler)handlers["OnChanged"] + value;
                 }
             }
             remove
             {
                 lock (this)
                 {
-                    changedHandler -= value;
+                    handlers["OnChanged"] = (MessageHandler)handlers["OnChanged"] - value;
                 }
             }
         }
-        private MessageHandler showedHandler;
         public event MessageHandler OnShowed
         {
             add
             {
                 lock (this)
                 {
-                    this.showedHandler -= showedHandler;
-                    showedHandler += value;
-                    if (!classDelegates.ContainsKey(showedHandler))
-                    {
-                        classDelegates.Add(showedHandler, new List<Delegate>());
-                    }
-                    if (classDelegates[showedHandler].Capacity >= 0)
-                    {
-                        classDelegates[showedHandler].Add(value);
-                    }
+                    handlers["OnShowed"] = (MessageHandler)handlers["OnShowed"] + value;
                 }
             }
             remove
             {
                 lock (this)
                 {
-                    showedHandler -= value;
+                    handlers["OnShowed"] = (MessageHandler)handlers["OnShowed"] - value;
                 }
             }
         }
-        private CalcHandler addedHandler;
         public event CalcHandler OnAdded
         {
             add
             {
                 lock (this)
                 {
-                    this.addedHandler -= addedHandler;
-                    addedHandler += value;
-                    if (!classDelegates.ContainsKey(addedHandler))
-                    {
-                        classDelegates.Add(addedHandler, new List<Delegate>());
-                    }
-                    if (classDelegates[addedHandler].Capacity >= 0)
-                    {
-                        classDelegates[addedHandler].Add(value);
-                    }
+                    handlers["OnAdded"] = (CalcHandler)handlers["OnAdded"] + value;
                 }
             }
             remove
             {
                 lock (this)
                 {
-                    addedHandler -= value;
+                    handlers["OnAdded"] = (CalcHandler)handlers["OnAdded"] - value;
                 }
             }
         }
@@ -98,38 +75,54 @@ namespace TerrariumGame.DelegateLibrary
         {
             get
             {
-                showedHandler?.Invoke("Message was called");
+                MessageHandler showedHandler;
+                if ((showedHandler = (MessageHandler)handlers["OnShowed"]) != null)
+                {
+                    showedHandler?.Invoke("Message was called");
+                }
                 return this.message;
             }
             set
             {
-                changedHandler?.Invoke($"Old value - {message}");
+                MessageHandler changedHandler;
+                if ((changedHandler = (MessageHandler)handlers["OnChanged"]) != null)
+                {
+                    changedHandler?.Invoke($"Old value - {message}");
+                }
                 this.message = value;
-                changedHandler?.Invoke($"Message was changed - {message}");
+                if ((changedHandler = (MessageHandler)handlers["OnChanged"]) != null)
+                {
+                    changedHandler?.Invoke($"Message was changed - {message}");
+                }
             }
         }
 
         public void Add(string addString, out int length)
         {
-            Message += addString;
-            length = (int)addedHandler?.Invoke(Message.Length);
+            CalcHandler addedHandler;
+            length = 0;
+            if ((addedHandler = (CalcHandler)handlers["OnAdded"]) != null)
+            {
+                Message += addString;
+                try
+                {
+                    length = (int)addedHandler?.Invoke(Message.Length);
+                }
+                catch
+                {
+
+                }
+            }
         }
 
-        private Dictionary<Delegate, List<Delegate>> classDelegates = new Dictionary<Delegate, List<Delegate>>();
+        private Dictionary<string, Delegate> handlers = new Dictionary<string, Delegate>();
 
         public void UnhandleAllDelegates()
         {
-            //for (int i = 0; i < classDelegates.Count; i++)
-            //{
-            //    Console.WriteLine("------------------");
-            //    var x = classDelegates.Keys.ElementAt(i);
-
-            //    Console.WriteLine(x.Method);
-            //    Console.WriteLine("------------------");
-
-            //}
-            Delegate.RemoveAll(showedHandler, changedHandler);
+            for (int i = 0; i < handlers.Keys.Count; i++)
+            {
+                handlers = null;
+            }
         }
-        
     }
 }
