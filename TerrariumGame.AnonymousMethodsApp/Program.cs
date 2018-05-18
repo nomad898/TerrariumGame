@@ -9,31 +9,18 @@ namespace TerrariumGame.AnonymousMethodsApp
 
     class Program
     {
-        delegate int FibonacciDel(int i);
+        delegate int ValueDel(int i);
 
         static void Main(string[] args)
         {
-            FibonacciDel anonymousDel = delegate (int i)
+            ValueDel del = ValueIncr;
+            ValueDel anonymousDel = delegate(int i)
             {
-                return i > 1 ?
-                    Fibonacci(i - 1) + Fibonacci(i - 2) : i;
+                return ++i;
             };
-
-            Console.WriteLine(anonymousDel(7));
-
-            FibonacciDel lambdaDel = (int i) =>
-            {
-                return i > 1 ?
-                    Fibonacci(i - 1) + Fibonacci(i - 2) : i;
-            };
-
-            Console.WriteLine(lambdaDel(7));
-
-            FibonacciDel methodDel = Fibonacci;                      
-
-            Console.WriteLine(methodDel(7));
-
-            Console.WriteLine(Fibonacci(7));
+            ValueDel lambdaDel = (i) => ++i;
+            Console.WriteLine(Fibonacci
+                (ValueIncr(del(anonymousDel(lambdaDel(1))))));
 
             Console.ReadKey(true);
         }
@@ -42,6 +29,11 @@ namespace TerrariumGame.AnonymousMethodsApp
         {
             return i > 1 ?
                 Fibonacci(i - 1) + Fibonacci(i - 2) : i;
+        }
+
+        public static int ValueIncr(int i)
+        {
+            return ++i;
         }
     }
 }
