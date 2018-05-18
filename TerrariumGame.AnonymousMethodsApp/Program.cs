@@ -9,16 +9,14 @@ namespace TerrariumGame.AnonymousMethodsApp
 
     class Program
     {
-        delegate int ValueDel(int i);
-
         static void Main(string[] args)
-        {
-            ValueDel del = ValueIncr;
-            ValueDel anonymousDel = delegate(int i)
+        {          
+            Func<int, int> del = ValueIncr;
+            Func<int, int> anonymousDel = delegate(int i)
             {
                 return ++i;
             };
-            ValueDel lambdaDel = (i) => ++i;
+            Func<int, int> lambdaDel = (i) => ++i;
             Console.WriteLine(Fibonacci
                 (ValueIncr(del(anonymousDel(lambdaDel(1))))));
 
