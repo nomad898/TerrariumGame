@@ -93,6 +93,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.DelegateInter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.DelegateLibrary", "TerrariumGame.DelegateLibrary\TerrariumGame.DelegateLibrary.csproj", "{CEFD3931-7773-40CC-8088-E59F1EE7F368}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnonymousMethods", "AnonymousMethods", "{114C3CCF-11BE-46B8-9177-6E74B5E2531C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.AnonymousMethodsApp", "TerrariumGame.AnonymousMethodsApp\TerrariumGame.AnonymousMethodsApp.csproj", "{C19EAB27-D95A-45CF-8F36-3F53D89001E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,6 +227,10 @@ Global
 		{CEFD3931-7773-40CC-8088-E59F1EE7F368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEFD3931-7773-40CC-8088-E59F1EE7F368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEFD3931-7773-40CC-8088-E59F1EE7F368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19EAB27-D95A-45CF-8F36-3F53D89001E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19EAB27-D95A-45CF-8F36-3F53D89001E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19EAB27-D95A-45CF-8F36-3F53D89001E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19EAB27-D95A-45CF-8F36-3F53D89001E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -258,6 +266,7 @@ Global
 		{9C4BFE6E-75B2-4B33-B26F-4F410C3FD487} = {F843EDA1-A9D2-42E6-A77C-C3528D6A2FAB}
 		{A590D15A-706D-4E25-937B-AE598A3D60B6} = {F843EDA1-A9D2-42E6-A77C-C3528D6A2FAB}
 		{CEFD3931-7773-40CC-8088-E59F1EE7F368} = {F843EDA1-A9D2-42E6-A77C-C3528D6A2FAB}
+		{C19EAB27-D95A-45CF-8F36-3F53D89001E3} = {114C3CCF-11BE-46B8-9177-6E74B5E2531C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D860BF3A-5FA9-4E34-9AFC-DF63C5FEB384}
