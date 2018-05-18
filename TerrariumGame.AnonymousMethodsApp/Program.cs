@@ -29,6 +29,10 @@ namespace TerrariumGame.AnonymousMethodsApp
 
             Console.WriteLine(lambdaDel(7));
 
+            FibonacciDel methodDel = Fibonacci;                      
+
+            Console.WriteLine(methodDel(7));
+
             Console.WriteLine(Fibonacci(7));
 
             Console.ReadKey(true);
