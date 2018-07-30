@@ -2,7 +2,6 @@
 using Autofac.Configuration;
 using Autofac.Integration.WebApi;
 using AutoMapper;
-using BusinessInterfaces.Services;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Web.Http;

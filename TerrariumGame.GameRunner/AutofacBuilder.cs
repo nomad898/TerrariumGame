@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Configuration;
+using AutoMapper;
 using Microsoft.Extensions.Configuration;
+using TerrariumGame.WcfServiceApp;
 
 namespace TerrariumGame.GameRunner
 {
@@ -28,6 +30,8 @@ namespace TerrariumGame.GameRunner
             config.AddJsonFile(jsonFileName);
             var module = new ConfigurationModule(config.Build());
             var builder = new ContainerBuilder();
+            var mapper = MappingProfile.InitializeAutoMapper().CreateMapper();
+            builder.RegisterInstance<IMapper>(mapper);
             builder.RegisterModule(module);
             return builder.Build();
         }

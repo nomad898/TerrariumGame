@@ -24,7 +24,7 @@ namespace TerrariumGame.GameRunner
             using (var scope = Container.BeginLifetimeScope())
             {
                 var game = scope.Resolve<IGame>();
-                game.Start(false);
+                game.Start(true);
             }
         }
     }

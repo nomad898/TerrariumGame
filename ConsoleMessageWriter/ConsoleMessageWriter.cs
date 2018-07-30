@@ -32,14 +32,14 @@ namespace MessageWriter
         /// <param name="message">Message from employee</param>
         public void PrintMessage(string message)
         {
-            Console.SetCursorPosition(Map.Width + 10, 2);
-            if (message != string.Empty)
-            {
-                PrintMessage(message);
-                Thread.Sleep(500);
                 Console.SetCursorPosition(Map.Width + 10, 2);
-                Console.WriteLine(new string(' ', 100));
-            }
+                if (message != string.Empty)
+                {
+                    PrintMessage(message);
+                    Thread.Sleep(500);
+                    Console.SetCursorPosition(Map.Width + 10, 2);
+                    Console.WriteLine(new string(' ', 100));
+                }
         }
         #endregion
     }

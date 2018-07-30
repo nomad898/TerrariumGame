@@ -112,6 +112,17 @@
       ],
       "instanceScope": "singleinstance"
     },
+
+
+    {
+      "type": "MessageWriter.DbApiMessageWriter, DataBaseMessageWriter",
+      "services": [
+        {
+          "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+        }
+      ],
+      "instanceScope": "singleinstance"
+    },
     // MessageWriters
 
     // Game
@@ -175,7 +186,7 @@
       "instanceScope": "singleinstance"
     },
 
-      // WebApiClient
+    // WebApiClient
     {
       "type": "ClientLibrary.Clients.WebApiClient, ClientLibrary",
       "services": [
