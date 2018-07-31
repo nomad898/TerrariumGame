@@ -6,26 +6,17 @@
     <title>Home page</title>
     <link rel="stylesheet" href="../Css/style.css">
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Scripts/jquery-3.3.1.intellisense.js"></script>
+    <script src='../JavaScipt/GetData.js'></script>
 </head>
 
 <body>
     <div class="main">
         <div class="centerlized">
-            <table>
-                <tr>
-                    <th>1 col</th>
-                    <th>2 col</th>
-                    <th>1 col</th>
-                    <th>2 col</th>
-                </tr>
-                <tr>
-                    <td>1 data</td>
-                    <td>2 data</td>
-                    <td>1 data</td>
-                    <td>2 data</td>
-                </tr>
-            </table>
+            <input type="button" id="btn" value="Get all conversations" />
+            <input type="button" id="btnClear" value="Clear" />
+            <ul id='ulConversations'>
+                <li>1</li>
+            </ul>
         </div>
     </div>
 </body>

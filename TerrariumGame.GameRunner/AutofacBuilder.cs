@@ -24,6 +24,7 @@ namespace TerrariumGame.GameRunner
             return builder.Build();
         }
 
+        //TODO Change Automapper injection
         public static IContainer ConfigByJson(string jsonFileName)
         {           
             var config = new ConfigurationBuilder();

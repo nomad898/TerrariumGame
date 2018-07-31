@@ -1,23 +1,29 @@
-var uri = '';
-
 $(document).ready(function () {
-    $('btnGetPosts').click(function () {
-        JQuery.supports.cors = true;
-        var recieverID = $('#RecieverID').val();
+    var ulConversations = $('#ulConversations');
 
+    $('#btn').click(function () {
+        console.log('clicked');
         $.ajax({
-            url: "/api/Conversation",
-            data: {
-                username: recieverID
+            type: 'GET',            
+            url: 'http://10.12.9.38:8080/api/Conversation/',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                ulConversations.empty();
+                $.each(data, function (index, val) {
+                    var conversationData = val.ConversationId + ' ' + val.Message + ' ' + val.Date;
+                  
+                    ulConversations.append('<li>' + conversationData + '</li>');
+                    
+                });
             },
-            type: "GET",
-            dataType: "json",
-            error: function (request, status, error) {
-                alert(request.responseText);
-            },
-            success: function(data) {
-                alert(data);
-            }
+            error: function (data) {
+                console.log('error');
+            } 
         });
+    })
+
+    $('#btnClear').click(function () {
+        ulConversations.empty();
     });
 });
