@@ -1,0 +1,10 @@
+﻿body {}
+
+.main {
+    margin: 10% 10% 10% 10%;
+}
+
+.centerlized {    
+    padding-right: 50%; 
+    padding-left: 30%;
+}
