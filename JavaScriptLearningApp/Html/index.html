@@ -6,7 +6,9 @@
     <title>Home page</title>
     <link rel="stylesheet" href="../Css/style.css">
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src='../JavaScipt/GetData.js'></script>
+    <script src='../JS/GetConversations.js'></script>
+    <script src='../JS/ClearConversations.js'></script>
+    <script src='../JS/CreateNewConversation.js'></script>
 </head>
 
 <body>
@@ -14,9 +16,42 @@
         <div class="centerlized">
             <input type="button" id="btn" value="Get all conversations" />
             <input type="button" id="btnClear" value="Clear" />
-            <ul id='ulConversations'>
-                <li>1</li>
-            </ul>
+            <hr>
+            <form name="postForm" id="postForm">               
+                <input type="text" id="Message" name="Message" value="">
+                <input type="button" id="btnCreate" value="Creat new conversation" />
+            </form>
+            <table id='tableConversations'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

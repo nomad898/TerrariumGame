@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Post with forms</title>
+    <link rel="stylesheet" href="../Css/style.css">
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src='../JS/GetConversations.js'></script>
+    <script src='../JS/ClearConversations.js'></script>
+    <script src='../JS/CreateNewConversation.js'></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="centerlized">
+            <hr>
+            <form name="postForm" id="postForm" method="post" 
+            action="http://localhost:50808/api/Conversation" 
+            enctype="application/x-www-form-urlencoded">               
+                <input type="text" id="Message" name="Message" value="">
+                <input type="submit" value="Submit" />
+            </form>           
+        </div>
+    </div>
+</body>
+
+</html>

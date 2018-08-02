@@ -22,6 +22,7 @@ namespace TerrariumGame.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("api/Conversation")]
         public async Task<IEnumerable<ConversationViewModel>> Get()
         {
             var conversations = await conversationService.GetAllAsync();
@@ -37,24 +38,40 @@ namespace TerrariumGame.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("api/Conversation/{message}")]
-        public async Task Post(string message)
+        [Route("api/Conversation")]
+        public async Task Post([FromBody]ConversationViewModel conversationVM)
         {
             ConversationDto conDto = new ConversationDto()
             {
-                Message = message,
+                Message = conversationVM.Message,
                 Date = DateTime.Now
             };
             await conversationService.CreateAsync(conDto);
         }
 
-        [Route("api/Conversation/{id}/{message}")]
-        public async Task Put(int id, string message)
+        //[Route("api/Conversation/{id}/{message}")]
+        //public async Task Put(int id, string message)
+        //{
+        //    var conversationDto = await conversationService.GetByIdAsync(id);
+        //    conversationDto.Message = message;
+        //    conversationDto.Date = DateTime.Now;
+        //    await conversationService.UpdateAsync(conversationDto);
+        //}
+
+        [Route("api/Conversation/{id}")]
+        public async Task Put(int id, ConversationViewModel conversationVM)
         {
             var conversationDto = await conversationService.GetByIdAsync(id);
-            conversationDto.Message = message;
+            conversationDto.Message = conversationVM.Message;
             conversationDto.Date = DateTime.Now;
             await conversationService.UpdateAsync(conversationDto);
+        }
+
+        [HttpPost]
+        [Route("api/Conversation/Test")]
+        public string Test([FromBody]ConversationViewModel conversationVM)
+        {
+            return conversationVM.Message;            
         }
     }
 }
