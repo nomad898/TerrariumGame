@@ -75,11 +75,11 @@ namespace TerrariumGame.Models.Alive
         {
             if (ee is IWorker)
             {
-                return this.Say(string.Format("Привет, {0} - {1}!", ee.Name, ee.ToString()));
+                return this.Say(string.Format("Hi, {0} - {1}!", ee.Name, ee.ToString()));
             }
             else if (ee is IManage)
             {
-                return this.Say(string.Format("Здравствуйте, {0}! - {1}!", ee.Name, ee.ToString()));
+                return this.Say(string.Format("Hello, {0}! - {1}!", ee.Name, ee.ToString()));
             }
             else
             {

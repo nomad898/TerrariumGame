@@ -96,6 +96,17 @@
     },
 
     // Writer
+
+    // ConsoleMessageWriter
+    //{
+    //  "type": "MessageWriter.ConsoleMessageWriter, ConsoleMessageWriter",
+    //  "services": [
+    //    {
+    //      "type": "InterfaceLibrary.Interfaces.Writer.IMessageWriter, InterfaceLibrary"
+    //    }
+    //  ],
+    //  "instanceScope": "singleinstance"
+    //},
     {
       "type": "MessageWriter.DataBaseMessageWriter, DataBaseMessageWriter",
       "services": [
@@ -105,7 +116,6 @@
       ],
       "instanceScope": "singleinstance"
     },
-
 
     // GameObjectsList
     {

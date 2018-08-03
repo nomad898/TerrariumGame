@@ -35,7 +35,7 @@ namespace MessageWriter
                 Console.SetCursorPosition(Map.Width + 10, 2);
                 if (message != string.Empty)
                 {
-                    PrintMessage(message);
+                    Console.WriteLine(message);
                     Thread.Sleep(500);
                     Console.SetCursorPosition(Map.Width + 10, 2);
                     Console.WriteLine(new string(' ', 100));

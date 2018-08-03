@@ -104,14 +104,7 @@ namespace TerrariumGame.DelegateLibrary
             if ((addedHandler = (CalcHandler)handlers["OnAdded"]) != null)
             {
                 Message += addString;
-                try
-                {
-                    length = (int)addedHandler?.Invoke(Message.Length);
-                }
-                catch
-                {
-
-                }
+                length = (int)addedHandler?.Invoke(Message.Length);
             }
         }
 

@@ -73,5 +73,12 @@ namespace TerrariumGame.WebApi.Controllers
         {
             return conversationVM.Message;            
         }
+
+        [HttpGet]
+        [Route("api/Conversation/Test")]
+        public string Test1()
+        {
+            return "Test1";
+        }
     }
 }

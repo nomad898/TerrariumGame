@@ -27,23 +27,25 @@ namespace TerrariumGame.PluginLibrary
             pluginsMap[plugin.Order].Remove(plugin);
         }
 
+        public ICollection<ICollection<IPlugin>> GetPlugins()
+        {
+            return pluginsMap.Values;           
+        }
+
         public ICollection<ICollection<IPlugin>> Activate()
         {
-            return pluginsMap.Values;
-
-            //foreach (var plugins in pluginsMap.Values)
-            //{
-            //    foreach (var plugin in plugins)
-            //    {
-            //        return plugin.Action();
-            //        //plugin.Action().ForEach(delegate (object result)
-            //        //{
-            //        //    if (result != null)
-            //        //        Console.WriteLine(result.ToString());
-            //        //});
-            //    }
-            //}
-            //return null;
+            foreach (var plugins in pluginsMap.Values)
+            {
+                foreach (var plugin in plugins)
+                {
+                    foreach (var result in plugin.Action())
+                    {
+                        if (result != null)
+                            Console.WriteLine(result.ToString());
+                    }
+                }
+            }
+            return null;
         }
 
 

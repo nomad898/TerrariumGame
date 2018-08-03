@@ -37,6 +37,7 @@ namespace TerrariumGame.GameRunner
             return builder.Build();
         }
 
+        // TODO Doesn't work because has no Automapper.
         public static IContainer ConfigByXml(string xmlFileName)
         {
             var builder = new ContainerBuilder();

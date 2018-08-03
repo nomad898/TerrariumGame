@@ -70,11 +70,11 @@ namespace TerrariumGame.Models.Alive
         {
             if (ee is IBigBoss)
             {
-                return this.Say(string.Format("Здравствуйте, {0} - {1}!", ee.Name, ee.ToString()));
+                return this.Say(string.Format("Hello, {0} - {1}!", ee.Name, ee.ToString()));
             }
             else if (ee is IManagable)
             {
-                return this.Say(string.Format("Работать, {0} - {1}!", ee.Name, ee.ToString()));
+                return this.Say(string.Format("Back to work, {0} - {1}!", ee.Name, ee.ToString()));
             }
             else
             {
