@@ -2,7 +2,7 @@
 using Autofac.Configuration;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using TerrariumGame.WcfServiceApp;
+using TerrariumGame.GameRunner.Utility;
 
 namespace TerrariumGame.GameRunner
 {
