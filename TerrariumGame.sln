@@ -50,6 +50,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{623E1FC8-887D-4586-BD14-96E1DFF178C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WebApi", "TerrariumGame.WebApi\TerrariumGame.WebApi.csproj", "{7A1AB989-D4DE-4704-AA65-D44047A885C8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{654C8275-A024-44C4-9329-6F92361606DA} = {654C8275-A024-44C4-9329-6F92361606DA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrariumGame.WebApi.Tests", "TerrariumGame.WebApi.Tests\TerrariumGame.WebApi.Tests.csproj", "{0090C6B4-E055-437D-AA26-A2A0536DD01C}"
 EndProject
