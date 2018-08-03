@@ -123,16 +123,6 @@
     <Compile Include="AutofacBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ConversationWcfServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\WcfConversationServiceTcp\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Utility\MappingProfile.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,45 +134,12 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\TerrariumGame.WcfServiceApp.DataContracts.ConversationDataContract.datasource" />
     <None Include="Properties\DataSources\TerrariumGame.WcfServiceApp.DataMembers.ConversationDataContract.datasource" />
-    <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService.wsdl" />
-    <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WcfConversationServiceTcp\service.wsdl" />
-    <None Include="Service References\WcfConversationServiceTcp\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WcfConversationServiceTcp\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WcfConversationServiceTcp\TerrariumGame.WcfDataContracts.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\autofacConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ConfigsRepo\autofacConfigRepository.xml" />
-    <None Include="Service References\WcfConversationServiceTcp\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\WcfConversationServiceTcp\configuration.svcinfo" />
-    <None Include="Service References\WcfConversationServiceTcp\configuration91.svcinfo" />
-    <None Include="Service References\ConversationWcfServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ConversationWcfServiceReference\configuration.svcinfo" />
-    <None Include="Service References\ConversationWcfServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\ConversationWcfServiceReference\ConversationWcfService.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessInterfaces\BusinessInterfaces.csproj">
@@ -192,6 +149,10 @@
     <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj">
       <Project>{8BCFCAFD-01AA-4462-BB82-0198FD6E602D}</Project>
       <Name>BusinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClientLibrary\ClientLibrary.csproj">
+      <Project>{6543b604-f123-44d8-bd73-a2fa3e47c5db}</Project>
+      <Name>ClientLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseInterfaces\DataBaseInterfaces.csproj">
       <Project>{a3d628be-bff2-451e-ba4b-7c427e4e274b}</Project>
@@ -208,10 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ConversationWcfServiceReference\" />
-    <WCFMetadataStorage Include="Service References\WcfConversationServiceTcp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

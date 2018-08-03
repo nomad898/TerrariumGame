@@ -22,17 +22,6 @@ namespace TerrariumGame.WcfService.Host
         {
             Container = AutofacBuilder.ConfigByJson(JSON_FILE_NAME);
 
-            //using (ServiceHost host = new ServiceHost(typeof(WcfConversationService)))
-            //{
-            //    host.AddDependencyInjectionBehavior<IWcfConversationService>(Container);           
-
-            //    host.Open();
-
-            //    Console.WriteLine("Service hosted successfully");
-
-            //    Console.ReadKey(true);
-            //}
-
             ServiceHost host = new ServiceHost(typeof(WcfConversationService));
 
             host.AddDependencyInjectionBehavior<IWcfConversationService>(Container);
@@ -45,6 +34,7 @@ namespace TerrariumGame.WcfService.Host
             Console.WriteLine("Service hosted successfully");
 
             Console.ReadKey(true);
+            host.Close();
 
         }
     }
